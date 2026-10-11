@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بريتون BRITON</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">BRITON <span>بريتون</span></div>
+  <a class="admin-link" href="admin.html">لوحة التحكم</a>
+</header>
+<section class="hero">
+  <p>متجر بريتون</p>
+  <h1>أناقة تختارها بثقة</h1>
+  <div>إكسسوارات وهدايا ومنتجات مختارة بعناية</div>
+  <a href="#products" class="gold-btn">تصفح المنتجات</a>
+</section>
+<main>
+  <div class="section-head"><h2>منتجاتنا</h2><span id="count"></span></div>
+  <section id="products" class="grid"></section>
+</main>
+<div class="cart">
+  <div><b>السلة</b> <span id="cartCount">0</span></div>
+  <div id="cartItems"></div>
+  <div class="total">الإجمالي: <span id="total">0</span> ر.س</div>
+  <button class="gold-btn" onclick="orderWhatsApp()">إرسال الطلب عبر واتساب</button>
+</div>
+<footer>© 2026 BRITON — جميع الحقوق محفوظة</footer>
+<script src="app.js"></script>
+</body>
+</html>
