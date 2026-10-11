@@ -3,48 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>بريتون BRITON</title>
+<title>بريتون | BRITON</title>
+<meta name="description" content="متجر بريتون للإكسسوارات والهدايا والمنتجات المميزة">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif}
-header{position:sticky;top:0;z-index:10;background:#0b0b0bee;border-bottom:1px solid #8d6d2b;padding:15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:900;color:#d8b45a}.logo small{display:block;color:#fff;font-size:11px;letter-spacing:2px}
-.hero{text-align:center;padding:65px 18px;background:radial-gradient(circle,#332817 0,#090909 65%)}
-.hero h1{font-size:38px;margin:8px 0;color:#e1bd68}.hero p{color:#ccc}
-.btn{display:inline-block;background:#d8b45a;color:#111;border:0;border-radius:8px;padding:13px 22px;font-weight:bold;text-decoration:none;cursor:pointer;margin-top:12px}
-main{max-width:1100px;margin:auto;padding:25px 15px}.title{display:flex;justify-content:space-between;align-items:center}.title h2{color:#d8b45a}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:15px}
-.card{background:#151515;border:1px solid #3b3020;border-radius:12px;padding:10px;overflow:hidden}
-.card img{width:100%;height:190px;object-fit:cover;border-radius:8px;background:#222}
-.card h3{margin:9px 0 5px}.price{color:#e1bd68;font-weight:bold}.card button{width:100%;padding:10px;border:1px solid #d8b45a;background:transparent;color:#d8b45a;border-radius:7px}
-.cart{position:fixed;bottom:12px;left:12px;right:12px;max-width:430px;margin:auto;background:#151515;border:1px solid #8d6d2b;border-radius:12px;padding:14px;z-index:20;box-shadow:0 10px 30px #000}
-.cartline{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:6px 0}.total{margin-top:10px;font-weight:bold;color:#e1bd68}.cart .btn{width:100%}
-footer{text-align:center;color:#888;padding:40px 15px}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#0d0d0f;color:#fff}
+a{text-decoration:none;color:inherit}.top{background:#c9a227;color:#111;text-align:center;padding:8px;font-weight:bold}
+header{background:#111114;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;z-index:5;border-bottom:1px solid #332a13}
+.logo{font-size:30px;font-weight:900;color:#d7b63d;letter-spacing:2px}.cart{border:1px solid #d7b63d;padding:10px 15px;border-radius:10px}
+.hero{padding:55px 6%;text-align:center;background:linear-gradient(135deg,#151515,#211d10)}
+.hero h1{font-size:42px;margin:10px 0;color:#e2c04d}.hero p{color:#ddd;font-size:18px}
+.btn{display:inline-block;background:#d7b63d;color:#111;padding:13px 22px;border-radius:10px;font-weight:bold;margin-top:10px}
+.section{padding:35px 6%}.section h2{text-align:center;color:#e0c04d}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;max-width:1100px;margin:auto}
+.card{background:#151518;border:1px solid #302817;border-radius:15px;overflow:hidden;padding-bottom:15px}
+.pic{height:190px;background:linear-gradient(135deg,#292929,#111);display:flex;align-items:center;justify-content:center;font-size:60px}
+.card h3{margin:14px 14px 5px}.card p{margin:5px 14px;color:#bbb;line-height:1.5}.price{color:#e1bf42;font-size:20px;font-weight:bold;margin:10px 14px}.buy{display:block;margin:10px 14px;text-align:center;background:#d7b63d;color:#111;padding:10px;border-radius:9px;font-weight:bold}
+footer{text-align:center;padding:30px;background:#09090a;color:#aaa;margin-top:25px}
 </style>
 </head>
 <body>
-<header><div class="logo">BRITON<small>بريتون</small></div><span>متجر بريتون</span></header>
-<section class="hero"><p>متجر بريتون</p><h1>أناقة تختارها بثقة</h1><p>إكسسوارات وهدايا ومنتجات مختارة بعناية</p><a class="btn" href="#products">تصفح المنتجات</a></section>
-<main><div class="title"><h2>منتجاتنا</h2><span id="count"></span></div><section id="products" class="grid"></section></main>
-<div class="cart"><b>🛒 السلة: <span id="cc">0</span></b><div id="items"></div><div class="total">الإجمالي: <span id="total">0</span> ر.س</div><button class="btn" onclick="send()">إرسال الطلب عبر واتساب</button></div>
-<footer>© 2026 BRITON — جميع الحقوق محفوظة</footer>
-<script>
-const WA="966556575822";
-const products=[
-{name:"حقيبة أنيقة",price:129,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"},
-{name:"ساعة فاخرة",price:179,img:"https://images.unsplash.com/photo-1524805444758-089113d48a8d?auto=format&fit=crop&w=700&q=80"},
-{name:"إكسسوار ذهبي",price:69,img:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80"}
-];
-let cart=[];
-function render(){
-document.getElementById("count").textContent=products.length+" منتجات";
-document.getElementById("products").innerHTML=products.map((p,i)=>`<article class="card"><img src="${p.img}"><h3>${p.name}</h3><div class="price">${p.price} ر.س</div><button onclick="add(${i})">أضف للسلة</button></article>`).join("");
-drawCart()
-}
-function add(i){cart.push(products[i]);drawCart()}
-function remove(i){cart.splice(i,1);drawCart()}
-function drawCart(){document.getElementById("cc").textContent=cart.length;document.getElementById("items").innerHTML=cart.map((p,i)=>`<div class="cartline"><span>${p.name}</span><span>${p.price} <button onclick="remove(${i})">×</button></span></div>`).join("");document.getElementById("total").textContent=cart.reduce((s,p)=>s+p.price,0)}
-function send(){if(!cart.length)return alert("السلة فارغة");let total=cart.reduce((s,p)=>s+p.price,0);let msg="السلام عليكم، أريد الطلب من متجر بريتون:\n"+cart.map(p=>"• "+p.name+" — "+p.price+" ر.س").join("\n")+"\nالإجمالي: "+total+" ر.س\n\nالاسم:\nالمدينة:\nالعنوان:";location.href="https://wa.me/"+WA+"?text="+encodeURIComponent(msg)}
-render();
-</script>
-</body>
-</html>
+<div class="top">شحن وطلبات بسهولة عبر واتساب</div>
+<header><div class="logo">BRITON</div><div class="cart">🛒 السلة: <span id="count">0</span></div></header>
+<section class="hero">
+<h1>متجر بريتون</h1><p>إكسسوارات وهدايا ومنتجات مميزة بتصميم أنيق.</p>
+<a class="btn" href="#products">تصفح المنتجات</a>
+</section>
+<section class="section" id="products">
+<h2>منتجاتنا</h2>
+<div class="products">
+<div class="card"><div class="pic">💎</div><h3>إكسسوار أنيق</h3><p>قطعة مميزة للاستخدام اليومي والهدايا.</p><div class="price">49 ر.س</div><a class="buy" href="https://wa.me/966556575822?text=مرحباً، أريد طلب إكسسوار أنيق من متجر بريتون">اطلب عبر واتساب</a></div>
+<div class="card"><div class="pic">🎁</div><h3>هدية مميزة</h3><p>اختيار مناسب للمناسبات والهدايا.</p><div class="price">79 ر.س</div><a class="buy" href="https://wa.me/966556575822?text=مرحباً، أريد طلب هدية مميزة من متجر بريتون">اطلب عبر واتساب</a></div>
+<div class="card"><div class="pic">👜</div><h3>قطعة عصرية</h3><p>تصميم عملي وأنيق يناسب الاستخدام اليومي.</p><div class="price">89 ر.س</div><a class="buy" href="https://wa.me/966556575822?text=مرحباً، أريد طلب قطعة عصرية من متجر بريتون">اطلب عبر واتساب</a></div>
+<div class="card"><div class="pic">✨</div><h3>إكسسوار فاخر</h3><p>تصميم راقٍ لإطلالة مميزة.</p><div class="price">99 ر.س</div><a class="buy" href="https://wa.me/966556575822?text=مرحباً، أريد طلب إكسسوار فاخر من متجر بريتون">اطلب عبر واتساب</a></div>
+</div>
+</section>
+<footer>© 2026 BRITON — متجر بريتون</footer>
+<script>let c=0;document.querySelectorAll('.buy').forEach(x=>x.addEventListener('click',()=>{c++;document.getElementById('count').textContent=c}))</script>
+</body></html>
