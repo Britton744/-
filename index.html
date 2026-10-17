@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10251f">
+  <title>بريتون | Britton Store</title>
+  <meta name="description" content="متجر بريتون - تشكيلة مميزة، طلب سهل وتوصيل داخل المملكة العربية السعودية.">
+  <style>
+    :root{--green:#123c30;--green2:#1e5b46;--gold:#d8b66a;--cream:#faf8f1;--ink:#18231f;--muted:#68736e;--white:#fff;--line:#e7e7df}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--cream);color:var(--ink)}
+    a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+    .topbar{background:#0b201a;color:#f5f2e8;text-align:center;padding:9px 12px;font-size:13px}
+    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 0}
+    .brand{font-size:24px;font-weight:900;letter-spacing:.4px;color:var(--green)}.brand small{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);font-weight:600}
+    .navlinks{display:flex;gap:20px;font-size:14px}.navlinks a:hover{color:var(--green2)}
+    .btn{border:0;border-radius:12px;padding:12px 18px;background:var(--green);color:#fff;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn:hover{background:var(--green2)}.btn.secondary{background:#fff;color:var(--green);border:1px solid #cad5ce}.btn.gold{background:var(--gold);color:#17231d}
+    .hero{background:linear-gradient(115deg,#10251f,#245441);color:#fff;overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px;padding:70px 0}
+    .eyebrow{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:1px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.25;margin:12px 0 18px}.hero p{line-height:2;color:#e0e9e3;max-width:600px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero .secondary{background:transparent;border-color:#9eb7a9;color:white}
+    .hero-art{min-height:300px;border:1px solid #668779;border-radius:28px;background:radial-gradient(circle at 50% 35%,#d9bd7a 0 8%,transparent 9%),linear-gradient(145deg,#426e5b,#17372c);display:grid;place-items:center;position:relative}
+    .hero-art:before{content:"B";font-family:Georgia,serif;font-size:210px;color:#f1e4bf;opacity:.9;text-shadow:12px 14px 0 #17372c;transform:rotate(-8deg)}
+    .hero-art:after{content:"BRITTON • QUALITY • STYLE";position:absolute;bottom:24px;font-size:11px;letter-spacing:3px;color:#f5edda}
+    section{padding:54px 0}.section-head{text-align:center;margin-bottom:28px}.section-head h2{font-size:29px;margin:0 0 8px}.section-head p{color:var(--muted);margin:0}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-1px}.benefit{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}.benefit b{display:block;margin:8px 0}.benefit span{font-size:13px;color:var(--muted);line-height:1.8}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}.product-art{height:190px;display:grid;place-items:center;background:linear-gradient(135deg,#e9e4d5,#c8d5c9);font-size:68px}.product:nth-child(2) .product-art{background:linear-gradient(135deg,#e4d6c9,#aabbb0)}.product:nth-child(3) .product-art{background:linear-gradient(135deg,#e8e3d4,#c7b98f)}
+    .product-body{padding:17px}.product h3{margin:0 0 8px}.product p{color:var(--muted);font-size:13px;line-height:1.8;min-height:44px}.price{font-weight:900;color:var(--green);font-size:19px;margin:12px 0}.product .btn{width:100%}
+    .order{background:#eef1e9}.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:start}.order-note{background:var(--green);color:white;border-radius:20px;padding:26px;line-height:2}.order-note h3{font-size:24px;margin-top:0}.form-card{background:white;border:1px solid var(--line);padding:24px;border-radius:20px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field select,.field textarea{border:1px solid #d9ded8;border-radius:10px;padding:12px;background:#fff;min-width:0}.field textarea{min-height:90px;resize:vertical}.form-card .btn{width:100%;margin-top:16px}
+    .notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:10px}.footer{background:#0b201a;color:#eaf0eb;padding:30px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer p{color:#bdcbc2;font-size:13px;line-height:1.9}.small{font-size:12px;color:#bdcbc2}
+    .toast{display:none;background:#e6f3e9;color:#14532d;border:1px solid #b6ddbf;padding:12px;border-radius:10px;margin-top:12px}
+    @media(max-width:760px){.navlinks{display:none}.hero-inner{grid-template-columns:1fr;padding:46px 0}.hero-art{min-height:210px}.hero-art:before{font-size:150px}.benefits,.products{grid-template-columns:1fr}.product-art{height:160px}.order-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}section{padding:40px 0}}
+  </style>
+</head>
+<body>
+  <div class="topbar">🚚 توصيل داخل المملكة العربية السعودية • 🔒 نهتم بخصوصية بياناتك • الدفع عند الاستلام حسب تأكيد المتجر</div>
+  <header><div class="wrap nav">
+    <a class="brand" href="#">BRITTON<small>STORE</small></a>
+    <nav class="navlinks"><a href="#home">الرئيسية</a><a href="#products">المنتجات</a><a href="#features">مميزاتنا</a><a href="#order">اطلب الآن</a></nav>
+    <a class="btn" href="#order">ابدأ الطلب ←</a>
+  </div></header>
+  <main>
+    <section class="hero" id="home"><div class="wrap hero-inner">
+      <div><div class="eyebrow">أهلاً بك في بريتون</div><h1>اختيارات مميزة،<br>وتجربة شراء أسهل.</h1>
+        <p>اكتشف تشكيلتنا واختر ما يناسبك. صممنا تجربة بسيطة وواضحة لتسهيل الطلب والتواصل معك لتأكيد التفاصيل قبل الشحن.</p>
+        <div class="hero-actions"><a class="btn gold" href="#products">تصفح المنتجات</a><a class="btn secondary" href="#order">اطلب الآن</a></div>
+      </div><div class="hero-art" role="img" aria-label="تصميم علامة بريتون"></div>
+    </div></section>
+    <section id="features"><div class="wrap benefits">
+      <div class="benefit"><div style="font-size:30px">🚚</div><b>توصيل للمملكة</b><span>أدخل مدينتك وسنتواصل معك لتأكيد التوصيل والتكلفة.</span></div>
+      <div class="benefit"><div style="font-size:30px">🔐</div><b>طلب واضح وآمن</b><span>نجمع فقط المعلومات اللازمة للتواصل وتجهيز الطلب.</span></div>
+      <div class="benefit"><div style="font-size:30px">💬</div><b>تأكيد قبل الإرسال</b><span>راجع تفاصيل الطلب والسعر مع المتجر قبل إتمام الشراء.</span></div>
+    </div></section>
+    <section id="products"><div class="wrap"><div class="section-head"><h2>منتجات مختارة</h2><p>هذه بطاقات تجريبية؛ استبدل أسماءها وأسعارها بمنتجاتك الفعلية.</p></div>
+      <div class="products">
+        <article class="product"><div class="product-art">✦</div><div class="product-body"><h3>المنتج الأول</h3><p>أضف وصفًا مختصرًا يوضح المميزات والمقاس أو اللون.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الأول')">اطلب هذا المنتج</button></div></article>
+        <article class="product"><div class="product-art">◇</div><div class="product-body"><h3>المنتج الثاني</h3><p>أضف وصف المنتج والتفاصيل المهمة قبل الطلب.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الثاني')">اطلب هذا المنتج</button></div></article>
+        <article class="product"><div class="product-art">❖</div><div class="product-body"><h3>المنتج الثالث</h3><p>يمكنك تغيير هذه البطاقة إلى أي منتج تبيعه.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الثالث')">اطلب هذا المنتج</button></div></article>
+      </div>
+    </div></section>
+    <section class="order" id="order"><div class="wrap order-grid">
+      <div class="order-note"><h3>اطلب بسهولة</h3><p>املأ البيانات الأساسية، ثم اضغط إرسال الطلب عبر واتساب. ستتمكن من مراجعة الطلب قبل إرساله.</p><p>⚠️ قبل نشر المتجر: غيّر رقم واتساب في الكود إلى رقم المتجر مع مفتاح الدولة، دون علامة + أو مسافات.</p></div>
+      <form class="form-card" id="orderForm">
+        <h2 style="margin-top:0">بيانات الطلب</h2>
+        <div class="fields">
+          <div class="field"><label for="name">الاسم الكامل *</label><input id="name" required autocomplete="name" placeholder="اسمك"></div>
+          <div class="field"><label for="phone">رقم الجوال *</label><input id="phone" required inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx"></div>
+          <div class="field"><label for="city">المدينة *</label><input id="city" required placeholder="مثال: الرياض"></div>
+          <div class="field"><label for="product">المنتج *</label><select id="product" required><option value="">اختر المنتج</option><option>المنتج الأول</option><option>المنتج الثاني</option><option>المنتج الثالث</option></select></div>
+          <div class="field"><label for="qty">الكمية</label><select id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+          <div class="field"><label for="payment">طريقة الدفع</label><select id="payment"><option>تأكيد الطريقة مع المتجر</option><option>الدفع عند الاستلام (إذا كان متاحًا)</option></select></div>
+          <div class="field full"><label for="address">العنوان وملاحظات التوصيل</label><textarea id="address" placeholder="الحي، الشارع، وأي تفاصيل مفيدة"></textarea></div>
+        </div>
+        <button class="btn" type="submit">إرسال الطلب عبر واتساب</button>
+        <div class="notice">لن يتم إرسال الطلب تلقائيًا إلى نظام متجر؛ سيفتح واتساب برسالة جاهزة بعد ضبط رقم المتجر. لا تدخل بيانات بطاقات الدفع هنا.</div>
+        <div class="toast" id="toast"></div>
+      </form>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><div><div class="brand" style="color:#fff">BRITTON</div><p>متجر بريتون — تجربة شراء بسيطة وواضحة.</p></div><div><b>معلومات مهمة</b><p>حدّث بيانات المنتجات والأسعار وسياسة الاستبدال والتوصيل قبل استقبال الطلبات.</p><div class="small">© <span id="year"></span> Britton Store</div></div></div></footer>
+  <script>
+    // IMPORTANT: Replace this with your store WhatsApp number, including country code, without + or spaces.
+    const STORE_WHATSAPP = "9665XXXXXXXX";
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function chooseProduct(name){document.getElementById("product").value=name;document.getElementById("order").scrollIntoView({behavior:"smooth"});}
+    document.getElementById("orderForm").addEventListener("submit",function(e){
+      e.preventDefault();
+      const name=document.getElementById("name").value.trim();
+      const phone=document.getElementById("phone").value.trim();
+      const city=document.getElementById("city").value.trim();
+      const product=document.getElementById("product").value;
+      const qty=document.getElementById("qty").value;
+      const payment=document.getElementById("payment").value;
+      const address=document.getElementById("address").value.trim();
+      const msg=`طلب جديد من متجر بريتون%0Aالاسم: ${encodeURIComponent(name)}%0Aالجوال: ${encodeURIComponent(phone)}%0Aالمدينة: ${encodeURIComponent(city)}%0Aالمنتج: ${encodeURIComponent(product)}%0Aالكمية: ${encodeURIComponent(qty)}%0Aالدفع: ${encodeURIComponent(payment)}%0Aالعنوان/ملاحظات: ${encodeURIComponent(address||"لا يوجد")}`;
+      if(STORE_WHATSAPP.includes("X")){
+        const toast=document.getElementById("toast");
+        toast.style.display="block";
+        toast.textContent="الواجهة جاهزة، لكن يجب استبدال رقم STORE_WHATSAPP برقم واتساب المتجر قبل استخدام الطلبات.";
+        return;
+      }
+      window.location.href=`https://wa.me/${STORE_WHATSAPP}?text=${msg}`;
+    });
+  </script>
+</body>
+</html>
