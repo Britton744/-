@@ -1,108 +1,97 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10251f">
-  <title>بريتون | Britton Store</title>
-  <meta name="description" content="متجر بريتون - تشكيلة مميزة، طلب سهل وتوصيل داخل المملكة العربية السعودية.">
-  <style>
-    :root{--green:#123c30;--green2:#1e5b46;--gold:#d8b66a;--cream:#faf8f1;--ink:#18231f;--muted:#68736e;--white:#fff;--line:#e7e7df}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--cream);color:var(--ink)}
-    a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
-    .topbar{background:#0b201a;color:#f5f2e8;text-align:center;padding:9px 12px;font-size:13px}
-    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 0}
-    .brand{font-size:24px;font-weight:900;letter-spacing:.4px;color:var(--green)}.brand small{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);font-weight:600}
-    .navlinks{display:flex;gap:20px;font-size:14px}.navlinks a:hover{color:var(--green2)}
-    .btn{border:0;border-radius:12px;padding:12px 18px;background:var(--green);color:#fff;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-    .btn:hover{background:var(--green2)}.btn.secondary{background:#fff;color:var(--green);border:1px solid #cad5ce}.btn.gold{background:var(--gold);color:#17231d}
-    .hero{background:linear-gradient(115deg,#10251f,#245441);color:#fff;overflow:hidden}
-    .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px;padding:70px 0}
-    .eyebrow{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:1px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.25;margin:12px 0 18px}.hero p{line-height:2;color:#e0e9e3;max-width:600px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero .secondary{background:transparent;border-color:#9eb7a9;color:white}
-    .hero-art{min-height:300px;border:1px solid #668779;border-radius:28px;background:radial-gradient(circle at 50% 35%,#d9bd7a 0 8%,transparent 9%),linear-gradient(145deg,#426e5b,#17372c);display:grid;place-items:center;position:relative}
-    .hero-art:before{content:"B";font-family:Georgia,serif;font-size:210px;color:#f1e4bf;opacity:.9;text-shadow:12px 14px 0 #17372c;transform:rotate(-8deg)}
-    .hero-art:after{content:"BRITTON • QUALITY • STYLE";position:absolute;bottom:24px;font-size:11px;letter-spacing:3px;color:#f5edda}
-    section{padding:54px 0}.section-head{text-align:center;margin-bottom:28px}.section-head h2{font-size:29px;margin:0 0 8px}.section-head p{color:var(--muted);margin:0}
-    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-1px}.benefit{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}.benefit b{display:block;margin:8px 0}.benefit span{font-size:13px;color:var(--muted);line-height:1.8}
-    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}.product-art{height:190px;display:grid;place-items:center;background:linear-gradient(135deg,#e9e4d5,#c8d5c9);font-size:68px}.product:nth-child(2) .product-art{background:linear-gradient(135deg,#e4d6c9,#aabbb0)}.product:nth-child(3) .product-art{background:linear-gradient(135deg,#e8e3d4,#c7b98f)}
-    .product-body{padding:17px}.product h3{margin:0 0 8px}.product p{color:var(--muted);font-size:13px;line-height:1.8;min-height:44px}.price{font-weight:900;color:var(--green);font-size:19px;margin:12px 0}.product .btn{width:100%}
-    .order{background:#eef1e9}.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:start}.order-note{background:var(--green);color:white;border-radius:20px;padding:26px;line-height:2}.order-note h3{font-size:24px;margin-top:0}.form-card{background:white;border:1px solid var(--line);padding:24px;border-radius:20px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field select,.field textarea{border:1px solid #d9ded8;border-radius:10px;padding:12px;background:#fff;min-width:0}.field textarea{min-height:90px;resize:vertical}.form-card .btn{width:100%;margin-top:16px}
-    .notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:10px}.footer{background:#0b201a;color:#eaf0eb;padding:30px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer p{color:#bdcbc2;font-size:13px;line-height:1.9}.small{font-size:12px;color:#bdcbc2}
-    .toast{display:none;background:#e6f3e9;color:#14532d;border:1px solid #b6ddbf;padding:12px;border-radius:10px;margin-top:12px}
-    @media(max-width:760px){.navlinks{display:none}.hero-inner{grid-template-columns:1fr;padding:46px 0}.hero-art{min-height:210px}.hero-art:before{font-size:150px}.benefits,.products{grid-template-columns:1fr}.product-art{height:160px}.order-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}section{padding:40px 0}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090807">
+<title>BRITTORA | بريتورا</title>
+<meta name="description" content="بريتورا — تجربة تسوق فاخرة، خصوصية تامة وتغليف أنيق.">
+<style>
+:root{--bg:#080706;--panel:#12100d;--panel2:#1b1711;--gold:#d7b66b;--gold2:#f4df9a;--cream:#f6f0e4;--muted:#b6aa94;--line:#4d3b20;--green:#143b2e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Tahoma,Arial,sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
+.wrap{width:min(1180px,92%);margin:auto}.announcement{background:#15110a;color:var(--gold2);border-bottom:1px solid var(--line);font-size:12px;padding:10px;text-align:center}
+header{position:sticky;top:0;z-index:10;background:#090807f5;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{font-family:Georgia,serif;font-size:27px;letter-spacing:2px;color:var(--gold2);font-weight:bold}.logo span{display:block;text-align:center;font-family:Tahoma,sans-serif;font-size:10px;letter-spacing:5px;color:var(--cream);margin-top:2px}
+.links{display:flex;gap:22px;font-size:13px;color:#e6dcc9}.links a:hover{color:var(--gold2)}.nav-actions{display:flex;align-items:center;gap:10px}
+.search{width:180px;background:#17130e;border:1px solid var(--line);border-radius:25px;padding:10px 14px;color:var(--cream);outline:none}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold2),#b58a38);color:#140f07;font-weight:bold;border:0;border-radius:30px;padding:12px 20px;cursor:pointer;transition:.2s}.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}.btn.outline{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 78% 40%,#392613 0,transparent 40%),radial-gradient(ellipse at 15% 80%,#2c1740 0,transparent 32%),linear-gradient(110deg,#090807,#15100a 55%,#090807)}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #8f6a30;border-radius:50%;width:440px;height:440px;opacity:.22;transform:rotate(-25deg)}.hero:before{right:-170px;top:-220px}.hero:after{left:-220px;bottom:-330px;width:600px;height:600px}
+.hero-inner{min-height:430px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:55px 0;position:relative;z-index:1}
+.eyebrow{color:var(--gold2);letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(35px,5vw,58px);line-height:1.35;margin:14px 0}.hero h1 em{font-style:normal;color:var(--gold2)}.hero p{max-width:550px;color:#d3c6af;line-height:2;font-size:15px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero-emblem{min-height:300px;border:1px solid #74572d;border-radius:48% 48% 18px 18px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(145deg,#21140f,#070606 60%,#26182a);box-shadow:inset 0 0 60px #8b5a221f,0 20px 60px #0008}
+.crown{font-size:50px;color:var(--gold2);text-shadow:0 0 25px #d8ad5a66}.emblem-title{position:absolute;text-align:center;top:43%;left:0;right:0;font-family:Georgia,serif;font-size:52px;letter-spacing:4px;color:var(--gold2);text-shadow:0 0 25px #b78a3d55}.emblem-sub{position:absolute;top:65%;font-size:12px;letter-spacing:4px;color:#e4d2a6}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);background:#0e0b08}.trust-item{text-align:center;padding:20px 10px;border-left:1px solid #3b2b18}.trust-item:last-child{border-left:0}.trust-item b{display:block;color:var(--gold2);margin:7px 0;font-size:13px}.trust-item span{font-size:11px;color:var(--muted)}
+section{padding:56px 0}.heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:25px}.heading h2{font-size:27px;margin:0 0 7px}.heading p{color:var(--muted);font-size:13px;margin:0}.more{font-size:12px;color:var(--gold2)}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}.category{background:linear-gradient(145deg,#17120c,#0c0a08);border:1px solid var(--line);border-radius:18px;padding:20px 10px;text-align:center;transition:.2s}.category:hover{border-color:var(--gold);transform:translateY(-3px)}.category .symbol{width:76px;height:76px;border:1px solid #8b6a35;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;color:var(--gold2);font-size:30px;background:radial-gradient(circle,#322315,#0c0907)}.category b{display:block;font-size:13px;margin-bottom:6px}.category small{font-size:10px;color:var(--muted)}
+.featured{background:linear-gradient(180deg,#100d09,#090807)}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:#100e0b;border:1px solid #3b2c19;border-radius:17px;overflow:hidden;position:relative}.product-art{height:190px;display:grid;place-items:center;font-size:65px;background:radial-gradient(circle at 50% 35%,#3a2a19,#14100c 65%,#0c0a08);color:var(--gold2);border-bottom:1px solid var(--line)}.tag{position:absolute;top:12px;right:12px;background:var(--gold);color:#120e07;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:bold}.product-body{padding:15px}.product h3{font-size:14px;margin:0 0 8px}.product p{font-size:11px;color:var(--muted);line-height:1.8;min-height:38px}.price{font-weight:bold;color:var(--gold2);margin:12px 0}.price small{font-weight:normal;color:#8b8170;text-decoration:line-through;margin-right:7px}.product .btn{width:100%;font-size:12px;padding:11px}
+.promo{border:1px solid #76572c;border-radius:20px;background:radial-gradient(ellipse at 20% 50%,#29172b,transparent 55%),linear-gradient(100deg,#0d0a07,#21170d);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 32px}.promo h2{margin:0 0 8px;color:var(--gold2)}.promo p{color:#c9b99c;line-height:1.8;margin:0;font-size:13px}
+.privacy{background:#100d09}.privacy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.privacy-card{border:1px solid var(--line);border-radius:16px;padding:23px;background:#15110c}.privacy-card strong{display:block;color:var(--gold2);margin:10px 0}.privacy-card p{font-size:12px;line-height:1.9;color:var(--muted);margin:0}
+.order-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:24px;align-items:start}.order-intro{background:linear-gradient(145deg,#241a10,#0e0b08);border:1px solid var(--line);padding:25px;border-radius:18px}.order-intro h3{color:var(--gold2);font-size:22px;margin-top:0}.order-intro p{color:#c8bba4;line-height:2;font-size:13px}.form-card{background:#11100d;border:1px solid var(--line);border-radius:18px;padding:23px}.form-card h3{margin-top:0}.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#e6d9c2}.field input,.field select,.field textarea{background:#090807;border:1px solid #4b3a22;color:var(--cream);border-radius:10px;padding:12px;min-width:0}.field textarea{min-height:85px;resize:vertical}.form-card .btn{width:100%;margin-top:15px}.notice{color:#a99b83;font-size:11px;line-height:1.9;margin-top:10px}.toast{display:none;background:#201b10;color:#f0d99e;border:1px solid #7b6032;border-radius:10px;padding:12px;margin-top:12px}
+footer{background:#050504;border-top:1px solid var(--line);padding:32px 0}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:25px}.footer-grid h4{color:var(--gold2);font-size:13px}.footer-grid p,.footer-grid a{display:block;color:#b8ad9a;font-size:12px;line-height:2.2}.copyright{border-top:1px solid #302619;margin-top:25px;padding-top:16px;color:#8e826d;font-size:11px;text-align:center}
+@media(max-width:800px){.links{display:none}.search{display:none}.hero-inner{grid-template-columns:1fr;padding:42px 0}.hero-emblem{min-height:240px}.emblem-title{font-size:42px}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.trust{grid-template-columns:repeat(2,1fr)}.trust-item:nth-child(2){border-left:0}.privacy-grid{grid-template-columns:1fr}.order-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr 1fr;gap:9px}.product-art{height:145px}.product-body{padding:11px}.heading h2{font-size:22px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.promo{padding:22px;display:block}.promo .btn{margin-top:15px}}
+</style>
 </head>
 <body>
-  <div class="topbar">🚚 توصيل داخل المملكة العربية السعودية • 🔒 نهتم بخصوصية بياناتك • الدفع عند الاستلام حسب تأكيد المتجر</div>
-  <header><div class="wrap nav">
-    <a class="brand" href="#">BRITTON<small>STORE</small></a>
-    <nav class="navlinks"><a href="#home">الرئيسية</a><a href="#products">المنتجات</a><a href="#features">مميزاتنا</a><a href="#order">اطلب الآن</a></nav>
-    <a class="btn" href="#order">ابدأ الطلب ←</a>
-  </div></header>
-  <main>
-    <section class="hero" id="home"><div class="wrap hero-inner">
-      <div><div class="eyebrow">أهلاً بك في بريتون</div><h1>اختيارات مميزة،<br>وتجربة شراء أسهل.</h1>
-        <p>اكتشف تشكيلتنا واختر ما يناسبك. صممنا تجربة بسيطة وواضحة لتسهيل الطلب والتواصل معك لتأكيد التفاصيل قبل الشحن.</p>
-        <div class="hero-actions"><a class="btn gold" href="#products">تصفح المنتجات</a><a class="btn secondary" href="#order">اطلب الآن</a></div>
-      </div><div class="hero-art" role="img" aria-label="تصميم علامة بريتون"></div>
-    </div></section>
-    <section id="features"><div class="wrap benefits">
-      <div class="benefit"><div style="font-size:30px">🚚</div><b>توصيل للمملكة</b><span>أدخل مدينتك وسنتواصل معك لتأكيد التوصيل والتكلفة.</span></div>
-      <div class="benefit"><div style="font-size:30px">🔐</div><b>طلب واضح وآمن</b><span>نجمع فقط المعلومات اللازمة للتواصل وتجهيز الطلب.</span></div>
-      <div class="benefit"><div style="font-size:30px">💬</div><b>تأكيد قبل الإرسال</b><span>راجع تفاصيل الطلب والسعر مع المتجر قبل إتمام الشراء.</span></div>
-    </div></section>
-    <section id="products"><div class="wrap"><div class="section-head"><h2>منتجات مختارة</h2><p>هذه بطاقات تجريبية؛ استبدل أسماءها وأسعارها بمنتجاتك الفعلية.</p></div>
-      <div class="products">
-        <article class="product"><div class="product-art">✦</div><div class="product-body"><h3>المنتج الأول</h3><p>أضف وصفًا مختصرًا يوضح المميزات والمقاس أو اللون.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الأول')">اطلب هذا المنتج</button></div></article>
-        <article class="product"><div class="product-art">◇</div><div class="product-body"><h3>المنتج الثاني</h3><p>أضف وصف المنتج والتفاصيل المهمة قبل الطلب.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الثاني')">اطلب هذا المنتج</button></div></article>
-        <article class="product"><div class="product-art">❖</div><div class="product-body"><h3>المنتج الثالث</h3><p>يمكنك تغيير هذه البطاقة إلى أي منتج تبيعه.</p><div class="price">السعر: حدده</div><button class="btn" onclick="chooseProduct('المنتج الثالث')">اطلب هذا المنتج</button></div></article>
-      </div>
-    </div></section>
-    <section class="order" id="order"><div class="wrap order-grid">
-      <div class="order-note"><h3>اطلب بسهولة</h3><p>املأ البيانات الأساسية، ثم اضغط إرسال الطلب عبر واتساب. ستتمكن من مراجعة الطلب قبل إرساله.</p><p>⚠️ قبل نشر المتجر: غيّر رقم واتساب في الكود إلى رقم المتجر مع مفتاح الدولة، دون علامة + أو مسافات.</p></div>
-      <form class="form-card" id="orderForm">
-        <h2 style="margin-top:0">بيانات الطلب</h2>
-        <div class="fields">
-          <div class="field"><label for="name">الاسم الكامل *</label><input id="name" required autocomplete="name" placeholder="اسمك"></div>
-          <div class="field"><label for="phone">رقم الجوال *</label><input id="phone" required inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx"></div>
-          <div class="field"><label for="city">المدينة *</label><input id="city" required placeholder="مثال: الرياض"></div>
-          <div class="field"><label for="product">المنتج *</label><select id="product" required><option value="">اختر المنتج</option><option>المنتج الأول</option><option>المنتج الثاني</option><option>المنتج الثالث</option></select></div>
-          <div class="field"><label for="qty">الكمية</label><select id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
-          <div class="field"><label for="payment">طريقة الدفع</label><select id="payment"><option>تأكيد الطريقة مع المتجر</option><option>الدفع عند الاستلام (إذا كان متاحًا)</option></select></div>
-          <div class="field full"><label for="address">العنوان وملاحظات التوصيل</label><textarea id="address" placeholder="الحي، الشارع، وأي تفاصيل مفيدة"></textarea></div>
-        </div>
-        <button class="btn" type="submit">إرسال الطلب عبر واتساب</button>
-        <div class="notice">لن يتم إرسال الطلب تلقائيًا إلى نظام متجر؛ سيفتح واتساب برسالة جاهزة بعد ضبط رقم المتجر. لا تدخل بيانات بطاقات الدفع هنا.</div>
-        <div class="toast" id="toast"></div>
-      </form>
-    </div></section>
-  </main>
-  <footer class="footer"><div class="wrap footer-row"><div><div class="brand" style="color:#fff">BRITTON</div><p>متجر بريتون — تجربة شراء بسيطة وواضحة.</p></div><div><b>معلومات مهمة</b><p>حدّث بيانات المنتجات والأسعار وسياسة الاستبدال والتوصيل قبل استقبال الطلبات.</p><div class="small">© <span id="year"></span> Britton Store</div></div></div></footer>
-  <script>
-    // IMPORTANT: Replace this with your store WhatsApp number, including country code, without + or spaces.
-    const STORE_WHATSAPP = "9665XXXXXXXX";
-    document.getElementById("year").textContent = new Date().getFullYear();
-    function chooseProduct(name){document.getElementById("product").value=name;document.getElementById("order").scrollIntoView({behavior:"smooth"});}
-    document.getElementById("orderForm").addEventListener("submit",function(e){
-      e.preventDefault();
-      const name=document.getElementById("name").value.trim();
-      const phone=document.getElementById("phone").value.trim();
-      const city=document.getElementById("city").value.trim();
-      const product=document.getElementById("product").value;
-      const qty=document.getElementById("qty").value;
-      const payment=document.getElementById("payment").value;
-      const address=document.getElementById("address").value.trim();
-      const msg=`طلب جديد من متجر بريتون%0Aالاسم: ${encodeURIComponent(name)}%0Aالجوال: ${encodeURIComponent(phone)}%0Aالمدينة: ${encodeURIComponent(city)}%0Aالمنتج: ${encodeURIComponent(product)}%0Aالكمية: ${encodeURIComponent(qty)}%0Aالدفع: ${encodeURIComponent(payment)}%0Aالعنوان/ملاحظات: ${encodeURIComponent(address||"لا يوجد")}`;
-      if(STORE_WHATSAPP.includes("X")){
-        const toast=document.getElementById("toast");
-        toast.style.display="block";
-        toast.textContent="الواجهة جاهزة، لكن يجب استبدال رقم STORE_WHATSAPP برقم واتساب المتجر قبل استخدام الطلبات.";
-        return;
-      }
-      window.location.href=`https://wa.me/${STORE_WHATSAPP}?text=${msg}`;
-    });
-  </script>
-</body>
-</html>
+<div class="announcement">✦ شحن لجميع مناطق المملكة حسب التوفر &nbsp; • &nbsp; 🔒 خصوصية وتغليف discreet &nbsp; • &nbsp; خدمة عملاء عبر واتساب</div>
+<header><div class="wrap nav">
+<a class="logo" href="#home">BRITTORA<span>بريتورا</span></a>
+<nav class="links"><a href="#home">الرئيسية</a><a href="#categories">الأقسام</a><a href="#products">المنتجات</a><a href="#about">من نحن</a><a href="#order">تواصل معنا</a></nav>
+<div class="nav-actions"><input class="search" id="search" placeholder="ابحث عن منتج..."><a class="btn outline" href="#order">اطلب الآن</a></div>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap hero-inner">
+<div><div class="eyebrow">تجربة فاخرة • تفاصيل مختارة بعناية</div><h1>اكتشف عالم الأناقة<br><em>مع بريتورا</em></h1><p>اختيارات مميزة بتفاصيل أنيقة، تجربة تسوق سهلة، واهتمام بالخصوصية من لحظة الطلب حتى التوصيل.</p><div class="actions"><a class="btn" href="#categories">تسوّق حسب القسم　↗</a><a class="btn outline" href="#order">تواصل معنا</a></div></div>
+<div class="hero-emblem"><div class="crown">♛</div><div class="emblem-title">BRITTORA</div><div class="emblem-sub">BECAUSE YOUR MOMENTS DESERVE THE BEST</div></div>
+</div></section>
+<div class="trust wrap" id="about"><div class="trust-item"><div>✧</div><b>جودة مختارة</b><span>منتجات منتقاة بعناية</span></div><div class="trust-item"><div>♧</div><b>تغليف أنيق</b><span>اهتمام بالخصوصية</span></div><div class="trust-item"><div>➤</div><b>توصيل سريع</b><span>حسب المدينة والتوفر</span></div><div class="trust-item"><div>♡</div><b>خدمة العملاء</b><span>مساعدة قبل وبعد الطلب</span></div></div>
+<section id="categories"><div class="wrap"><div class="heading"><div><h2>تسوّق حسب القسم</h2><p>اختر القسم المناسب واستكشف التشكيلة.</p></div><a class="more" href="#products">عرض المنتجات ←</a></div>
+<div class="categories">
+<a class="category" href="#products" data-category="new"><div class="symbol">✦</div><b>وصل حديثًا</b><small>تشكيلة جديدة</small></a>
+<a class="category" href="#products" data-category="lingerie"><div class="symbol">❖</div><b>ملابس وقطع داخلية</b><small>أناقة وتفاصيل</small></a>
+<a class="category" href="#products" data-category="care"><div class="symbol">♧</div><b>العناية والعطور</b><small>روائح ولمسات راقية</small></a>
+<a class="category" href="#products" data-category="accessories"><div class="symbol">◇</div><b>إكسسوارات</b><small>اختيارات مميزة</small></a>
+<a class="category" href="#products" data-category="gifts"><div class="symbol">♕</div><b>هدايا وتغليف</b><small>للمناسبات الخاصة</small></a>
+<a class="category" href="#products" data-category="offers"><div class="symbol">٪</div><b>العروض</b><small>عروض مختارة</small></a>
+</div></div></section>
+<section class="featured" id="products"><div class="wrap"><div class="heading"><div><h2>منتجات مختارة</h2><p>عدّل أسماء المنتجات والأسعار لتطابق مخزون متجرك.</p></div><span class="more" id="resultCount">6 منتجات</span></div>
+<div class="products" id="productGrid">
+<article class="product" data-tags="new accessories"><span class="tag">جديد</span><div class="product-art">♛</div><div class="product-body"><h3>مجموعة بريميوم</h3><p>مجموعة أنيقة بتفاصيل فاخرة.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('مجموعة بريميوم')">اطلب عبر واتساب</button></div></article>
+<article class="product" data-tags="lingerie"><span class="tag">مختار بعناية</span><div class="product-art">❖</div><div class="product-body"><h3>تشكيلة الأناقة</h3><p>أضف وصف المنتج والمقاسات المتاحة.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('تشكيلة الأناقة')">اطلب عبر واتساب</button></div></article>
+<article class="product" data-tags="care"><span class="tag">مميز</span><div class="product-art">✧</div><div class="product-body"><h3>مجموعة العناية</h3><p>تفاصيل مختارة للعناية اليومية.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('مجموعة العناية')">اطلب عبر واتساب</button></div></article>
+<article class="product" data-tags="accessories"><span class="tag">الأكثر طلبًا</span><div class="product-art">◇</div><div class="product-body"><h3>إكسسوارات راقية</h3><p>أضف التفاصيل والخامات المتوفرة.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('إكسسوارات راقية')">اطلب عبر واتساب</button></div></article>
+<article class="product" data-tags="gifts"><span class="tag">هدية</span><div class="product-art">♕</div><div class="product-body"><h3>علبة هدايا فاخرة</h3><p>تغليف أنيق للمناسبات الخاصة.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('علبة هدايا فاخرة')">اطلب عبر واتساب</button></div></article>
+<article class="product" data-tags="offers new"><span class="tag">عرض</span><div class="product-art">✦</div><div class="product-body"><h3>اختيار الموسم</h3><p>أضف تفاصيل العرض ومدة سريانه.</p><div class="price">السعر يحدد عند الطلب</div><button class="btn" onclick="chooseProduct('اختيار الموسم')">اطلب عبر واتساب</button></div></article>
+</div></div></section>
+<section><div class="wrap promo"><div><h2>لأن خصوصيتك تهمنا</h2><p>نحرص على وضوح تفاصيل الطلب والتواصل معك لتأكيد السعر والتوصيل قبل الإرسال.</p></div><a class="btn" href="#order">ابدأ طلبك الآن　↗</a></div></section>
+<section class="privacy"><div class="wrap"><div class="heading"><div><h2>لماذا بريتورا؟</h2><p>تفاصيل صغيرة تصنع تجربة أفضل.</p></div></div><div class="privacy-grid"><div class="privacy-card"><div style="font-size:27px;color:var(--gold2)">♧</div><strong>تغليف يحترم الخصوصية</strong><p>حدّث وصف التغليف وسياسة الشحن حسب الخدمة المتوفرة لديك فعلًا.</p></div><div class="privacy-card"><div style="font-size:27px;color:var(--gold2)">◇</div><strong>تجربة تسوق سهلة</strong><p>اختر المنتج، أرسل تفاصيلك، ثم راجع السعر والتوصيل مع المتجر.</p></div><div class="privacy-card"><div style="font-size:27px;color:var(--gold2)">♡</div><strong>تواصل مباشر</strong><p>طلبات واتساب تعمل بعد إدخال رقم المتجر الصحيح في إعدادات الصفحة.</p></div></div></div></section>
+<section id="order"><div class="wrap"><div class="heading"><div><h2>تواصل واطلب</h2><p>أرسل تفاصيلك لنتواصل معك لتأكيد الطلب.</p></div></div><div class="order-grid">
+<div class="order-intro"><h3>طلبك بخطوات بسيطة</h3><p>أدخل البيانات المطلوبة واختر المنتج. ستُفتح رسالة واتساب جاهزة بعد إعداد رقم المتجر الصحيح.</p><p>🔐 لا تدخل بيانات بطاقات الدفع في هذا النموذج. لا يتم تخزين الطلب في قاعدة بيانات.</p></div>
+<form class="form-card" id="orderForm"><h3>بيانات الطلب</h3><div class="fields">
+<div class="field"><label for="name">الاسم *</label><input id="name" required placeholder="الاسم الكامل"></div>
+<div class="field"><label for="phone">رقم التواصل *</label><input id="phone" required inputmode="tel" placeholder="رقم الجوال"></div>
+<div class="field"><label for="city">المدينة *</label><input id="city" required placeholder="المدينة"></div>
+<div class="field"><label for="product">المنتج *</label><select id="product" required><option value="">اختر المنتج</option><option>مجموعة بريميوم</option><option>تشكيلة الأناقة</option><option>مجموعة العناية</option><option>إكسسوارات راقية</option><option>علبة هدايا فاخرة</option><option>اختيار الموسم</option></select></div>
+<div class="field"><label for="qty">الكمية</label><select id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label for="payment">طريقة الدفع</label><select id="payment"><option>تأكيد الطريقة مع المتجر</option><option>الدفع عند الاستلام إذا كان متاحًا</option></select></div>
+<div class="field full"><label for="address">العنوان أو ملاحظات</label><textarea id="address" placeholder="الحي والمدينة وأي ملاحظات"></textarea></div>
+</div><button class="btn" type="submit">إرسال الطلب عبر واتساب</button><div class="notice">قبل النشر، استبدل رقم واتساب التجريبي بالرقم الفعلي. الأسعار والمنتجات المعروضة هنا أمثلة تحتاج إلى تحديث.</div><div class="toast" id="toast"></div></form>
+</div></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-grid"><div><a class="logo" href="#home">BRITTORA<span>بريتورا</span></a><p>تجربة تسوق فاخرة، بتفاصيل مختارة واهتمام بالخصوصية.</p></div><div><h4>روابط مهمة</h4><a href="#home">الرئيسية</a><a href="#categories">الأقسام</a><a href="#products">المنتجات</a></div><div><h4>خدمة العملاء</h4><a href="#order">تواصل معنا</a><a href="#order">سياسة التوصيل</a><a href="#order">الاستبدال والاسترجاع</a></div><div><h4>معلومات المتجر</h4><p>أضف رقم التواصل الرسمي والبريد الإلكتروني وسياسات المتجر قبل الإطلاق.</p></div></div><div class="copyright">© <span id="year"></span> بريتورا — جميع الحقوق محفوظة</div></div></footer>
+<script>
+/* أدخل رقم واتساب المتجر مع مفتاح الدولة، دون + أو مسافات، مثال: 9665XXXXXXXX */
+const STORE_WHATSAPP = "9665XXXXXXXX";
+document.getElementById("year").textContent=new Date().getFullYear();
+function chooseProduct(name){document.getElementById("product").value=name;document.getElementById("order").scrollIntoView({behavior:"smooth"});}
+document.getElementById("search").addEventListener("input",function(){const q=this.value.trim().toLowerCase();let n=0;document.querySelectorAll(".product").forEach(card=>{const show=card.innerText.toLowerCase().includes(q);card.style.display=show?"":"none";if(show)n++});document.getElementById("resultCount").textContent=n+" منتجات";});
+document.querySelectorAll("[data-category]").forEach(link=>link.addEventListener("click",()=>{const cat=link.dataset.category;let n=0;document.querySelectorAll(".product").forEach(card=>{const show=card.dataset.tags.split(" ").includes(cat);card.style.display=show?"":"none";if(show)n++});document.getElementById("resultCount").textContent=n+" منتجات";}));
+document.getElementById("orderForm").addEventListener("submit",function(e){e.preventDefault();
+const val=id=>document.getElementById(id).value.trim();
+if(STORE_WHATSAPP.includes("X")){const t=document.getElementById("toast");t.style.display="block";t.textContent="التصميم جاهز، لكن يلزم إدخال رقم واتساب المتجر الحقيقي في متغير STORE_WHATSAPP قبل إرسال الطلبات.";return;}
+const lines=["طلب جديد من متجر بريتورا","الاسم: "+val("name"),"رقم التواصل: "+val("phone"),"المدينة: "+val("city"),"المنتج: "+val("product"),"الكمية: "+val("qty"),"طريقة الدفع: "+val("payment"),"العنوان/ملاحظات: "+(val("address")||"لا يوجد")];
+location.href="https://wa.me/"+STORE_WHATSAPP+"?text="+encodeURIComponent(lines.join("\n"));
+});
+</script>
+</body></html>
