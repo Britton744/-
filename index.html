@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRITTON LIFE | بريتون - More Than a Game, It's a Life</title>
+<meta name="description" content="متجر بريتون - العاب زوجية فاخرة بتغليف سري - britton.pages.dev">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#FF1A8A;--pink2:#FF6EC7;--purple:#9C27FF;--black:#080808;--dark:#121212;--card:#1a1a1a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--black);color:#fff;overflow-x:hidden}
+.ticker{background:linear-gradient(90deg,var(--pink),var(--purple));padding:6px 0;white-space:nowrap;overflow:hidden;font-weight:700;font-size:13px}
+.ticker span{animation:marq 25s linear infinite;display:inline-block}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+header{position:sticky;top:0;z-index:100;background:rgba(8,8,8,.9);backdrop-filter:blur(12px);border-bottom:1px solid #222;padding:12px 5%}
+.logo{display:flex;align-items:center;gap:10px}
+.logo b{font-family:'Playfair Display';font-size:26px;letter-spacing:2px;background:linear-gradient(90deg,var(--pink),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo small{display:block;font-size:11px;color:#aaa;letter-spacing:3px;margin-top:-6px}
+.badge{background:linear-gradient(90deg,var(--pink),var(--purple));padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.hero{position:relative;padding:60px 5% 40px;background:radial-gradient(600px at 20% 10%,rgba(255,26,138,.25),transparent),radial-gradient(600px at 80% 80%,rgba(156,39,255,.25),transparent),var(--black);text-align:center;overflow:hidden}
+.hero h1{font-size:48px;font-weight:900;line-height:1.1;margin:10px 0}
+.hero h1 span{background:linear-gradient(90deg,var(--pink),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#bbb;max-width:600px;margin:10px auto 20px}
+.btn{background:linear-gradient(90deg,var(--pink),var(--purple));border:none;color:#fff;padding:14px 28px;border-radius:30px;font-weight:900;cursor:pointer;box-shadow:0 0 20px rgba(255,26,138,.4);transition:.3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,26,138,.6)}
+.section{padding:45px 5%}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.sec-head h2{font-size:28px;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,#1e1e1e,#141414);border:1px solid #222;border-radius:18px;overflow:hidden;position:relative;transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:var(--pink);box-shadow:0 10px 30px rgba(255,26,138,.2)}
+.card img{width:100%;height:170px;object-fit:cover}
+.card .info{padding:12px}
+.card .info h3{font-size:14px;margin-bottom:4px}
+.card .price{color:var(--pink2);font-weight:900}
+.card .ai-tag{position:absolute;top:8px;right:8px;background:var(--pink);font-size:9px;padding:3px 7px;border-radius:10px;font-weight:700}
+.wa{position:absolute;bottom:8px;left:8px;right:8px;background:#25D366;color:#fff;text-align:center;padding:8px;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;display:block}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 5%;background:#111;border-radius:16px;padding:14px;border:1px solid #222}
+.trust div{text-align:center;font-size:11px;color:#aaa}
+.trust b{display:block;color:#fff;font-size:13px}
+.timer{background:#111;border:1px dashed var(--pink);border-radius:12px;padding:12px;text-align:center;margin:20px 0}
+#aiBtn{position:fixed;bottom:20px;right:20px;z-index:999;background:linear-gradient(135deg,var(--pink),var(--purple));width:60px;height:60px;border-radius:50%;border:none;color:#fff;font-size:26px;cursor:pointer;box-shadow:0 0 20px var(--pink);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+#aiBox{position:fixed;bottom:90px;right:20px;width:320px;max-width:90vw;background:#161616;border:1px solid var(--pink);border-radius:18px;display:none;flex-direction:column;z-index:999;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+#aiBox header{padding:12px;background:linear-gradient(90deg,var(--pink),var(--purple));font-weight:900}
+#aiMsgs{padding:12px;height:260px;overflow:auto;font-size:13px;display:flex;flex-direction:column;gap:8px}
+.msg{background:#222;padding:8px 12px;border-radius:12px;max-width:85%}
+.msg.ai{align-self:flex-start;border:1px solid #333}
+.msg.user{align-self:flex-end;background:var(--pink)}
+#aiInput{display:flex;border-top:1px solid #222}
+#aiInput input{flex:1;background:#111;border:none;color:#fff;padding:12px;outline:none}
+#aiInput button{background:var(--pink);border:none;color:#fff;padding:0 16px;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal .box{background:#181818;border:1px solid var(--pink);border-radius:16px;padding:20px;width:100%;max-width:400px}
+footer{background:#0a0a0a;border-top:1px solid #222;padding:30px 5%;text-align:center;color:#777;font-size:12px}
+.admin{margin-top:20px;background:#111;padding:15px;border-radius:12px;border:1px solid #222}
+.admin input{width:100%;padding:10px;margin:6px 0;background:#000;border:1px solid #333;border-radius:8px;color:#fff}
+</style>
+</head>
+<body>
+<div class="ticker"><span>✨ BRITTON LIFE - بريتون ✨ شحن سري 100% ✨ تغليف فاخر ✨ خصوصية تامة ✨ واتساب 966556575822 ✨</span></div>
+<header>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div class="logo"><div style="width:36px;height:36px;background:linear-gradient(135deg,var(--pink),var(--purple));border-radius:50%;display:grid;place-items:center;font-weight:900">B</div><div><b>BRITTON LIFE</b><small>بريتون</small></div></div>
+<div class="badge">britton.pages.dev</div>
+</div>
+</header>
+<div class="hero">
+<div style="display:inline-block;background:rgba(255,26,138,.15);border:1px solid var(--pink);padding:6px 14px;border-radius:20px;font-size:12px;margin-bottom:12px">✨ بالذكاء الاصطناعي - يفهم ذوقك</div>
+<h1>More Than a Game,<br><span>It's a Life</span></h1>
+<p>متجر بريتون الفاخر - كل قسم له لمسته - ذكاء اصطناعي يختار لك - تغليف سري يبهر من يستلمه - واتساب مباشر 966556575822</p>
+<button class="btn" onclick="document.getElementById('new').scrollIntoView({behavior:'smooth'})">استكشف بالذكاء الاصطناعي 🤖</button>
+</div>
+<div class="trust">
+<div><b>🎁 تغليف سري</b>محد يعرف وش داخله</div>
+<div><b>⚡ شحن سريع</b>داخل السعودية واليمن</div>
+<div><b>💎 جودة عالية</b>منتجات أصلية فاخرة</div>
+<div><b>🤖 ذكاء اصطناعي</b>يختار لك المناسب</div>
+</div>
+<div class="section timer">
+⏰ عرض الذكاء الاصطناعي ينتهي خلال: <span id="count" style="color:var(--pink);font-weight:900">02:14:33</span> - خصم 15% تلقائي عند الطلب عبر الواتساب
+</div>
+<div id="new" class="section">
+<div class="sec-head"><h2>🔥 وصل حديثاً - AI يرشح لك</h2><button class="btn" style="padding:8px 14px;font-size:12px" onclick="openGift()">هديتي المثالية؟ 🎁</button></div>
+<div class="grid" id="gridNew"></div>
+</div>
+<div class="section">
+<div class="sec-head"><h2>💞 ألعاب زوجية ذكية</h2></div>
+<div class="grid" id="gridGames"></div>
+</div>
+<div class="section">
+<div class="sec-head"><h2>👗 ملابس ولمسات مثيرة</h2><button class="btn" style="padding:8px 14px;font-size:12px;background:#222;border:1px solid var(--pink)" onclick="openSize()">مقاسي بالذكاء 📏</button></div>
+<div class="grid" id="gridLingerie"></div>
+</div>
+<div class="section">
+<div class="sec-head"><h2>🌸 العناية والعطور المثيرة</h2></div>
+<div class="grid" id="gridCare"></div>
+</div>
+<div class="section">
+<div class="sec-head"><h2>💍 إكسسوارات فاخرة</h2></div>
+<div class="grid" id="gridAcc"></div>
+</div>
+<div class="section">
+<div class="sec-head"><h2>🎁 هدايا وتغليف رومانسي</h2></div>
+<div class="grid" id="gridGift"></div>
+</div>
+<div class="section">
+<div class="admin">
+<h3>لوحة تحكم بريتون - كلمة السر britton2024</h3>
+<input id="adminPass" type="password" placeholder="اكتب كلمة السر">
+<input id="pName" placeholder="اسم المنتج">
+<input id="pPrice" placeholder="السعر مثال 149">
+<select id="pCat" style="width:100%;padding:10px;margin:6px 0;background:#000;border:1px solid #333;border-radius:8px;color:#fff">
+<option value="new">وصل حديثاً</option><option value="games">ألعاب زوجية</option><option value="lingerie">ملابس</option><option value="care">عناية</option><option value="acc">إكسسوارات</option><option value="gift">هدايا</option>
+</select>
+<input id="pImg" placeholder="رابط الصورة (اختياري)">
+<button class="btn" style="width:100%;margin-top:8px" onclick="addProduct()">إضافة منتج +</button>
+</div>
+</div>
+<footer>
+<b style="color:#fff;font-size:18px">BRITTON LIFE - بريتون</b><br>
+britton.pages.dev - More Than a Game, It's a Life<br>
+واتساب: 966556575822 - شحن سري - خصوصية تامة<br><br>
+© 2026 BRITTON
+</footer>
+<button id="aiBtn" onclick="toggleAI()">🤖</button>
+<div id="aiBox">
+<header>بريتون - مساعدك الذكي ✨</header>
+<div id="aiMsgs"><div class="msg ai">هلا والله! أنا مساعد بريتون الذكي 🤖<br>قل لي: ما المناسبة؟</div></div>
+<div id="aiInput"><input id="aiText" placeholder="اكتب: ابي شي رومانسي..." onkeydown="if(event.key==='Enter')sendAI()"><button onclick="sendAI()">إرسال</button></div>
+</div>
+<div id="sizeModal" class="modal"><div class="box">
+<h3>📏 محدد المقاس بالذكاء</h3><br>
+<input id="size1" placeholder="محيط الصدر سم" style="width:100%;padding:10px;background:#000;border:1px solid #333;border-radius:8px;color:#fff;margin:6px 0">
+<input id="size2" placeholder="محيط الخصر سم" style="width:100%;padding:10px;background:#000;border:1px solid #333;border-radius:8px;color:#fff;margin:6px 0">
+<button class="btn" style="width:100%" onclick="calcSize()">احسب مقاسي</button>
+<p id="sizeRes" style="margin-top:10px;color:var(--pink2);font-weight:700"></p>
+<button onclick="closeModals()" style="margin-top:10px;background:none;border:none;color:#777;cursor:pointer">إغلاق</button>
+</div></div>
+<div id="giftModal" class="modal"><div class="box">
+<h3>🎁 مكتشف الهدية المثالية</h3><br>
+<p>1- المناسبة؟</p><select id="g1" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:8px"><option>زواج جديد</option><option>ذكرى</option><option>مصالحة</option><option>دلع</option></select>
+<p style="margin-top:10px">2- الميزانية؟</p><select id="g2" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:8px"><option>أقل من 150</option><option>150-300</option><option>أكثر من 300</option></select>
+<p style="margin-top:10px">3- الجو؟</p><select id="g3" style="width:100%;padding:8px;background:#000;border:1px solid #333;color:#fff;border-radius:8px"><option>رومانسي هادئ</option><option>جريء ومثير</option><option>فاخر وكلاسي</option></select>
+<button class="btn" style="width:100%;margin-top:12px" onclick="calcGift()">الذكاء يختار لي</button>
+<p id="giftRes" style="margin-top:12px;color:var(--pink2);font-weight:700"></p>
+<button onclick="closeModals()" style="margin-top:10px;background:none;border:none;color:#777;cursor:pointer">إغلاق</button>
+</div></div>
+<div id="proof" style="position:fixed;bottom:20px;left:20px;background:#111;border:1px solid #333;padding:10px 14px;border-radius:12px;font-size:11px;display:none;z-index:998"></div>
+<script>
+let products = JSON.parse(localStorage.getItem('britton_products')||'[]');
+if(products.length===0){
+products=[
+{name:'مجموعة بريتون الوردية الفاخرة',price:249,cat:'new',img:'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400'},
+{name:'لعبة ذكية تحكم بالجوال',price:189,cat:'games',img:'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400'},
+{name:'قميص نوم حرير وردي',price:129,cat:'lingerie',img:'https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=400'},
+{name:'عطر فيرومون مثير',price:99,cat:'care',img:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400'},
+{name:'سوار فاخر مع قلب',price:79,cat:'acc',img:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400'},
+{name:'بوكس هدية رومانسي فاخر',price:299,cat:'gift',img:'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400'}
+];save();}
+function save(){localStorage.setItem('britton_products',JSON.stringify(products));}
+function render(){
+const maps={new:'gridNew',games:'gridGames',lingerie:'gridLingerie',care:'gridCare',acc:'gridAcc',gift:'gridGift'};
+Object.values(maps).forEach(id=>document.getElementById(id).innerHTML='');
+products.forEach((p,i)=>{
+let card=document.createElement('div');card.className='card';
+let img=p.img||'https://via.placeholder.com/400x300/FF1A8A/fff?text=BRITTON';
+card.innerHTML=`<div class="ai-tag">AI اختيار</div><img src="${img}"><div class="info"><h3>${p.name}</h3><div class="price">${p.price} ر.س</div></div><a class="wa" target="_blank" href="https://wa.me/966556575822?text=${encodeURIComponent('هلا بريتون ابي '+p.name+' سعره '+p.price)}">اطلب واتساب</a>`;
+(document.getElementById(maps[p.cat])||document.getElementById('gridNew')).appendChild(card);
+});}
+function addProduct(){
+if(document.getElementById('adminPass').value!=='britton2024'){alert('كلمة السر خطأ - britton2024');return;}
+let name=document.getElementById('pName').value;let price=document.getElementById('pPrice').value;let cat=document.getElementById('pCat').value;let img=document.getElementById('pImg').value;
+if(!name||!price){alert('اكتب الاسم والسعر');return;}
+products.push({name,price,cat,img});save();render();alert('تمت الإضافة');
+}
+function toggleAI(){let b=document.getElementById('aiBox');b.style.display=b.style.display==='flex'?'none':'flex';}
+function sendAI(){
+let input=document.getElementById('aiText');let txt=input.value.trim();if(!txt)return;
+let msgs=document.getElementById('aiMsgs');msgs.innerHTML+=`<div class="msg user">${txt}</div>`;input.value='';
+let reply='الذكاء يرشح لك: ';
+if(txt.includes('رومانسي')) reply+='بوكس رومانسي + شمعة + قميص حرير 🌸';
+else if(txt.includes('جريء')) reply+='لعبة ذكية + طقم مثير 🔥';
+else reply+='مجموعة بريتون الوردية الفاخرة ⭐';
+msgs.innerHTML+=`<div class="msg ai">${reply} - اطلب واتساب 966556575822</div>`;msgs.scrollTop=msgs.scrollHeight;
+}
+function openSize(){document.getElementById('sizeModal').style.display='flex'}
+function openGift(){document.getElementById('giftModal').style.display='flex'}
+function closeModals(){document.querySelectorAll('.modal').forEach(m=>m.style.display='none')}
+function calcSize(){let a=parseInt(document.getElementById('size1').value)||0;let b=parseInt(document.getElementById('size2').value)||0;let s='M';if(a>92||b>78)s='L';if(a>100||b>85)s='XL';if(a<86)s='S';document.getElementById('sizeRes').innerText=`مقاس ${s}`;}
+function calcGift(){let g1=document.getElementById('g1').value;let g2=document.getElementById('g2').value;let g3=document.getElementById('g3').value;document.getElementById('giftRes').innerText=`الذكاء اختار: بوكس ${g1} - ${g3} بميزانية ${g2} 🎁`;}
+let sec=2*3600+14*60+33;setInterval(()=>{sec--;let h=Math.floor(sec/3600);let m=Math.floor((sec%3600)/60);let s=sec%60;let el=document.getElementById('count');if(el)el.innerText=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`},1000);
+render();
+</script>
+</body>
+</html>
