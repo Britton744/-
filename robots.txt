@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://britton744.github.io/-/sitemap.xml
-Sitemap: https://britton744.github.io/-/sitemap.xml
