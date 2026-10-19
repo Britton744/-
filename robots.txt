@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://deluxe-hotteok-813cf5.netlify.app/sitemap.xml
+Sitemap: https://britton744.github.io/-/sitemap.xml
 Sitemap: https://britton744.github.io/-/sitemap.xml
