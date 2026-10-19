@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="jcDx4Mg_9_dQiYpDBPngsA1BJr1N-gMBUXsy5uHXXZg" />
+<title>BRITTON | بريتون الفاخر</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui;background:#0a0a0a;color:#fff}
+.top{background:linear-gradient(90deg,#FFD700,#FF2D78);color:#000;text-align:center;padding:8px;font-size:12px;font-weight:900}
+.header{background:#111;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
+.logo{font-weight:900;font-size:20px;color:#FFD700}
+.hero{margin:12px;background:#111;border:1px solid #222;border-radius:16px;padding:20px;text-align:center}
+.hero h2{color:#FFD700;margin-bottom:8px}
+.hero p{color:#aaa;font-size:12px;line-height:1.6;margin:10px 0}
+.btn{background:linear-gradient(90deg,#FFD700,#FF2D78);color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900;cursor:pointer}
+.cats{padding:12px}
+.cats h3{color:#FFD700;margin-bottom:12px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.c{background:radial-gradient(circle at 30% 30%,#2a0a1a,#111);border:2px solid #FFD700;border-radius:18px;padding:12px;text-align:center;min-height:110px;display:flex;flex-direction:column;justify-content:center}
+.c .i{font-size:28px}
+.c .n{font-size:10px;font-weight:900;margin-top:6px;color:#fff}
+.c .s{font-size:8px;color:#FFD700;margin-top:2px}
+.prod{padding:12px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.p{background:#111;border:1px solid #222;border-radius:14px;padding:10px;text-align:center}
+.p .i{font-size:32px}
+.p h4{font-size:11px;margin:8px 0}
+.pr{color:#FFD700;font-weight:900;font-size:12px}
+.add{width:100%;background:#fff;color:#000;border:none;padding:8px;border-radius:8px;font-weight:900;margin-top:8px;cursor:pointer}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #222;padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.bottom button{background:#FFD700;color:#000;border:none;padding:8px 14px;border-radius:10px;font-weight:900;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="top">✨ BRITTON - شحن سري 100% - تغليف فاخر - واتساب 966556575822 ✨</div>
+<div class="header">
+<div class="logo">👑 BRITTON</div>
+<div>🛒 <span id="badge" style="background:#FF2D78;padding:2px 6px;border-radius:10px;font-size:10px">0</span></div>
+</div>
+<div class="hero">
+<h2>👑 BRITTON فاخر</h2>
+<p>بلا اسم أو شعار. نوصّل لجميع مناطق المملكة وتدفع عند وصول طلبك.<br>تغليف محايد - منتجات أصلية - خصوصية 100%</p>
+<button class="btn" onclick="document.getElementById('cats').scrollIntoView({behavior:'smooth'})">تسوق الآن 🛍️</button>
+</div>
+
+<div class="cats" id="cats">
+<h3>💎 الأقسام الفاخرة - 9 أقسام دائرية ذهبية</h3>
+<div class="grid">
+<div class="c"><div class="i">💖</div><div class="n">هزازات نسائية</div><div class="s">قضيب 1100</div></div>
+<div class="c" style="border-color:#FF2D78"><div class="i">🔥</div><div class="n">أجهزة استمناء</div><div class="s">مهبل 1000</div></div>
+<div class="c" style="border-color:#DC2626"><div class="i">⚡</div><div class="n">منشطات رجال</div><div class="s">حيوية</div></div>
+<div class="c" style="border-style:dashed"><div class="i">💜</div><div class="n">منشطات نساء</div><div class="s">رغبة</div></div>
+<div class="c" style="border-color:#A855F7"><div class="i">✨</div><div class="n">سدادات وخرز</div><div class="s">750</div></div>
+<div class="c"><div class="i">🍑</div><div class="n">قضبان صناعية</div><div class="s">سيليكون طبي</div></div>
+<div class="c" style="border-color:#FF2D78"><div class="i">🔒</div><div class="n">أقفاص عفة</div><div class="s">قيود 800</div></div>
+<div class="c" style="border-color:#DC2626"><div class="i">💍</div><div class="n">حلقات انتصاب</div><div class="s">دعم وثقة</div></div>
+<div class="c"><div class="i">🎁</div><div class="n">بوكسات هدايا</div><div class="s">فاخر</div></div>
+</div>
+</div>
+
+<div class="prod">
+<h3 style="color:#FFD700;margin-bottom:12px;font-size:16px">🔥 الأكثر طلباً</h3>
+<div class="pgrid" id="g"></div>
+</div>
+
+<div class="bottom">
+<div id="info" style="font-size:11px">👑 فاضي</div>
+<div><span id="tot" style="font-weight:900;color:#FFD700">0 ر.س</span> <button onclick="openCart()">إتمام 👑</button></div>
+</div>
+
+<script>
+let cart=[],products=[
+{id:1,n:'قضيب فاخر 1100',p:1100,i:'💖'},
+{id:2,n:'مهبل واقعي 1000',p:1000,i:'🔥'},
+{id:3,n:'سدادة زوجية 750',p:750,i:'✨'},
+{id:4,n:'قيود فاخرة 800',p:800,i:'🔒'}
+];
+function render(){
+let g=document.getElementById('g');g.innerHTML='';
+products.forEach(x=>{
+let d=document.createElement('div');d.className='p';
+d.innerHTML='<div class=i>'+x.i+'</div><h4>'+x.n+'</h4><div class=pr>'+x.p+' ر.س</div><button class=add onclick=addCart('+x.id+')>أضف للسلة</button>';
+g.appendChild(d);
+});
+}
+function addCart(id){
+let p=products.find(a=>a.id==id),e=cart.find(a=>a.id==id);
+if(e)e.q++;else cart.push({id:p.id,n:p.n,p:p.p,q:1});
+upd();
+}
+function upd(){
+let c=cart.reduce((a,b)=>a+b.q,0),t=cart.reduce((a,b)=>a+b.p*b.q,0);
+document.getElementById('badge').innerText=c;
+document.getElementById('tot').innerText=t+' ر.س';
+document.getElementById('info').innerText=c==0?'👑 BRITTON فاضي':'👑 '+c+' منتج';
+}
+function openCart(){
+if(cart.length==0){alert('السلة فاضية');return;}
+let s=cart.map(i=>i.n+' x'+i.q).join('\n'),t=cart.reduce((a,b)=>a+b.p*b.q,0);
+let name=prompt('الاسم:'),phone=prompt('الجوال:'),city=prompt('المدينة:');
+if(!name||!phone||!city)return;
+let msg='BRITTON\n'+name+'\n'+phone+'\n'+city+'\n\n'+s+'\n'+t+' ر.س';
+window.open('https://wa.me/966556575822?text='+encodeURIComponent(msg),'_blank');
+cart=[];upd();
+}
+render();upd();
+</script>
+</body>
+</html>
