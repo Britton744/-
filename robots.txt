@@ -1,1 +1,3 @@
-https://github.com/britton744/britton744.github.io/tree/main/-
+User-agent: *
+Allow: /
+Sitemap: https://britton744.github.io/-/sitemap.xml
