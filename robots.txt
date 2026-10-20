@@ -1,3 +1,1 @@
-User-agent: *
-Allow: /
-Sitemap: https://britton744.github.io/-/sitemap.xml
+https://britton744.github.io/-/robots.txt
