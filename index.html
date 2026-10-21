@@ -1,0 +1,1580 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر العاب زوجيه - متجر الملوك LUXE</title>
+  <meta name="description" content="متجر الملوك LUXE - أفخم متجر العاب زوجيه وبوكسات رومانسية في السعودية والخليج. سيليكون طبي معتمد 100%، شحن سريع خلال 24-48 ساعة، تغليف مخملي سري تماماً والدفع عند الاستلام.">
+  <meta name="keywords" content="متجر العاب زوجيه, ألعاب زوجية, متجر الملوك, بوكسات رومانسية, أجهزة مساج, سيليكون طبي, شحن سري, الدفع عند الاستلام">
+  
+  <!-- خط تجوال العربي الفاخر وأيقونات Font Awesome 6 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #07060a;
+      --bg-surface: #0e0c15;
+      --bg-card: #13101d;
+      --border-card: #281d33;
+      --border-glow: rgba(244, 63, 94, 0.4);
+      --primary: #f43f5e;
+      --primary-hover: #e11d48;
+      --accent-rose: #fb7185;
+      --gold-royal: #f59e0b;
+      --gold-light: #fbbf24;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding-bottom: 95px;
+    }
+
+    /* الشريط الإخباري العلوي */
+    .top-announcement {
+      background: linear-gradient(90deg, #9f1239, #f43f5e, #be123c);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 14px rgba(244, 63, 94, 0.35);
+    }
+
+    /* الهيدر الثابت */
+    header.main-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(14, 12, 21, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-card);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-crown-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: radial-gradient(circle, #381226 0%, #150916 100%);
+      border: 1px solid rgba(244, 63, 94, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 22px;
+      box-shadow: 0 0 16px rgba(244, 63, 94, 0.3);
+    }
+
+    .brand-info h1 {
+      font-size: 18px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ffffff, #ffe4e6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .brand-info span {
+      font-size: 10px;
+      color: var(--gold-royal);
+      font-weight: 800;
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .action-icon-btn {
+      position: relative;
+      background: #191524;
+      border: 1px solid #2d2338;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .action-icon-btn:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.35);
+    }
+
+    .cart-counter-pill {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      min-width: 19px;
+      height: 19px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      border: 2px solid var(--bg-dark);
+    }
+
+    /* حقل البحث التفاعلي */
+    .search-section {
+      padding: 14px 20px 0;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .search-input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      background: #13101c;
+      border: 1px solid #2b1f36;
+      border-radius: 30px;
+      padding: 13px 48px 13px 20px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.25);
+    }
+
+    .search-input-box i {
+      position: absolute;
+      right: 18px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* البنر الملكي الفخم */
+    .hero-wrapper {
+      padding: 15px 20px;
+    }
+
+    .hero-banner-card {
+      background: radial-gradient(circle at 80% 25%, #4a0d2a 0%, #1c0a18 55%, #0a0710 100%);
+      border: 1px solid #471732;
+      border-radius: 24px;
+      padding: 35px 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(244, 63, 94, 0.12);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: var(--accent-rose);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      max-width: 550px;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    .hero-btns-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-hero-sparkle {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: 0 6px 25px rgba(244, 63, 94, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-sparkle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(244, 63, 94, 0.6);
+    }
+
+    .btn-hero-alt {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* بار الضمانات الملكية */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 5px 20px 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 12px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-card i {
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    .feature-card span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    /* أزرار تصفية الأقسام */
+    .filter-pills-bar {
+      padding: 10px 20px 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      gap: 10px;
+      scrollbar-width: none;
+    }
+
+    .filter-pills-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill-btn {
+      background: #14111d;
+      border: 1px solid #2b2038;
+      padding: 10px 18px;
+      border-radius: 25px;
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active, .pill-btn:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35);
+    }
+
+    /* رأس الكتالوج */
+    .catalog-header-wrap {
+      padding: 5px 20px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .catalog-title {
+      font-size: 19px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .catalog-title i {
+      color: var(--primary);
+    }
+
+    .catalog-counter {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* شبكة المنتجات */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 14px;
+      padding: 0 20px 40px;
+    }
+
+    @media (min-width: 768px) {
+      .catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 18px;
+      }
+    }
+
+    .product-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .product-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+    }
+
+    .badge-label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #e11d48, #9f1239);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 20px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .product-visual-box {
+      height: 175px;
+      background: radial-gradient(circle, #2d1022 0%, #110d18 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .product-visual-box svg {
+      width: 100%;
+      height: 100%;
+      max-width: 120px;
+      max-height: 120px;
+      filter: drop-shadow(0 4px 12px rgba(244, 63, 94, 0.3));
+      transition: transform 0.3s ease;
+    }
+
+    .product-box:hover .product-visual-box svg {
+      transform: scale(1.05);
+    }
+
+    .product-details {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-category-text {
+      font-size: 10px;
+      color: var(--gold-royal);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-name-text {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.4;
+      min-height: 38px;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .product-name-text:hover {
+      color: var(--accent-rose);
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: var(--gold-royal);
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .rating-row span {
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .price-row-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .price-now {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--accent-rose);
+    }
+
+    .price-was {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-decoration: line-through;
+    }
+
+    .product-btns-row {
+      display: flex;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .btn-add-to-cart {
+      flex: 1;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      border: none;
+      padding: 9px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-add-to-cart:hover {
+      opacity: 0.9;
+    }
+
+    .btn-detail-trigger {
+      background: #20182b;
+      border: 1px solid #3c2949;
+      color: #f3e8ff;
+      width: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn-detail-trigger:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* سلة المشتريات الجانبية */
+    .cart-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .cart-drawer-panel {
+      width: 100%;
+      max-width: 440px;
+      height: 100%;
+      background: #110e1a;
+      border-right: 1px solid var(--border-card);
+      display: flex;
+      flex-direction: column;
+      animation: slideDrawer 0.3s ease;
+    }
+
+    @keyframes slideDrawer {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+
+    .cart-drawer-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #161222;
+    }
+
+    .cart-drawer-header h3 {
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-icon-btn {
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cart-items-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cart-empty-state {
+      text-align: center;
+      color: var(--text-muted);
+      margin: auto;
+      font-size: 14px;
+    }
+
+    .cart-entry {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #171324;
+      border: 1px solid var(--border-card);
+      padding: 10px 12px;
+      border-radius: 14px;
+      gap: 10px;
+    }
+
+    .cart-entry-info h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .cart-entry-info span {
+      font-size: 11px;
+      color: var(--accent-rose);
+      font-weight: 800;
+    }
+
+    .cart-entry-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .counter-btn {
+      background: #241d33;
+      border: 1px solid #3d2f52;
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    .cart-drawer-footer {
+      padding: 18px 20px;
+      border-top: 1px solid var(--border-card);
+      background: #151122;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #d1d5db;
+    }
+
+    .calc-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 900;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #342640;
+      color: #fff;
+    }
+
+    .btn-whatsapp-order {
+      margin-top: 15px;
+      width: 100%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+    }
+
+    /* زر نافذة رورو الذكية */
+    .roro-fab {
+      position: fixed;
+      bottom: 22px;
+      left: 20px;
+      background: linear-gradient(135deg, #f43f5e, #be123c);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(244, 63, 94, 0.55);
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      animation: roroGlow 2.4s infinite;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes roroGlow {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+      70% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(244, 63, 94, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+    }
+
+    /* نافذة شات رورو */
+    .roro-chat-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1500;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .roro-chat-overlay {
+        align-items: center;
+      }
+    }
+
+    .roro-chat-window {
+      width: 100%;
+      max-width: 480px;
+      background: #110e1a;
+      border: 1px solid #332039;
+      border-radius: 26px 26px 0 0;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    @media (min-width: 640px) {
+      .roro-chat-window {
+        border-radius: 24px;
+        height: 75vh;
+      }
+    }
+
+    .roro-window-header {
+      background: #181326;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .roro-agent-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .roro-avatar-bubble {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), #831843);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 2px solid #fda4af;
+    }
+
+    .chat-msg-area {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #0d0a14;
+    }
+
+    .chat-bubble {
+      max-width: 84%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .chat-bubble.bot {
+      background: #1a1628;
+      color: #f3f4f6;
+      border: 1px solid #30263f;
+      align-self: flex-start;
+      border-bottom-right-radius: 4px;
+      white-space: pre-line;
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-left-radius: 4px;
+    }
+
+    .suggestions-chips {
+      padding: 8px 15px;
+      background: #141020;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid #231b2e;
+    }
+
+    .suggestion-chip {
+      background: #201a2e;
+      border: 1px solid #392b4d;
+      color: #fda4af;
+      padding: 6px 12px;
+      border-radius: 18px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .suggestion-chip:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .chat-controls-box {
+      padding: 12px 15px;
+      background: #181326;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .chat-controls-box input {
+      flex: 1;
+      background: #0f0c19;
+      border: 1px solid #30263e;
+      border-radius: 25px;
+      padding: 10px 18px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-controls-box button {
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    /* نافذة تفاصيل المنتج (Modal) */
+    .detail-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .detail-modal-box {
+      background: #14111f;
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 22px;
+      position: relative;
+    }
+
+    .close-modal-x {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      color: #9ca3af;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط إعلاني علوي -->
+  <div class="top-announcement">
+    <span>👑 متجر الملوك LUXE: شحن سري ومخملي 100% • دفع عند الاستلام • سيليكون طبي أصلي معتمد</span>
+  </div>
+
+  <!-- رأس الموقع الثابت -->
+  <header class="main-header">
+    <a href="#" class="brand-wrap">
+      <div class="brand-crown-icon">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <div class="brand-info">
+        <h1>متجر الملوك LUXE</h1>
+        <span>BRITTON ROYALE • ADULT BOUTIQUE</span>
+      </div>
+    </a>
+
+    <div class="header-actions">
+      <div class="action-icon-btn" onclick="openCartDrawer()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <div class="cart-counter-pill" id="cartCount">0</div>
+      </div>
+      <div class="action-icon-btn" onclick="toggleRoro(true)">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-rose);"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- البحث السريع -->
+  <section class="search-section">
+    <div class="search-input-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="ابحث عن ألعاب زوجية، أجهزة تحفيز، بوكسات، مواصفات..." onkeyup="filterProducts()">
+    </div>
+  </section>
+
+  <!-- البنر الرومانسي الفاخر -->
+  <section class="hero-wrapper">
+    <div class="hero-banner-card">
+      <div class="hero-badge">
+        <i class="fa-solid fa-heart"></i>
+        <span>أكثر من مجرد متجر .. تجربة استثنائية تجمعكم 👑</span>
+      </div>
+      <h2 class="hero-title">ألعاب وبوكسات رومانسية مصممة لأرقى درجات الحميمية والتواصل</h2>
+      <p class="hero-subtitle">منتجات مختارة من أنقى درجات السيليكون الطبي 100%، مقاومة تامة للماء، وتغليف سري مخملي بدون أي تفاصيل أو كتابة خارجية لحفظ كامل الخصوصية.</p>
+      
+      <div class="hero-btns-row">
+        <button class="btn-hero-sparkle" onclick="toggleRoro(true)">
+          <i class="fa-solid fa-comments"></i>
+          <span>استشر رورو المساعد الذكي</span>
+        </button>
+        <button class="btn-hero-alt" onclick="filterByTab('ألعاب وبوكسات الأزواج')">
+          <i class="fa-solid fa-dice"></i>
+          <span>ألعاب وبوكسات الأزواج</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- بار الضمانات -->
+  <section class="features-grid">
+    <div class="feature-card">
+      <i class="fa-solid fa-user-secret"></i>
+      <span>تغليف مخملي سري 100%</span>
+    </div>
+    <div class="feature-card">
+      <i class="fa-solid fa-truck-fast"></i>
+      <span>شحن سريع 24-48 ساعة</span>
+    </div>
+    <div class="feature-card">
+      <i class="fa-solid fa-shield-heart"></i>
+      <span>سيليكون طبي معتمد 100%</span>
+    </div>
+    <div class="feature-card">
+      <i class="fa-solid fa-hand-holding-dollar"></i>
+      <span>الدفع عند الاستلام</span>
+    </div>
+  </section>
+
+  <!-- شريط تصنيفات المنتجات -->
+  <div class="filter-pills-bar" id="categoryFilterBar">
+    <div class="pill-btn active" onclick="filterByTab('الكل')">👑 الكل</div>
+    <div class="pill-btn" onclick="filterByTab('ألعاب وبوكسات الأزواج')">🎲 ألعاب وبوكسات الأزواج</div>
+    <div class="pill-btn" onclick="filterByTab('أجهزة وهزازات نسائية')">🌸 أجهزة وهزازات نسائية</div>
+    <div class="pill-btn" onclick="filterByTab('أجهزة تحفيز رجالية')">⚡ أجهزة تحفيز رجالية</div>
+    <div class="pill-btn" onclick="filterByTab('أطقم وأزياء تنكرية')">👗 أطقم وأزياء تنكرية</div>
+    <div class="pill-btn" onclick="filterByTab('سدادات كريستال وعناية')">💎 سدادات كريستال وعناية</div>
+  </div>
+
+  <!-- عنوان الكتالوج -->
+  <div class="catalog-header-wrap">
+    <div class="catalog-title">
+      <i class="fa-solid fa-fire"></i>
+      <span id="currentFilterLabel">الكتالوج الملكي الفاخر</span>
+    </div>
+    <span class="catalog-counter" id="catalogCounterText">12 منتج متوفر</span>
+  </div>
+
+  <!-- شبكة المنتجات -->
+  <main class="catalog-grid" id="catalogGrid">
+    <!-- توليد المنتجات بالجافاسكريبت -->
+  </main>
+
+  <!-- الزر العائم لمساعد "رورو" الذكي -->
+  <div class="roro-fab" onclick="toggleRoro(true)">
+    <i class="fa-solid fa-comment-dots"></i>
+    <span>مساعدتك رورو AI 💜</span>
+  </div>
+
+  <!-- نافذة الشات التفاعلية مع "رورو" -->
+  <div class="roro-chat-overlay" id="roroChatOverlay">
+    <div class="roro-chat-window">
+      <div class="roro-window-header">
+        <div class="roro-agent-profile">
+          <div class="roro-avatar-bubble">👑</div>
+          <div>
+            <h3 style="font-size: 14px; font-weight:800;">رورو • الذكاء الاصطناعي الخاص</h3>
+            <span style="font-size: 11px; color:#4ade80;">● متصلة للإجابة عن الأسعار والمواصفات</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark close-icon-btn" onclick="toggleRoro(false)"></i>
+      </div>
+
+      <div class="chat-msg-area" id="roroMessagesBox">
+        <div class="chat-bubble bot">
+أهلاً بك يا ملك في متجر الملوك LUXE! أنا «رورو» خبيرتك الخاصة 🌸👑
+اكتب لي طلبك أو اسم أي منتج، وسأوافيك فوراً بسعره، مواصفاته الكاملة، خامة تصنيعه، وتفاصيل الشحن السري!
+        </div>
+      </div>
+
+      <!-- مقترحات الأسئلة السريعة -->
+      <div class="suggestions-chips">
+        <span class="suggestion-chip" onclick="askRoroQuestion('أفضل الألعاب مبيعاً؟')">🔥 أفضل الألعاب مبيعاً؟</span>
+        <span class="suggestion-chip" onclick="askRoroQuestion('كيف التغليف السري؟')">🔒 كيف التغليف السري؟</span>
+        <span class="suggestion-chip" onclick="askRoroQuestion('منتجات السيليكون الطبي')">🛡️ منتجات السيليكون الطبي</span>
+        <span class="suggestion-chip" onclick="askRoroQuestion('الدفع عند الاستلام')">💵 الدفع عند الاستلام</span>
+      </div>
+
+      <div class="chat-controls-box">
+        <input type="text" id="roroChatInput" placeholder="اكتب سؤالك لـ رورو هنا..." onkeypress="if(event.key==='Enter') sendRoroMessage()">
+        <button onclick="sendRoroMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- سلة المشتريات الجانبية -->
+  <div class="cart-drawer-backdrop" id="cartDrawerBackdrop">
+    <div class="cart-drawer-panel">
+      <div class="cart-drawer-header">
+        <h3><i class="fa-solid fa-bag-shopping" style="color:var(--primary);"></i> سلة المشتريات الملكية</h3>
+        <i class="fa-solid fa-xmark close-icon-btn" onclick="closeCartDrawer()"></i>
+      </div>
+
+      <div class="cart-items-scroll" id="cartItemsList">
+        <!-- عناصر السلة -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="calc-row">
+          <span>مجموع المنتجات:</span>
+          <span id="cartSubtotalText">0 ر.س</span>
+        </div>
+        <div class="calc-row">
+          <span>التغليف المخملي السري:</span>
+          <span style="color:#4ade80;">مجاني 100% 🔒</span>
+        </div>
+        <div class="calc-row">
+          <span>الشحن السريع (24-48 ساعة):</span>
+          <span id="cartShippingText">35 ر.س</span>
+        </div>
+        <div class="calc-total">
+          <span>الإجمالي النهائي:</span>
+          <span id="cartGrandTotalText" style="color:var(--accent-rose);">0 ر.س</span>
+        </div>
+        <button class="btn-whatsapp-order" onclick="proceedToWhatsApp()">
+          <i class="fa-brands fa-whatsapp" style="font-size:18px;"></i>
+          <span>إتمام الطلب السري عبر الواتساب</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة تفاصيل المنتج -->
+  <div class="detail-modal-backdrop" id="detailModal">
+    <div class="detail-modal-box" id="detailModalContent">
+      <!-- محتوى التفاصيل -->
+    </div>
+  </div>
+
+  <script>
+    // كتالوج المنتجات الفاخرة مع صور متجهة SVG عالية الجودة ومواصفات فنية حقيقية
+    const catalog = [
+      {
+        id: 1,
+        name: "بوكس ليلة رومانسية فاخر (VIP)",
+        category: "ألعاب وبوكسات الأزواج",
+        price: 399,
+        oldPrice: 599,
+        badge: "الأكثر مبيعاً",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="35" width="60" height="48" rx="8" fill="#221128" stroke="#f43f5e" stroke-width="2.5"/>
+          <path d="M15 35H85V24C85 20.6863 82.3137 18 79 18H21C17.6863 18 15 20.6863 15 24V35Z" fill="#3d142d" stroke="#f43f5e" stroke-width="2.5"/>
+          <rect x="46" y="18" width="8" height="65" fill="#f59e0b"/>
+          <path d="M50 18C44 10 32 12 38 18C44 24 50 18 50 18Z" fill="#fb7185"/>
+          <path d="M50 18C56 10 68 12 62 18C56 24 50 18 50 18Z" fill="#fb7185"/>
+        </svg>`,
+        desc: "بوكس ملكي مخملي متكامل يحتوي على بطاقات رومانسية، زيوت تدليك برائحة العود الفرنسي، شمع معطر، وغطاء عيون حريري وإكسسوارات حصرية لليلة زوجية لا تُنسى.",
+        specs: "خامات طبية آمنة • شمع صويا طبيعي • عبوة إهداء مغلفة بسرية تامة",
+        warranty: "ضمان 6 شهور ضد عيوب التصنيع"
+      },
+      {
+        id: 2,
+        name: "لعبة الزوجين - تحدي الشغف والحب",
+        category: "ألعاب وبوكسات الأزواج",
+        price: 249,
+        oldPrice: 349,
+        badge: "جديد",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="18" y="22" width="45" height="60" rx="6" fill="#1b1526" stroke="#fb7185" stroke-width="2" transform="rotate(-8 18 22)"/>
+          <rect x="38" y="18" width="45" height="60" rx="6" fill="#2d1226" stroke="#f43f5e" stroke-width="2.5" transform="rotate(8 38 18)"/>
+          <path d="M60 42C56 36 46 40 50 46C54 52 60 56 60 56C60 56 66 52 70 46C74 40 64 36 60 42Z" fill="#f43f5e"/>
+        </svg>`,
+        desc: "أقوى لعبة كروت تفاعلية للأزواج، مصممة لبناء حوار عاطفي حميم، كسر الروتين اليومي، ومستويات تحدي جريئة تناسب كل الأمسيات الخاصة.",
+        specs: "150 كارت مقاوم للسوائل • 3 مستويات لعب • صندوق كروت مخملي فاخر",
+        warranty: "ضمان أصالة المنتج والمحتوى 100%"
+      },
+      {
+        id: 3,
+        name: "هزازة مزدوجة ذكية للمتزوجين (Rose Gold)",
+        category: "أجهزة وهزازات نسائية",
+        price: 320,
+        oldPrice: 480,
+        badge: "خصم خاص",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M38 75C34 65 35 30 45 22C52 16 62 20 60 30C58 40 48 50 52 65C54 73 45 80 38 75Z" fill="#fb7185" stroke="#f43f5e" stroke-width="2"/>
+          <path d="M42 45C55 42 68 50 72 62C74 68 68 74 62 70C58 66 54 52 42 45Z" fill="#f43f5e"/>
+          <circle cx="48" cy="30" r="3" fill="#f59e0b"/>
+        </svg>`,
+        desc: "تحفيز نقطتي G-Spot و Clitoris في وقت واحد. مصنوعة من أنعم درجات السيليكون الطبي الصديق للبشرة.",
+        specs: "10 أوضاع اهتزاز نبضي • شحن مغناطيسي سريع USB-C • ضد الماء 100% معيار IPX7",
+        warranty: "ضمان ملكي 6 شهور واستبدال فوري"
+      },
+      {
+        id: 4,
+        name: "عصا المساج الملكية السحرية (Magic Wand)",
+        category: "أجهزة وهزازات نسائية",
+        price: 380,
+        oldPrice: 520,
+        badge: "فاخر",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="28" r="16" fill="#f43f5e" stroke="#fb7185" stroke-width="2"/>
+          <rect x="45" y="42" width="10" height="46" rx="5" fill="#24132b" stroke="#f59e0b" stroke-width="2"/>
+          <circle cx="50" cy="55" r="2.5" fill="#f59e0b"/>
+          <circle cx="50" cy="65" r="2.5" fill="#f43f5e"/>
+        </svg>`,
+        desc: "رأس سيليكوني مرن ومتحرك يمنح تدليكاً عميقاً لكامل الجسم والمناطق الحساسة بفضل محرك مزدوج فائق القوة.",
+        specs: "بطارية ليثيوم 2200mAh • 8 سرعات و20 نمط اهتزاز • رأس سيليكوني طبي 100%",
+        warranty: "ضمان 6 شهور شامل"
+      },
+      {
+        id: 5,
+        name: "جهاز التحفيز والمساج الذكي للرجال",
+        category: "أجهزة تحفيز رجالية",
+        price: 450,
+        oldPrice: 650,
+        badge: "الأكثر مبيعاً",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="34" y="16" width="32" height="68" rx="16" fill="#181326" stroke="#f43f5e" stroke-width="2.5"/>
+          <circle cx="50" cy="30" r="8" fill="#2f142d" stroke="#f59e0b" stroke-width="2"/>
+          <line x1="42" y1="52" x2="58" y2="52" stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+          <line x1="42" y1="62" x2="58" y2="62" stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        desc: "تقنية الشفط والاهتزاز الديناميكي مع بطانة سيليكون طبي حلزونية لتدليك مريح ولطيف وعالي الإحساس.",
+        specs: "سحب واهتزاز مزدوج • تدفئة ذاتية حتى 38° مئوية • ضد الماء وسهل التنظيف",
+        warranty: "ضمان 6 شهور ضد عيوب الصناعة"
+      },
+      {
+        id: 6,
+        name: "مضخة هيدروليكية ذكية بشاشة رقمية",
+        category: "أجهزة تحفيز رجالية",
+        price: 310,
+        oldPrice: 430,
+        badge: "جديد",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="36" y="24" width="28" height="58" rx="8" fill="#1b172a" stroke="#f59e0b" stroke-width="2"/>
+          <rect x="42" y="12" width="16" height="12" rx="4" fill="#f43f5e"/>
+          <rect x="41" y="32" width="18" height="14" rx="3" fill="#0d0a14" stroke="#4ade80" stroke-width="1.5"/>
+        </svg>`,
+        desc: "مضخة تفريغ هواء إلكترونية دقيقة مزودة بمستشعر ضغط وشاشة LED، لتحسين الدورة الدموية وتقوية الأداء.",
+        specs: "صمام أمان سريع لتفريغ الضغط • بطارية شحن USB • خامات طبية",
+        warranty: "ضمان استبدال 6 شهور"
+      },
+      {
+        id: 7,
+        name: "طقم تنكري ملكي فاخر من الدانتيل والحرير",
+        category: "أطقم وأزياء تنكرية",
+        price: 199,
+        oldPrice: 299,
+        badge: "خصم خاص",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 25L42 45H58L70 25C65 35 55 38 50 38C45 38 35 35 30 25Z" fill="#f43f5e"/>
+          <path d="M36 48L30 82C40 85 60 85 70 82L64 48H36Z" fill="#2d1228" stroke="#fb7185" stroke-width="2"/>
+          <circle cx="50" cy="58" r="3" fill="#f59e0b"/>
+        </svg>`,
+        desc: "طقم ساحر يبرز الجمال والأنوثة، مصنوع من الدانتيل الفرنسي الناعم مع روب شيفون أسود أنيق.",
+        specs: "مقاس مرن ومريح (Free Size) • لا يسبب حساسية • قماش ناعم وخفيف",
+        warranty: "ضمان جودة الخامة 100%"
+      },
+      {
+        id: 8,
+        name: "طقم الأربطة الملكية الناعمة (Lover Bond)",
+        category: "أطقم وأزياء تنكرية",
+        price: 220,
+        oldPrice: 310,
+        badge: "فاخر",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="34" cy="50" r="16" fill="#22142d" stroke="#f43f5e" stroke-width="3"/>
+          <circle cx="66" cy="50" r="16" fill="#22142d" stroke="#f43f5e" stroke-width="3"/>
+          <path d="M48 50H52" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+        </svg>`,
+        desc: "أربطة ناعمة ومريحة للأيدي والأرجل مبطنة بالفرو المخملي لحماية المعصم وإضافة مغامرة وشغف بين الزوجين.",
+        specs: "جلد نباتي فاخر • بطانة مخملية لطيفة • أقفال معدنية متينة ومقاومة للصدأ",
+        warranty: "ضمان المتانة والفخامة"
+      },
+      {
+        id: 9,
+        name: "سدادة معدنية فاخرة مع حجر كريستال ياقوتي",
+        category: "سدادات كريستال وعناية",
+        price: 175,
+        oldPrice: 240,
+        badge: "الأكثر مبيعاً",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 15C42 26 35 44 42 60C45 66 55 66 58 60C65 44 58 26 50 15Z" fill="#e2e8f0" stroke="#f59e0b" stroke-width="2"/>
+          <rect x="46" y="62" width="8" height="12" fill="#cbd5e1"/>
+          <circle cx="50" cy="78" r="10" fill="#f43f5e" stroke="#f59e0b" stroke-width="2.5"/>
+        </svg>`,
+        desc: "مصنوعة من معدن الألومنيوم الطبي المصقول فائق النعومة، مع قاعدة مرصعة بكريستالة ياقوتية تضفي مظهراً جمالياً مبهراً.",
+        specs: "معدن طبي لا يصدأ • سهلة التعقيم بالماء الدافئ • قاعدة أمان عريضة",
+        warranty: "ضمان 6 شهور"
+      },
+      {
+        id: 10,
+        name: "طقم سدادات السيليكون المتدرجة (3 قطع)",
+        category: "سدادات كريستال وعناية",
+        price: 240,
+        oldPrice: 330,
+        badge: "فاخر",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M26 38C22 45 18 55 22 65C24 69 28 69 30 65C34 55 30 45 26 38Z" fill="#fb7185"/>
+          <path d="M50 25C44 35 38 52 44 67C47 72 53 72 56 67C62 52 56 35 50 25Z" fill="#f43f5e"/>
+          <path d="M74 32C69 40 64 54 69 66C71 70 77 70 79 66C84 54 79 40 74 32Z" fill="#e11d48"/>
+        </svg>`,
+        desc: "ثلاثة مقاسات متدرجة (صغير - متوسط - كبير) مصنوعة من السيليكون الطبي المرن لسهولة الاستخدام والراحة القصوى.",
+        specs: "سيليكون طبي 100% خالي من الفثالات • مرونة عالية • ملمس حريري",
+        warranty: "ضمان خامة السيليكون الطبي"
+      },
+      {
+        id: 11,
+        name: "زيت مساج فرنسي فاخر صالح للتذوق (فراولة)",
+        category: "سدادات كريستال وعناية",
+        price: 135,
+        oldPrice: 190,
+        badge: "جديد",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="36" y="32" width="28" height="52" rx="10" fill="#2b1123" stroke="#f43f5e" stroke-width="2"/>
+          <rect x="44" y="16" width="12" height="16" rx="4" fill="#f59e0b"/>
+          <path d="M50 48C46 42 38 46 42 52C46 58 50 62 50 62C50 62 54 58 58 52C62 46 54 42 50 48Z" fill="#fb7185"/>
+        </svg>`,
+        desc: "زيت دافئ للمساج يرطب البشرة بعمق، يمنح إحساساً بالدفء عند التدليك أو النفخ، وبرائحة فواكه جذابة وقابلة للتذوق.",
+        specs: "خالٍ من السكر والمواد الحافظة • تركيبة مائية سهلة الغسيل • سعة 120 مل",
+        warranty: "مكونات طبيعية وآمنة 100%"
+      },
+      {
+        id: 12,
+        name: "شمعة المساج الصويا الذائبة (لافندر وفانيلا)",
+        category: "سدادات كريستال وعناية",
+        price: 145,
+        oldPrice: 200,
+        badge: "خصم خاص",
+        svg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="38" width="40" height="46" rx="8" fill="#1e1529" stroke="#f59e0b" stroke-width="2.5"/>
+          <line x1="50" y1="38" x2="50" y2="28" stroke="#cbd5e1" stroke-width="2"/>
+          <path d="M50 14C45 20 47 26 50 28C53 26 55 20 50 14Z" fill="#f59e0b"/>
+        </svg>`,
+        desc: "تذوب الشمعة لتتحول إلى زيت دافئ وناعم يوضع على الظهر والجسم لتدليك رومانسي ومريح للأعصاب.",
+        specs: "حرارة آمنة تماماً على الجلد • شمع صويا عضوي 100% • وعاء مخصص لسهولة الصب",
+        warranty: "صويا طبيعية عضوية 100%"
+      }
+    ];
+
+    let cart = [];
+
+    // عرض المنتجات
+    function renderCatalog(items) {
+      const container = document.getElementById("catalogGrid");
+      document.getElementById("catalogCounterText").innerText = `${items.length} منتج متوفر`;
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:#9ca3af;">
+            <i class="fa-solid fa-magnifying-glass" style="font-size:32px; color:var(--primary); margin-bottom:12px;"></i>
+            <p>لم نجد منتجات تطابق بحثك حالياً يا ملك 👑</p>
+            <button class="pill-btn active" style="margin-top:12px;" onclick="filterByTab('الكل')">عرض كل المنتجات</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = items.map(p => `
+        <div class="product-box">
+          <span class="badge-label">${p.badge}</span>
+          <div class="product-visual-box" onclick="openProductDetail(${p.id})">
+            ${p.svg}
+          </div>
+          <div class="product-details">
+            <span class="product-category-text">${p.category}</span>
+            <h3 class="product-name-text" onclick="openProductDetail(${p.id})">${p.name}</h3>
+            
+            <div class="rating-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>(4.9)</span>
+            </div>
+
+            <div class="price-row-wrap">
+              <span class="price-now">${p.price} ر.س</span>
+              <span class="price-was">${p.oldPrice} ر.س</span>
+            </div>
+
+            <div class="product-btns-row">
+              <button class="btn-add-to-cart" onclick="addToCartById(${p.id})">
+                <i class="fa-solid fa-cart-plus"></i> أضف للسلة
+              </button>
+              <button class="btn-detail-trigger" title="تفاصيل المنتج" onclick="openProductDetail(${p.id})">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // تصفية الأقسام
+    function filterByTab(tabName) {
+      const pills = document.querySelectorAll(".pill-btn");
+      pills.forEach(btn => btn.classList.remove("active"));
+      event?.currentTarget?.classList.add("active");
+
+      document.getElementById("currentFilterLabel").innerText = tabName === 'الكل' ? 'الكتالوج الملكي الفاخر' : `قسم: ${tabName}`;
+
+      if (tabName === 'الكل') {
+        renderCatalog(catalog);
+      } else {
+        const filtered = catalog.filter(p => p.category === tabName);
+        renderCatalog(filtered);
+      }
+    }
+
+    // البحث المباشر
+    function filterProducts() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      if (!query) {
+        renderCatalog(catalog);
+        return;
+      }
+      const results = catalog.filter(p => 
+        p.name.toLowerCase().includes(query) || 
+        p.category.toLowerCase().includes(query) || 
+        p.desc.toLowerCase().includes(query) ||
+        p.specs.toLowerCase().includes(query)
+      );
+      renderCatalog(results);
+    }
+
+    // إدارة السلة
+    function addToCartById(id) {
+      const product = catalog.find(item => item.id === id);
+      if (!product) return;
+
+      const found = cart.find(item => item.id === id);
+      if (found) {
+        found.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      updateCartView();
+      openCartDrawer();
+    }
+
+    function modifyItemQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartView();
+    }
+
+    function updateCartView() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cartCount").innerText = totalCount;
+
+      const listContainer = document.getElementById("cartItemsList");
+      if (cart.length === 0) {
+        listContainer.innerHTML = `
+          <div class="cart-empty-state">
+            <i class="fa-solid fa-basket-shopping" style="font-size:36px; margin-bottom:12px; color:#4a3952;"></i>
+            <p>سلتك الملكية فارغة حالياً يا ملك 👑</p>
+            <p style="font-size:12px; margin-top:6px; color:#6b7280;">تصفح الكتالوج واختر ما يناسب سهرتك الخاصة.</p>
+          </div>
+        `;
+        document.getElementById("cartSubtotalText").innerText = "0 ر.س";
+        document.getElementById("cartGrandTotalText").innerText = "0 ر.س";
+        return;
+      }
+
+      listContainer.innerHTML = cart.map(item => `
+        <div class="cart-entry">
+          <div class="cart-entry-info">
+            <h4>${item.name}</h4>
+            <span>${item.price} ر.س</span>
+          </div>
+          <div class="cart-entry-actions">
+            <button class="counter-btn" onclick="modifyItemQty(${item.id}, -1)">-</button>
+            <span style="font-size:13px; font-weight:bold; min-width:18px; text-align:center;">${item.qty}</span>
+            <button class="counter-btn" onclick="modifyItemQty(${item.id}, 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const shipping = subtotal >= 500 ? 0 : 35;
+      const grandTotal = subtotal + shipping;
+
+      document.getElementById("cartSubtotalText").innerText = `${subtotal} ر.س`;
+      document.getElementById("cartShippingText").innerText = shipping === 0 ? "مجاني (طلب فوق 500)" : "35 ر.س";
+      document.getElementById("cartGrandTotalText").innerText = `${grandTotal} ر.س`;
+    }
+
+    function openCartDrawer() {
+      document.getElementById("cartDrawerBackdrop").style.display = "flex";
+    }
+
+    function closeCartDrawer() {
+      document.getElementById("cartDrawerBackdrop").style.display = "none";
+    }
+
+    // إتمام الطلب بالواتساب السري
+    function proceedToWhatsApp() {
+      if (cart.length === 0) {
+        alert("سلتك فارغة يا ملك، تفضل باختيار منتج أولاً!");
+        return;
+      }
+
+      const orderRef = "ROYAL-" + Math.floor(100000 + Math.random() * 900000);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const shipping = subtotal >= 500 ? 0 : 35;
+      const grandTotal = subtotal + shipping;
+
+      let msg = `👑 *طلب شراء جديد من متجر الملوك LUXE* 👑\n`;
+      msg += `🏷️ *رقم الطلب:* ${orderRef}\n`;
+      msg += `------------------------------------\n`;
+      cart.forEach((i, idx) => {
+        msg += `${idx + 1}. ${i.name} × ${i.qty} = ${i.price * i.qty} ر.س\n`;
+      });
+      msg += `------------------------------------\n`;
+      msg += `💰 *المجموع:* ${subtotal} ر.س\n`;
+      msg += `🚚 *الشحن السري:* ${shipping === 0 ? "مجاني" : shipping + " ر.س"}\n`;
+      msg += `🔒 *الإجمالي النهائي:* ${grandTotal} ر.س\n`;
+      msg += `📦 *نوع الاستلام:* دفع نقداً عند الاستلام + تغليف مخملي سري 100%\n\n`;
+      msg += `فضلاً أريد تأكيد طلبي وشحنه بسرية تامة.`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/?text=${encoded}`, '_blank');
+    }
+
+    // نافذة تفاصيل المنتج (Modal)
+    function openProductDetail(id) {
+      const p = catalog.find(item => item.id === id);
+      if (!p) return;
+
+      const modal = document.getElementById("detailModal");
+      const content = document.getElementById("detailModalContent");
+
+      content.innerHTML = `
+        <i class="fa-solid fa-xmark close-modal-x" onclick="closeProductDetail()"></i>
+        <div style="text-align:center; padding:15px; background:radial-gradient(circle, #2d1022, #14111f); border-radius:18px; margin-bottom:15px;">
+          <div style="width:110px; height:110px; margin:0 auto;">${p.svg}</div>
+        </div>
+        <span style="background:rgba(244,63,94,0.15); color:var(--accent-rose); font-size:11px; font-weight:800; padding:4px 12px; border-radius:12px;">${p.category} • ${p.badge}</span>
+        <h2 style="font-size:18px; font-weight:900; margin:10px 0 6px; color:#fff;">${p.name}</h2>
+        
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;">
+          <span style="font-size:22px; font-weight:900; color:var(--accent-rose);">${p.price} ر.س</span>
+          <span style="font-size:13px; color:#6b7280; text-decoration:line-through;">${p.oldPrice} ر.س</span>
+        </div>
+
+        <p style="font-size:13px; color:#d1d5db; line-height:1.6; margin-bottom:14px;">${p.desc}</p>
+        
+        <div style="background:#1c1729; border:1px solid #332640; padding:12px; border-radius:14px; margin-bottom:12px;">
+          <h4 style="font-size:12px; font-weight:800; color:var(--gold-royal); margin-bottom:4px;"><i class="fa-solid fa-circle-check"></i> المواصفات الفنية المعتمدة:</h4>
+          <p style="font-size:12px; color:#cbd5e1;">${p.specs}</p>
+        </div>
+
+        <div style="background:#171d2b; border:1px solid #23364f; padding:10px 12px; border-radius:12px; margin-bottom:18px;">
+          <span style="font-size:11px; color:#60a5fa; font-weight:700;"><i class="fa-solid fa-shield-halved"></i> ${p.warranty}</span>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn-hero-sparkle" style="flex:1; justify-content:center;" onclick="addToCartById(${p.id}); closeProductDetail();">
+            <i class="fa-solid fa-cart-plus"></i> إضافة إلى السلة
+          </button>
+          <button class="btn-hero-alt" onclick="askRoroQuestion('أخبريني أكثر عن ${p.name}'); closeProductDetail();">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> اسأل رورو
+          </button>
+        </div>
+      `;
+
+      modal.style.display = "flex";
+    }
+
+    function closeProductDetail() {
+      document.getElementById("detailModal").style.display = "none";
+    }
+
+    // الذكاء الاصطناعي "رورو" (Roro AI)
+    function toggleRoro(show) {
+      document.getElementById("roroChatOverlay").style.display = show ? "flex" : "none";
+      if (show) {
+        document.getElementById("roroChatInput").focus();
+      }
+    }
+
+    function askRoroQuestion(questionText) {
+      toggleRoro(true);
+      document.getElementById("roroChatInput").value = questionText;
+      sendRoroMessage();
+    }
+
+    function sendRoroMessage() {
+      const input = document.getElementById("roroChatInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBox = document.getElementById("roroMessagesBox");
+
+      chatBox.innerHTML += `<div class="chat-bubble user">${text}</div>`;
+      i
