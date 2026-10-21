@@ -1,0 +1,1481 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>متجر العاب زوجيه - متجر الملوك LUXE</title>
+  <meta name="description" content="متجر بريتورا BRITORA - أفخم متجر ألعاب زوجية ومنتجات رومانسية حصرية في السعودية والخليج. سيليكون طبي معتمد 100%، شحن سريع 24-48 ساعة، تغليف مخملي سري 100% والدفع عند الاستلام.">
+  <meta name="keywords" content="متجر العاب زوجيه, بريتورا, BRITORA, متجر الملوك, ألعاب زوجية, بوكسات رومانسية, سيليكون طبي, شحن سري, الدفع عند الاستلام">
+
+  <!-- الخط العربي الفاخر وأيقونات Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      /* لوحة ألوان بريتورا الملكية المخملية من الشعار الأصلي */
+      --bg-dark: #040108;
+      --bg-surface: #0d0417;
+      --bg-card: #150724;
+      --bg-card-glass: rgba(23, 8, 38, 0.75);
+      
+      --purple-ribbon: #a855f7;
+      --purple-glow: #c084fc;
+      --purple-deep: #581c87;
+      --purple-accent: #e879f9;
+      
+      --silver-chrome: #f3e8ff;
+      --silver-dim: #d8b4fe;
+      --gold-royal: #fbbf24;
+      
+      --border-royal: rgba(168, 85, 247, 0.3);
+      --border-glow: rgba(192, 132, 252, 0.6);
+      
+      --text-white: #ffffff;
+      --text-muted: #c4b5fd;
+      --text-sub: #9482b3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+      padding-bottom: 90px;
+    }
+
+    /* الشريط العلوي الثابت مع الشعار الملكي */
+    .britora-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 4, 23, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-royal);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-icons-side {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-icon-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #17072a;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s;
+    }
+
+    .nav-icon-circle:hover {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+    }
+
+    .counter-bubble {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-surface);
+    }
+
+    /* شعار بريتورا النصي والأيقوني */
+    .brand-brandmark {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .emblem-mini-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3b0764 0%, #150426 100%);
+      border: 1.5px solid var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple-glow);
+      font-size: 20px;
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.5);
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+
+    .brand-titles h1 {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      background: linear-gradient(90deg, #fff 20%, var(--purple-glow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .brand-titles span {
+      font-size: 9px;
+      color: var(--purple-glow);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* شريط البحث السريع المنسدل */
+    .search-collapsible {
+      padding: 10px 14px 4px;
+      display: none;
+    }
+
+    .search-collapsible input {
+      width: 100%;
+      background: #140525;
+      border: 1px solid var(--border-royal);
+      border-radius: 25px;
+      padding: 10px 18px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* البنر الملكي الرئيسي الفاخر المستوحى من صورة بريتورا الترويجية */
+    .britora-hero-poster {
+      margin: 12px 14px;
+      background: radial-gradient(circle at 50% 30%, #350854 0%, #160424 60%, #06010a 100%);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 24px 16px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.15);
+    }
+
+    .britora-hero-poster::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-crown-emblem {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #581c87 0%, #1c0530 100%);
+      border: 2px solid var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 32px;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+    }
+
+    .hero-big-title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #ffffff 30%, #d8b4fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+
+    .hero-slogan-ar {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--purple-accent);
+      margin-bottom: 4px;
+    }
+
+    .hero-slogan-en {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* شريط المزايا الأربعة الفاخرة المعتمدة في صورة بريتورا */
+    .britora-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      border-top: 1px solid rgba(168, 85, 247, 0.25);
+      padding-top: 16px;
+    }
+
+    .pillar-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+    }
+
+    .pillar-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #200938;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .pillar-text-top {
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .pillar-text-sub {
+      font-size: 8px;
+      color: var(--text-sub);
+    }
+
+    /* بنرات القصص / التصنيفات الأفقية المتجاوبة */
+    .categories-ribbon {
+      padding: 10px 14px 4px;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      gap: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .categories-ribbon::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-story-pill {
+      min-width: 125px;
+      height: 98px;
+      border-radius: 18px;
+      background: radial-gradient(circle at center, #23083b 0%, #10031d 100%);
+      border: 1px solid var(--border-royal);
+      padding: 10px 8px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .cat-story-pill.active, .cat-story-pill:hover {
+      border-color: var(--purple-glow);
+      background: radial-gradient(circle at center, #3c0c66 0%, #160429 100%);
+      box-shadow: 0 4px 18px rgba(168, 85, 247, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .cat-story-pill i {
+      font-size: 22px;
+      color: var(--purple-glow);
+      margin-bottom: 6px;
+    }
+
+    .cat-story-pill h4 {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .cat-story-pill span {
+      font-size: 9px;
+      color: var(--purple-accent);
+      margin-top: 2px;
+    }
+
+    /* ترويسة قسم المنتجات الأكثر طلباً مع زر عرض الكل */
+    .section-headline-bar {
+      padding: 18px 14px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sec-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .sec-badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--purple-glow);
+      box-shadow: 0 0 10px var(--purple-glow);
+    }
+
+    .btn-view-everything {
+      background: #19062d;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    /* شبكة كروت المنتجات بتصميم بريتورا الملكي */
+    .products-grid-catalog {
+      padding: 0 14px 25px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .product-luxe-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-royal);
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+    }
+
+    .product-luxe-card:hover {
+      border-color: var(--purple-glow);
+    }
+
+    .card-ribbon-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 9px;
+      border-radius: 12px;
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .card-fav-heart {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(13, 4, 23, 0.8);
+      border: 1px solid var(--border-royal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f472b6;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 3;
+      backdrop-filter: blur(6px);
+      transition: all 0.2s;
+    }
+
+    .card-fav-heart.active {
+      background: #fff;
+      color: #e11d48;
+    }
+
+    /* صورة/رسمة المنتج الملكية المدمجة */
+    .prod-visual-stage {
+      height: 155px;
+      background: radial-gradient(circle at center, #2e0b4d 0%, #0e031a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      position: relative;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+      cursor: pointer;
+    }
+
+    .prod-visual-stage svg {
+      width: 100%;
+      height: 100%;
+      max-width: 110px;
+      max-height: 110px;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+      transition: transform 0.3s;
+    }
+
+    .product-luxe-card:hover .prod-visual-stage svg {
+      transform: scale(1.08);
+    }
+
+    /* بيانات الكرت السفلية */
+    .prod-body-meta {
+      background: linear-gradient(180deg, #170729 0%, #0e031a 100%);
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .prod-title-heading {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.35;
+      min-height: 34px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .prod-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 9px;
+      color: var(--gold-royal);
+      margin-bottom: 6px;
+    }
+
+    .prod-rating-row span {
+      font-size: 10px;
+      font-weight: bold;
+      color: #fff;
+      margin-left: 4px;
+    }
+
+    .prod-price-area {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .price-value-sar {
+      font-size: 15.5px;
+      font-weight: 900;
+      color: var(--purple-accent);
+    }
+
+    .price-old-sar {
+      font-size: 10px;
+      color: var(--text-sub);
+      text-decoration: line-through;
+    }
+
+    .btn-buy-instant {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+      transition: transform 0.15s;
+    }
+
+    .btn-buy-instant:active {
+      transform: scale(0.96);
+    }
+
+    /* قسم الأسئلة الشائعة الأنيق (مطابق للقطة الشاشة) */
+    .faq-wrapper-section {
+      margin: 10px 14px 25px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-royal);
+      border-radius: 24px;
+      padding: 20px 14px;
+    }
+
+    .faq-badge-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .faq-icon-shield {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 8px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .faq-badge-header h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .faq-badge-header p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .faq-list-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-accordion-item {
+      background: #10041d;
+      border: 1px solid var(--border-royal);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: right;
+      cursor: pointer;
+    }
+
+    .faq-question-btn i {
+      color: var(--purple-glow);
+      font-size: 14px;
+      transition: transform 0.25s;
+    }
+
+    .faq-answer-pane {
+      display: none;
+      padding: 0 14px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(168, 85, 247, 0.1);
+    }
+
+    /* زر الذكاء الاصطناعي "رورو AI" العائم */
+    .roro-fab-button {
+      position: fixed;
+      bottom: 85px;
+      left: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), #ec4899);
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      box-shadow: 0 8px 25px rgba(192, 132, 252, 0.55);
+      cursor: pointer;
+      z-index: 150;
+      animation: roroGlowPulse 2.4s infinite;
+    }
+
+    .roro-online-dot {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2px solid var(--bg-dark);
+    }
+
+    .roro-bubble-tag {
+      position: absolute;
+      right: 64px;
+      background: rgba(13, 4, 23, 0.95);
+      border: 1px solid var(--border-glow);
+      color: var(--purple-accent);
+      padding: 5px 12px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes roroGlowPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 132, 252, 0.7); }
+      70% { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(192, 132, 252, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 132, 252, 0); }
+    }
+
+    /* زر الصعود للأعلى الدائري */
+    .scroll-up-fab {
+      position: fixed;
+      bottom: 85px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1a062f;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 140;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    /* شريط التنقل السفلي الفاخر (5 أزرار مع الزر الأوسط المرتفع "تسوق") */
+    .bottom-app-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: rgba(13, 4, 23, 0.98);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border-royal);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 200;
+      padding: 0 8px;
+    }
+
+    .dock-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      flex: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .dock-tab i {
+      font-size: 18px;
+    }
+
+    .dock-tab.active {
+      color: var(--purple-glow);
+    }
+
+    /* الزر الأوسط المرتفع "تسوق" */
+    .dock-center-luxe {
+      position: relative;
+      top: -16px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), #ec4899);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(168, 85, 247, 0.55);
+      border: 3px solid var(--bg-dark);
+      cursor: pointer;
+    }
+
+    .dock-center-luxe:active {
+      transform: scale(0.94);
+    }
+
+    .dock-center-luxe i {
+      font-size: 20px;
+    }
+
+    .dock-center-luxe span {
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    /* نافذة الذكاء الاصطناعي "رورو AI" التفاعلية */
+    .roro-modal-drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .roro-drawer-box {
+      width: 100%;
+      max-width: 480px;
+      background: #11041f;
+      border-radius: 26px 26px 0 0;
+      border: 1px solid var(--border-glow);
+      height: 82vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+    }
+
+    .roro-bar-top {
+      background: #1c0733;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-royal);
+    }
+
+    .roro-meta-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .roro-avatar-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      border: 1.5px solid #fff;
+    }
+
+    .chat-scroll-stream {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #090212;
+    }
+
+    .chat-speech-bubble {
+      max-width: 85%;
+      padding: 11px 15px;
+      border-radius: 18px;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .chat-speech-bubble.bot {
+      background: #1a062f;
+      color: #f5f3ff;
+      border: 1px solid var(--border-royal);
+      align-self: flex-start;
+      border-bottom-right-radius: 4px;
+      white-space: pre-line;
+    }
+
+    .chat-speech-bubble.user {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      font-weight: 700;
+      align-self: flex-end;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chips-fast-options {
+      padding: 8px 12px;
+      background: #140525;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-top: 1px solid var(--border-royal);
+    }
+
+    .chip-action-btn {
+      background: #23083d;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-accent);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chat-send-dock {
+      padding: 10px 14px;
+      background: #1a062f;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid var(--border-royal);
+    }
+
+    .chat-send-dock input {
+      flex: 1;
+      background: #0d0217;
+      border: 1px solid var(--border-royal);
+      border-radius: 20px;
+      padding: 9px 15px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-send-dock button {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التطبيق العلوي الملكي -->
+  <header class="britora-nav">
+    <div class="nav-icons-side">
+      <div class="nav-icon-circle" onclick="toggleFaqSection()" title="الأسئلة">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <div class="nav-icon-circle" onclick="triggerCartOrder()" title="السلة">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <div class="counter-bubble" id="cartBadgeCount">0</div>
+      </div>
+      <div class="nav-icon-circle" onclick="filterByFavorites()" title="المفضلة">
+        <i class="fa-regular fa-heart"></i>
+        <div class="counter-bubble" id="favBadgeCount">0</div>
+      </div>
+      <div class="nav-icon-circle" onclick="toggleQuickSearch()" title="البحث">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+
+    <!-- شعار بريتورا الملكي -->
+    <a href="#" class="brand-brandmark">
+      <div class="brand-titles">
+        <h1>بريتورا • BRITORA</h1>
+        <span>ROYAL LUXURY BOUTIQUE</span>
+      </div>
+      <div class="emblem-mini-logo">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+    </a>
+  </header>
+
+  <!-- حقل بحث قابل للفتح -->
+  <div class="search-collapsible" id="searchWrap">
+    <input type="text" id="searchInput" placeholder="ابحث في متجر بريتورا (بوكسات، حلقات، أجهزة تحفيز...)" onkeyup="runSearchFilter()">
+  </div>
+
+  <!-- البنر الترويجي الملكي الفاخر (مستوحى من صورة بريتورا الأصلية) -->
+  <section class="britora-hero-poster">
+    <div class="hero-crown-emblem">
+      <i class="fa-solid fa-crown"></i>
+    </div>
+    <div class="hero-big-title">BRITORA</div>
+    <div class="hero-slogan-ar">لأن لحظاتك تستحق الأفضل</div>
+    <div class="hero-slogan-en">BECAUSE YOUR MOMENTS DESERVE THE BEST</div>
+
+    <!-- ركائز بريتورا الأربعة المعتمدة -->
+    <div class="britora-pillars">
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="pillar-text-top">جودة عالية</div>
+        <div class="pillar-text-sub">PREMIUM</div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-gift"></i></div>
+        <div class="pillar-text-top">تغليف فاخر</div>
+        <div class="pillar-text-sub">LUXURY</div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="pillar-text-top">توصيل سريع</div>
+        <div class="pillar-text-sub">FAST</div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-heart"></i></div>
+        <div class="pillar-text-top">تجربة استثنائية</div>
+        <div class="pillar-text-sub">UNIQUE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- بنرات التصنيفات الأفقية (Categories Stories Carousel) -->
+  <section class="categories-ribbon">
+    <div class="cat-story-pill active" onclick="applyCategoryFilter('الكل', this)">
+      <i class="fa-solid fa-crown"></i>
+      <h4>كل المنتجات</h4>
+      <span>المجموعة الملكية</span>
+    </div>
+
+    <div class="cat-story-pill" onclick="applyCategoryFilter('ألعاب وبوكسات', this)">
+      <i class="fa-solid fa-dice"></i>
+      <h4>ألعاب وبوكسات</h4>
+      <span>أمسيات رومانسية</span>
+    </div>
+
+    <div class="cat-story-pill" onclick="applyCategoryFilter('أدوات واسترخاء', this)">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <h4>أدوات واسترخاء</h4>
+      <span>سيليكون طبي 100%</span>
+    </div>
+
+    <div class="cat-story-pill" onclick="applyCategoryFilter('أجهزة تحفيز', this)">
+      <i class="fa-solid fa-bolt"></i>
+      <h4>أجهزة تحفيز</h4>
+      <span>قوة وأداء فائق</span>
+    </div>
+
+    <div class="cat-story-pill" onclick="applyCategoryFilter('عناية وزيوت', this)">
+      <i class="fa-solid fa-droplet"></i>
+      <h4>عناية وزيوت</h4>
+      <span>مساج واسترخاء</span>
+    </div>
+  </section>
+
+  <!-- رأس قسم المنتجات الأكثر طلباً -->
+  <div class="section-headline-bar">
+    <div class="sec-badge-title">
+      <div class="sec-badge-dot"></div>
+      <span>المنتجات الأكثر طلباً</span>
+    </div>
+    <div class="btn-view-everything" onclick="applyCategoryFilter('الكل', null)">
+      <span>عرض الكل</span>
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+  </div>
+
+  <!-- شبكة كروت المنتجات الملكية في بريتورا -->
+  <main class="products-grid-catalog" id="productsCatalogGrid">
+    <!-- توليد المنتجات بالجافاسكريبت بالأسفل -->
+  </main>
+
+  <!-- قسم الأسئلة الشائعة الأنيق (مطابق للصورة تماماً) -->
+  <section class="faq-wrapper-section" id="faqSection">
+    <div class="faq-badge-header">
+      <div class="faq-icon-shield"><i class="fa-solid fa-shield"></i></div>
+      <h3>الأسئلة الشائعة</h3>
+      <p>إجابات واضحة عن طريقة الطلب، مدة التوصيل، الدفع عند الاستلام، والتغليف السري في بريتورا.</p>
+    </div>
+
+    <div class="faq-list-items">
+      <div class="faq-accordion-item">
+        <button class="faq-question-btn" onclick="toggleAccordion(this)">
+          <span>1. هل الطلب يصل بسرية تامة وتغليف محكم؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer-pane">
+          نعم 100%، نضمن التغليف المخملي الأسود السري داخل طرد محكم وبدون أي علامة أو مسمى يشير إلى نوعية المحتوى إطلاقاً.
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-question-btn" onclick="toggleAccordion(this)">
+          <span>2. هل يعرف المندوب محتوى الطلب؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer-pane">
+          نهائياً! بيانات البوليصة تظهر كطرد شخصي مغلق ولا يملك مندوب التوصيل أي صلاحية لمعرفة تفاصيل المشتريات.
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-question-btn" onclick="toggleAccordion(this)">
+          <span>3. كم تستغرق مدة الشحن لمدن المملكة؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer-pane">
+          التوصيل فائق السرعة ويستغرق من 24 إلى 48 ساعة فقط في الرياض وجدة والدمام وكافة مدن ومحافظات المملكة.
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-question-btn" onclick="toggleAccordion(this)">
+          <span>4. هل متاح خيار الدفع عند الاستلام؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer-pane">
+          نعم، يمكنك الدفع للمندوب مباشرة نقداً أو عبر بطاقة مدى والشبكة عند استلام طردك.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- زر الذكاء الاصطناعي "رورو AI" العائم مع نبض بريتورا الفاخر -->
+  <div class="roro-fab-button" onclick="openRoroChatDrawer(true)">
+    <div class="roro-online-dot"></div>
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <div class="roro-bubble-tag">اسأل رورو AI 👑</div>
+  </div>
+
+  <!-- زر الصعود للأعلى الدائري -->
+  <div class="scroll-up-fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- شريط التنقل السفلي الفاخر (5 أزرار مع الزر الأوسط المرتفع "تسوق") -->
+  <nav class="bottom-app-dock">
+    <div class="dock-tab active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i class="fa-solid fa-house"></i>
+      <span>الرئيسية</span>
+    </div>
+    <div class="dock-tab" onclick="toggleQuickSearch()">
+      <i class="fa-solid fa-shapes"></i>
+      <span>الأقسام</span>
+    </div>
+
+    <!-- الزر الأوسط المرتفع "تسوق" -->
+    <div class="dock-center-luxe" onclick="window.scrollTo({top: 400, behavior: 'smooth'})">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>تسوق</span>
+    </div>
+
+    <div class="dock-tab" onclick="filterByFavorites()">
+      <i class="fa-solid fa-heart"></i>
+      <span>المفضلة</span>
+    </div>
+    <div class="dock-tab" onclick="triggerCartOrder()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>السلة</span>
+    </div>
+  </nav>
+
+  <!-- نافذة محادثة المساعد الذكي "رورو AI" -->
+  <div class="roro-modal-drawer" id="roroModal">
+    <div class="roro-drawer-box">
+      <div class="roro-bar-top">
+        <div class="roro-meta-profile">
+          <div class="roro-avatar-badge">👑</div>
+          <div>
+            <h4 style="font-size:14px; font-weight:800; color:#fff;">رورو • خبيرة بريتورا AI</h4>
+            <span style="font-size:11px; color:#4ade80;">● متصلة للإجابة عن الأسعار والمواصفات</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark" style="font-size:20px; color:#c4b5fd; cursor:pointer;" onclick="openRoroChatDrawer(false)"></i>
+      </div>
+
+      <div class="chat-scroll-stream" id="chatStream">
+        <div class="chat-speech-bubble bot">
+مرحباً بك في بوتيك بريتورا BRITORA الفاخر 👑
+أنا «رورو» مساعدتك وخبيرة المنتجات.
+تفضل بسؤالي عن أي منتج، أسعار البوكسات، مواصفات السيليكون الطبي، أو تفاصيل التغليف السري والدفع عند الاستلام!
+        </div>
+      </div>
+
+      <!-- مقترحات الأسئلة السريعة -->
+      <div class="chips-fast-options">
+        <span class="chip-action-btn" onclick="quickAskRoro('كم سعر بوكس بريتورا الملكي؟')">🎁 بوكس بريتورا</span>
+        <span class="chip-action-btn" onclick="quickAskRoro('مواصفات جهاز التحفيز الرجالي')">⚡ جهاز التحفيز</span>
+        <span class="chip-action-btn" onclick="quickAskRoro('كيف تضمنون التغليف السري؟')">🔒 التغليف السري</span>
+        <span class="chip-action-btn" onclick="quickAskRoro('هل يوجد دفع عند الاستلام؟')">💵 الدفع عند الاستلام</span>
+      </div>
+
+      <div class="chat-send-dock">
+        <input type="text" id="roroChatInput" placeholder="اكتب سؤالك لـ رورو هنا..." onkeypress="if(event.key==='Enter') executeRoroSend()">
+        <button onclick="executeRoroSend()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // كتالوج منتجات بريتورا الملكية بالأسعار والمواصفات
+    const britoraProducts = [
+      {
+        id: 1,
+        title: "بوكس بريتورا الملكي المتكامل (VIP Edition)",
+        category: "ألعاب وبوكسات",
+        price: 950,
+        oldPrice: 1300,
+        badge: "الأكثر طلباً ★",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="22" y="32" width="56" height="50" rx="8" fill="#24073d" stroke="#c084fc" stroke-width="2.5"/>
+          <rect x="16" y="22" width="68" height="15" rx="5" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+          <path d="M50 22V82" stroke="#e879f9" stroke-width="3"/>
+          <circle cx="50" cy="22" r="5" fill="#fbcfe8"/>
+        </svg>`,
+        desc: "أفخم بوكس للأزواج يضم بطاقات أسئلة رومانسية جريئة، زيوت تدليك عضوية معطرة، شمع مساج دافئ، وإكسسوارات فاخرة."
+      },
+      {
+        id: 2,
+        title: "جهاز التحفيز الذكي المزدوج (Medical Silicone)",
+        category: "أدوات واسترخاء",
+        price: 890,
+        oldPrice: 1150,
+        badge: "الأعلى تقييماً",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <path d="M38 78C32 68 32 40 46 25C54 18 64 22 66 32C68 44 58 60 52 78H38Z" fill="#3b0764" stroke="#c084fc" stroke-width="2.5"/>
+          <circle cx="55" cy="30" r="4" fill="#f472b6"/>
+          <circle cx="45" cy="72" r="3" fill="#a855f7"/>
+        </svg>`,
+        desc: "سيليكون طبي ناعم 100%، محرك مزدوج هادئ جداً مع 12 نمطاً مختلفاً، مقاوم للماء بمعيار IPX7 وشحن USB سريع."
+      },
+      {
+        id: 3,
+        title: "حلقات بريتورا المرنة لتعزيز الصلابة والأداء",
+        category: "أجهزة تحفيز",
+        price: 650,
+        oldPrice: 850,
+        badge: "الأكثر طلباً ★",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <circle cx="36" cy="50" r="22" stroke="#c084fc" stroke-width="4.5" fill="none"/>
+          <circle cx="64" cy="50" r="22" stroke="#a855f7" stroke-width="4.5" fill="none"/>
+          <circle cx="50" cy="50" r="11" fill="#ec4899"/>
+        </svg>`,
+        desc: "طقم ثلاثي مصنع من سيليكون طبي فائق المرونة لدعم ثبات الانتصاب وإطالة مدة اللحظات الحميمية بأمان تام."
+      },
+      {
+        id: 4,
+        title: "جهاز مساج ونبضات استرخائي للرجال (VIP)",
+        category: "أجهزة تحفيز",
+        price: 1100,
+        oldPrice: 1450,
+        badge: "حصري بريتورا 👑",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="30" y="20" width="40" height="65" rx="18" fill="#24073d" stroke="#c084fc" stroke-width="2.5"/>
+          <rect x="36" y="32" width="28" height="42" rx="12" fill="#581c87"/>
+          <circle cx="50" cy="80" r="4" fill="#a855f7"/>
+        </svg>`,
+        desc: "تقنية تفريغ ونبضات هوائية هيدروليكية ذكية لتجديد النشاط والتحفيز مع بطارية ليثيوم طويلة الأمد."
+      },
+      {
+        id: 5,
+        title: "طقم الزيوت والشموع العطرية للمساج الرومانسي",
+        category: "عناية وزيوت",
+        price: 780,
+        oldPrice: 980,
+        badge: "طبيعي 100%",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <path d="M40 32H60V75C60 81 55 86 50 86C45 86 40 81 40 75V32Z" fill="#3b0764" stroke="#c084fc" stroke-width="2"/>
+          <path d="M46 22H54V32H46V22Z" fill="#a855f7"/>
+          <circle cx="50" cy="55" r="7" fill="#f472b6"/>
+        </svg>`,
+        desc: "زيوت مساج غنية بزبدة الشيا وخلاصة اللافندر والفانيليا تذوب بلطف وتترك البشرة ناعمة ودافئة."
+      },
+      {
+        id: 6,
+        title: "لعبة كروت التحدي الزوجي - ليلة بريتورا",
+        category: "ألعاب وبوكسات",
+        price: 680,
+        oldPrice: 850,
+        badge: "جديد 💖",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="25" y="25" width="34" height="48" rx="6" fill="#4c1d95" stroke="#c084fc" stroke-width="2"/>
+          <rect x="42" y="32" width="34" height="48" rx="6" fill="#1e0538" stroke="#a855f7" stroke-width="2"/>
+          <circle cx="59" cy="56" r="6" fill="#ec4899"/>
+        </svg>`,
+        desc: "أكثر من 120 كرتاً تفاعلياً مصمماً لتعزيز لغة المشاعر وتجديد الشغف بأجواء مليئة بالمرح والإثارة."
+      }
+    ];
+
+    let cartCount = 0;
+    let favorites = [];
+
+    // عرض المنتجات
+    function renderBritoraProducts(list) {
+      const grid = document.getElementById("productsCatalogGrid");
+      if (list.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:#c4b5fd;">لا توجد منتجات تطابق البحث حالياً.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(item => {
+        const isFav = favorites.includes(item.id);
+        return `
+          <div class="product-luxe-card">
+            <span class="card-ribbon-tag">${item.badge}</span>
+            <div class="card-fav-heart ${isFav ? 'active' : ''}" onclick="toggleFavItem(${item.id}, this)">
+              <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart"></i>
+            </div>
+            
+            <div class="prod-visual-stage" onclick="askRoroDirectly('${item.title}')">
+              ${item.svg}
+            </div>
+
+            <div class="prod-body-meta">
+              <div class="prod-title-heading" onclick="askRoroDirectly('${item.title}')">${item.title}</div>
+              
+              <div class="prod-rating-row">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>${item.rating}</span>
+              </div>
+
+              <div class="prod-price-area">
+                <span class="price-value-sar">${item.price} ر.س</span>
+                <span class="price-old-sar">${item.oldPrice} ر.س</span>
+              </div>
+
+              <button class="btn-buy-instant" onclick="addToBritoraCart('${item.title}', ${item.price})">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>أضف للسلة</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // تصفية الأقسام
+    function applyCategoryFilter(cat, pillElem) {
+      if (pillElem) {
+        document.querySelectorAll('.cat-story-pill').forEach(el => el.classList.remove('active'));
+        pillElem.classList.add('active');
+      }
+
+      if (cat === 'الكل') {
+        renderBritoraProducts(britoraProducts);
+      } else {
+        const filtered = britoraProducts.filter(p => p.category === cat);
+        renderBritoraProducts(filtered);
+      }
+    }
+
+    // البحث
+    function runSearchFilter() {
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const matched = britoraProducts.filter(p => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      renderBritoraProducts(matched);
+    }
+
+    function toggleQuickSearch() {
+      const s = document.getElementById("searchWrap");
+      s.style.display = s.style.display === "block" ? "none" : "block";
+      if (s.style.display === "block") {
+        document.getElementById("searchInput").focus();
+      }
+    }
+
+    // إضافة إلى السلة وإتمام الطلب عبر الواتساب
+    function addToBritoraCart(name, price) {
+      cartCount++;
+      document.getElementById("cartBadgeCount").innerText = cartCount;
+      alert(`تمت إضافة "${name}" إلى سلة بريتورا بنجاح! 🛍️\nالمجموع الحالي: ${cartCount} منتجات.`);
+    }
+
+    function triggerCartOrder() {
+      if (cartCount === 0) {
+        alert("سلتك الملكية فارغة حالياً 👑\nاختر منتجاً وسنرسله لك بتغليف سري مخملي مع الدفع عند الاستلام.");
+      } else {
+        const orderId = "BRITORA-" + Math.floor(100000 + Math.random() * 900000);
+        const confirmOrder = confirm(`سلتك تحتوي على ${cartCount} منتجات.\nهل ترغب في تأكيد الطلب السري عبر الواتساب برقم الطلب: ${orderId}؟`);
+        if (confirmOrder) {
+          const msg = encodeURIComponent(`👑 طلب شراء سري من بوتيك بريتورا BRITORA\nرقم الطلب: ${orderId}\nعدد المنتجات: ${cartCount}\nالمطلوب: شحن سري 100% والدفع عند الاستلام`);
+          window.open(`https://wa.me/?text=${msg}`, '_blank');
+        }
+      }
+    }
+
+    // المفضلة
+    function toggleFavItem(id, btn) {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+        btn.classList.remove('active');
+        btn.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+      } else {
+        favorites.push(id);
+        btn.classList.add('active');
+        btn.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+      }
+      document.getElementById("favBadgeCount").innerText = favorites.length;
+    }
+
+    function filterByFavorites() {
+      if (favorites.length === 0) {
+        alert("قائمة المفضلة فارغة حالياً. اضغط على أيقونة القلب على أي منتج لحفظه!");
+      } else {
+        const favItems = britoraProducts.filter(p => favorites.includes(p.id));
+        renderBritoraProducts(favItems);
+      }
+    }
+
+    // الأسئلة الشائعة
+    function toggleFaqSection() {
+      const faq = document.getElementById("faqSection");
+      faq.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleAccordion(btn) {
+      const pane = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      if (pane.style.display === "block") {
+        pane.style.display = "none";
+        icon.className = "fa-solid fa-plus";
+      } else {
+        pane.style.display = "block";
+        icon.className = "fa-solid fa-minus";
+      }
+    }
+
+    // نافذة الذكاء الاصطناعي "رورو AI"
+    function openRoroChatDrawer(show) {
+      document.getElementById("roroModal").style.display = show ? "flex" : "none";
+      if (show) {
+        document.getElementById("roroChatInput").focus();
+      }
+    }
+
+    function askRoroDirectly(prodTitle) {
+      openRoroChatDrawer(true);
+      quickAskRoro(`أخبريني بمواصفات وسعر: ${prodTitle}`);
+    }
+
+    function quickAskRoro(txt) {
+      document.getElementById("roroChatInput").value = txt;
+      executeRoroSend();
+    }
+
+    function executeRoroSend() {
+      const input = document.getElementById("roroChatInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const stream = document.getElementById("chatStream");
+      stream.innerHTML += `<div class="chat-speech-bubble user">${text}</div>`;
+      input.value = "";
+      stream.scrollTop = stream.scrollHeight;
+
+      setTimeout(() => {
+        const reply = computeRoroBrain(text.toLowerCase());
+        stream.innerHTML += `<div class="chat-speech-bubble bot">${reply}</div>`;
+        stream.scrollTop = stream.scrollHeight;
+      }, 400);
+    }
+
+    function computeRoroBrain(q) {
+      if (q.includes("تغليف") || q.includes("سري") || q.includes("شحن") || q.includes("توصيل") || q.includes("خصوصية")) {
+        return `🔒 **ضمان الخصوصية في بوتيك بريتورا:**
+• التغليف مخملي أسود وسادة 100% بدون أي عبارة أو مسمى يشير إلى المحتوى إطلاقاً.
+• التوصيل سريع جداً خلال 24 إلى 48 ساعة لكافة مناطق ومدن المملكة.
+• متوفر الدفع عند الاستلام نقداً أو بالشبكة لراحتك التامة!`;
+      }
+
+      if (q.includes("بوكس") || q.includes("ملكي")) {
+        return `🎁 **بوكس بريتورا الملكي (VIP Edition):**
+• السعر: 950 ر.س (بدلاً من 1300 ر.س).
+• يحتوي على بطاقات رومانسية تفاعلية، زيوت مساج معطرة، شموع تدليك فاخرة، وإكسسوارات حصرية لليلة استثنائية.`;
+      }
+
+      if (q.includes("جهاز") || q.includes("تحفيز") || q.includes("سيليكون")) {
+        return `⚡ **أجهزة التحفيز والاسترخاء الذكية:**
+• مصنوعة من سيليكون طبي 100% معتمد ومضاد للحساسية.
+• مقاومة للماء بالكامل IPX7 وتعمل بمحركات هادئة جداً وشحن سريع.`;
+      }
+
+      if (q.includes("حلقات") || q.includes("صلابة")) {
+        return `💍 **طقم حلقات بريتورا المرنة:**
+• السعر: 650 ر.س لطقم الـ 3 قطع.
+• مصممة لتعزيز الصلابة وإطالة اللحظات الحميمية بأمان وراحة تامة.`;
+      }
+
+      if (q.includes("دفع") || q.includes("استلام")) {
+        return `💵 **خيارات الدفع:**
+نوفر ميزة الدفع عند الاستلام؛ تطلب ما يناسبك ويصلك الطرد مغلفاً بسرية تامة وتدفع للمندوب عند الاستلام.`;
+      }
+
+      return `أنا في خدمتك دائماً يا فندم في بريتورا 👑✨!
+اسألني عن أسعار المنتجات، خامات السيليكون الطبي، تفاصيل التغليف السري، أو ترشيح الخيار الأنسب لكما.`;
+    }
+
+    // بدء التشغيل
+    window.onload = function() {
+      renderBritoraProducts(britoraProducts);
+    };
+  </script>
+</body>
+</html>
+```
