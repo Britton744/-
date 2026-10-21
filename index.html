@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- وسم السيو القوي لتصدر جوجل -->
+    <title>متجر العاب زوجيه - متجر الملوك العاب الزوجيه LUXE</title>
+    <meta name="description" content="متجر الملوك العاب الزوجيه LUXE - أفخم الألعاب والمنتجات الزوجية الحميمية في السعودية بتغليف سري ودفع عند الاستلام.">
+    <meta name="keywords" content="متجر العاب زوجيه, متجر الملوك, العاب زوجية, منتجات زوجية فخمة, لانجري, بوكسات رومانسية">
+    
+    <!-- خطوط جوجل العربية الفاخرة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold-primary: #dfb872;
+            --gold-glow: #ffd700;
+            --rose-accent: #e11d48;
+            --rose-glow: #fb7185;
+            --bg-dark: #070307;
+            --card-bg: rgba(22, 10, 24, 0.72);
+            --border-gold: rgba(223, 184, 114, 0.28);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* الخلفية الرومانسية الملكية الساحرة */
+        .royal-romantic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                /* طبقة ظل دافئة ومخملية لحفظ وضوح المحتوى */
+                radial-gradient(circle at 50% 20%, rgba(225, 29, 72, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 85% 60%, rgba(223, 184, 114, 0.14) 0%, transparent 55%),
+                radial-gradient(circle at 15% 80%, rgba(136, 19, 55, 0.22) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(7, 3, 7, 0.82) 0%, rgba(15, 6, 16, 0.90) 50%, rgba(7, 3, 7, 0.96) 100%),
+                /* خلفية سينمائية لأجواء رومانسية فاخرة بالشموع والورود المخملية */
+                url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            filter: contrast(110%);
+        }
+
+        /* جسيمات التوهج الرومنسي المتنفس */
+        .romance-ambient-glow {
+            position: fixed;
+            top: -150px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(225, 29, 72, 0.22) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: romanceBreathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes romanceBreathe {
+            0% { transform: translateX(50%) scale(0.9); opacity: 0.6; }
+            100% { transform: translateX(50%) scale(1.15); opacity: 0.95; }
+        }
+
+        /* شريط التنبيه العلوي السري */
+        .top-privacy-bar {
+            background: linear-gradient(90deg, #1f0b1a, #4c0519, #1f0b1a);
+            color: #fbcfe8;
+            font-size: 11px;
+            text-align: center;
+            padding: 6px 12px;
+            border-bottom: 1px solid rgba(225, 29, 72, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        /* الهيدر العلوي */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            backdrop-filter: blur(12px);
+            background: rgba(10, 4, 11, 0.75);
+            border-bottom: 1px solid var(--border-gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand-logo .crown-icon {
+            font-size: 26px;
+            color: var(--gold-glow);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 20%, var(--gold-primary) 70%, #f43f5e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text span {
+            font-size: 9px;
+            color: #fda4af;
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-trigger-btn {
+            position: relative;
+            background: rgba(225, 29, 72, 0.15);
+            border: 1px solid rgba(225, 29, 72, 0.4);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-trigger-btn:hover {
+            background: var(--rose-accent);
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--gold-glow);
+            color: #000;
+            font-size: 10px;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* البانر الرومانسي الترحيبي (Hero) */
+        .romantic-hero {
+            position: relative;
+            padding: 40px 20px 30px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(136, 19, 55, 0.3) 0%, transparent 70%);
+            border-bottom: 1px solid rgba(223, 184, 114, 0.15);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(225, 29, 72, 0.2);
+            border: 1px solid var(--rose-accent);
+            color: #fecdd3;
+            font-size: 11px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .romantic-hero h2 {
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .romantic-hero p {
+            font-size: 13px;
+            color: #e2e8f0;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            color: #fbcfe8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-pill i {
+            color: var(--gold-primary);
+        }
+
+        /* تصنيفات الأقسام الرومانسية الدائرية */
+        .section-header-title {
+            text-align: center;
+            margin: 30px 0 20px;
+            position: relative;
+        }
+
+        .section-header-title span {
+            color: var(--gold-primary);
+            font-size: 12px;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .section-header-title h3 {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .categories-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 20px 25px;
+            scrollbar-width: none;
+        }
+
+        .categories-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-circle-card {
+            flex: 0 0 85px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cat-circle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .circle-frame {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--gold-primary), #e11d48, var(--gold-glow));
+            box-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #190918;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-glow);
+            font-size: 24px;
+        }
+
+        .cat-circle-card span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #f1f5f9;
+            display: block;
+            line-height: 1.3;
+        }
+
+        /* شبكة كروت المنتجات الأكثر طلباً */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 0 20px 40px;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+        }
+
+        .product-luxe-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 18px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-luxe-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--rose-accent);
+            box-shadow: 0 12px 30px rgba(225, 29, 72, 0.35);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--rose-accent), #9f1239);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 165px;
+            background: #140815;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-img-wrap i {
+            font-size: 55px;
+            color: var(--gold-primary);
+            filter: drop-shadow(0 0 15px rgba(223, 184, 114, 0.4));
+            transition: 0.3s;
+        }
+
+        .product-luxe-card:hover .card-img-wrap i {
+            transform: scale(1.12);
+            color: #fff;
+        }
+
+        .card-content {
+            padding: 14px 12px;
+            text-align: right;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-category {
+            font-size: 10px;
+            color: #fda4af;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 10px;
+            color: #cbd5e1;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .current-price {
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--gold-glow);
+        }
+
+        .old-price {
+            font-size: 11px;
+            color: #64748b;
+            text-decoration: line-through;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--rose-accent), #9f1239);
+            color: #fff;
+            border: none;
+            padding: 9px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+        }
+
+        /* بنر الخصوصية الذهبي السفلي */
+        .privacy-royal-banner {
+            margin: 20px;
+            padding: 24px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(31, 11, 26, 0.9), rgba(76, 5, 25, 0.9));
+            border: 1px solid var(--border-gold);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .privacy-royal-banner h4 {
+            color: var(--gold-glow);
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .privacy-royal-banner p {
+            color: #e2e8f0;
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+
+        /* نافذة السلة وإتمام الطلب (Checkout Modal) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #170918;
+            border: 1px solid var(--gold-primary);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(225, 29, 72, 0.4);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(223, 184, 114, 0.3);
+            border-radius: 10px;
+            padding: 11px 14px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--gold-glow);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .confirm-order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold-primary), #b45309);
+            color: #000;
+            font-weight: 900;
+            font-size: 14px;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .confirm-order-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        /* زر الشات ورورو AI العائم */
+        .roro-floating-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            border: 1px solid var(--gold-glow);
+            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.6);
+            cursor: pointer;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .roro-floating-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* شاشة شات رورو */
+        .roro-chat-modal {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 320px;
+            height: 420px;
+            background: #140715;
+            border: 1px solid var(--rose-accent);
+            border-radius: 18px;
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .roro-chat-modal.active {
+            display: flex;
+        }
+
+        .roro-chat-header {
+            background: #250a27;
+            padding: 12px;
+            border-bottom: 1px solid rgba(225, 29, 72, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .roro-chat-body {
+            flex-grow: 1;
+            padding: 14px;
+            overflow-y: auto;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .roro-msg {
+            background: rgba(225, 29, 72, 0.15);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #fbcfe8;
+        }
+
+        .roro-chat-input-bar {
+            display: flex;
+            padding: 10px;
+            background: #0f0410;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .roro-chat-input-bar input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            font-size: 11px;
+        }
+
+        .roro-chat-input-bar button {
+            background: var(--rose-accent);
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الخلفية الرومانسية التفاعلية -->
+    <div class="royal-romantic-bg"></div>
+    <div class="romance-ambient-glow"></div>
+
+    <!-- شريط الخصوصية العلوي -->
+    <div class="top-privacy-bar">
+        <span><i class="fa-solid fa-lock"></i> شحن سري 100% بدون أي شعارات أو وصف للمحتوى</span>
+        <span><i class="fa-solid fa-hand-holding-dollar"></i> الدفع عند الاستلام متاح</span>
+    </div>
+
+    <!-- رأس المتجر (Header) -->
+    <header class="main-header">
+        <a href="#" class="brand-logo">
+            <i class="fa-solid fa-crown crown-icon"></i>
+            <div class="brand-text">
+                <h1>متجر الملوك العاب الزوجيه LUXE</h1>
+                <span>ROYAL LUXURY BOUTIQUE</span>
+            </div>
+        </a>
+
+        <div class="header-actions">
+            <a href="https://wa.me/966556575822" target="_blank" style="color:#22c55e; font-size: 22px; margin-left: 6px;">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <div class="cart-trigger-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <div class="cart-badge" id="cartCount">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- البانر الرومانسي الترحيبي -->
+    <section class="romantic-hero">
+        <span class="hero-tag"><i class="fa-solid fa-heart"></i> ليلة استثنائية من الشغف الملكي</span>
+        <h2>عالم الإثارة والفخامة بين يديك</h2>
+        <p>مجموعة حصرية مصممة لكسر الروتين وإشعال لهيب الرومانسية بأعلى معايير السرية والجودة الطبية المعتمدة.</p>
+
+        <div class="hero-features">
+            <div class="feature-pill"><i class="fa-solid fa-shield-cat"></i> سيليكون طبي 100%</div>
+            <div class="feature-pill"><i class="fa-solid fa-box"></i> تغليف مخملي سري تماماً</div>
+            <div class="feature-pill"><i class="fa-solid fa-bolt"></i> توصيل سريع لجميع مناطق المملكة</div>
+        </div>
+    </section>
+
+    <!-- الأقسام الدائرية المتوهجة -->
+    <div class="section-header-title">
+        <span>DISCOVER LUXE</span>
+        <h3>تسوق حسب الأقسام الملكية</h3>
+    </div>
+
+    <div class="categories-scroll">
+        <div class="cat-circle-card" onclick="filterCategory('all')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-gem"></i></div></div>
+            <span>كل المنتجات</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('boxes')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-gift"></i></div></div>
+            <span>بوكسات هدايا</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('oils')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-bottle-droplet"></i></div></div>
+            <span>زيوت ومساج</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('couples')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-dice"></i></div></div>
+            <span>ألعاب أزواج</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('vibrators')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-wand-magic-sparkles"></i></div></div>
+            <span>هزازات نسائية</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('men')">
+            <div class="circle-frame"><div class="circle-inner"><i class="fa-solid fa-mars"></i></div></div>
+            <span>أدوات للرجال</span>
+        </div>
+    </div>
+
+    <!-- شبكة المنتجات الفاخرة -->
+    <div class="section-header-title">
+        <span>EXCLUSIVE SELECTION</span>
+        <h3>المنتجات الأكثر طلباً في المملكة</h3>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+        <!-- يتم توليد المنتجات بالجافاسكريبت تلقائياً -->
+    </div>
+
+    <!-- بنر الثقة والخصوصية المطلقة -->
+    <div class="privacy-royal-banner">
+        <h4>🔒 سرية وخصوصية لا تقبل المساومة</h4>
+        <p>جميع طلبات متجر الملوك تُغلف يدوياً بطرد كرتوني سري ومغلق بإحكام، بدون أي كتابة أو إشارة لمحتوى الشحنة نهائياً، حتى المندوب لا يعلم ما بداخلها.</p>
+        <div style="font-size: 11px; color: var(--gold-primary);">توصيل مباشر إلى باب بيتك في الرياض، جدة، الدمام، وكافة مدن السعودية.</div>
+    </div>
+
+    <!-- زر رورو AI العائم -->
+    <div class="roro-floating-btn" onclick="toggleRoro()">
+        <i class="fa-solid fa-wand-sparkles"></i>
+        <span>استشر رورو الذكية 💜</span>
+    </div>
+
+    <!-- شاشة شات رورو AI -->
+    <div class="roro-chat-modal" id="roroChat">
+        <div class="roro-chat-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-circle" style="color:#22c55e; font-size:8px;"></i>
+                <b style="color:#fff; font-size:12px;">رورو - مستشارتك الخاصة</b>
+            </div>
+            <button onclick="toggleRoro()" style="background:none; border:none; color:#fff; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="roro-chat-body" id="roroMessages">
+            <div class="roro-msg">
+                أهلاً بك في <b>متجر الملوك</b> 👑<br>
+                أنا رورو مساعدتك الذكية.. هل تبحث عن بوكس رومانسي لليلة زواج، أم تريد ترشيحاً لأفضل الأجهزة والألعاب الحميمية؟
+            </div>
+        </div>
+        <div class="roro-chat-input-bar">
+            <input type="text" id="roroInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter') sendRoroMsg()">
+            <button onclick="sendRoroMsg()">إرسال</button>
+        </div>
+    </div>
+
+    <!-- نافذة السلة وإتمام الطلب -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <h3 style="color:var(--gold-glow); font-size:18px; margin-bottom:15px; text-align:center;">
+                <i class="fa-solid fa-receipt"></i> تأكيد الطلب السري
+            </h3>
+
+            <!-- ملخص السلة -->
+            <div id="cartSummaryList" style="margin-bottom:15px; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
+                <!-- منتجات السلة هنا -->
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
+                <span>الإجمالي النهائي:</span>
+                <span style="color:var(--gold-glow);" id="totalPrice">0 ر.س</span>
+            </div>
+
+            <!-- نموذج بيانات العميل (يرسل للإيميل + الواتساب) -->
+            <form id="orderForm" onsubmit="processOrder(event)">
+                <input type="text" id="custName" class="form-input" placeholder="الاسم الكامل" required>
+                <input type="tel" id="custPhone" class="form-input" placeholder="رقم الجوال (05xxxxxxxx)" required>
+                <input type="text" id="custCity" class="form-input" placeholder="المدينة (مثلاً: الرياض / جدة)" required>
+                <input type="text" id="custDistrict" class="form-input" placeholder="الحي السكني" required>
+                <input type="text" id="custNationalAddress" class="form-input" placeholder="العنوان الوطني / الشارع" required>
+
+                <div style="font-size:11px; color:#cbd5e1; margin-bottom:10px;">
+                    <i class="fa-solid fa-circle-check" style="color:#22c55e;"></i> طريقة الدفع: <b>الدفع نقدياً عند الاستلام</b>
+                </div>
+
+                <button type="submit" class="confirm-order-btn">
+                    تأكيد وإتمام الطلب الآن <i class="fa-solid fa-check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- كود الجافاسكريبت التشغيلي والمنتجات -->
+    <script>
+        // كتالوج المنتجات الأساسية الراقية
+        const products = [
+            {
+                id: 1,
+                name: "بوكس الليلة الملكية الفاخر - Royal Couple",
+                category: "boxes",
+                price: 399,
+                oldPrice: 599,
+                icon: "fa-gift",
+                badge: "الأكثر مبيعاً 👑",
+                desc: "مجموعة ألعاب كروت رومانسية جريئة، زيوت تدليك برائحة اللافندر، وشموع معطرة لكسر الروتين."
+            },
+            {
+                id: 2,
+                name: "هزاز الأرنب المزدوج الذكي - Pulse Max",
+                category: "vibrators",
+                price: 279,
+                oldPrice: 399,
+                icon: "fa-wand-magic-sparkles",
+                badge: "تخفيض 30% 🔥",
+                desc: "سيليكون طبي 100% معتمد، مقاوم للماء مع 10 أنماط نبض هادئة وصامتة تماماً."
+            },
+            {
+                id: 3,
+                name: "جهاز التحفيز الهيدروليكي المتطور للرجال",
+                category: "men",
+                price: 349,
+                oldPrice: 499,
+                icon: "fa-bolt",
+                badge: "الأعلى تقييماً ⭐",
+                desc: "مساج ونبض أوتوماتيكي متدرج القوة لراحة تامة وشعور فائق الواقعية."
+            },
+            {
+                id: 4,
+                name: "لعبة كروت تحدي العشاق - الإصدار الجريء",
+                category: "couples",
+                price: 149,
+                oldPrice: 199,
+                icon: "fa-dice",
+                badge: "جديد ✨",
+                desc: "أكثر من 120 سؤالاً وتحدياً صُممت بعناية لخلق أوقات مرحة وحوارات عميقة ومثيرة."
+            },
+            {
+                id: 5,
+                name: "زيت المساج والتزليق الطبي الدافئ",
+                category: "oils",
+                price: 89,
+                oldPrice: 120,
+                icon: "fa-bottle-droplet",
+                badge: "عضوي 🌿",
+                desc: "تركيبة مائية آمنة للبشرة غنية بفيتامين E وخالية من العطور الكيميائية."
+            },
+            {
+                id: 6,
+                name: "حلقة القوة والتحكم السيليكونية للأزواج",
+                category: "men",
+                price: 159,
+                oldPrice: 220,
+                icon: "fa-ring",
+                badge: "مميز 💎",
+                desc: "مرونة عالية، تصميم مريح وقابل للتعديل لتعزيز الأداء وإطالة اللحظات الخاصة."
+            }
+        ];
+
+        let cart = [];
+
+        // عرض المنتجات في الواجهة
+        function renderProducts(items) {
+            const container = document.getElementById("productsGrid");
+            container.innerHTML = items.map(p => `
+                <div class="product-luxe-card">
+                    <span class="card-badge">${p.badge}</span>
+                    <div class="card-img-wrap">
+                        <i class="fa-solid ${p.icon}"></i>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-category">متجر الملوك LUXE</div>
+                            <h4 class="card-title">${p.name}</h4>
+                            <p class="card-desc">${p.desc}</p>
+                        </div>
+                        <div>
+                            <div class="price-row">
+                                <span class="current-price">${p.price} ر.س</span>
+                                <span class="old-price">${p.oldPrice} ر.س</span>
+                            </div>
+                            <button class="add-cart-btn" onclick="addToCart(${p.id})">
+                                أضف للسلة <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // تصفية حسب الأقسام
+        function filterCategory(cat) {
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.category === cat));
+            }
+        }
+
+        // إضافة منتج للسلة
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(`تمت إضافة [${product.name}] إلى سلتك الملكية بنجاح 👑`);
+        }
+
+        // فتح وإغلاق السلة
+        function toggleCart() {
+            const modal = document.getElementById("checkoutModal");
+            modal.classList.toggle("active");
+            updateCartSummary();
+        }
+
+        // تحديث محتويات السلة
+        function updateCartSummary() {
+            const list = document.getElementById("cartSummaryList");
+            const totalElem = document.getElementById("totalPrice");
+            
+            if (cart.length === 0) {
+                list.innerHTML = "<p style='color:#94a3b8; text-align:center;'>سلتك فارغة حالياً</p>";
+                totalElem.innerText = "0 ر.س";
+                return;
+            }
+
+            let total = 0;
+            list.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span>${item.name}</span>
+                        <div>
+                            <span style="color:var(--gold-glow); font-weight:bold; margin-left:8px;">${item.price} ر.س</span>
+                            <button onclick="removeFromCart(${idx})" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+
+            totalElem.innerText = `${total} ر.س`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById("cartCount").innerText = cart.length;
+            updateCartSummary();
+        }
+
+        // إتمام الطلب (إرسال إيميل وفتح واتساب)
+        function processOrder(e) {
+            e.preventDefault();
+
+            if (cart.length === 0) {
+                alert("يرجى اختيار منتج واحد على الأقل قبل إتمام الطلب!");
+                return;
+            }
+
+            const name = document.getElementById("custName").value;
+            const phone = document.getElementById("custPhone").value;
+            const city = document.getElementById("custCity").value;
+            const district = document.getElementById("custDistrict").value;
+            const address = document.getElementById("custNationalAddress").value;
+
+            const orderId = "KING-" + Math.floor(100000 + Math.random() * 900000);
+            const total = cart.reduce((acc, p) => acc + p.price, 0);
+            const itemsNames = cart.map(p => p.name).join(" + ");
+
+            // 1. إرسال الفاتورة عبر FormSubmit إلى بريدك الإلكتروني
+            fetch("https://formsubmit.co/ajax/roooo77775@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "رقم الطلب": orderId,
+                    "اسم العميل": name,
+                    "رقم الجوال": phone,
+                    "المدينة": city,
+                    "الحي": district,
+                    "العنوان الوطني": address,
+                    "المنتجات المطلوبة": itemsNames,
+                    "المبلغ الإجمالي": total + " ر.س",
+                    "طريقة الاستلام": "الدفع عند الاستلام - تغليف سري 100%"
+                })
+            }).catch(err => console.log("Form submit handled"));
+
+            // 2. إعداد رسالة الواتساب إلى رقمك
+            const whatsappMsg = `👑 *طلب جديد من متجر الملوك LUXE* 👑%0a` +
+                `----------------------------------%0a` +
+                `*كود الطلب:* ${orderId}%0a` +
+                `*اسم العميل:* ${name}%0a` +
+                `*الجوال:* ${phone}%0a` +
+                `*المدينة:* ${city} - حي ${district}%0a` +
+                `*العنوان الوطني:* ${address}%0a` +
+                `----------------------------------%0a` +
+                `*المنتجات:* ${itemsNames}%0a` +
+                `*المبلغ الإجمالي:* ${total} ر.س%0a` +
+                `*طريقة الدفع:* الدفع عند الاستلام%0a` +
+                `*التغليف:* تغليف سري 100%%0a` +
+                `----------------------------------`;
+
+            alert(`تم تأكيد طلبك السري بنجاح يا ملك! كود طلبك: [${orderId}]. سيتم توجيهك الآن للواتساب لتأكيد الشحن فوراً.`);
+            
+            // فتح الواتساب لرقمك
+            window.open(`https://wa.me/966556575822?text=${whatsappMsg}`, '_blank');
+
+            // تفريغ السلة
+            cart = [];
+            document.getElementById("cartCount").innerText = "0";
+            toggleCart();
+        }
+
+        // فتح وإغلاق رورو AI
+        function toggleRoro() {
+            const chat = document.getElementById("roroChat");
+            chat.classList.toggle("active");
+        }
+
+        // ردود رورو التفاعلية
+        function sendRoroMsg() {
+            const input = document.getElementById("roroInput");
+            const text = input.value.trim();
+            if (!text) return;
+
+            const body = document.getElementById("roroMessages");
+            body.innerHTML += `<div style="text-align:left; margin-bottom:8px;"><span style="background:#e11d48; color:#fff; padding:6px 10px; border-radius:10px; font-size:11px;">${text}</span></div>`;
+            input.value = "";
+
+            setTimeout(() => {
+                let reply = "يسعدني اختيارك لمتجر الملوك 👑! نوفر لك أفضل الألعاب الزوجية والأجهزة الطبية بتغليف سري ومخملي 100%. يمكنك تصفح المنتجات بالأعلى والضغط على 'أضف للسلة'.";
+                if (text.includes("بوكس") || text.includes("هدية")) {
+                    reply = "أنصحك بـ [بوكس الليلة الملكية] فهو خيار رائع وشامل يحتوي على كروت أسئلة وزيوت مساج مميزة لإشعال الشغف!";
+                } else if (text.includes("سري") || text.includes("تغليف") || text.includes("شحن")) {
+                    reply = "تغليفنا سري 100% داخل كرتون مغلق تماماً بدون أي علامات أو أسماء للمنتجات، والمندوب يوصله لك بكل أمان وخصوصية.";
+                }
+                body.innerHTML += `<div class="roro-msg"><b>رورو:</b> ${reply}</div>`;
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+        }
+
+        // البدء بعرض المنتجات فور تحميل الصفحة
+        window.onload = () => {
+            renderProducts(products);
+        };
+    </script>
+</body>
+</html>
