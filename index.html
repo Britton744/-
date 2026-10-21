@@ -1,0 +1,1672 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- وسم السيو الثابت والمطلوب لتصدر محرك بحث جوجل -->
+  <title>متجر العاب زوجيه - متجر بريتورا BRITORA</title>
+  
+  <meta name="description" content="متجر بريتورا BRITORA - أفخم متجر العاب زوجيه وبوكسات رومانسية فاخرة في السعودية والخليج. سيليكون طبي 100%، شحن سريع، تغليف سري مخملي، والدفع عند الاستلام.">
+  <meta name="keywords" content="متجر العاب زوجيه, بريتورا, BRITORA, ألعاب زوجية, بوكسات رومانسية, سيليكون طبي, شحن سري, الدفع عند الاستلام, متجر الملوك">
+  <meta name="theme-color" content="#05010a">
+
+  <!-- الخطوط العربية الراقية وأيقونات Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #05010b;
+      --bg-surface: #0e0419;
+      --bg-card: #160727;
+      --bg-card-hover: #1f0a37;
+      --purple-main: #a855f7;
+      --purple-glow: #c084fc;
+      --purple-deep: #581c87;
+      --crimson-neon: #f43f5e;
+      --crimson-deep: #be123c;
+      --gold-royal: #fbbf24;
+      --border-royal: rgba(168, 85, 247, 0.28);
+      --border-bright: rgba(192, 132, 252, 0.65);
+      --text-main: #ffffff;
+      --text-muted: #d8b4fe;
+      --text-sub: #9482b3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      padding-bottom: 85px;
+    }
+
+    /* الشريط العلوي الثابت مع الشعار الملكي */
+    .britora-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(14, 4, 25, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-royal);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-circle-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #18072c;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s;
+    }
+
+    .btn-circle-icon:hover {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+    }
+
+    .cart-pill-bubble {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: linear-gradient(135deg, var(--crimson-neon), var(--crimson-deep));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-surface);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .brand-emblem-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #581c87 0%, #1c0530 100%);
+      border: 1.5px solid var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 19px;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+    }
+
+    .brand-meta h1 {
+      font-size: 17px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fff 15%, var(--purple-glow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .brand-meta span {
+      font-size: 9px;
+      color: var(--purple-glow);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* البنر الترويجي الملكي الفاخر (بريتورا) */
+    .britora-hero-card {
+      margin: 12px 14px;
+      background: radial-gradient(circle at 50% 30%, #3e0b5f 0%, #1b052d 60%, #06010a 100%);
+      border: 1px solid var(--border-bright);
+      border-radius: 24px;
+      padding: 24px 16px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.2);
+    }
+
+    .hero-crown-circle {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #6b21a8 0%, #2e0854 100%);
+      border: 2px solid var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 30px;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+    }
+
+    .hero-b-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      background: linear-gradient(180deg, #ffffff 40%, #d8b4fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3px;
+    }
+
+    .hero-ar-slogan {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--crimson-neon);
+      margin-bottom: 3px;
+    }
+
+    .hero-en-slogan {
+      font-size: 9.5px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ركائز بريتورا الأربعة */
+    .hero-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      border-top: 1px solid rgba(168, 85, 247, 0.25);
+      padding-top: 15px;
+    }
+
+    .pillar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+
+    .pillar-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #240a3d;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .pillar-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .pillar-sub {
+      font-size: 8px;
+      color: var(--text-sub);
+    }
+
+    /* شريط قصص وتصنيفات الأقسام */
+    .stories-categories-bar {
+      padding: 8px 14px 4px;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      gap: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .stories-categories-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-story-item {
+      min-width: 125px;
+      height: 94px;
+      border-radius: 18px;
+      background: radial-gradient(circle at center, #270942 0%, #110321 100%);
+      border: 1px solid var(--border-royal);
+      padding: 10px 8px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .cat-story-item.active {
+      border-color: var(--purple-glow);
+      background: radial-gradient(circle at center, #450c76 0%, #1c0533 100%);
+      box-shadow: 0 4px 18px rgba(168, 85, 247, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .cat-story-item i {
+      font-size: 20px;
+      color: var(--purple-glow);
+      margin-bottom: 5px;
+    }
+
+    .cat-story-item h4 {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .cat-story-item span {
+      font-size: 9px;
+      color: var(--crimson-neon);
+      margin-top: 2px;
+    }
+
+    /* ترويسة قسم المنتجات */
+    .catalog-headline {
+      padding: 18px 14px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .headline-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .headline-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--purple-glow);
+      box-shadow: 0 0 10px var(--purple-glow);
+    }
+
+    .btn-view-all {
+      background: #1d0733;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    /* شبكة كروت المنتجات */
+    .products-grid-view {
+      padding: 0 14px 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-royal);
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--purple-glow);
+    }
+
+    .product-badge-tag {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      background: linear-gradient(135deg, var(--crimson-neon), var(--purple-deep));
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 10px;
+      z-index: 3;
+    }
+
+    .product-fav-btn {
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(14, 4, 25, 0.85);
+      border: 1px solid var(--border-royal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f472b6;
+      font-size: 13px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .product-fav-btn.active {
+      background: #fff;
+      color: #e11d48;
+    }
+
+    .product-stage-art {
+      height: 150px;
+      background: radial-gradient(circle at center, #350b57 0%, #10031d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+      cursor: pointer;
+    }
+
+    .product-stage-art svg {
+      width: 100%;
+      height: 100%;
+      max-width: 100px;
+      max-height: 100px;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-stage-art svg {
+      transform: scale(1.07);
+    }
+
+    .product-content-details {
+      background: linear-gradient(180deg, #18082c 0%, #10031d 100%);
+      padding: 11px 12px 13px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .product-title-text {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.35;
+      min-height: 34px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .product-rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 9px;
+      color: var(--gold-royal);
+      margin-bottom: 6px;
+    }
+
+    .product-rating-bar span {
+      font-size: 10px;
+      font-weight: bold;
+      color: #fff;
+      margin-left: 4px;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .price-sar-val {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--crimson-neon);
+    }
+
+    .price-old-val {
+      font-size: 10px;
+      color: var(--text-sub);
+      text-decoration: line-through;
+    }
+
+    .btn-action-add {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+      transition: transform 0.15s;
+    }
+
+    .btn-action-add:active {
+      transform: scale(0.96);
+    }
+
+    /* الأسئلة الشائعة الأنيقة */
+    .faq-block-section {
+      margin: 10px 14px 25px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-royal);
+      border-radius: 24px;
+      padding: 20px 14px;
+    }
+
+    .faq-top-banner {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .faq-shield-symbol {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 8px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .faq-top-banner h3 {
+      font-size: 19px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .faq-top-banner p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .faq-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-card-box {
+      background: #11041f;
+      border: 1px solid var(--border-royal);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-header-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: right;
+      cursor: pointer;
+    }
+
+    .faq-header-btn i {
+      color: var(--purple-glow);
+      font-size: 13px;
+      transition: transform 0.25s;
+    }
+
+    .faq-body-content {
+      display: none;
+      padding: 0 14px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(168, 85, 247, 0.1);
+    }
+
+    /* أزرار الإجراءات العائمة */
+    .roro-floating-badge {
+      position: fixed;
+      bottom: 82px;
+      left: 15px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), var(--crimson-neon));
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      box-shadow: 0 8px 25px rgba(192, 132, 252, 0.55);
+      cursor: pointer;
+      z-index: 150;
+      animation: roroPulseGlow 2.5s infinite;
+    }
+
+    .roro-live-dot {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2px solid var(--bg-dark);
+    }
+
+    .roro-label-bubble {
+      position: absolute;
+      right: 64px;
+      background: rgba(14, 4, 25, 0.95);
+      border: 1px solid var(--border-bright);
+      color: var(--purple-glow);
+      padding: 5px 12px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes roroPulseGlow {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 132, 252, 0.7); }
+      70% { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(192, 132, 252, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 132, 252, 0); }
+    }
+
+    .scroll-up-btn {
+      position: fixed;
+      bottom: 82px;
+      right: 15px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1c0731;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 140;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    /* شريط التنقل السفلي الفاخر (Samsung One UI) */
+    .samsung-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: rgba(14, 4, 25, 0.98);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border-royal);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 200;
+      padding: 0 6px;
+    }
+
+    .bottom-tab-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      flex: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .bottom-tab-unit i {
+      font-size: 18px;
+    }
+
+    .bottom-tab-unit.active {
+      color: var(--purple-glow);
+    }
+
+    .shop-center-button {
+      position: relative;
+      top: -16px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-glow), var(--crimson-neon));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(168, 85, 247, 0.55);
+      border: 3px solid var(--bg-dark);
+      cursor: pointer;
+    }
+
+    .shop-center-button:active {
+      transform: scale(0.94);
+    }
+
+    .shop-center-button i {
+      font-size: 20px;
+    }
+
+    .shop-center-button span {
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    /* سلة المشتريات الجانبية الفاخرة */
+    .cart-drawer-screen {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .cart-drawer-box {
+      width: 100%;
+      max-width: 420px;
+      background: #120422;
+      border-left: 1px solid var(--border-bright);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideInRtl 0.3s ease;
+    }
+
+    @keyframes slideInRtl {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    .cart-drawer-head {
+      background: #1c0733;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-royal);
+    }
+
+    .cart-drawer-body {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cart-item-card {
+      background: #19072f;
+      border: 1px solid var(--border-royal);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cart-item-meta {
+      flex: 1;
+    }
+
+    .cart-item-meta h5 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-meta span {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--crimson-neon);
+    }
+
+    .cart-item-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-qty {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #2c0b4c;
+      border: 1px solid var(--border-royal);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .cart-drawer-footer {
+      background: #1c0733;
+      padding: 16px;
+      border-top: 1px solid var(--border-royal);
+    }
+
+    .price-summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .price-summary-line.total {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--crimson-neon);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-royal);
+    }
+
+    .btn-checkout-now {
+      background: linear-gradient(135deg, var(--crimson-neon), var(--purple-deep));
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 900;
+      width: 100%;
+      margin-top: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
+    }
+
+    /* نافذة إتمام الطلب الفاخرة (Checkout Modal) */
+    .checkout-screen-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .checkout-card-box {
+      width: 100%;
+      max-width: 480px;
+      max-height: 92vh;
+      background: #120422;
+      border: 1px solid var(--border-bright);
+      border-radius: 26px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+      animation: popUp 0.3s ease;
+    }
+
+    @keyframes popUp {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .checkout-head-bar {
+      background: #1c0733;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-royal);
+    }
+
+    .checkout-form-scroll {
+      padding: 16px 18px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group-luxe {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: right;
+    }
+
+    .form-group-luxe label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #f5f3ff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-group-luxe label i {
+      color: var(--purple-glow);
+    }
+
+    .form-group-luxe input, .form-group-luxe select {
+      background: #090212;
+      border: 1px solid var(--border-royal);
+      border-radius: 14px;
+      padding: 11px 14px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+
+    .form-group-luxe input:focus, .form-group-luxe select:focus {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    }
+
+    .order-summary-box {
+      background: #19072e;
+      border: 1px solid var(--border-royal);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .order-code-badge {
+      display: inline-block;
+      background: #2a0845;
+      color: var(--purple-glow);
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .btn-submit-order {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.4);
+    }
+
+    /* نافذة المساعد الذكي "رورو AI" */
+    .roro-chat-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 550;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .roro-chat-box {
+      width: 100%;
+      max-width: 480px;
+      background: #11041f;
+      border-radius: 26px 26px 0 0;
+      border: 1px solid var(--border-bright);
+      height: 82vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .roro-top-title {
+      background: #1c0733;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-royal);
+    }
+
+    .roro-stream-area {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #090212;
+    }
+
+    .chat-bubble {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 18px;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .chat-bubble.bot {
+      background: #1a062f;
+      color: #f5f3ff;
+      border: 1px solid var(--border-royal);
+      align-self: flex-start;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      font-weight: 700;
+      align-self: flex-end;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chips-suggestions {
+      padding: 8px 12px;
+      background: #140525;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-top: 1px solid var(--border-royal);
+    }
+
+    .chip-btn {
+      background: #23083d;
+      border: 1px solid var(--border-royal);
+      color: var(--purple-glow);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chat-input-bar {
+      padding: 10px 14px;
+      background: #1a062f;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid var(--border-royal);
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      background: #0d0217;
+      border: 1px solid var(--border-royal);
+      border-radius: 20px;
+      padding: 9px 15px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-input-bar button {
+      background: linear-gradient(135deg, var(--purple-glow), var(--purple-deep));
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي الملكي -->
+  <header class="britora-header">
+    <div class="header-actions">
+      <div class="btn-circle-icon" onclick="toggleCartDrawer(true)" title="سلة المشتريات">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <div class="cart-pill-bubble" id="headerCartCount">0</div>
+      </div>
+      <div class="btn-circle-icon" onclick="toggleFaqView()" title="الأسئلة الشائعة">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <div class="btn-circle-icon" onclick="openWhatsAppDirect()" title="واتساب المتجر">
+        <i class="fa-brands fa-whatsapp" style="color:#22c55e;"></i>
+      </div>
+    </div>
+
+    <!-- شعار بريتورا الملكي -->
+    <a href="#" class="brand-group">
+      <div class="brand-meta">
+        <h1>بريتورا • BRITORA</h1>
+        <span>ROYAL LUXURY BOUTIQUE</span>
+      </div>
+      <div class="brand-emblem-box">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+    </a>
+  </header>
+
+  <!-- البنر الترويجي الملكي (بريتورا) -->
+  <section class="britora-hero-card">
+    <div class="hero-crown-circle">
+      <i class="fa-solid fa-crown"></i>
+    </div>
+    <div class="hero-b-title">BRITORA</div>
+    <div class="hero-ar-slogan">لأن لحظاتك تستحق الأفضل</div>
+    <div class="hero-en-slogan">BECAUSE YOUR MOMENTS DESERVE THE BEST</div>
+
+    <!-- ركائز بريتورا الأربعة -->
+    <div class="hero-pillars-grid">
+      <div class="pillar-col">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="pillar-title">جودة عالية</div>
+        <div class="pillar-sub">PREMIUM</div>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-gift"></i></div>
+        <div class="pillar-title">تغليف فاخر</div>
+        <div class="pillar-sub">LUXURY</div>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="pillar-title">توصيل سريع</div>
+        <div class="pillar-sub">FAST</div>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-heart"></i></div>
+        <div class="pillar-title">تجربة استثنائية</div>
+        <div class="pillar-sub">UNIQUE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- شريط تصنيفات الأقسام الفاخرة -->
+  <section class="stories-categories-bar">
+    <div class="cat-story-item active" onclick="filterCatalogByCategory('الكل', this)">
+      <i class="fa-solid fa-crown"></i>
+      <h4>كل المعروضات</h4>
+      <span>المجموعة الملكية</span>
+    </div>
+
+    <div class="cat-story-item" onclick="filterCatalogByCategory('ألعاب وبوكسات', this)">
+      <i class="fa-solid fa-dice"></i>
+      <h4>ألعاب وبوكسات</h4>
+      <span>أمسيات رومانسية</span>
+    </div>
+
+    <div class="cat-story-item" onclick="filterCatalogByCategory('أدوات واسترخاء', this)">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <h4>أدوات واسترخاء</h4>
+      <span>سيليكون طبي 100%</span>
+    </div>
+
+    <div class="cat-story-item" onclick="filterCatalogByCategory('أجهزة تحفيز', this)">
+      <i class="fa-solid fa-bolt"></i>
+      <h4>أجهزة تحفيز</h4>
+      <span>قوة وأداء فائق</span>
+    </div>
+
+    <div class="cat-story-item" onclick="filterCatalogByCategory('عناية وزيوت', this)">
+      <i class="fa-solid fa-droplet"></i>
+      <h4>عناية وزيوت</h4>
+      <span>مساج واسترخاء</span>
+    </div>
+  </section>
+
+  <!-- ترويسة قسم الكتالوج -->
+  <div class="catalog-headline">
+    <div class="headline-label">
+      <div class="headline-pulse-dot"></div>
+      <span>المنتجات الأكثر طلباً في بريتورا</span>
+    </div>
+    <div class="btn-view-all" onclick="filterCatalogByCategory('الكل', null)">
+      <span>عرض الكل</span>
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+  </div>
+
+  <!-- شبكة كروت المنتجات المرئية مباشرة -->
+  <main class="products-grid-view" id="productsGridView">
+    <!-- توليد المنتجات بالجافاسكريبت بالأسفل -->
+  </main>
+
+  <!-- قسم الأسئلة الشائعة الأنيق -->
+  <section class="faq-block-section" id="faqBlock">
+    <div class="faq-top-banner">
+      <div class="faq-shield-symbol"><i class="fa-solid fa-shield"></i></div>
+      <h3>الأسئلة الشائعة والخصوصية</h3>
+      <p>كل ما يهمك حول التغليف السري، سرعة الشحن، والدفع عند الاستلام في متجر بريتورا.</p>
+    </div>
+
+    <div class="faq-items-list">
+      <div class="faq-card-box">
+        <button class="faq-header-btn" onclick="toggleFaqAccordion(this)">
+          <span>1. كيف تضمنون التغليف السري 100%؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-body-content">
+          طرد كرتوني سادة مغلق بإحكام ومغلف بالسواد التام بدون أي لوجو أو اسم لمتجرنا أو إشارة إلى نوع المنتجات إطلاقاً.
+        </div>
+      </div>
+
+      <div class="faq-card-box">
+        <button class="faq-header-btn" onclick="toggleFaqAccordion(this)">
+          <span>2. هل يعرف مندوب شركة الشحن محتوى الطرد؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-body-content">
+          مستحيل! الشحنة مسجلة بوليصتها رسمياً باسم (شحنة شخصية / مستلزمات عناية)، ولا يملك المندوب أي صلاحية لمعرفة المحتويات.
+        </div>
+      </div>
+
+      <div class="faq-card-box">
+        <button class="faq-header-btn" onclick="toggleFaqAccordion(this)">
+          <span>3. كم تستغرق مدة التوصيل داخل السعودية؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-body-content">
+          التوصيل فائق السرعة ويستغرق من 24 إلى 48 ساعة فقط في الرياض، جدة، الدمام، مكة، المدينة وكافة مناطق المملكة.
+        </div>
+      </div>
+
+      <div class="faq-card-box">
+        <button class="faq-header-btn" onclick="toggleFaqAccordion(this)">
+          <span>4. هل تتوفر خدمة الدفع عند الاستلام؟</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-body-content">
+          نعم وبكل تأكيد! يمكنك سداد قيمة طلبك نقداً أو عبر بطاقة مدى والشبكة عند تسلمك الطرد السري من المندوب.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- زر الذكاء الاصطناعي "رورو AI" العائم -->
+  <div class="roro-floating-badge" onclick="toggleRoroChat(true)">
+    <div class="roro-live-dot"></div>
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <div class="roro-label-bubble">اسأل رورو AI 👑</div>
+  </div>
+
+  <!-- زر الصعود للأعلى -->
+  <div class="scroll-up-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- شريط التنقل السفلي الفاخر (Samsung One UI) -->
+  <nav class="samsung-bottom-bar">
+    <div class="bottom-tab-unit active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i class="fa-solid fa-house"></i>
+      <span>الرئيسية</span>
+    </div>
+    <div class="bottom-tab-unit" onclick="toggleFaqView()">
+      <i class="fa-solid fa-circle-question"></i>
+      <span>الأسئلة</span>
+    </div>
+
+    <!-- زر تسوق المرتفع بالألوان الملكية -->
+    <div class="shop-center-button" onclick="window.scrollTo({top: 420, behavior: 'smooth'})">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>تسوق</span>
+    </div>
+
+    <div class="bottom-tab-unit" onclick="openWhatsAppDirect()">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>واتساب</span>
+    </div>
+    <div class="bottom-tab-unit" onclick="toggleCartDrawer(true)">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>السلة</span>
+    </div>
+  </nav>
+
+  <!-- سلة المشتريات الجانبية -->
+  <div class="cart-drawer-screen" id="cartDrawerScreen">
+    <div class="cart-drawer-box">
+      <div class="cart-drawer-head">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-bag-shopping" style="color:var(--crimson-neon); font-size:18px;"></i>
+          <h4 style="font-size:15px; font-weight:900; color:#fff;">سلتك الملكية في بريتورا</h4>
+        </div>
+        <i class="fa-solid fa-xmark" style="font-size:20px; color:#c4b5fd; cursor:pointer;" onclick="toggleCartDrawer(false)"></i>
+      </div>
+
+      <div class="cart-drawer-body" id="cartItemsContainer">
+        <!-- عناصر السلة تُدرج هنا بالجافاسكريبت -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="price-summary-line">
+          <span>المجموع الفرعي:</span>
+          <span id="subTotalVal">0 ر.س</span>
+        </div>
+        <div class="price-summary-line">
+          <span>الشحن والتغليف السري:</span>
+          <span style="color:#10b981;">مجاني بالكامل 🔒</span>
+        </div>
+        <div class="price-summary-line total">
+          <span>الإجمالي الكلي:</span>
+          <span id="grandTotalVal">0 ر.س</span>
+        </div>
+
+        <button class="btn-checkout-now" onclick="openCheckoutProcess()">
+          <i class="fa-solid fa-lock"></i>
+          <span>متابعة إتمام الطلب السري</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة إتمام الطلب الفاخرة مع إرسال الفاتورة عبر الإيميل والواتساب -->
+  <div class="checkout-screen-modal" id="checkoutModal">
+    <div class="checkout-card-box">
+      <div class="checkout-head-bar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-file-invoice-dollar" style="color:var(--purple-glow); font-size:18px;"></i>
+          <div>
+            <h4 style="font-size:14px; font-weight:900; color:#fff;">إتمام الطلب السري والفاتورة</h4>
+            <span style="font-size:10px; color:#a7f3d0;">● الدفع عند الاستلام متاح 100%</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark" style="font-size:20px; color:#c4b5fd; cursor:pointer;" onclick="closeCheckoutProcess()"></i>
+      </div>
+
+      <!-- نموذج إتمام الطلب المربوط بـ FormSubmit لاستلام الفاتورة على الإيميل -->
+      <form class="checkout-form-scroll" id="checkoutForm" action="https://formsubmit.co/roooo77775@gmail.com" method="POST" onsubmit="handleOrderSubmission(event)">
+        <!-- إعدادات FormSubmit المخفية لضمان إرسال الفاتورة مرتبة -->
+        <input type="hidden" name="_subject" id="emailSubjectField" value="👑 فاتورة طلب شراء جديدة - متجر بريتورا BRITORA">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="رقم_الطلب_السري" id="hiddenOrderCode">
+        <input type="hidden" name="تفاصيل_المنتجات_والكميات" id="hiddenProductsList">
+        <input type="hidden" name="المبلغ_الإجمالي" id="hiddenTotalCost">
+        <input type="hidden" name="طريقة_الدفع" value="الدفع عند الاستلام مع تغليف سري 100%">
+
+        <div class="order-summary-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span>كود الطلب المعتمد:</span>
+            <span class="order-code-badge" id="displayOrderCode">BT-000000</span>
+          </div>
+          <div style="color:var(--text-muted);">
+            المنتجات المحددة: <b id="checkoutItemsCount" style="color:#fff;">0</b> منتجات | الإجمالي: <b id="checkoutFinalAmount" style="color:var(--crimson-neon);">0 ر.س</b>
+          </div>
+        </div>
+
+        <div class="form-group-luxe">
+          <label><i class="fa-solid fa-user"></i> الاسم الكامل للعميل *</label>
+          <input type="text" name="اسم_العميل" id="custName" placeholder="مثال: فهد المطيري" required>
+        </div>
+
+        <div class="form-group-luxe">
+          <label><i class="fa-solid fa-phone"></i> رقم الجوال للتوصيل *</label>
+          <input type="tel" name="رقم_الجوال" id="custPhone" placeholder="05XXXXXXXX" required>
+        </div>
+
+        <div class="form-group-luxe">
+          <label><i class="fa-solid fa-city"></i> المدينة *</label>
+          <select name="المدينة" id="custCity" required>
+            <option value="" disabled selected>اختر المدينة...</option>
+            <option value="الرياض">الرياض</option>
+            <option value="جدة">جدة</option>
+            <option value="مكة المكرمة">مكة المكرمة</option>
+            <option value="المدينة المنورة">المدينة المنورة</option>
+            <option value="الدمام">الدمام</option>
+            <option value="الخبر">الخبر</option>
+            <option value="الظهران">الظهران</option>
+            <option value="الأحساء">الأحساء</option>
+            <option value="تبوك">تبوك</option>
+            <option value="خميس مشيط">خميس مشيط</option>
+            <option value="أبها">أبها</option>
+            <option value="الطائف">الطائف</option>
+            <option value="بريدة">بريدة</option>
+            <option value="عنيزة">عنيزة</option>
+            <option value="حائل">حائل</option>
+            <option value="جازان">جازان</option>
+            <option value="نجران">نجران</option>
+            <option value="مدينة أخرى">مدينة أخرى (سجلها في العنوان)</option>
+          </select>
+        </div>
+
+        <div class="form-group-luxe">
+          <label><i class="fa-solid fa-map-pin"></i> الحي السكني *</label>
+          <input type="text" name="الحي" id="custDistrict" placeholder="مثال: حي النرجس / حي الياسمين" required>
+        </div>
+
+        <div class="form-group-luxe">
+          <label><i class="fa-solid fa-house-chimney"></i> العنوان الوطني (المختصر أو المفصل) *</label>
+          <input type="text" name="العنوان_الوطني" id="custNationalAddress" placeholder="مثال: RRBA4210 أو اسم الشارع ورقم المبنى" required>
+        </div>
+
+        <button type="submit" class="btn-submit-order">
+          <i class="fa-solid fa-check-double"></i>
+          <span>تأكيد الطلب واستلام الفاتورة فوراً</span>
+        </button>
+
+        <p style="font-size:10px; color:var(--text-sub); text-align:center; margin-top:4px;">
+          🔒 عند الضغط، ستصلك الفاتورة الرسمية على إيميل الإدارة وتفتح محادثة واتساب فورية لتأكيد الشحن.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة محادثة المساعد الذكي "رورو AI" -->
+  <div class="roro-chat-modal" id="roroChatModal">
+    <div class="roro-chat-box">
+      <div class="roro-top-title">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg, var(--purple-glow), var(--crimson-neon)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">👑</div>
+          <div>
+            <h4 style="font-size:13.5px; font-weight:800; color:#fff;">رورو • خبيرة بريتورا AI</h4>
+            <span style="font-size:10.5px; color:#4ade80;">● متصلة للإجابة عن الأسعار والمواصفات فوراً</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark" style="font-size:20px; color:#c4b5fd; cursor:pointer;" onclick="toggleRoroChat(false)"></i>
+      </div>
+
+      <div class="roro-stream-area" id="roroMessagesStream">
+        <div class="chat-bubble bot">
+أهلاً بك في بوتيك بريتورا BRITORA الفاخر 👑
+أنا «رورو» خبيرتك الخاصة.
+يمكنك الاستفسار عن تفاصيل أي منتج، أسعار البوكسات الحصرية، خامات السيليكون الطبي 100%، أو طريقة الدفع عند الاستلام والشحن السري!
+        </div>
+      </div>
+
+      <div class="chips-suggestions">
+        <span class="chip-btn" onclick="askRoroQuestion('كم سعر بوكس بريتورا الملكي؟')">🎁 بوكس بريتورا</span>
+        <span class="chip-btn" onclick="askRoroQuestion('مواصفات جهاز التحفيز الرجالي')">⚡ جهاز التحفيز</span>
+        <span class="chip-btn" onclick="askRoroQuestion('كيف تضمنون التغليف السري؟')">🔒 التغليف السري</span>
+        <span class="chip-btn" onclick="askRoroQuestion('هل متاح الدفع عند الاستلام؟')">💵 الدفع عند الاستلام</span>
+      </div>
+
+      <div class="chat-input-bar">
+        <input type="text" id="roroUserInput" placeholder="اكتب سؤالك لـ رورو هنا..." onkeypress="if(event.key==='Enter') sendRoroMsg()">
+        <button onclick="sendRoroMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // الإعدادات الرسمية المربوطة لمتجر بريتورا
+    const STORE_WHATSAPP = "966556575822"; // رقم الواتساب السعودي بعد التحويل
+    const STORE_EMAIL = "roooo77775@gmail.com"; // البريد الإلكتروني لاستلام الفواتير
+
+    // كتالوج منتجات بريتورا الفاخرة
+    const britoraProductsCatalog = [
+      {
+        id: 1,
+        title: "بوكس بريتورا الملكي المتكامل (VIP Edition)",
+        category: "ألعاب وبوكسات",
+        price: 950,
+        oldPrice: 1300,
+        badge: "الأكثر طلباً ★",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="22" y="32" width="56" height="50" rx="8" fill="#24073d" stroke="#c084fc" stroke-width="2.5"/>
+          <rect x="16" y="22" width="68" height="15" rx="5" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+          <path d="M50 22V82" stroke="#f43f5e" stroke-width="3"/>
+          <circle cx="50" cy="22" r="5" fill="#fbcfe8"/>
+        </svg>`,
+        desc: "أفخم بوكس للأزواج يضم بطاقات أسئلة رومانسية جريئة، زيوت تدليك عضوية معطرة، شمع مساج دافئ، وإكسسوارات فاخرة.",
+        specs: [
+          "أكثر من 100 بطاقة تفاعلية مميزة",
+          "زيوت تدليك طبيعية بنفحات عطرية ساحرة",
+          "شموع صويا عطرية تدوم طويلاً",
+          "تغليف مخملي أسود فاخر وسري 100%"
+        ]
+      },
+      {
+        id: 2,
+        title: "جهاز التحفيز الذكي المزدوج (Medical Silicone)",
+        category: "أدوات واسترخاء",
+        price: 890,
+        oldPrice: 1150,
+        badge: "الأعلى تقييماً",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <path d="M38 78C32 68 32 40 46 25C54 18 64 22 66 32C68 44 58 60 52 78H38Z" fill="#3b0764" stroke="#c084fc" stroke-width="2.5"/>
+          <circle cx="55" cy="30" r="4" fill="#f43f5e"/>
+          <circle cx="45" cy="72" r="3" fill="#a855f7"/>
+        </svg>`,
+        desc: "سيليكون طبي ناعم 100%، محرك مزدوج هادئ جداً مع 12 نمطاً مختلفاً، مقاوم للماء بمعيار IPX7 وشحن USB سريع.",
+        specs: [
+          "خامة السيليكون الطبي 100% المعتمد صحياً",
+          "12 نمط نبض ذكي متعدد السرعات",
+          "مقاومة كاملة للماء IPX7",
+          "محرك صامت للغاية أقل من 40 ديسيبل"
+        ]
+      },
+      {
+        id: 3,
+        title: "حلقات بريتورا المرنة لتعزيز الصلابة والأداء",
+        category: "أجهزة تحفيز",
+        price: 650,
+        oldPrice: 850,
+        badge: "الأكثر طلباً ★",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <circle cx="36" cy="50" r="22" stroke="#c084fc" stroke-width="4.5" fill="none"/>
+          <circle cx="64" cy="50" r="22" stroke="#a855f7" stroke-width="4.5" fill="none"/>
+          <circle cx="50" cy="50" r="11" fill="#f43f5e"/>
+        </svg>`,
+        desc: "طقم ثلاثي مصنع من سيليكون طبي فائق المرونة لدعم ثبات الانتصاب وإطالة مدة اللحظات الحميمية بأمان تام.",
+        specs: [
+          "سيليكون ناعم ذو مرونة عالية جداً",
+          "طقم مريح وقابل لإعادة الاستخدام",
+          "سهل التنظيف ومقاوم للماء"
+        ]
+      },
+      {
+        id: 4,
+        title: "جهاز مساج ونبضات استرخائي للرجال (VIP)",
+        category: "أجهزة تحفيز",
+        price: 1100,
+        oldPrice: 1450,
+        badge: "إصدار VIP 👑",
+        rating: 5.0,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="30" y="20" width="40" height="65" rx="18" fill="#24073d" stroke="#c084fc" stroke-width="2.5"/>
+          <rect x="36" y="32" width="28" height="42" rx="12" fill="#581c87"/>
+          <circle cx="50" cy="80" r="4" fill="#f43f5e"/>
+        </svg>`,
+        desc: "تقنية تفريغ ونبضات هوائية هيدروليكية ذكية لتجديد النشاط والتحفيز مع بطارية ليثيوم طويلة الأمد.",
+        specs: [
+          "تقنية نبضات هيدروليكية ذكية بـ 7 مستويات",
+          "بطانة سيليكون طبية مرنة للغاية",
+          "بطارية ليثيوم عملاقة قابلة للشحن",
+          "نظام فك وتنظيف سريع وسلس"
+        ]
+      },
+      {
+        id: 5,
+        title: "طقم الزيوت والشموع العطرية للمساج الرومانسي",
+        category: "عناية وزيوت",
+        price: 780,
+        oldPrice: 980,
+        badge: "طبيعي 100%",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <path d="M40 32H60V75C60 81 55 86 50 86C45 86 40 81 40 75V32Z" fill="#3b0764" stroke="#c084fc" stroke-width="2"/>
+          <path d="M46 22H54V32H46V22Z" fill="#f43f5e"/>
+          <circle cx="50" cy="55" r="7" fill="#fbbf24"/>
+        </svg>`,
+        desc: "زيوت مساج غنية بزبدة الشيا وخلاصة اللافندر والفانيليا تذوب بلطف وتترك البشرة ناعمة ودافئة.",
+        specs: [
+          "مكونات طبيعية 100% غير مسببة للتحسس",
+          "شمعة تدليك دافئة برائحة الاسترخاء",
+          "ترطيب عميق ونعومة تدوم لساعات"
+        ]
+      },
+      {
+        id: 6,
+        title: "لعبة كروت التحدي الزوجي - ليلة بريتورا",
+        category: "ألعاب وبوكسات",
+        price: 680,
+        oldPrice: 850,
+        badge: "جديد 💖",
+        rating: 4.9,
+        svg: `<svg viewBox="0 0 100 100" fill="none">
+          <rect x="25" y="25" width="34" height="48" rx="6" fill="#4c1d95" stroke="#c084fc" stroke-width="2"/>
+          <rect x="42" y="32" width="34" height="48" rx="6" fill="#1e0538" stroke="#f43f5e" stroke-width="2"/>
+          <circle cx="59" cy="56" r="6" fill="#fbbf24"/>
+        </svg>`,
+        desc: "أكثر من 120 كرتاً تفاعلياً مصمماً لتعزيز لغة المشاعر وتجديد الشغف بأجواء مليئة بالمرح والإثارة.",
+        specs: [
+          "120 بطاقة بـ 4 مستويات جرأة متدرجة",
+          "صندوق فاخر مقاوم للماء والتلف",
+          "تصميم أنيق باللغة العربية الفصحى"
+        ]
+      }
+    ];
+
+    // حالة السلة والمفضلة
+    let cart = [];
+    let favorites = [];
+
+    // توليد كروت المنتجات
+    function renderCatalogItems(items) {
+      const grid = document.getElementById("productsGridView");
+      if (items.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:#c4b5fd;">لا توجد منتجات مطابقة لهذا القسم حالياً.</div>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(product => {
+        const isFav = favorites.includes(product.id);
+        return `
+          <div class="product-card">
+            <span class="product-badge-tag">${product.badge}</span>
+            <div class="product-fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav(${product.id}, this)">
+              <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart"></i>
+            </div>
+            
+            <div class="product-stage-art" onclick="askRoroDirectly('${product.title}')">
+              ${product.svg}
+            </div>
+
+            <div class="product-content-details">
+              <div class="product-title-text" onclick="askRoroDirectly('${product.title}')">${product.title}</div>
+              
+              <div class="product-rating-bar">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>${product.rating}</span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-sar-val">${product.price} ر.س</span>
+                <span class="price-old-val">${product.oldPrice} ر.س</span>
+              </div>
+
+              <button class="btn-action-add" onclick="addItemToCart(${product.id})">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>أضف للسلة</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // تصفية الأقسام
+    function filterCatalogByCategory(category, pillElem) {
+      if (pillElem) {
+        document.querySelectorAll('.cat-story-item').forEach(el => el.classList.remove('active'));
+        pillElem.classList.add('active');
+      }
+
+      if (category === 'الكل') {
+        renderCatalogItems(britoraProductsCatalog);
+      } else {
+        const filtered = britoraProductsCatalog.filter(p => p.category === category);
+      
