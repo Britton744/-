@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر العاب زوجيه - متجر الملوك LUXE</title>
+  <meta name="description" content="أفخم متجر العاب زوجيه في السعودية والخليج - منتجات حصرية، تغليف سري 100%، ودفع عند الاستلام.">
+  <meta name="keywords" content="متجر العاب زوجيه, العاب زوجية, العاب رومانسية, متجر الملوك">
+  
+  <!-- خط تجوال العربي الفخم وأيقونات FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --card-bg: #131318;
+      --card-border: #231c26;
+      --primary: #f43f5e;
+      --primary-hover: #e11d48;
+      --accent: #fb7185;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --gold: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+
+    /* الشريط العلوي للروابط والبحث */
+    .header {
+      background-color: rgba(10, 10, 12, 0.95);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-icon {
+      font-size: 26px;
+      color: var(--primary);
+    }
+
+    .logo-text h1 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--primary);
+      display: block;
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 450px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #181820;
+      border: 1px solid #2e2634;
+      padding: 10px 40px 10px 16px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
+    }
+
+    .header-icons i {
+      cursor: pointer;
+      color: #e2e8f0;
+      transition: color 0.2s;
+    }
+
+    .cart-badge {
+      position: relative;
+    }
+
+    .badge-count {
+      position: absolute;
+      top: -7px;
+      right: -8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* البنر الرئيسي الرومانسي الفاخر */
+    .hero-banner {
+      margin: 15px 20px;
+      background: radial-gradient(circle at 70% 30%, #3b0d23 0%, #150912 60%, #0a0a0c 100%);
+      border: 1px solid #381a28;
+      border-radius: 24px;
+      padding: 40px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '♥';
+      position: absolute;
+      left: 20px;
+      bottom: -15px;
+      font-size: 130px;
+      color: rgba(244, 63, 94, 0.06);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      max-width: 480px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 25px;
+      max-width: 400px;
+    }
+
+    .hero-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(244, 63, 94, 0.35);
+    }
+
+    /* شريط المزايا */
+    .features-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 15px 20px 25px;
+    }
+
+    .feature-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 12px;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-item i {
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    /* قسم التصنيفات */
+    .section-header {
+      padding: 0 20px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+      gap: 12px;
+      padding: 0 20px 30px;
+    }
+
+    .category-card {
+      background: #14121a;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 14px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .category-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .category-card i {
+      font-size: 22px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .category-card span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* شبكة المنتجات */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 0 20px 30px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .badge-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
+      z-index: 2;
+    }
+
+    .product-img-box {
+      height: 150px;
+      background: radial-gradient(circle, #2b1424 0%, #151119 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      color: var(--primary);
+      position: relative;
+    }
+
+    .product-info {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+      color: #f8fafc;
+      min-height: 36px;
+    }
+
+    .product-rating {
+      color: var(--gold);
+      font-size: 10px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .price-current {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .price-old {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .add-to-cart {
+      margin-top: auto;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      border: none;
+      padding: 9px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+    }
+
+    /* زر نافذة الذكاء الاصطناعي رورو */
+    .roro-fab {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #f43f5e, #be123c);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 35px;
+      box-shadow: 0 8px 30px rgba(244, 63, 94, 0.5);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* نافذة شات رورو */
+    .roro-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .roro-box {
+      width: 100%;
+      max-width: 480px;
+      background: #14131a;
+      border: 1px solid #2e2634;
+      border-radius: 25px 25px 0 0;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .roro-header {
+      background: #1b1924;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .roro-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .roro-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .roro-status {
+      font-size: 11px;
+      color: #4ade80;
+    }
+
+    .close-btn {
+      color: #9ca3af;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      max-width: 82%;
+      padding: 11px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .msg.bot {
+      background: #201d2a;
+      color: #fff;
+      border: 1px solid #312b3e;
+      align-self: flex-start;
+      border-bottom-right-radius: 4px;
+      white-space: pre-line;
+    }
+
+    .msg.user {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-footer {
+      padding: 12px 15px;
+      background: #181622;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      background: #100e16;
+      border: 1px solid #2e2634;
+      border-radius: 20px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-footer button {
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- رأس الموقع -->
+  <header class="header">
+    <a href="#" class="logo-area">
+      <i class="fa-solid fa-crown logo-icon"></i>
+      <div class="logo-text">
+        <h1>متجر الملوك</h1>
+        <span>COUPLE GAMES & LUXE</span>
+      </div>
+    </a>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="ابحث عن ألعاب، بوكسات، مواصفات..." onkeyup="filterProducts()">
+    </div>
+    <div class="header-icons">
+      <div class="cart-badge">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <div class="badge-count" id="cartCount">0</div>
+      </div>
+      <i class="fa-regular fa-user"></i>
+    </div>
+  </header>
+
+  <!-- البنر الرئيسي الفاخر -->
+  <section class="hero-banner">
+    <div class="hero-badge"><i class="fa-solid fa-heart"></i> أكثر من مجرد متجر .. تجربة تجمعكم</div>
+    <h2 class="hero-title">ألعاب زوجية وبوكسات فاخرة لتعزيز الشغف والتواصل والحميمية</h2>
+    <p class="hero-subtitle">تغليف مخملي سري 100% بدون أي تفاصيل خارجية • دفع آمن عند الاستلام • توصيل فائق السرعة</p>
+    <button class="hero-btn" onclick="openRoroWithPrompt('أفضل المنتجات')">
+      <span>تحدثي مع رورو المساعد الذكي</span>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+    </button>
+  </section>
+
+  <!-- شريط المميزات -->
+  <div class="features-bar">
+    <div class="feature-item">
+      <i class="fa-solid fa-user-secret"></i>
+      <span>تغليف سري ومميز 100%</span>
+    </div>
+    <div class="feature-item">
+      <i class="fa-solid fa-truck-fast"></i>
+      <span>توصيل سريع لكل المناطق</span>
+    </div>
+    <div class="feature-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>دفع عند الاستلام وضمان</span>
+    </div>
+  </div>
+
+  <!-- تصنيفات الأقسام -->
+  <div class="section-header">
+    <div class="section-title"><i class="fa-solid fa-heart"></i> تسوق حسب التصنيف</div>
+  </div>
+  <div class="categories-grid">
+    <div class="category-card" onclick="openRoroWithPrompt('ألعاب زوجية')">
+      <i class="fa-solid fa-dice"></i>
+      <span>ألعاب زوجية</span>
+    </div>
+    <div class="category-card" onclick="openRoroWithPrompt('بوكسات هدايا')">
+      <i class="fa-solid fa-gift"></i>
+      <span>بوكسات هدايا</span>
+    </div>
+    <div class="category-card" onclick="openRoroWithPrompt('أدوات للنساء')">
+      <i class="fa-solid fa-wand-magic"></i>
+      <span>أدوات نسائية</span>
+    </div>
+    <div class="category-card" onclick="openRoroWithPrompt('أدوات للرجال')">
+      <i class="fa-solid fa-mars"></i>
+      <span>أدوات رجالية</span>
+    </div>
+    <div class="category-card" onclick="openRoroWithPrompt('ملابس تنكرية')">
+      <i class="fa-solid fa-mask"></i>
+      <span>أزياء وأطقم</span>
+    </div>
+  </div>
+
+  <!-- أحدث المنتجات -->
+  <div class="section-header">
+    <div class="section-title"><i class="fa-solid fa-fire"></i> أحدث المنتجات والبوكسات</div>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <!-- المنتجات تُبنى تلقائياً بواسطة الجافاسكريبت -->
+  </div>
+
+  <!-- زر الذكاء الاصطناعي "رورو" العائم -->
+  <div class="roro-fab" onclick="toggleRoro(true)">
+    <i class="fa-solid fa-comments"></i>
+    <span>اسأل رورو AI 💜</span>
+  </div>
+
+  <!-- نافذة شات رورو -->
+  <div class="roro-modal" id="roroModal">
+    <div class="roro-box">
+      <div class="roro-header">
+        <div class="roro-profile">
+          <div class="roro-avatar">👑</div>
+          <div>
+            <h3 style="font-size: 14px; font-weight:800;">رورو • المساعد الذكي</h3>
+            <span class="roro-status">● متصلة وتجيب عن المنتجات والأسعار</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark close-btn" onclick="toggleRoro(false)"></i>
+      </div>
+
+      <div class="chat-body" id="chatBody">
+        <div class="msg bot">
+أهلاً بك في متجر الملوك! أنا "رورو" مساعدتك الذكية 🌸
+اكتب لي أي استفسار أو اسم منتج وسأجيبك فوراً بسعره، مواصفاته الكاملة، وكيفية إتمام الطلب بسرية تامة!
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك لـ رورو هنا..." onkeypress="if(event.key==='Enter') sendRoroMsg()">
+        <button onclick="sendRoroMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // قائمة المنتجات مع الأسعار والمواصفات الكاملة
+    const products = [
+      {
+        id: 1,
+        name: "بوكس ليلة رومانسية فاخر",
+        price: 399,
+        oldPrice: 599,
+        tag: "أكثر مبيعاً",
+        icon: "fa-gift",
+        desc: "بوكس متكامل يحتوي على بطاقات رومانسية، زيوت تدليك فاخرة، شمع معطر، وإكسسوارات حصرية لليلة لا تنسى."
+      },
+      {
+        id: 2,
+        name: "لعبة الزوجين - تحدي الحب",
+        price: 249,
+        oldPrice: 349,
+        tag: "جديد",
+        icon: "fa-gamepad",
+        desc: "لعبة كروت تفاعلية جريئة تعزز لغة الحب وتكسر الروتين بين الزوجين بأسئلة ومهمات حماسية."
+      },
+      {
+        id: 3,
+        name: "طقم تنكري ملكي فاخر",
+        price: 199,
+        oldPrice: 399,
+        tag: "تخفيض 50%",
+        icon: "fa-mask",
+        desc: "خامة دانتيل حريري ناعمة وآمنة للبشرة بتصميم فخم ومقاس مريح يبرز الأناقة."
+      },
+      {
+        id: 4,
+        name: "هزازة مزدوجة ذكية للنساء",
+        price: 279,
+        oldPrice: 399,
+        tag: "تخفيض 30%",
+        icon: "fa-wand-magic-sparkles",
+        desc: "سيليكون طبي 100%، مقاومة تامة للماء معيار IPX7، شحن USB-C سريع، و10 أنماط اهتزاز صامتة."
+      },
+      {
+        id: 5,
+        name: "لعبة أسئلة وأحكام للأزواج",
+        price: 149,
+        oldPrice: 199,
+        tag: "مميز",
+        icon: "fa-dice",
+        desc: "مجموعة نرد وكروت أحكام رومانسية مخصصة للأزواج لإضافة جو من الإثارة والمرح في السهرات."
+      },
+      {
+        id: 6,
+        name: "جهاز تحفيز ومساج رجالي",
+        price: 349,
+        oldPrice: 499,
+        tag: "الأعلى تقييماً",
+        icon: "fa-shield-heart",
+        desc: "تقنية شفط واهتزاز هيدروليكية أوتوماتيكية، بطارية طويلة الأمد، سيليكون طبي مرن وسهل التنظيف."
+      }
+    ];
+
+    let cart = 0;
+
+    // عرض كروت المنتجات
+    function renderProducts(items) {
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = items.map(p => `
+        <div class="product-card">
+          <span class="badge-tag">${p.tag}</span>
+          <div class="product-img-box">
+            <i class="fa-solid ${p.icon}"></i>
+          </div>
+          <div class="product-info">
+            <h4 class="product-title">${p.name}</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(4.9)</span>
+            </div>
+            <div class="price-row">
+              <span class="price-current">${p.price} ر.س</span>
+              <span class="price-old">${p.oldPrice} ر.س</span>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('${p.name}')">
+              <i class="fa-solid fa-cart-plus"></i> أضف إلى السلة
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderProducts(products);
+
+    // إضافة للسلة
+    function addToCart(name) {
+      cart++;
+      document.getElementById("cartCount").innerText = cart;
+      alert(`تمت إضافة "${name}" إلى السلة بنجاح!`);
+    }
+
+    // تصفية البحث السريع
+    function filterProducts() {
+      const text = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(text) || p.desc.toLowerCase().includes(text));
+      renderProducts(filtered);
+    }
+
+    // فتح وإغلاق رورو
+    function toggleRoro(show) {
+      document.getElementById("roroModal").style.display = show ? "flex" : "none";
+    }
+
+    function openRoroWithPrompt(text) {
+      toggleRoro(true);
+      document.getElementById("userInput").value = text;
+      sendRoroMsg();
+    }
+
+    // الذكاء الاصطناعي "رورو"
+    function sendRoroMsg() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBody = document.getElementById("chatBody");
+
+      // رسالة العميل
+      chatBody.innerHTML += `<div class="msg user">${text}</div>`;
+      input.value = "";
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      // معالجة رد رورو الذكي
+      setTimeout(() => {
+        const reply = getRoroResponse(text);
+        chatBody.innerHTML += `<div class="msg bot">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 500);
+    }
+
+    function getRoroResponse(query) {
+      const q = query.toLowerCase();
+
+      // عن الشحن والتغليف
+      if (q.includes("تغليف") || q.includes("سري") || q.includes("شحن") || q.includes("توصيل") || q.includes("خصوصية")) {
+        return `🔒 **بخصوص الخصوصية والشحن:**
+تغليفنا مخملي أسود فاخر 100% بدون أي عبارة أو علامة تشير إلى محتوى الطرد إطلاقاً.
+التوصيل يستغرق 24 - 48 ساعة مع ميزة الدفع عند الاستلام لراحتك التامة!`;
+      }
+
+      // عن المتجر
+      if (q.includes("من انتم") || q.includes("متجر") || q.includes("ضمان")) {
+        return `👑 **متجر الملوك:**
+متخصصون في أرقى الألعاب والمنتجات الزوجية المصنوعة من السيليكون الطبي المعتمد والآمن 100%. نوفر ضماناً لمدة 6 أشهر ودعماً متواصلاً.`;
+      }
+
+      // مطابقة المنتجات والأسعار والمواصفات
+      const match = products.find(p => q.includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(q) || q.includes(p.tag.toLowerCase()));
+      if (match) {
+        return `✨ **طلبك عند رورو:**
+📦 **المنتج:** ${match.name}
+💰 **السعر بعد الخصم:** ${match.price} ر.س (بدلاً من ${match.oldPrice} ر.س)
+📋 **المواصفات:** ${match.desc}
+🛡️ **الضمان:** فحص الجودة وتغليف سري آمن 100%.
+
+هل ترغب أن أضيفه إلى سلتك الآن؟`;
+      }
+
+      if (q.includes("أفضل") || q.includes("مقترح") || q.includes("جديد")) {
+        return `🌸 أنصحك بتجربة **${products[0].name}** (السعر ${products[0].price} ر.س) أو **${products[1].name}**؛ فهما الأكثر طلباً لتعزيز الأجواء الرومانسية المميزة!`;
+      }
+
+      return `أنا هنا لخدمتك 💜! اكتب لي اسم أي منتج، أو اسألني عن (الأسعار، أحدث الألعاب، مواصفات السيليكون الطبي، أو تفاصيل الشحن السري) وسأجيبك في ثوانٍ.`;
+    }
+  </script>
+</body>
+</html>
