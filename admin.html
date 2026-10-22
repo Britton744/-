@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>لوحة تحكم المنتجات | متجر الملوك LUXE</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #dfb872;
+            --gold-glow: #ffd700;
+            --rose-btn: #e11d48;
+            --bg-dark: #09030b;
+            --sidebar-bg: #140517;
+            --card-bg: rgba(26, 8, 29, 0.85);
+            --border-color: rgba(223, 184, 114, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* شاشة الدخول */
+        #loginScreen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(225, 29, 72, 0.2) 0%, rgba(9, 3, 11, 0.98) 75%);
+        }
+
+        .login-card {
+            background: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 184, 114, 0.15);
+        }
+
+        .login-card i.crown {
+            font-size: 40px;
+            color: var(--gold-glow);
+            margin-bottom: 12px;
+        }
+
+        .login-card h2 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .login-card p {
+            font-size: 12px;
+            color: #fda4af;
+            margin-bottom: 20px;
+        }
+
+        .input-wrap {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .login-input {
+            width: 100%;
+            background: #000;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 13px 40px 13px 15px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+        }
+
+        .login-input:focus {
+            border-color: var(--gold-glow);
+        }
+
+        .toggle-eye {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), #b45309);
+            color: #000;
+            font-weight: 900;
+            font-size: 15px;
+            padding: 13px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        #loginError {
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* واجهة لوحة التحكم */
+        #adminApp {
+            display: none;
+            padding-bottom: 50px;
+        }
+
+        .top-nav {
+            background: var(--sidebar-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .kpi-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .kpi-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .kpi-card h4 {
+            font-size: 11px;
+            color: #cbd5e1;
+            margin-bottom: 4px;
+        }
+
+        .kpi-card b {
+            font-size: 17px;
+            color: var(--gold-glow);
+        }
+
+        .box-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .box-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--gold-glow);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* جدول المنتجات */
+        .prod-row {
+            background: #110413;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .prod-info-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .prod-img-sm {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(223, 184, 114, 0.3);
+        }
+
+        .actions-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-action {
+            border: none;
+            padding: 7px 11px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-edit-price { background: #eab308; color: #000; }
+        .btn-delete { background: #ef4444; color: #fff; }
+
+        /* حقول الإضافة */
+        .form-ctrl {
+            width: 100%;
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. شاشة الدخول -->
+    <div id="loginScreen">
+        <div class="login-card">
+            <i class="fa-solid fa-crown crown"></i>
+            <h2>لوحة تحكم متجر الملوك</h2>
+            <p>تعديل الأسعار وإدارة الكتالوج</p>
+
+            <div class="input-wrap">
+                <input type="password" id="passInput" class="login-input" placeholder="اكتب king123" autocomplete="off">
+                <i class="fa-solid fa-eye toggle-eye" onclick="togglePassView()"></i>
+            </div>
+
+            <button class="login-btn" onclick="tryLogin()">
+                <i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 6px;"></i> دخول اللوحة
+            </button>
+
+            <div id="loginError">الرمز غير صحيح! تأكد من كتابة: king123</div>
+        </div>
+    </div>
+
+    <!-- 2. واجهة التحكم -->
+    <div id="adminApp">
+        <header class="top-nav">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-crown" style="color:var(--gold-glow); font-size:20px;"></i>
+                <b style="font-size:14px;">إدارة متجر الملوك LUXE</b>
+            </div>
+            <div>
+                <a href="./" target="_blank" style="color:#fff; text-decoration:none; font-size:12px; background:rgba(255,255,255,0.1); padding:6px 10px; border-radius:8px; margin-left:6px;">
+                    <i class="fa-solid fa-store"></i> المتجر
+                </a>
+                <button onclick="logout()" style="background:#ef4444; border:none; color:#fff; padding:6px 10px; border-radius:8px; font-size:12px; cursor:pointer;">
+                    خروج
+                </button>
+            </div>
+        </header>
+
+        <main class="main-wrap">
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <h4>إجمالي المنتجات المعروضة</h4>
+                    <b id="kpiCount">0</b>
+                </div>
+                <div class="kpi-card">
+                    <h4>إجمالي قيمة المعروض</h4>
+                    <b id="kpiSum">0 ر.س</b>
+                </div>
+            </div>
+
+            <!-- نموذج إضافة منتج جديد -->
+            <div class="box-section">
+                <div class="box-title">
+                    <span>➕ إضافة منتج جديد فوراً</span>
+                </div>
+                <input type="text" id="addName" class="form-ctrl" placeholder="اسم المنتج (مثلاً: قضيب واقعي 23 سم)">
+                <div style="display:flex; gap:10px;">
+                    <input type="number" id="addPrice" class="form-ctrl" placeholder="السعر بالريال (مثلاً: 780)">
+                    <select id="addCat" class="form-ctrl">
+                        <option value="men">أجهزة استمناء رجالية</option>
+                        <option value="dildo">قضبان صناعية وواقعية</option>
+                        <option value="anal">سدادات وخرز شرجي</option>
+                        <option value="couples">ألعاب أزواج</option>
+                        <option value="vibe">هزازات نسائية</option>
+                    </select>
+                </div>
+                <input type="text" id="addImg" class="form-ctrl" placeholder="رابط الصورة (URL) - اختياري">
+                <button onclick="addNewItem()" style="width:100%; background:linear-gradient(135deg, #22c55e, #15803d); border:none; color:#fff; font-weight:800; padding:11px; border-radius:10px; cursor:pointer; font-size:13px;">
+                    حفظ وإضافة المنتج للكتالوج 🚀
+                </button>
+            </div>
+
+            <!-- قائمة وتعديل المنتجات الحالية -->
+            <div class="box-section">
+                <div class="box-title">
+                    <span>📦 المنتجات الحالية (اضغط لتعديل السعر)</span>
+                    <button onclick="restoreDefaultCatalog()" style="background:rgba(239,68,68,0.2); border:1px solid #ef4444; color:#fca5a5; font-size:10px; padding:3px 8px; border-radius:6px; cursor:pointer;">
+                        استعادة الافتراضي
+                    </button>
+                </div>
+                <div id="productsAdminList"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const defaultCatalog = [
+            { id: 1, name: "مهبل صناعي هزاز فاخر 1000 نبضة", cat: "men", price: 650, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, name: "جهاز استمناء شفط هيدروليك رويال X9", cat: "men", price: 1050, img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, name: "قضيب واقعي سيليكون طبي 23 سم رويال", cat: "dildo", price: 780, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" },
+            { id: 4, name: "قضيب زجاجي كريستال ملكي للتبريد والتسخين", cat: "dildo", price: 1400, img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80" },
+            { id: 5, name: "سدادة شرجية كريستال ملكية ذيل ثعلب", cat: "anal", price: 950, img: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80" },
+            { id: 6, name: "خرز شرجي متدرج 10 حبات سيليكون ملكي", cat: "anal", price: 1150, img: "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=400&q=80" },
+            { id: 7, name: "طقم ألعاب أزواج ملكي فاخر 12 قطعة", cat: "couples", price: 990, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80" },
+            { id: 8, name: "لعبة كروت تحدي الأزواج ليلة العشاق", cat: "couples", price: 650, img: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=400&q=80" },
+            { id: 9, name: "هزاز الأرنب المزدوج رويال برو ماكس", cat: "vibe", price: 890, img: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=400&q=80" },
+            { id: 10, name: "هزاز G سبوت ذهبي فاخر 12 وضعية", cat: "vibe", price: 1100, img: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80" }
+        ];
+
+        let prods = JSON.parse(localStorage.getItem('luxe_catalog')) || defaultCatalog;
+
+        const catNames = {
+            men: "أجهزة رجالية",
+            dildo: "قضبان صناعية",
+            anal: "سدادات وخرز",
+            couples: "ألعاب أزواج",
+            vibe: "هزازات نسائية"
+        };
+
+        // فحص الرمز بمرونة تامة وإزالة المسافات
+        function tryLogin() {
+            const inputVal = document.getElementById("passInput").value.trim().toLowerCase();
+            const errDiv = document.getElementById("loginError");
+
+            if (inputVal === "king123") {
+                document.getElementById("loginScreen").style.display = "none";
+                document.getElementById("adminApp").style.display = "block";
+                errDiv.style.display = "none";
+                renderAdminView();
+            } else {
+                errDiv.style.display = "block";
+            }
+        }
+
+        // إتاحة الضغط على Enter في كيبورد الجوال
+        document.getElementById("passInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                tryLogin();
+            }
+        });
+
+        function togglePassView() {
+            const field = document.getElementById("passInput");
+            field.type = field.type === "password" ? "text" : "password";
+        }
+
+        function logout() {
+            document.getElementById("loginScreen").style.display = "flex";
+            document.getElementById("adminApp").style.display = "none";
+            document.getElementById("passInput").value = "";
+        }
+
+        function renderAdminView() {
+            document.getElementById("kpiCount").innerText = prods.length;
+            const sum = prods.reduce((acc, p) => acc + Number(p.price), 0);
+            document.getElementById("kpiSum").innerText = sum.toLocaleString() + " ر.س";
+
+            const container = document.getElementById("productsAdminList");
+            container.innerHTML = prods.map(p => `
+                <div class="prod-row">
+                    <div class="prod-info-group">
+                        <img src="${p.img}" class="prod-img-sm" onerror="this.src='https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=100&q=80'">
+                        <div>
+                            <div style="font-size:12px; font-weight:bold; color:#fff;">${p.name}</div>
+                            <div style="font-size:11px; color:var(--gold-glow); margin-top:2px;">
+                                <b>${p.price} ر.س</b> • <span style="color:#fda4af;">${catNames[p.cat] || p.cat}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions-group">
+                        <button class="btn-action btn-edit-price" onclick="changePricePrompt(${p.id})">
+                            <i class="fa-solid fa-pen"></i> السعر
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deleteItem(${p.id})">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function changePricePrompt(id) {
+            const item = prods.find(p => p.id === id);
+            if (!item) return;
+
+            const newPrice = prompt(`أدخل السعر الجديد لمنتج [${item.name}]:`, item.price);
+            if (newPrice !== null && !isNaN(newPrice) && newPrice.trim() !== "") {
+                item.price = Number(newPrice);
+                saveData();
+                renderAdminView();
+                alert(`تم تحديث سعر "${item.name}" إلى ${newPrice} ر.س بنجاح 👑`);
+            }
+        }
+
+        function deleteItem(id) {
+            if (confirm("هل تريد بالتأكيد حذف هذا المنتج من المتجر؟")) {
+                prods = prods.filter(p => p.id !== id);
+                saveData();
+                renderAdminView();
+            }
+        }
+
+        function addNewItem() {
+            const name = document.getElementById("addName").value.trim();
+            const price = Number(document.getElementById("addPrice").value);
+            const cat = document.getElementById("addCat").value;
+            let img = document.getElementById("addImg").value.trim();
+
+            if (!name || isNaN(price) || price <= 0) {
+                alert("يرجى إدخال اسم المنتج وسعره بشكل صحيح!");
+                return;
+            }
+
+            if (!img) {
+                img = "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80";
+            }
+
+            prods.unshift({
+                id: Date.now(),
+                name: name,
+                price: price,
+                cat: cat,
+                img: img
+            });
+
+            saveData();
+            document.getElementById("addName").value = "";
+            document.getElementById("addPrice").value = "";
+            document.getElementById("addImg").value = "";
+            
