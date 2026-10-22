@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>إدارة المنتجات والصور | متجر الملوك LUXE</title>
+    <style>
+        * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
+        body { background: #09030b; color: #fff; padding: 15px; }
+        
+        /* شاشة الدخول المباشرة */
+        #loginBox {
+            max-width: 380px; margin: 60px auto; background: #160818;
+            padding: 25px; border-radius: 16px; border: 1.5px solid #dfb872;
+            text-align: center;
+        }
+        input, select {
+            width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px;
+            border: 1px solid #dfb872; background: #000; color: #fff;
+            font-size: 15px; text-align: center; outline: none;
+        }
+        .btn-gold {
+            width: 100%; padding: 12px; background: linear-gradient(135deg, #dfb872, #b45309);
+            color: #000; font-weight: 900; border: none; border-radius: 10px;
+            font-size: 15px; cursor: pointer; margin-top: 8px;
+        }
+
+        /* اللوحة الرئيسية */
+        #panelBox { display: none; max-width: 650px; margin: 0 auto; padding-bottom: 50px; }
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(223,184,114,0.3); padding-bottom: 12px; margin-bottom: 20px;
+        }
+        .card-box {
+            background: #160818; border: 1px solid rgba(223,184,114,0.3);
+            border-radius: 14px; padding: 15px; margin-bottom: 20px; text-align: right;
+        }
+        .card-box label { font-size: 12px; color: #dfb872; font-weight: bold; display: block; margin-top: 6px; }
+
+        /* قائمة المنتجات المعروضة */
+        .prod-item {
+            background: #1d0a20; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; padding: 12px; margin-bottom: 12px;
+            display: flex; gap: 12px; align-items: center; justify-content: space-between;
+        }
+        .prod-img {
+            width: 65px; height: 65px; border-radius: 10px; object-fit: cover;
+            border: 1px solid #dfb872; background: #000; flex-shrink: 0;
+        }
+        .prod-details { flex-grow: 1; text-align: right; }
+        .prod-name { font-size: 13px; font-weight: bold; color: #fff; margin-bottom: 4px; }
+        .prod-price { font-size: 14px; color: #ffd700; font-weight: 900; }
+        .prod-cat { font-size: 11px; color: #fda4af; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 5px; flex-shrink: 0; }
+        .btn-sm {
+            padding: 6px 10px; border-radius: 8px; border: none;
+            font-size: 11px; font-weight: bold; cursor: pointer; text-align: center;
+        }
+        .btn-edit-p { background: #eab308; color: #000; }
+        .btn-edit-img { background: #3b82f6; color: #fff; }
+        .btn-del { background: #ef4444; color: #fff; }
+
+        /* منطقة اختيار ورفع ملف الصورة */
+        .file-upload-box {
+            border: 1px dashed #dfb872; border-radius: 10px; padding: 10px;
+            text-align: center; margin: 8px 0; background: #000;
+        }
+        .preview-box {
+            width: 100%; height: 110px; border-radius: 10px; object-fit: contain;
+            background: #000; margin-top: 8px; display: none; border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. شاشة الدخول المباشرة المضمونة -->
+    <div id="loginBox">
+        <h2 style="color:#dfb872; margin-bottom:10px;">👑 لوحة تحكم متجر الملوك</h2>
+        <p style="font-size:12px; color:#ccc; margin-bottom:15px;">خاصة بتعديل الأسعار وإدارة صور المنتجات</p>
+        <input type="text" id="myPass" placeholder="اكتب الرمز السري: king123">
+        <button class="btn-gold" onclick="loginNow()">تسجيل الدخول</button>
+        <p id="err" style="color:#ef4444; font-size:13px; display:none; margin-top:10px; font-weight:bold;">الرمز غير صحيح!</p>
+    </div>
+
+    <!-- 2. لوحة التحكم وإدارة الصور والأسعار -->
+    <div id="panelBox">
+        <div class="header">
+            <div>
+                <h3 style="color:#dfb872;">👑 إدارة المنتجات والصور</h3>
+                <span style="font-size:11px; color:#ccc;">العدد الإجمالي: <b id="prodCount" style="color:#ffd700;">0</b> منتج</span>
+            </div>
+            <button onclick="logout()" style="background:#ef4444; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:11px; cursor:pointer;">خروج</button>
+        </div>
+
+        <!-- صندوق إضافة منتج جديد مع صورته -->
+        <div class="card-box">
+            <h4 style="color:#dfb872; margin-bottom:8px;">➕ إضافة منتج جديد مع الصورة:</h4>
+            
+            <label>اسم المنتج:</label>
+            <input type="text" id="newName" placeholder="مثلاً: قضيب واقعي سيليكون 23 سم">
+
+            <div style="display:flex; gap:10px;">
+                <div style="flex:1;">
+                    <label>السعر بالريال:</label>
+                    <input type="number" id="newPrice" placeholder="مثلاً: 780">
+                </div>
+                <div style="flex:1;">
+                    <label>القسم:</label>
+                    <select id="newCat">
+                        <option value="men">أجهزة استمناء رجالية</option>
+                        <option value="dildo">قضبان صناعية وواقعية</option>
+                        <option value="anal">سدادات وخرز شرجي</option>
+                        <option value="couples">ألعاب أزواج</option>
+                        <option value="vibe">هزازات نسائية</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- اختيار صورة من الجوال أو رابط -->
+            <label>صورة المنتج (اختر من جوالك أو ضع رابط):</label>
+            <div class="file-upload-box">
+                <input type="file" id="newFile" accept="image/*" onchange="previewNewImage(this)" style="display:none;">
+                <button type="button" onclick="document.getElementById('newFile').click()" style="background:#261129; border:1px solid #dfb872; color:#fff; padding:8px 14px; border-radius:8px; font-size:12px; cursor:pointer;">
+                    📸 اضغط لاختيار صورة من استوديو الجوال
+                </button>
+                <div style="margin: 6px 0; font-size:11px; color:#aaa;">أو ضع رابط صورة إنترنت جاهز:</div>
+                <input type="text" id="newImgUrl" placeholder="https://..." oninput="previewUrlImage(this.value)">
+                <img id="newImgPreview" class="preview-box">
+            </div>
+
+            <button class="btn-gold" onclick="addNewProduct()" style="margin-top:10px; background:linear-gradient(135deg, #22c55e, #15803d); color:#fff;">
+                حفظ وإضافة المنتج للمتجر 🚀
+            </button>
+        </div>
+
+        <!-- قائمة المنتجات الحالية وتعديل صورها وأسعارها -->
+        <h4 style="text-align:right; margin-bottom:10px; font-size:13px; color:#dfb872;">📦 المنتجات الحالية (عدّل السعر أو الصورة):</h4>
+        <div id="productsContainer"></div>
+
+        <!-- حقل مخفي لتغيير صورة منتج حالي -->
+        <input type="file" id="changeImageFileInput" accept="image/*" style="display:none;" onchange="handleImageChange(this)">
+    </div>
+
+    <script>
+        const defaultCatalog = [
+            { id: 1, name: "مهبل صناعي هزاز فاخر 1000 نبضة", cat: "men", price: 650, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=300&q=80" },
+            { id: 2, name: "جهاز استمناء شفط هيدروليك رويال X9", cat: "men", price: 1050, img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=300&q=80" },
+            { id: 3, name: "قضيب واقعي سيليكون طبي 23 سم رويال", cat: "dildo", price: 780, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=300&q=80" },
+            { id: 4, name: "قضيب زجاجي كريستال ملكي للتبريد والتسخين", cat: "dildo", price: 1400, img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80" },
+            { id: 5, name: "سدادة شرجية كريستال ملكية ذيل ثعلب", cat: "anal", price: 950, img: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=300&q=80" },
+            { id: 6, name: "خرز شرجي متدرج 10 حبات سيليكون ملكي", cat: "anal", price: 1150, img: "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=300&q=80" },
+            { id: 7, name: "طقم ألعاب أزواج ملكي فاخر 12 قطعة", cat: "couples", price: 990, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80" },
+            { id: 8, name: "لعبة كروت تحدي الأزواج ليلة العشاق", cat: "couples", price: 650, img: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=300&q=80" },
+            { id: 9, name: "هزاز الأرنب المزدوج رويال برو ماكس", cat: "vibe", price: 890, img: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=300&q=80" },
+            { id: 10, name: "هزاز G سبوت ذهبي فاخر 12 وضعية", cat: "vibe", price: 1100, img: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=300&q=80" }
+        ];
+
+        let prods = JSON.parse(localStorage.getItem('luxe_catalog')) || defaultCatalog;
+        let selectedProductForImgChange = null;
+        let currentNewImageBase64 = "";
+
+        const catArabic = {
+            men: "أجهزة استمناء رجالية",
+            dildo: "قضبان صناعية وواقعية",
+            anal: "سدادات وخرز شرجي",
+            couples: "ألعاب أزواج",
+            vibe: "هزازات نسائية"
+        };
+
+        // تسجيل الدخول المباشر
+        function loginNow() {
+            var val = document.getElementById("myPass").value.trim().toLowerCase();
+            if (val === "king123") {
+                document.getElementById("loginBox").style.display = "none";
+                document.getElementById("panelBox").style.display = "block";
+                document.getElementById("err").style.display = "none";
+                renderAdminList();
+            } else {
+                document.getElementById("err").style.display = "block";
+            }
+        }
+
+        function logout() {
+            document.getElementById("loginBox").style.display = "block";
+            document.getElementById("panelBox").style.display = "none";
+            document.getElementById("myPass").value = "";
+        }
+
+        // رسم قائمة المنتجات
+        function renderAdminList() {
+            document.getElementById("prodCount").innerText = prods.length;
+            const container = document.getElementById("productsContainer");
+            container.innerHTML = "";
+
+            prods.forEach(p => {
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "prod-item";
+                itemDiv.innerHTML = `
+                    <img src="${p.img || 'https://via.placeholder.com/80'}" class="prod-img" onerror="this.src='https://via.placeholder.com/80'">
+                    <div class="prod-details">
+                        <div class="prod-name">${p.name}</div>
+                        <div class="prod-price">${p.price} ر.س</div>
+                        <div class="prod-cat">${catArabic[p.cat] || p.cat}</div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-sm btn-edit-p" onclick="editProductPrice(${p.id})">✏️ السعر</button>
+                        <button class="btn-sm btn-edit-img" onclick="triggerChangeImage(${p.id})">🖼️ الصورة</button>
+                        <button class="btn-sm btn-del" onclick="deleteProduct(${p.id})">🗑️ حذف</button>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // تعديل سعر المنتج
+        function editProductPrice(id) {
+            const item = prods.find(p => p.id === id);
+            if (!item) return;
+            const newPrice = prompt(`تعديل سعر [${item.name}]:`, item.price);
+            if (newPrice !== null && !isNaN(newPrice) && newPrice.trim() !== "") {
+                item.price = Number(newPrice);
+                saveAndRender();
+                alert("تم تحديث السعر بنجاح!");
+            }
+        }
+
+        // تعديل صورة منتج حالي
+        function triggerChangeImage(id) {
+            selectedProductForImgChange = id;
+            const choice = confirm("هل تريد رفع صورة من جوالك؟\n(اضغط 'موافق' للاختيار من الاستوديو، أو 'إلغاء' لكتابة رابط URL)");
+            if (choice) {
+                document.getElementById("changeImageFileInput").click();
+            } else {
+                const url = prompt("الصق رابط الصورة الجديد (URL):");
+                if (url && url.trim() !== "") {
+                    const item = prods.find(p => p.id === selectedProductForImgChange);
+                    if (item) {
+                        item.img = url.trim();
+                        saveAndRender();
+                        alert("تم تحديث صورة المنتج بنجاح!");
+                    }
+                }
+            }
+        }
+
+        // معالجة صورة الاستوديو لمنتج حالي
+        function handleImageChange(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const item = prods.find(p => p.id === selectedProductForImgChange);
+                    if (item) {
+                        item.img = e.target.result;
+                        saveAndRender();
+                        alert("تم تغيير صورة المنتج وحفظها بنجاح!");
+                    }
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // معاينة الصورة للمنتج الجديد
+        function previewNewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentNewImageBase64 = e.target.result;
+                    const preview = document.getElementById("newImgPreview");
+                    preview.src = currentNewImageBase64;
+                    preview.style.display = "block";
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewUrlImage(url) {
+            const preview = document.getElementById("newImgPreview");
+            if (url.trim()) {
+                preview.src = url.trim();
+                preview.style.display = "block";
+                currentNewImageBase64 = url.trim();
+            } else {
+                preview.style.display = "none";
+                currentNewImageBase64 = "";
+            }
+        }
+
+        // إضافة منتج جديد
+        function addNewProduct() {
+            const name = document.getElementById("newName").value.trim();
+            const price = Number(document.getElementById("newPrice").value);
+            const cat = document.getElementById("newCat").value;
+
+            if (!name || isNaN(price) || price <= 0) {
+                alert("يرجى كتابة اسم المنتج وسعره بشكل صحيح!");
+                return;
+            }
+
+            const finalImg = currentNewImageBase64 || "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=300&q=80";
+
+            prods.unshift({
+                id: Date.now(),
+                name: name,
+                price: price,
+                cat: cat,
+                img: finalImg
+            });
+
+            saveAndRender();
+
+            // تنظيف الحقول
+            document.getElementById("newName").value = "";
+            document.getElementById("newPrice").value = "";
+            document.getElementById("newImgUrl").value = "";
+            document.getElementById("newImgPreview").style.display = "none";
+            currentNewImageBase64 = "";
+
+            alert("تمت إضافة المنتج بالصورة بنجاح!");
+        }
+
+        // حذف منتج
+        function deleteProduct(id) {
+            if (confirm("هل تريد بالتأكيد حذف هذا المنتج؟")) {
+                prods = prods.filter(p => p.id !== id);
+                saveAndRender();
+            }
+        }
+
+        function saveAndRender() {
+            localStorage.setItem('luxe_catalog', JSON.stringify(prods));
+            renderAdminList();
+        }
+    </script>
+</body>
+</html>
