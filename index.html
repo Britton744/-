@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>متجر الملوك العاب الزوجيه LUXE</title>
+    <meta name="description" content="متجر الملوك LUXE - أفخم الألعاب والمنتجات الزوجية الحميمية بتغليف سري ودفع عند الاستلام.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23120614'/><path d='M25 68 L28 42 L40 52 L50 30 L60 52 L72 42 L75 68 Z' fill='%23dfb872'/></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #dfb872;
+            --gold-glow: #ffd700;
+            --rose: #e11d48;
+            --purple: #a855f7;
+            --bg: #09030b;
+            --card: #150617;
+            --border: rgba(223, 184, 114, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg); color: #fff; min-height: 100vh; padding-bottom: 90px; }
+
+        .top-bar {
+            background: linear-gradient(90deg, #1f0b1a, #4c0519, #1f0b1a);
+            color: #fbcfe8; font-size: 11px; text-align: center; padding: 6px; font-weight: bold;
+            display: flex; justify-content: center; gap: 15px;
+        }
+
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 15px; background: #110413; border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 90;
+        }
+        .brand { display: flex; align-items: center; gap: 8px; }
+        .brand-crown { font-size: 22px; color: var(--gold-glow); }
+        .brand h1 { font-size: 14px; font-weight: 900; color: #fff; }
+        .brand span { font-size: 8.5px; color: #fda4af; display: block; }
+
+        .cart-trigger {
+            position: relative; background: rgba(225, 29, 72, 0.2); border: 1px solid var(--rose);
+            color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .badge {
+            position: absolute; top: -3px; right: -3px; background: var(--gold-glow); color: #000;
+            font-size: 10px; font-weight: 900; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+
+        .hero { padding: 18px 15px 12px; text-align: center; background: radial-gradient(circle, rgba(136, 19, 55, 0.3) 0%, transparent 70%); }
+        .hero h2 { font-size: 19px; font-weight: 900; color: var(--gold); margin-bottom: 4px; }
+        .hero p { font-size: 11.5px; color: #fbcfe8; }
+
+        .cats-wrap { padding: 8px 12px 12px; }
+        .cats-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .cats-bar::-webkit-scrollbar { display: none; }
+        .cat-chip {
+            flex: 0 0 auto; background: #1a081d; border: 1px solid var(--border); color: #fce7f3;
+            padding: 7px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; cursor: pointer;
+        }
+        .cat-chip.active { background: linear-gradient(135deg, var(--rose), #9f1239); border-color: var(--gold-glow); color: #fff; }
+
+        /* ================== تنسيق العرض: واحدة جنب واحدة مربع وراقي ================== */
+        .grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+            align-items: start !important;
+            padding: 0 10px 20px !important;
+        }
+
+        @media (min-width: 700px) {
+            .grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                gap: 15px !important;
+                max-width: 1000px !important;
+                margin: 0 auto !important;
+            }
+        }
+
+        .card {
+            background: var(--card) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 14px !important;
+            overflow: hidden !important;
+            padding: 8px !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            height: auto !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            cursor: pointer;
+        }
+
+        .card-img-wrap {
+            width: 100% !important;
+            aspect-ratio: 1 / 1 !important;
+            height: auto !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            background: #000 !important;
+            margin-bottom: 8px !important;
+            position: relative !important;
+        }
+
+        .card-img-wrap img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+
+        .badge-count {
+            position: absolute; bottom: 5px; left: 5px;
+            background: rgba(0,0,0,0.75); font-size: 9px;
+            padding: 2px 6px; border-radius: 6px; color: var(--gold-glow);
+        }
+
+        .card-title {
+            font-size: 12px !important;
+            font-weight: 800 !important;
+            color: #fff !important;
+            margin-bottom: 4px !important;
+            line-height: 1.35 !important;
+            height: 32px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-price {
+            font-size: 13.5px !important;
+            font-weight: 900 !important;
+            color: var(--gold-glow) !important;
+            margin-bottom: 6px !important;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, var(--rose), #9f1239);
+            color: #fff; border: none; padding: 7px; border-radius: 8px;
+            font-size: 11px; font-weight: 800; cursor: pointer; width: 100%;
+        }
+
+        /* نافذة تفاصيل المنتج: معرض 3 صور + وصف */
+        .modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000;
+            display: none; align-items: center; justify-content: center; padding: 15px;
+        }
+        .modal.open { display: flex; }
+        .modal-card {
+            background: #140516; border: 1px solid var(--gold); border-radius: 20px;
+            width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto; padding: 18px;
+        }
+
+        .main-gallery-view { width: 100%; height: 220px; border-radius: 12px; object-fit: cover; background: #000; margin-bottom: 8px; border: 1px solid var(--border); }
+        .thumbs-row { display: flex; gap: 8px; margin-bottom: 15px; }
+        .thumb-img {
+            width: 60px; height: 60px; border-radius: 8px; object-fit: cover; cursor: pointer;
+            border: 2px solid transparent; background: #000; opacity: 0.6;
+        }
+        .thumb-img.active { border-color: var(--gold-glow); opacity: 1; }
+
+        .detail-desc {
+            background: #1e0921; border: 1px solid rgba(223,184,114,0.2); border-radius: 10px;
+            padding: 12px; font-size: 12px; color: #fbcfe8; line-height: 1.6; margin: 12px 0; text-align: right; white-space: pre-line;
+        }
+
+        /* زر وشات رورو AI */
+        .ai-floating-btn {
+            position: fixed; bottom: 82px; left: 16px; width: 48px; height: 48px;
+            border-radius: 50%; background: linear-gradient(135deg, #ec4899, #9333ea);
+            display: flex; align-items: center; justify-content: center; color: #fff;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.6); border: 2px solid #fff; cursor: pointer; z-index: 95;
+        }
+        .ai-tag { position: absolute; top: -5px; right: -5px; background: #22c55e; color: #fff; font-size: 8px; font-weight: 900; padding: 2px 4px; border-radius: 8px; }
+
+        .roro-chat-modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1050;
+            display: none; align-items: flex-end; justify-content: center;
+        }
+        .roro-chat-modal.open { display: flex; }
+        .roro-chat-box {
+            background: #130615; border: 1px solid var(--purple); border-radius: 20px 20px 0 0;
+            width: 100%; max-width: 480px; height: 80vh; display: flex; flex-direction: column; overflow: hidden;
+        }
+        .roro-head { background: linear-gradient(90deg, #2b0b2e, #4a044e); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .roro-msgs { flex-grow: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 12px; }
+        .msg-bubble { max-width: 85%; padding: 8px 12px; border-radius: 12px; line-height: 1.4; }
+        .msg-roro { align-self: flex-start; background: #230b28; border: 1px solid rgba(168,85,247,0.3); color: #fce7f3; }
+        .msg-user { align-self: flex-end; background: linear-gradient(135deg, var(--rose), #9f1239); color: #fff; }
+        .roro-quick-chips { display: flex; gap: 6px; overflow-x: auto; padding: 6px 10px; background: #0c020e; scrollbar-width: none; }
+        .chip { white-space: nowrap; background: rgba(225,29,72,0.15); border: 1px solid var(--rose); color: #fce7f3; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; cursor: pointer; }
+        .roro-input-bar { padding: 8px 12px; background: #0c020e; display: flex; gap: 6px; border-top: 1px solid #222; }
+        .roro-input-bar input { flex-grow: 1; background: #1c0821; border: 1px solid #444; border-radius: 16px; padding: 6px 12px; color: #fff; font-size: 12px; outline: none; }
+        .roro-send { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #9333ea); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+        /* شريط سفلي خماسي */
+        .nav-bottom {
+            position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: #110413;
+            border-top: 1px solid var(--border); display: flex; justify-content: space-around; align-items: center; z-index: 90;
+        }
+        .nav-btn {
+            background: none; border: none; color: #94a3b8; font-size: 10px; font-weight: bold;
+            display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; flex: 1;
+        }
+        .nav-btn i { font-size: 16px; }
+        .nav-btn.active { color: var(--rose); }
+
+        .center-shop-btn {
+            position: relative; top: -14px; width: 54px; height: 54px; border-radius: 18px;
+            background: linear-gradient(135deg, #ec4899, #a855f7); color: #fff; border: 2px solid rgba(255,255,255,0.4);
+            font-size: 20px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(236,72,153,0.6); cursor: pointer;
+        }
+
+        .input-box { width: 100%; background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 10px; color: #fff; font-size: 12px; margin-bottom: 8px; outline: none; }
+        .btn-gold { width: 100%; background: linear-gradient(135deg, var(--gold), #b45309); color: #000; font-weight: 900; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>🔒 تغليف سري 100% بدون أي تفاصيل</span>
+        <span>🚚 دفع عند الاستلام بالسعودية</span>
+    </div>
+
+    <header class="header">
+        <div class="brand">
+            <span class="brand-crown">👑</span>
+            <div>
+                <h1>متجر الملوك LUXE</h1>
+                <span>ROYAL LUXURY BOUTIQUE</span>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <a href="https://wa.me/966556575822" target="_blank" style="color:#22c55e; font-size: 20px; text-decoration:none;"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="cart-trigger" onclick="openCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <div class="badge" id="cartCount">0</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>عالم الرومانسية والشغف الملكي 👑</h2>
+        <p>اضغط على أي منتج لاستعراض صوره الثلاث والوصف التفصيلي الكامل.</p>
+    </section>
+
+    <!-- الأقسام -->
+    <div class="cats-wrap" id="catsSec">
+        <div class="cats-bar">
+            <button class="cat-chip active" onclick="filterCat('all', this)">👑 الكل</button>
+            <button class="cat-chip" onclick="filterCat('men', this)">♂️ أجهزة استمناء رجالية</button>
+            <button class="cat-chip" onclick="filterCat('dildo', this)">✨ قضبان صناعية وواقعية</button>
+            <button class="cat-chip" onclick="filterCat('anal', this)">🍑 سدادات وخرز شرجي</button>
+            <button class="cat-chip" onclick="filterCat('couples', this)">❤️ ألعاب أزواج</button>
+            <button class="cat-chip" onclick="filterCat('vibe', this)">⚡ هزازات نسائية</button>
+        </div>
+    </div>
+
+    <!-- شبكة المنتجات المربعة المتلاصقة بالعرض -->
+    <div class="grid" id="productsGrid"></div>
+
+    <!-- زر رورو الذكاء الاصطناعي -->
+    <div class="ai-floating-btn" onclick="toggleRoro()">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span class="ai-tag">AI</span>
+    </div>
+
+    <!-- شات رورو AI -->
+    <div class="roro-chat-modal" id="roroModal">
+        <div class="roro-chat-box">
+            <div class="roro-head">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-crown" style="color:var(--gold-glow);"></i>
+                    <b style="font-size:13px; color:#fff;">رورو - مستشارتك الشخصية 💜</b>
+                </div>
+                <button onclick="toggleRoro()" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;">✕</button>
+            </div>
+            <div class="roro-msgs" id="roroMsgsArea">
+                <div class="msg-bubble msg-roro">أهلاً بك يا ملك في متجر الملوك LUXE 👑💜! كيف أقدر أساعدك اليوم؟ هل تبحث عن منتجات لكسر الروتين أو معرفة طريقة التغليف السري؟</div>
+            </div>
+            <div class="roro-quick-chips">
+                <button class="chip" onclick="askRoro('أفضل بوكس للأزواج')">🎁 ألعاب أزواج</button>
+                <button class="chip" onclick="askRoro('كيف التغليف السري؟')">🔒 التغليف السري</button>
+                <button class="chip" onclick="askRoro('أفضل جهاز رجالي')">♂️ أجهزة رجالية</button>
+                <button class="chip" onclick="askRoro('أفضل قضيب واقعي')">✨ قضبان واقعية</button>
+            </div>
+            <div class="roro-input-bar">
+                <input type="text" id="roroInput" placeholder="اكتب استفسارك هنا..." onkeypress="if(event.key==='Enter') sendRoroMsg()">
+                <button class="roro-send" onclick="sendRoroMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تفاصيل المنتج (معرض الـ 3 صور + وصف) -->
+    <div class="modal" id="prodModal">
+        <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <b id="modalTitle" style="color:#fff; font-size:14px;"></b>
+                <button onclick="closeModal()" style="background:none; border:none; color:#fff; font-size:20px; cursor:pointer;">✕</button>
+            </div>
+
+            <img id="mainModalImg" class="main-gallery-view">
+            <div class="thumbs-row" id="thumbsRow"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span id="modalCat" style="color:#fda4af; font-size:11px;"></span>
+                <b id="modalPrice" style="color:var(--gold-glow); font-size:17px;"></b>
+            </div>
+
+            <div style="font-size:12px; color:var(--gold); font-weight:bold; margin-top:10px;">📋 تفاصيل ومواصفات المنتج:</div>
+            <div id="modalDesc" class="detail-desc"></div>
+
+            <button id="modalAddBtn" class="btn-gold" style="margin-top:10px;">أضف هذا المنتج للسلة 🛒</button>
+        </div>
+    </div>
+
+    <!-- نافذة السلة وتأكيد الطلب -->
+    <div class="modal" id="cartModal">
+        <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <b style="color:var(--gold-glow); font-size:15px;">🛒 سلتك الملكية</b>
+                <button onclick="closeCart()" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;">✕</button>
+            </div>
+            <div id="cartItemsList" style="margin-bottom:12px; font-size:12px;"></div>
+            <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:12px; border-top:1px solid #333; padding-top:8px;">
+                <span>الإجمالي:</span>
+                <span id="cartTotal" style="color:var(--gold-glow);">0 ر.س</span>
+            </div>
+
+            <form onsubmit="handleCheckout(event)">
+                <input type="text" id="cName" class="input-box" placeholder="الاسم الكامل" required>
+                <input type="tel" id="cPhone" class="input-box" placeholder="رقم الجوال (05xxxxxxxx)" required>
+                <input type="text" id="cCity" class="input-box" placeholder="المدينة (الرياض، جدة، الدمام...)" required>
+                <input type="text" id="cAddress" class="input-box" placeholder="الحي والعنوان الوطني" required>
+                <button type="submit" class="btn-gold">تأكيد وشحن الطلب سرياً 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- الشريط السفلي -->
+    <nav class="nav-bottom">
+        <button class="nav-btn active" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+            <i class="fa-solid fa-house"></i><span>الرئيسية</span>
+        </button>
+        <button class="nav-btn" onclick="document.getElementById('catsSec').scrollIntoView({behavior:'smooth'});">
+            <i class="fa-solid fa-shapes"></i><span>الأقسام</span>
+        </button>
+        <div class="center-shop-btn" onclick="document.getElementById('productsGrid').scrollIntoView({behavior:'smooth'});">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <button class="nav-btn" onclick="alert('تم حفظ المنتجات في قائمة الرغبات الملكية ❤️')">
+            <i class="fa-regular fa-heart"></i><span>المفضلة</span>
+        </button>
+        <button class="nav-btn" onclick="openCart()">
+            <i class="fa-solid fa-cart-shopping"></i><span>السلة</span>
+        </button>
+    </nav>
+
+    <script>
+        const defaultCatalog = [
+            {
+                id: 1, name: "مهبل صناعي هزاز فاخر 1000 نبضة", cat: "men", price: 650,
+                imgs: [
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• تجويف داخلي واقعي ثلاثي الأبعاد بملمس حريري دافئ يحاكي أدق التفاصيل الحميمية.\n• محرك نبضات فائق القوة 10 أنماط اهتزاز صامت ومقاوم للماء 100%.\n• سيليكون طبي ناعم ومعتمد يمنح شعوراً طبيعياً مطلقاً."
+            },
+            {
+                id: 2, name: "جهاز استمناء شفط هيدروليك رويال X9", cat: "men", price: 1050,
+                imgs: [
+                    "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• تقنية الضغط الهوائي الذاتي مع خاصية التسخين الحراري التلقائي حتى 38° مئوية لمطابقة حرارة الجسم.\n• شاشة LED ذكية للتحكم بـ 5 سرعات شفط متتالية.\n• بطارية ليثيوم قابلة للشحن عبر USB تدوم طويلاً."
+            },
+            {
+                id: 3, name: "قضيب واقعي سيليكون طبي 23 سم رويال", cat: "dildo", price: 780,
+                imgs: [
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• طول 23 سم مع تفاصيل دقيقة وعروق بارزة لملمس فائق الواقعية.\n• نواة مزدوجة النعومة مع قاعدة تثبيت هيدروليكية تلتصق بالأسطح الملساء بإحكام.\n• آمن تماماً وصحي للبشرة مع خامات طبية 100%."
+            },
+            {
+                id: 4, name: "قضيب زجاجي كريستال ملكي للتبريد والتسخين", cat: "dildo", price: 1400,
+                imgs: [
+                    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• زجاج بوروسيليكات طبي صلب مضاد للكسر يتيح إحساساً حرارياً متغيراً بالتبريد أو التسخين.\n• سطح أملس كالحرير لا يمتص أي بكتيريا وسهل التعقيم الفوري."
+            },
+            {
+                id: 5, name: "سدادة شرجية كريستال ملكية ذيل ثعلب", cat: "anal", price: 950,
+                imgs: [
+                    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• معدن ستانلس ستيل طبي مصقول بعناية مع قاعدة مرصعة بجوهرة كريستالية وذيل فرو ناعم جداً.\n• عنق انسيابي مريح يضمن الثبات والراحة التامة."
+            },
+            {
+                id: 6, name: "خرز شرجي متدرج 10 حبات سيليكون ملكي", cat: "anal", price: 1150,
+                imgs: [
+                    "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• 10 كرات متدرجة الحجم لمرونة فائقة وتجربة متصاعدة.\n• حلقة سحب دائرية قوية لمزيد من الأمان والتحكم الكامل."
+            },
+            {
+                id: 7, name: "طقم ألعاب أزواج ملكي فاخر 12 قطعة", cat: "couples", price: 990,
+                imgs: [
+                    "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• بوكس الزوجين الملكي: أصفاد مخملية، غشاوة حرير، نرد العشاق، وسوط دغدغة لطيف.\n• الصندوق الأمثل لكسر الروتين وإشعال ليالي الحب."
+            },
+            {
+                id: 8, name: "لعبة كروت تحدي الأزواج ليلة العشاق", cat: "couples", price: 650,
+                imgs: [
+                    "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• 120 بطاقة تضم أسئلة وتحديات جريئة وممتعة مخصصة للأزواج لقضاء أوقات رومانسية لا تُنسى."
+            },
+            {
+                id: 9, name: "هزاز الأرنب المزدوج رويال برو ماكس", cat: "vibe", price: 890,
+                imgs: [
+                    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• تحفيز مزدوج داخلي وخارجي في آن واحد بمحركين مستقلين و10 أنماط اهتزاز فائقة القوة والهدوء."
+            },
+            {
+                id: 10, name: "هزاز G سبوت ذهبي فاخر 12 وضعية", cat: "vibe", price: 1100,
+                imgs: [
+                    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+                ],
+                desc: "• زاوية انحناء تشريحية مدروسة بدقة للوصول المباشر إلى نقطة G-spot مع لمسات ذهبية ملكية وشحن مغناطيسي سريع."
+            }
+        ];
+
+        let catalog = JSON.parse(localStorage.getItem('luxe_catalog')) || defaultCatalog;
+        let cart = [];
+        const catNames = { men: "أجهزة استمناء رجالية", dildo: "قضبان صناعية وواقعية", anal: "سدادات وخرز شرجي", couples: "ألعاب أزواج", vibe: "هزازات نسائية" };
+
+        function renderGrid(items) {
+            document.getElementById("productsGrid").innerHTML = items.map(p => {
+                const cover = (p.imgs && p.imgs[0]) ? p.imgs[0] : (p.img || 'https://via.placeholder.com/300');
+                const imgCount = (p.imgs && p.imgs.length) ? p.imgs.length : 1;
+                return `
+                    <div class="card" onclick="openProductModal(${p.id})">
+                        <div class="card-img-wrap">
+                            <img src="${cover}" alt="${p.name}" loading="lazy">
+                            <span class="badge-count">📸 ${imgCount} صور</span>
+                        </div>
+                        <div class="card-title">${p.name}</div>
+                        <div class="card-price">${p.price} ر.س</div>
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">أضف للسلة 🛒</button>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function filterCat(cat, btn) {
+            document.querySelectorAll('.cat-chip').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (cat === 'all') renderGrid(catalog);
+            else renderGrid(catalog.filter(p => p.cat === cat));
+        }
+
+        function openProductModal(id) {
+            const p = catalog.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById("modalTitle").innerText = p.name;
+            document.getElementById("modalPrice").innerText = p.price + " ر.س";
+            document.getElementById("modalCat").innerText = "القسم: " + (catNames[p.cat] || p.cat);
+            document.getElementById("modalDesc").innerText = p.desc || "منتج ملكي فاخر مصنع من أجود الخامات الطبية المعتمدة 100%.";
+
+            const imgs = (p.imgs && p.imgs.length > 0) ? p.imgs : [p.img || 'https://via.placeholder.com/300'];
+            const mainImg = document.getElementById("mainModalImg");
+            mainImg.src = imgs[0];
+
+            const thumbsRow = document.getElementById("thumbsRow");
+            thumbsRow.innerHTML = imgs.map((src, idx) => `
+                <img src="${src}" class="thumb-img ${idx === 0 ? 'active' : ''}" onclick="switchModalImg('${src}', this)">
+            `).join("");
+
+            document.getElementById("modalAddBtn").onclick = () => {
+                addToCart(p.id);
+                closeModal();
+            };
+
+            document.getElementById("prodModal").classList.add("open");
+        }
+
+        function switchModalImg(src, el) {
+            document.getElementById("mainModalImg").src = src;
+            document.querySelectorAll(".thumb-img").forEach(t => t.classList.remove("active"));
+            el.classList.add("active");
+        }
+
+        function closeModal() { document.getElementById("prodModal").classList.remove("open"); }
+
+        function addToCart(id) {
+            const p = catalog.find(item => item.id === id);
+            cart.push(p);
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(`تمت إضافة "${p.name}" إلى سلتك الملكية 👑`);
+        }
+
+        function toggleRoro() { document.getElementById("roroModal").classList.toggle("open"); }
+
+        function askRoro(q) {
+            document.getElementById("roroInput").value = q;
+            sendRoroMsg();
+        }
+
+        function sendRoroMsg() {
+            const input = document.getElementById("roroInput");
+            const val = input.value.trim();
+            if (!val) return;
+
+            const area = document.getElementById("roroMsgsArea");
+            area.innerHTML += `<div class="msg-bubble msg-user">${val}</div>`;
+            input.value = "";
+            area.scrollTop = area.scrollHeight;
+
+            setTimeout(() => {
+                let ans = "";
+                const low = val.toLowerCase();
+                if (low.includes("تغليف") || low.includes("سري") || low.includes("شحن")) {
+                    ans = "🔒 <b>تغليفنا سري 100% يا ملك!</b><br>يصلك الطلب في كرتون مقفل تماماً بدون كتابة اسم المنتجات نهائياً، والمندوب لا يعلم المحتوى.";
+                } else if (low.includes("بوكس") || low.includes("أزواج")) {
+                    ans = "🎁 <b>أفضل بوكس للمتزوجين:</b> طقم ألعاب أزواج ملكي فاخر 12 قطعة متوفر بـ 990 ر.س لكسر الروتين وتجربة متجددة.";
+                } else if (low.includes("رجال") || low.includes("استمناء")) {
+                    ans = "♂️ <b>الأكثر طلباً للرجال:</b> جهاز استمناء شفط هيدروليك رويال X9 بتدفئة ذاتية ذكية.";
+                } else if (low.includes("قضيب")) {
+                    ans = "✨ <b>أفضل خيار:</b> قضيب واقعي سيليكون طبي 23 سم بقاعدة تثبيت قوية وقوام مزدوج النعومة.";
+                } else {
+                    ans = "يسعدني اختيارك لمتجر الملوك 👑💜! تصفح تشكيلتنا المميزة أو أضف منتجك للسلة وسنجهزه لك بأعلى خصوصية.";
+                }
+                area.innerHTML += `<div class="msg-bubble msg-roro">${ans}</div>`;
+                area.scrollTop = area.scrollHeight;
+            }, 500);
+        }
+
+        function openCart() {
+            document.getElementById("cartModal").classList.add("open");
+            const list = document.getElementById("cartItemsList");
+            const totalEl = document.getElementById("cartTotal");
+            if (cart.length === 0) {
+                list.innerHTML = "<p style='text-align:center; color:#888;'>السلة فارغة حالياً</p>";
+                totalEl.innerText = "0 ر.س";
+                return;
+            }
+            let total = 0;
+            list.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>${item.name}</span>
+                        <div>
+                            <b style="color:var(--gold-glow);">${item.price} ر.س</b>
+                            <button onclick="delCartItem(${idx})" style="background:none; border:none; color:#ef4444; margin-right:8px; cursor:pointer;">✕</button>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+            totalEl.innerText = total + " ر.س";
+        }
+
+        function delCartItem(idx) {
+            cart.splice(idx, 1);
+            document.getElementById("cartCount").innerText = cart.length;
+            openCart();
+        }
+
+        function closeCart() { document.getElementById("cartModal").classList.remove("open"); }
+
+        function handleCheckout(e) {
+            e.preventDefault();
+            if (cart.length === 0) return;
+            const name = document.getElementById("cName").value;
+            const phone = document.getElementById("cPhone").value;
+            const city = document.getElementById("cCity").value;
+            const address = document.getElementById("cAddress").value;
+            const total = cart.reduce((a, b) => a + b.price, 0);
+            const items = cart.map(i => i.name).join(" + ");
+            const orderId = "KING-" + Math.floor(100000 + Math.random() * 900000);
+
+            fetch("https://formsubmit.co/ajax/roooo77775@gmail.com", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ "الطلب": orderId, "الاسم": name, "الجوال": phone, "المدينة": city, "العنوان": address, "المنتجات": items, "الإجمالي": total + " ر.س" })
+            }).catch(() => {});
+
+            const msg = `👑 *طلب جديد - متجر الملوك LUXE*%0a*كود الطلب:* ${orderId}%0a*الاسم:* ${name}%0a*الجوال:* ${phone}%0a*المدينة:* ${city}%0a*العنوان:* ${address}%0a*المنتجات:* ${items}%0a*الإجمالي:* ${total} ر.س%0a*الدفع:* عند الاستلام`;
+            window.open(`https://wa.me/966556575822?text=${msg}`, '_blank');
+            cart = [];
+            document.getElementById("cartCount").innerText = "0";
+            closeCart();
+        }
+
+        renderGrid(catalog);
+    </script>
+</body>
+</html>
