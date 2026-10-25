@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>لوحة الإدارة | متجر الملوك LUXE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #060515;
+            --bg-sidebar: #0a081e;
+            --card-bg: #0f0d26;
+            --input-bg: #0a081a;
+            --border-glow: rgba(168, 85, 247, 0.35);
+            --pink-neon: #ec4899;
+            --purple-neon: #8b5cf6;
+            --gradient-btn: linear-gradient(135deg, #a855f7, #ec4899);
+            --text-gray: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-body); color: #fff; min-height: 100vh; padding-bottom: 40px; }
+
+        /* شاشة الدخول السرية */
+        #loginGate {
+            position: fixed; inset: 0; background: var(--bg-body); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; padding: 20px;
+        }
+        .gate-card {
+            background: var(--card-bg); border: 1px solid var(--border-glow); border-radius: 20px;
+            padding: 30px 20px; text-align: center; width: 100%; max-width: 340px;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);
+        }
+        .gate-card input {
+            width: 100%; padding: 12px; margin: 15px 0; background: var(--input-bg);
+            border: 1px solid var(--border-glow); border-radius: 12px; color: #fff; text-align: center; font-size: 16px;
+        }
+
+        /* الهيدر العلوي المتطابق مع الصورة */
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; position: sticky; top: 0; background: rgba(6, 5, 21, 0.95);
+            backdrop-filter: blur(8px); z-index: 90;
+        }
+        .header-title-box { text-align: right; }
+        .header-title-box h1 { font-size: 17px; font-weight: 800; }
+        .header-title-box span { font-size: 11px; color: var(--text-gray); }
+
+        .nav-icons { display: flex; gap: 10px; align-items: center; }
+        .circle-icon {
+            width: 42px; height: 42px; border-radius: 50%; background: transparent;
+            border: 1px solid var(--border-glow); color: #fff; display: flex;
+            align-items: center; justify-content: center; font-size: 17px; cursor: pointer; text-decoration: none;
+            position: relative;
+        }
+        .dot-badge {
+            width: 8px; height: 8px; background: #e11d48; border-radius: 50%;
+            position: absolute; top: 8px; right: 9px;
+        }
+
+        /* القائمة الجانبية المنزلقة (نفس الصورة تماماً) */
+        .sidebar {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100;
+            display: none; justify-content: flex-start;
+        }
+        .sidebar-content {
+            background: var(--bg-sidebar); width: 85%; max-width: 320px; height: 100%;
+            padding: 20px 15px; border-left: 1px solid var(--border-glow); overflow-y: auto;
+        }
+        .sidebar-user {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px;
+        }
+        .user-tag { display: flex; align-items: center; gap: 10px; }
+        .user-logo {
+            width: 44px; height: 44px; border-radius: 12px; background: var(--gradient-btn);
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+        }
+        .user-tag h3 { font-size: 14px; font-weight: 800; }
+        .user-tag span { font-size: 11px; color: #4ade80; display: flex; align-items: center; gap: 4px; }
+        .user-tag span::before { content: ""; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+
+        .menu-title { font-size: 11px; color: var(--text-gray); margin: 15px 10px 8px; }
+        .menu-btn {
+            width: 100%; background: transparent; border: 1px solid transparent; color: #fff;
+            padding: 12px 14px; border-radius: 14px; display: flex; align-items: center;
+            justify-content: space-between; font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 5px;
+        }
+        .menu-btn.active {
+            background: rgba(168, 85, 247, 0.1); border-color: var(--border-glow);
+        }
+        .sub-menu { padding-right: 20px; }
+        .sub-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 14px; border-radius: 12px; font-size: 12px; color: var(--text-gray);
+            cursor: pointer; margin-bottom: 4px;
+        }
+        .sub-item.active {
+            background: rgba(236, 72, 153, 0.15); border: 1px solid var(--pink-neon); color: #fff;
+        }
+        .sub-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pink-neon); }
+
+        /* شريط التصفية والبحث */
+        .search-box {
+            background: var(--input-bg); border: 1px solid var(--border-glow);
+            border-radius: 14px; padding: 12px 16px; margin: 10px 15px 15px; display: flex; align-items: center; gap: 10px;
+        }
+        .search-box input { background: none; border: none; color: #fff; width: 100%; outline: none; font-size: 13px; }
+        .search-box i { color: var(--text-gray); font-size: 14px; }
+
+        /* بطاقات الإدخال */
+        .card-wrap {
+            background: var(--card-bg); border: 1px solid var(--border-glow);
+            border-radius: 20px; padding: 18px; margin: 0 15px 16px;
+        }
+        .card-title {
+            display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800;
+            margin-bottom: 15px; color: #fff;
+        }
+        .card-title i { color: var(--purple-neon); }
+
+        .label { font-size: 11px; color: var(--text-gray); margin-bottom: 6px; display: block; }
+        .label span { color: var(--pink-neon); }
+        .input-dark {
+            width: 100%; background: var(--input-bg); border: 1px solid var(--border-glow);
+            border-radius: 12px; padding: 12px; color: #fff; font-size: 13px; outline: none; margin-bottom: 12px;
+        }
+
+        /* رفع الصور المتطابق */
+        .photo-uploader {
+            border: 2px dashed var(--border-glow); border-radius: 16px; padding: 25px;
+            text-align: center; margin-bottom: 12px; background: var(--input-bg); cursor: pointer;
+        }
+        .photo-uploader i { font-size: 34px; color: var(--text-gray); margin-bottom: 8px; }
+        .photo-uploader p { font-size: 11px; color: var(--text-gray); }
+        .preview-box { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; margin: 8px auto 0; display: none; }
+
+        .btn-gradient {
+            background: var(--gradient-btn); border: none; color: #fff; font-weight: 800;
+            padding: 13px; border-radius: 12px; width: 100%; font-size: 14px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+        .btn-outline {
+            background: transparent; border: 1px solid var(--border-glow); color: #fff;
+            padding: 12px; border-radius: 12px; width: 100%; font-size: 13px; cursor: pointer;
+        }
+
+        /* قائمة المنتجات المحفوظة */
+        .item-row {
+            background: var(--input-bg); border: 1px solid var(--border-glow);
+            border-radius: 14px; padding: 12px; margin-bottom: 10px; display: flex;
+            align-items: center; justify-content: space-between;
+        }
+        .item-details { display: flex; align-items: center; gap: 10px; }
+        .item-details img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; }
+        .item-details h4 { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+        .item-details span { font-size: 11px; color: var(--pink-neon); font-weight: 800; }
+        .btn-remove {
+            background: rgba(236, 72, 153, 0.15); border: 1px solid var(--pink-neon);
+            color: #fda4af; width: 32px; height: 32px; border-radius: 8px; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- نافذة كلمة المرور -->
+    <div id="loginGate">
+        <div class="gate-card">
+            <i class="fa-solid fa-crown" style="font-size:36px; color:#ffd700; margin-bottom:10px;"></i>
+            <h3>لوحة إدارة المتجر 👑</h3>
+            <p style="font-size:12px; color:var(--text-gray); margin-top:4px;">أدخل كلمة المرور الخاصة بك</p>
+            <input type="password" id="adminKey" placeholder="كلمة المرور">
+            <button class="btn-gradient" onclick="checkAuth()">دخول اللوحة</button>
+            <p id="authError" style="color:var(--pink-neon); font-size:11px; display:none; margin-top:8px;">كلمة المرور خاطئة!</p>
+        </div>
+    </div>
+
+    <!-- القائمة الجانبية المنبثقة -->
+    <div class="sidebar" id="sideNav" onclick="toggleSidebar(false)">
+        <div class="sidebar-content" onclick="event.stopPropagation()">
+            <div class="sidebar-user">
+                <div class="user-tag">
+                    <div class="user-logo">👑</div>
+                    <div>
+                        <h3>لوحة الإدارة</h3>
+                        <span>متجر الملوك</span>
+                    </div>
+                </div>
+                <div class="circle-icon" onclick="toggleSidebar(false)"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+
+            <div class="menu-title">المتجر</div>
+            <div class="menu-btn active">
+                <span><i class="fa-solid fa-box-open" style="margin-left:8px;"></i> إدارة المنتجات</span>
+                <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="sub-menu">
+                <div class="sub-item" onclick="switchSection('list')">
+                    <span>كل المنتجات</span>
+                    <span id="badgeCount" style="background:#8b5cf6; padding:2px 8px; border-radius:10px; font-size:10px;">4</span>
+                </div>
+                <div class="sub-item active" onclick="switchSection('add')">
+                    <span>إضافة منتج</span>
+                    <span class="sub-dot"></span>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <button class="btn-outline" onclick="location.href='index.html'"><i class="fa-solid fa-store"></i> الانتقال للمتجر</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيدر العلوي المتطابق -->
+    <header class="header">
+        <div class="nav-icons">
+            <a href="index.html" class="circle-icon"><i class="fa-solid fa-house"></i></a>
+            <div class="circle-icon"><i class="fa-regular fa-bell"></i><span class="dot-badge"></span></div>
+        </div>
+        <div class="header-title-box">
+            <h1 id="pageTitleText">إضافة منتج</h1>
+            <span id="pageSubText">منتج جديد</span>
+        </div>
+        <div class="circle-icon" onclick="toggleSidebar(true)"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <!-- شريط البحث -->
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="ابحث برقم الطلب أو الجوال أو اسم المنتج...">
+    </div>
+
+    <!-- قسم إضافة منتج جديد -->
+    <div id="addSection">
+        <div class="card-wrap">
+            <div class="card-title">
+                <i class="fa-solid fa-cube"></i> المعلومات الأساسية
+            </div>
+
+            <label class="label">اسم المنتج <span>*</span></label>
+            <input type="text" id="itemName" class="input-dark" placeholder="قضيب هزاز اسود... تصميم فااخر" oninput="autoSlug(this.value)">
+
+            <label class="label">الرابط المختصر <small style="color:#64748b;">(يولّد تلقائياً)</small></label>
+            <input type="text" id="itemSlug" class="input-dark" placeholder="/product/قضيب-هزاز" readonly style="opacity:0.7;">
+
+            <label class="label">التصنيف</label>
+            <select id="itemCat" class="input-dark">
+                <option value="men">ألعاب للرجال</option>
+                <option value="women">ألعاب وهزازات نسائية</option>
+                <option value="couples">ألعاب للأزواج</option>
+                <option value="anal">قسم شرجي</option>
+            </select>
+
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label class="label">سعر البيع (ر.س) <span>*</span></label>
+                    <input type="number" id="itemPrice" class="input-dark" placeholder="1200">
+                </div>
+                <div style="flex: 1;">
+                    <label class="label">السعر قبل الخصم <small style="color:#64748b;">(اختياري)</small></label>
+                    <input type="number" id="itemOldPrice" class="input-dark" placeholder="1300">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-wrap">
+            <div class="card-title">
+                <i class="fa-solid fa-image"></i> الصورة الرئيسية
+            </div>
+
+            <div class="photo-uploader" onclick="document.getElementById('imgUpload').click()">
+                <i class="fa-solid fa-image"></i>
+                <p>JPG أو PNG أو WEBP حتى 10 ميغابايت</p>
+                <img id="imgPreview" class="preview-box">
+                <input type="file" id="imgUpload" accept="image/*" style="display:none;" onchange="handleImg(event)">
+            </div>
+
+            <div style="display:flex; gap:10px; margin-bottom:12px;">
+                <button class="btn-gradient" onclick="document.getElementById('imgUpload').click()"><i class="fa-solid fa-upload"></i> رفع صورة</button>
+            </div>
+
+            <label class="label">أو ضع رابط مباشر للصورة:</label>
+            <input type="text" id="imgUrlDirect" class="input-dark" placeholder="https://..." oninput="setDirectUrl(this.value)">
+
+            <button class="btn-gradient" onclick="publishProduct()" style="padding:15px; margin-top:10px;">
+                <i class="fa-solid fa-check"></i> حفظ ونشر المنتج
+            </button>
+        </div>
+    </div>
+
+    <!-- قسم استعراض وحذف المنتجات -->
+    <div id="listSection" style="display: none;">
+        <div class="card-wrap">
+            <div class="card-title">
+                <i class="fa-solid fa-boxes-stacked"></i> المنتجات المنشورة في المتجر
+            </div>
+            <div id="itemsContainer"></div>
+            <button class="btn-outline" onclick="restoreDefaults()" style="color:#fda4af; border-color:var(--pink-neon); margin-top:15px;">استعادة المنتجات الافتراضية</button>
+        </div>
+    </div>
+
+    <script>
+        const initialProducts = [
+            { id: 1, name: "قضيب هزاز اسود... تصميم فااخر", price: 1200, oldPrice: 1300, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, name: "قضيب هزاز واقعي لحمي مقاس كبير", price: 780, oldPrice: 950, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, name: "دميه استمناء نصفية ملمس سيليكون طبيعي", price: 1050, oldPrice: 1250, img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" }
+        ];
+
+        let catalog = JSON.parse(localStorage.getItem('luxe_catalog')) || initialProducts;
+        let activeImg = "";
+
+        function checkAuth() {
+            if (document.getElementById('adminKey').value === 'king123') {
+                document.getElementById('loginGate').style.display = 'none';
+                refreshData();
+            } else {
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+
+        function toggleSidebar(show) {
+            document.getElementById('sideNav').style.display = show ? 'flex' : 'none';
+        }
+
+        function switchSection(sec) {
+            toggleSidebar(false);
+            if (sec === 'add') {
+                document.getElementById('addSection').style.display = 'block';
+                document.getElementById('listSection').style.display = 'none';
+                document.getElementById('pageTitleText').innerText = "إضافة منتج";
+                document.getElementById('pageSubText').innerText = "منتج جديد";
+            } else {
+                document.getElementById('addSection').style.display = 'none';
+                document.getElementById('listSection').style.display = 'block';
+                document.getElementById('pageTitleText').innerText = "المنتجات";
+                document.getElementById('pageSubText').innerText = "إدارة منتجات المتجر";
+                renderListItems();
+            }
+        }
+
+        function autoSlug(val) {
+            document.getElementById('itemSlug').value = "/product/" + val.trim().replace(/\s+/g, '-');
+        }
+
+        function handleImg(e) {
+            const f = e.target.files[0];
+            if (!f) return;
+            const r = new FileReader();
+            r.onload = function(evt) {
+                activeImg = evt.target.result;
+                const p = document.getElementById('imgPreview');
+                p.src = activeImg;
+                p.style.display = 'block';
+            }
+            r.readAsDataURL(f);
+        }
+
+        function setDirectUrl(url) {
+            if (url) {
+                activeImg = url;
+                const p = document.getElementById('imgPreview');
+                p.src = url;
+                p.style.display = 'block';
+            }
+        }
+
+        function refreshData() {
+            document.getElementById('badgeCount').innerText = catalog.length;
+        }
+
+        function renderListItems() {
+            const wrap = document.getElementById('itemsContainer');
+            refreshData();
+            if (!catalog.length) {
+                wrap.innerHTML = '<p style="text-align:center; color:#64748b; padding:20px;">لا توجد منتجات حالياً</p>';
+                return;
+            }
+            wrap.innerHTML = catalog.map((p, idx) => `
+                <div class="item-row">
+                    <div class="item-details">
+                        <img src="${p.img}">
+                        <div>
+                            <h4>${p.name}</h4>
+                            <span>${p.price} ر.س</span>
+                        </div>
+                    </div>
+                    <button class="btn-remove" onclick="delProduct(${idx})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function publishProduct() {
+            const name = document.getElementById('itemName').value;
+            const price = document.getElementById('itemPrice').value;
+            const oldPrice = document.getElementById('itemOldPrice').value;
+
+            if (!name || !price) {
+                alert('يرجى ملء اسم المنتج وسعر البيع!');
+                return;
+            }
+
+            catalog.unshift({
+                id: Date.now(),
+                name: name,
+                price: Number(price),
+                oldPrice: oldPrice ? Number(oldPrice) : null,
+                img: activeImg || 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80'
+            });
+
+            localStorage.setItem('luxe_catalog', JSON.stringify(catalog));
+            alert('تم نشر المنتج بنجاح في متجرك!');
+
+            // تفريغ المدخلات
+            document.getElementById('itemName').value = '';
+            document.getElementById('itemPrice').value = '';
+            document.getElementById('itemOldPrice').value = '';
+            document.getElementById('imgPreview').style.display = 'none';
+            activeImg = "";
+
+            switchSection('list');
+        }
+
+        function delProduct(idx) {
+            if (confirm('تأكيد حذف هذا المنتج؟')) {
+                catalog.splice(idx, 1);
+                localStorage.setItem('luxe_catalog', JSON.stringify(catalog));
+                renderListItems();
+            }
+        }
+
+        function restoreDefaults() {
+            if (confirm('استعادة المنتجات الافتراضية؟')) {
+                localStorage.removeItem('luxe_catalog');
+                catalog = initialProducts;
+                renderListItems();
+            }
+        }
+    </script>
+</body>
+</html>
