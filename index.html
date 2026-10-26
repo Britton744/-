@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BRITON LIFE | متجر الملوك للمنتجات الرومانسية الفاخرة</title>
+    
+    <!-- وسوم محركات البحث Google والأرشفة السريعة -->
+    <meta name="description" content="متجر بريتون لايف للملوك - تجربة فريدة، خصوصية تامة وجودة عالية. الدفع عند الاستلام وتوصيل سري لكافة المناطق.">
+    <meta name="keywords" content="بريتون لايف, متجر الملوك, العاب زوجية, منتجات رومانسية, متجر خاص">
+    <meta name="author" content="BRITON LIFE">
+    
+    <!-- شعار المتجر في التبويب والرابط (Favicon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>👑</text></svg>">
+    
+    <!-- الأيقونات والخطوط -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #060409;
+            --bg-card: #0f0a17;
+            --bg-card-alt: #160f22;
+            --gold: #dfb872;
+            --gold-bright: #ffd700;
+            --gold-gradient: linear-gradient(135deg, #dfb872, #b8860b);
+            --pink-accent: #e11d48;
+            --purple-accent: #9333ea;
+            --purple-glow: rgba(147, 51, 234, 0.35);
+            --border-subtle: rgba(223, 184, 114, 0.25);
+            --text-gray: #a1a1aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        /* شريط الإعلان العلوي */
+        .top-announcement {
+            background: linear-gradient(90deg, #1c0f24, #3b0764, #1c0f24);
+            color: var(--gold); text-align: center; padding: 7px 12px; font-size: 11.5px;
+            font-weight: 700; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-subtle);
+        }
+
+        /* الهيدر الرئيسي الفاخر */
+        .main-header {
+            position: sticky; top: 0; z-index: 100; background: rgba(6, 4, 9, 0.95);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px;
+        }
+        .brand-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
+        .brand-logo .logo-icon { color: var(--gold); font-size: 26px; }
+        .brand-logo .logo-text { font-size: 17px; font-weight: 900; letter-spacing: 2px; color: var(--gold); margin-top: -2px; }
+        .brand-logo .logo-sub { font-size: 7.5px; color: #fff; letter-spacing: 3px; margin-top: -3px; }
+
+        .header-search { flex: 1; max-width: 480px; position: relative; }
+        .header-search input {
+            width: 100%; background: #130c1d; border: 1px solid var(--border-subtle);
+            border-radius: 25px; padding: 9px 40px 9px 18px; color: #fff; font-size: 12.5px; outline: none;
+        }
+        .header-search i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gold); }
+
+        .header-actions { display: flex; align-items: center; gap: 14px; }
+        .action-item { position: relative; color: #fff; font-size: 18px; text-decoration: none; cursor: pointer; }
+        .cart-badge {
+            position: absolute; top: -7px; right: -9px; background: var(--pink-accent);
+            color: #fff; font-size: 10px; font-weight: 900; width: 17px; height: 17px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* شريط التنقل للأقسام الخمسة الرئيسية */
+        .nav-categories {
+            background: var(--bg-card); border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 10px 15px; display: flex; justify-content: center; gap: 20px; overflow-x: auto; scrollbar-width: none;
+        }
+        .nav-link {
+            color: var(--text-gray); text-decoration: none; font-size: 13px; font-weight: 600;
+            white-space: nowrap; transition: 0.3s; padding-bottom: 3px;
+        }
+        .nav-link.active, .nav-link:hover { color: var(--gold); border-bottom: 2px solid var(--gold); }
+
+        /* بانر البطل (Hero Banner) */
+        .hero-banner {
+            position: relative; padding: 60px 20px; text-align: center;
+            background: radial-gradient(circle at center, #2e0854 0%, #060409 75%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .hero-title { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+        .hero-title span { color: var(--gold); display: block; }
+        .hero-desc { color: var(--text-gray); font-size: 14px; max-width: 600px; margin: 0 auto 25px; }
+
+        .perks-row {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
+        }
+        .perk-box {
+            display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gold);
+            background: rgba(223, 184, 114, 0.08); padding: 7px 14px; border-radius: 20px; border: 1px solid var(--border-subtle);
+        }
+
+        .btn-shop-now {
+            background: var(--gold-gradient); color: #000; font-weight: 900;
+            padding: 12px 35px; border-radius: 30px; border: none; font-size: 15px;
+            cursor: pointer; box-shadow: 0 4px 20px rgba(223, 184, 114, 0.4); text-decoration: none; display: inline-block;
+        }
+
+        /* قسم الأقسام الدائرية الخمسة */
+        .section-title {
+            text-align: center; margin: 40px 0 25px; font-size: 20px; font-weight: 900; color: var(--gold);
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .section-title::before, .section-title::after {
+            content: ""; width: 50px; height: 1px; background: var(--gold);
+        }
+
+        .circles-grid {
+            display: flex; justify-content: center; gap: 18px; padding: 0 15px; overflow-x: auto; scrollbar-width: none;
+        }
+        .cat-circle-card {
+            display: flex; flex-direction: column; align-items: center; text-decoration: none;
+            width: 95px; flex-shrink: 0; cursor: pointer;
+        }
+        .circle-img-wrap {
+            width: 80px; height: 80px; border-radius: 50%; padding: 3px;
+            background: linear-gradient(135deg, var(--gold), var(--pink-accent)); margin-bottom: 8px;
+            box-shadow: 0 0 15px var(--purple-glow);
+        }
+        .circle-img-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #000; }
+        .cat-circle-card span { font-size: 11.5px; font-weight: 700; color: #fff; text-align: center; }
+
+        /* شبكة المنتجات الملكية */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto;
+        }
+        .product-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 18px; padding: 15px; position: relative; display: flex; flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px var(--purple-glow); }
+        .card-fav-btn {
+            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5);
+            border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+        }
+        .product-img {
+            width: 100%; height: 210px; border-radius: 14px; object-fit: cover; margin-bottom: 12px;
+            background: radial-gradient(circle, #201130, #090610);
+        }
+        .product-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; color: #fff; }
+        .product-desc { font-size: 11px; color: var(--text-gray); margin-bottom: 10px; height: 32px; overflow: hidden; }
+        
+        .price-box { margin-bottom: 14px; display: flex; align-items: baseline; gap: 8px; }
+        .main-price { font-size: 18px; font-weight: 900; color: var(--gold); }
+        .old-price { font-size: 12px; color: #71717a; text-decoration: line-through; }
+
+        .btn-add-cart {
+            margin-top: auto; width: 100%; background: var(--bg-card-alt); border: 1px solid var(--gold);
+            color: var(--gold); font-weight: 800; padding: 11px; border-radius: 12px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: 0.3s; font-size: 13.5px;
+        }
+        .btn-add-cart:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(223, 184, 114, 0.4); }
+
+        /* نافذة إتمام الطلب الفاخرة (Checkout Modal) */
+        .checkout-modal-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 2000;
+            display: none; align-items: center; justify-content: center; padding: 15px;
+            backdrop-filter: blur(8px);
+        }
+        .checkout-box {
+            background: #0f0a1c; border: 1px solid var(--gold); border-radius: 22px;
+            width: 100%; max-width: 440px; padding: 22px; box-shadow: 0 0 35px rgba(223, 184, 114, 0.3);
+            max-height: 92vh; overflow-y: auto; text-align: right;
+        }
+        .checkout-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px; margin-bottom: 15px;
+        }
+        .checkout-header h3 { font-size: 16px; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px; }
+        .close-modal { color: #aaa; font-size: 20px; cursor: pointer; }
+
+        .summary-card {
+            background: #19102b; border: 1px solid var(--border-subtle); border-radius: 12px;
+            padding: 12px; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;
+        }
+        .summary-card img { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; }
+        .summary-texts h4 { font-size: 13px; font-weight: 800; margin-bottom: 3px; color: #fff; }
+        .summary-texts span { font-size: 13px; color: var(--gold-bright); font-weight: 900; }
+
+        .c-label { font-size: 11px; color: var(--gold); margin-bottom: 4px; display: block; font-weight: 700; }
+        .c-input {
+            width: 100%; background: #07040d; border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 11px; color: #fff; font-size: 13px; outline: none; margin-bottom: 12px;
+        }
+        .c-input:focus { border-color: var(--gold); }
+
+        .btn-order-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; font-weight: 900;
+            padding: 14px; border-radius: 14px; border: none; width: 100%; font-size: 15px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); margin-top: 8px;
+        }
+
+        /* مميزات الثقة */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; max-width: 1100px; margin: 40px auto; padding: 0 20px;
+        }
+        .feature-item {
+            background: var(--bg-card); border: 1px solid rgba(223,184,114,0.15);
+            border-radius: 14px; padding: 20px; text-align: center;
+        }
+        .feature-item i { font-size: 26px; color: var(--gold); margin-bottom: 8px; }
+        .feature-item h4 { font-size: 13px; margin-bottom: 4px; }
+        .feature-item p { font-size: 11px; color: var(--text-gray); }
+
+        /* الفوتر الرسمي ومعلومات التواصل */
+        .footer {
+            background: #040206; border-top: 1px solid var(--border-subtle);
+            padding: 40px 20px 20px; text-align: center;
+        }
+        .footer-logo { margin-bottom: 15px; }
+        .contact-info-box {
+            display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;
+            margin: 20px 0; font-size: 13px; color: var(--gold);
+        }
+        .contact-info-box a { color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+        /* نافذة ومساعد الذكاء الاصطناعي (AI Concierge) */
+        .ai-fab {
+            position: fixed; bottom: 25px; left: 25px; z-index: 1000;
+            background: var(--gold-gradient); color: #000; border: none;
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 22px;
+            cursor: pointer; box-shadow: 0 6px 25px rgba(223, 184, 114, 0.5);
+        }
+        .ai-chat-window {
+            position: fixed; bottom: 90px; left: 25px; width: 330px; height: 430px;
+            background: #0e0918; border: 1px solid var(--border-subtle); border-radius: 20px;
+            z-index: 1000; display: none; flex-direction: column; box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+        .ai-header {
+            background: #180f26; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .ai-header h4 { font-size: 13px; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+        .ai-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 8px 12px; border-radius: 12px; max-width: 80%; }
+        .msg.bot { background: #1c122e; color: #fff; align-self: flex-start; border: 1px solid var(--border-subtle); }
+        .msg.user { background: var(--gold); color: #000; align-self: flex-end; font-weight: 700; }
+        .ai-input-row { display: flex; padding: 8px; background: #130c20; border-top: 1px solid rgba(255,255,255,0.06); }
+        .ai-input-row input { flex: 1; background: none; border: none; color: #fff; font-size: 12px; outline: none; padding: 6px; }
+        .ai-input-row button { background: var(--gold); border: none; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- شريط الإعلان العلوي -->
+    <div class="top-announcement">
+        👑 شحن سريع وتغليف سري ومحمي لجميع مناطق ومدن المملكة | الدفع عند الاستلام متاح
+    </div>
+
+    <!-- الهيدر الرئيسي -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <i class="fa-solid fa-crown logo-icon"></i>
+            <span class="logo-text">BRITON LIFE</span>
+            <span class="logo-sub">MORE THAN PLEASURE</span>
+        </a>
+
+        <div class="header-search">
+            <input type="text" id="searchInput" placeholder="ابحث عن منتجك المفضل..." oninput="filterStoreProducts(this.value)">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="header-actions">
+            <a href="admin.html" class="action-item" title="لوحة التحكم"><i class="fa-solid fa-gear"></i></a>
+            <div class="action-item" onclick="openLastCheckout()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <div class="cart-badge" id="cartBadgeCount">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- شريط الأقسام الخمسة الرئيسية -->
+    <nav class="nav-categories">
+        <a href="#all" class="nav-link active" onclick="filterCategory('all', this)">جميع المنتجات</a>
+        <a href="#men" class="nav-link" onclick="filterCategory('men', this)">ألعاب للرجال</a>
+        <a href="#women" class="nav-link" onclick="filterCategory('women', this)">ألعاب وهزازات نسائية</a>
+        <a href="#couples" class="nav-link" onclick="filterCategory('couples', this)">ألعاب للمتزوجين</a>
+        <a href="#oils" class="nav-link" onclick="filterCategory('oils', this)">زيوت وعناية شخصية</a>
+        <a href="#featured" class="nav-link" onclick="filterCategory('featured', this)">مجموعات مميزة</a>
+    </nav>
+
+    <!-- بانر الترحيب الفاخر (Hero Section) -->
+    <section class="hero-banner">
+        <h1 class="hero-title">اكتشف عالم المتعة <span>مع بريتون لايف</span></h1>
+        <p class="hero-desc">تجربة فريدة .. خصوصية تامة .. جودة عالية وتوصيل سري وآمن حتى باب بيتك</p>
+
+        <div class="perks-row">
+            <div class="perk-box"><i class="fa-solid fa-truck-fast"></i> توصيل لجميع المناطق</div>
+            <div class="perk-box"><i class="fa-solid fa-box-archive"></i> تغليف سري ومميز</div>
+            <div class="perk-box"><i class="fa-solid fa-money-bill-wave"></i> الدفع عند الاستلام</div>
+            <div class="perk-box"><i class="fa-solid fa-headset"></i> خدمة عملاء 24/7</div>
+        </div>
+
+        <a href="#productsCatalog" class="btn-shop-now">تسوق الآن <i class="fa-solid fa-arrow-left"></i></a>
+    </section>
+
+    <!-- الأقسام الدائرية الخمسة -->
+    <div class="section-title">تسوق حسب الأقسام</div>
+    <div class="circles-grid">
+        <div class="cat-circle-card" onclick="filterCategory('featured')">
+            <div class="circle-img-wrap"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=150&q=80"></div>
+            <span>منتجات مميزة</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('oils')">
+            <div class="circle-img-wrap"><img src="https://images.unsplash.com/photo-1608248597359-5984449033f6?auto=format&fit=crop&w=150&q=80"></div>
+            <span>زيوت ومنشطات</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('women')">
+            <div class="circle-img-wrap"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=150&q=80"></div>
+            <span>الهزازات والنبض</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('couples')">
+            <div class="circle-img-wrap"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=150&q=80"></div>
+            <span>الألعاب الزوجية</span>
+        </div>
+        <div class="cat-circle-card" onclick="filterCategory('men')">
+            <div class="circle-img-wrap"><img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=150&q=80"></div>
+            <span>ألعاب للرجال</span>
+        </div>
+    </div>
+
+    <!-- شبكة المنتجات الأكثر مبيعاً -->
+    <div class="section-title" id="productsCatalog">👑 الأكثر مبيعاً واختياراً</div>
+    <div class="products-grid" id="mainProductsGrid"></div>
+
+    <!-- نافذة إتمام الطلب الملكية الفاخرة -->
+    <div class="checkout-modal-overlay" id="checkoutModal">
+        <div class="checkout-box">
+            <div class="checkout-header">
+                <h3>👑 إتمام الطلب الفاخر (سري وآمن)</h3>
+                <span class="close-modal" onclick="closeCheckout()">&times;</span>
+            </div>
+
+            <!-- ملخص المنتج المحدد -->
+            <div class="summary-card">
+                <img id="checkProdImg" src="" alt="المنتج">
+                <div class="summary-texts">
+                    <h4 id="checkProdName">اسم المنتج</h4>
+                    <span>السعر: <b id="checkProdPrice">0</b> ر.س</span>
+                </div>
+            </div>
+
+            <!-- نموذج بيانات العميل -->
+            <label class="c-label">الاسم الكريم / اللقب *</label>
+            <input type="text" id="custName" class="c-input" placeholder="مثال: فهد الحربي">
+
+            <label class="c-label">رقم الجوال للتوصيل *</label>
+            <input type="tel" id="custPhone" class="c-input" placeholder="05XXXXXXXX">
+
+            <div style="display:flex; gap:10px;">
+                <div style="flex:1;">
+                    <label class="c-label">المدينة *</label>
+                    <input type="text" id="custCity" class="c-input" placeholder="الرياض، جدة...">
+                </div>
+                <div style="flex:1;">
+                    <label class="c-label">الحي والشارع *</label>
+                    <input type="text" id="custDistrict" class="c-input" placeholder="اسم الحي">
+                </div>
+            </div>
+
+            <label class="c-label">ملاحظات التوصيل (اختياري)</label>
+            <input type="text" id="custNotes" class="c-input" placeholder="توصيل سري، الاتصال قبل الوصول...">
+
+            <button class="btn-order-wa" onclick="submitFinalOrder()">
+                <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> تأكيد وإرسال الطلب عبر واتساب الملكي
+            </button>
+            <p style="font-size:10px; color:#a1a1aa; text-align:center; margin-top:8px;">🔒 يتم تغليف الشحنة بتغليف خارجي أسود سري 100% بدون أي تفاصيل.</p>
+        </div>
+    </div>
+
+    <!-- مميزات الثقة والضمان -->
+    <div class="features-grid">
+        <div class="feature-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h4>منتجات أصلية مضمونة</h4>
+            <p>خامات طبية آمنة 100% ومعتمدة عالمياً</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-lock"></i>
+            <h4>تغليف فائق السرية</h4>
+            <p>لا يظهر أي تفاصيل عن المحتوى على الطرد</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-headset"></i>
+            <h4>دعم فني واستشارة</h4>
+            <p>متواجدون دائماً لخدمتكم ومساعدتكم</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+            <h4>شحن سريع ومجاني</h4>
+            <p>لجميع الطلبات المؤكدة خلال وقت قياسي</p>
+        </div>
+    </div>
+
+    <!-- زر ومساعد الذكاء الاصطناعي الذكي -->
+    <button class="ai-fab" onclick="toggleAIChat()" title="مساعد الذكاء الاصطناعي">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+    </button>
+
+    <div class="ai-chat-window" id="aiChatBox">
+        <div class="ai-header">
+            <h4><i class="fa-solid fa-robot"></i> مستشار بريتون لايف الذكي</h4>
+            <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleAIChat()"></i>
+        </div>
+        <div class="ai-messages" id="aiMsgContainer">
+            <div class="msg bot">مرحباً بك في متجر الملوك! أنا مستشارك الخاص بالذكاء الاصطناعي 👑، كيف يمكنني مساعدتك في اختيار المنتج المناسب؟</div>
+        </div>
+        <div class="ai-input-row">
+            <input type="text" id="aiInput" placeholder="اسألني عن أي منتج أو نصيحة..." onkeydown="if(event.key==='Enter') sendAIMessage()">
+            <button onclick="sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- الفوتر الرسمي ومعلومات التواصل -->
+    <footer class="footer">
+        <div class="brand-logo footer-logo">
+            <i class="fa-solid fa-crown logo-icon"></i>
+            <span class="logo-text">BRITON LIFE</span>
+            <span class="logo-sub">MORE THAN PLEASURE</span>
+        </div>
+
+        <!-- معلومات التواصل المعتمدة الخاصة بك -->
+        <div class="contact-info-box">
+            <a href="https://wa.me/966556575822" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> واتساب الإدارة: 0556575822
+            </a>
+            <a href="mailto:roooo77775@gmail.com">
+                <i class="fa-regular fa-envelope"></i> البريد: roooo77775@gmail.com
+            </a>
+        </div>
+
+        <p style="font-size:11px; color:#52525b; margin-top:15px;">© 2026 بريتون لايف BRITON LIFE. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        const defaultCatalog = [
+            { id: 1, name: "قضيب صناعي واقعي سيليكون طبي", cat: "men", price: 1100, oldPrice: 1350, desc: "قاعدة تثبيت فائقة القوة مع ملمس واقعي 100%", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, name: "مهبل صناعي واقعي ملمس ناعم", cat: "men", price: 1000, oldPrice: 1250, desc: "تصميم متقن يحاكي الطبيعي مع قنوات ضيقة ونبض", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, name: "هزاز أرنب 10 سرعات شحن USB", cat: "women", price: 249, oldPrice: 320, desc: "تحفيز مزدوج فائق النعومة مع مقاومة كاملة للماء", img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, name: "كرات كيجل لتقوية العضلات والنشوة", cat: "women", price: 199, oldPrice: 260, desc: "سيليكون آمن طبي يمنح تحكماً كلياً ومتعة مضاعفة", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80" },
+            { id: 5, name: "حلقة تأخير القذف سيليكون مريح", cat: "couples", price: 159, oldPrice: 210, desc: "مرونة عالية قابلة للتعديل وتطيل فترة المتعة المشتركة", img: "https://images.unsplash.com/photo-1608248597359-5984449033f6?auto=format&fit=crop&w=500&q=80" },
+            { id: 6, name: "زيت التزليق الطبيعي مائي آمن", cat: "oils", price: 89, oldPrice: 120, desc: "تركيبة حريرية آمنة للبشرة وتدوم طويلاً بدون لزوجة", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        let catalog = JSON.parse(localStorage.getItem('luxe_catalog')) || defaultCatalog;
+        let selectedProductForCheckout = catalog[0];
+        let cartCount = 0;
+
+        function renderStore(items) {
+            const grid = document.getElementById('mainProductsGrid');
+            if (!items.length) {
+                grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#71717a; padding:40px;">لا توجد منتجات مطابقة لهذا القسم حالياً.</p>';
+                return;
+            }
+            grid.innerHTML = items.map((p, index) => `
+                <div class="product-card">
+                    <button class="card-fav-btn"><i class="fa-regular fa-heart"></i></button>
+                    <img src="${(p.imgs && p.imgs[0]) || p.img || 'https://via.placeholder.com/300'}" class="product-img" alt="${p.name}">
+                    <h3 class="product-title">${p.name}</h3>
+                    <p class="product-desc">${p.desc || 'خامات أصلية آمنة بجودة ملكية وتغليف فائق السرية'}</p>
+                    <div class="price-box">
+                        <span class="main-price">${p.price} ر.س</span>
+                        ${p.oldPrice ? `<span class="old-price">${p.oldPrice} ر.س</span>` : ''}
+                    </div>
+                    <button class="btn-add-cart" onclick="initiateCheckout(${p.id})">
+                        <i class="fa-solid fa-cart-shopping"></i> إتمام الطلب والدفع عند الاستلام
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function initiateCheckout(productId) {
+            const product = catalog.find(item => item.id == productId);
+            if (!product) return;
+            selectedProductForCheckout = product;
+            cartCount++;
+            document.getElementById('cartBadgeCount').innerText = cartCount;
+
+            document.getElementById('checkProdName').innerText = product.name;
+            document.getElementById('checkProdPrice').innerText = product.price;
+            document.getElementById('checkProdImg').src = (product.imgs && product.imgs[0]) || product.img;
+
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function openLastCheckout() {
+            if (selectedProductForCheckout) {
+                initiateCheckout(selectedProductForCheckout.id);
+            }
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function submitFinalOrder() {
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const city = document.getElementById('custCity').value.trim();
+            const district = document.getElementById('custDistrict').value.trim();
+            const notes = document.getElementById('custNotes').value.trim();
+
+            if (!name || !phone || !city || !district) {
+                alert('يرجى تعبئة كافة الحقول المطلوبة (الاسم، الجوال، المدينة، الحي)!');
+                return;
+            }
+
+            // تجهيز الفاتورة الملكية
+            const orderInvoice = 
+`👑 *طلب شراء جديد - متجر الملوك (BRITON LIFE)*
+------------------------------------
+📦 *المنتج المطلـوب:* ${selectedProductForCheckout.name}
+💰 *السعر الإجمالي:* ${selectedProductForCheckout.price} ر.س
+💵 *طريقة الدفع:* الدفع عند الاستلام (COD)
+------------------------------------
+👤 *بيانات العميل الكريم:*
+• *الاسم:* ${name}
+• *رقم الجوال:* ${phone}
+• *المدينة:* ${city}
+• *الحي والشارع:* ${district}
+${notes ? `• *ملاحظات التوصيل:* ${notes}` : ''}
+------------------------------------
+🔒 *التغليف:* سري ومحمي 100%
+✉️ *نسخة الفاتورة للبريد:* roooo77775@gmail.com`;
+
+            // إرسال للواتساب مباشرة لرقمك السعودي (966556575822)
+            const waNumber = "966556575822";
+            const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodeURIComponent(orderInvoice)}`;
+
+            // إرسال نسخة بريدية في خلفية المتصفح عبر mailto
+            const mailtoUrl = `mailto:roooo77775@gmail.com?subject=${encodeURIComponent("فاتورة طلب جديد: " + selectedProductForCheckout.name)}&body=${encodeURIComponent(orderInvoice)}`;
+            
+            // فتح واتساب فوراً
+            window.open(waUrl, '_blank');
+
+            // إغلاق النافذة وتفريغ الحقول
+            closeCheckout();
+            document.getElementById('custName').value = '';
+            document.getElementById('custPhone').value = '';
+            document.getElementById('custCity').value = '';
+            document.getElementById('custDistrict').value = '';
+            document.getElementById('custNotes').value = '';
+        }
+
+        function filterCategory(cat, el) {
+            if (el) {
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                el.classList.add('active');
+            }
+            if (cat === 'all') {
+                renderStore(catalog);
+            } else {
+                const filtered = catalog.filter(p => p.cat === cat);
+                renderStore(filtered.length ? filtered : catalog);
+            }
+        }
+
+        function filterStoreProducts(query) {
+            const q = query.toLowerCase();
+            const matched = catalog.filter(p => p.name.toLowerCase().includes(q) || (p.desc && p.desc.toLowerCase().includes(q)));
+            renderStore(matched);
+        }
+
+        function toggleAIChat() {
+            const box = document.getElementById('aiChatBox');
+            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const c = document.getElementById('aiMsgContainer');
+            c.innerHTML += `<div class="msg user">${text}</div>`;
+            input.value = '';
+
+            setTimeout(() => {
+                let reply = "يسعدني خدمتك يا فندم! يمكنك اختيار أي منتج والضغط على زر إتمام الطلب لإرسال فاتورتك لواتساب الإدارة فوراً.";
+                const lower = text.toLowerCase();
+                if (lower.includes("طلب") || lower.includes("شراء")) {
+                    reply = "اضغط على زر (إتمام الطلب) تحت أي منتج وسنفتح لك شاشة كتابة بياناتك وإرسالها فوراً لواتساب الإدارة والدفع عند الاستلام.";
+                } else if (lower.includes("توصيل") || lower.includes("شحن") || lower.includes("سرية")) {
+                    reply = "الشحن سريع لكافة مدن المملكة عبر مندوبينا والتغليف سري تماماً.";
+                }
+                c.innerHTML += `<div class="msg bot">${reply}</div>`;
+                c.scrollTop = c.scrollHeight;
+            }, 600);
+        }
+
+        renderStore(catalog);
+    </script>
+</body>
+</html>
