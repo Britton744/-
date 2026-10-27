@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRITTON LIFE — لوحة التحكم</title>
+
+<style>
+:root{--bg:#09080d;--panel:#121018;--panel2:#181420;--gold:#d7b63d;--gold2:#f1d56b;--purple:#8d4de8;--text:#f7f3ff;--muted:#a9a1b5;--danger:#ef5b70;--line:#292332}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#27113e 0,transparent 35%),var(--bg);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:rgba(12,10,17,.96);border-left:1px solid var(--line);padding:22px 16px;position:sticky;top:0;height:100vh}.brand{font-size:23px;font-weight:900;color:var(--gold);letter-spacing:2px;padding:8px 10px 25px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:0;margin-top:5px}.nav button{width:100%;background:transparent;border:0;color:#d8d1e3;text-align:right;padding:14px;border-radius:12px;margin:3px 0}.nav button:hover,.nav button.active{background:linear-gradient(90deg,rgba(141,77,232,.22),rgba(215,182,61,.10));color:#fff}.main{padding:26px;max-width:1450px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:22px}.title h1{margin:0;font-size:27px}.title p{margin:7px 0;color:var(--muted)}.btn{border:1px solid var(--line);background:var(--panel);color:#fff;padding:11px 16px;border-radius:11px}.btn.gold{background:linear-gradient(135deg,#b18b1f,var(--gold2));color:#16120a;border:0;font-weight:800}.btn.danger{color:#ff9aaa;border-color:#5a2631}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(145deg,rgba(24,20,32,.98),rgba(14,12,19,.98));border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 12px 35px rgba(0,0,0,.22)}.stat b{display:block;font-size:28px;color:var(--gold2);margin-top:10px}.muted{color:var(--muted);font-size:13px}.section{margin-top:20px}.section h2{font-size:18px}.table{overflow:auto}.row{display:grid;grid-template-columns:70px 1.6fr .8fr .7fr .8fr 130px;gap:10px;align-items:center;padding:12px;border-bottom:1px solid var(--line);min-width:720px}.head{color:var(--muted);font-size:12px}.thumb{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#24202d}.pill{padding:5px 9px;border-radius:20px;background:#24202d;color:#ddd;font-size:12px}.actions{display:flex;gap:6px}.hidden{display:none!important}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.field label{display:block;color:#c8c0d4;font-size:12px;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;background:#0e0c13;color:#fff;border:1px solid var(--line);border-radius:11px;padding:12px;outline:none}.field textarea{min-height:110px;resize:vertical}.full{grid-column:1/-1}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:18px;z-index:10}.modalbox{width:min(780px,100%);max-height:92vh;overflow:auto;background:#121018;border:1px solid #3a3046;border-radius:20px;padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.preview img{width:85px;height:70px;object-fit:cover;border-radius:9px;border:1px solid var(--line)}.notice{padding:13px;border-radius:12px;background:#1b1722;border:1px solid var(--line);color:#d7d0df;margin-bottom:14px}.search{width:100%;max-width:380px;background:#0e0c13;border:1px solid var(--line);color:#fff;border-radius:11px;padding:11px}.toast{position:fixed;bottom:20px;left:20px;background:#17131e;border:1px solid var(--gold);padding:13px 16px;border-radius:12px;display:none;z-index:20}
+@media(max-width:850px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-left:0;border-bottom:1px solid var(--line);padding:10px}.brand{padding:8px}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}.main{padding:16px}.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.top{align-items:flex-start}.top .btn{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">BRITTON LIFE<small>ADMIN CONTROL CENTER</small></div>
+  <div class="nav">
+    <button class="active" data-page="dashboard">⌂ الرئيسية</button>
+    <button data-page="products">▣ المنتجات</button>
+    <button data-page="orders">🛒 الطلبات</button>
+    <button data-page="settings">⚙ إعدادات المتجر</button>
+  </div>
+</aside>
+<main class="main">
+  <div class="top"><div class="title"><h1 id="pageTitle">لوحة التحكم</h1><p id="pageSub">تحكم كامل بمتجرك من مكان واحد.</p></div><button class="btn gold" onclick="openProduct()">＋ إضافة منتج</button></div>
+
+  <section id="dashboard">
+    <div class="grid">
+      <div class="card stat"><span class="muted">المنتجات</span><b id="sProducts">0</b></div>
+      <div class="card stat"><span class="muted">الطلبات</span><b id="sOrders">0</b></div>
+      <div class="card stat"><span class="muted">منتجات مفعلة</span><b id="sActive">0</b></div>
+      <div class="card stat"><span class="muted">إجمالي قيمة الطلبات</span><b id="sSales">0 ر.س</b></div>
+    </div>
+    <div class="section card"><h2>حالة الاتصال</h2><div id="connection" class="notice">جاري الاتصال بقاعدة Firebase...</div></div>
+  </section>
+
+  <section id="products" class="hidden">
+    <div class="card"><div class="top"><input id="search" class="search" placeholder="ابحث باسم المنتج..." oninput="renderProducts()"><button class="btn gold" onclick="openProduct()">＋ منتج جديد</button></div>
+    <div class="table"><div class="row head"><div>صورة</div><div>المنتج</div><div>السعر</div><div>المخزون</div><div>الحالة</div><div>إجراءات</div></div><div id="productRows"></div></div></div>
+  </section>
+
+  <section id="orders" class="hidden">
+    <div class="card"><h2>إدارة الطلبات</h2><div class="table"><div class="row head"><div>#</div><div>العميل</div><div>الجوال</div><div>الإجمالي</div><div>الحالة</div><div>التاريخ</div></div><div id="orderRows"></div></div></div>
+  </section>
+
+  <section id="settings" class="hidden">
+    <div class="card"><h2>إعدادات المتجر</h2><div class="notice">هذه الإعدادات تُحفظ في Firestore وتظهر في المتجر بعد ربط المتجر بنفس مجموعة settings.</div>
+    <div class="formgrid">
+      <div class="field"><label>اسم المتجر</label><input id="setName" value="BRITTON LIFE"></div>
+      <div class="field"><label>رقم الجوال / واتساب</label><input id="setPhone" placeholder="9665xxxxxxxx"></div>
+      <div class="field"><label>البريد الإلكتروني</label><input id="setEmail" type="email"></div>
+      <div class="field"><label>رابط الشعار</label><input id="setLogo" placeholder="https://..."></div>
+      <div class="field"><label>اللون الرئيسي</label><input id="setGold" value="#d7b63d"></div>
+      <div class="field"><label>اللون الثانوي</label><input id="setPurple" value="#8d4de8"></div>
+      <div class="field full"><label>وصف المتجر</label><textarea id="setDesc" placeholder="اكتب وصف المتجر..."></textarea></div>
+    </div><br><button class="btn gold" onclick="saveSettings()">حفظ الإعدادات</button>
+    </div>
+  </section>
+</main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modalbox">
+<div class="modalhead"><h2 id="modalTitle">إضافة منتج</h2><button class="btn" onclick="closeModal()">✕</button></div>
+<div class="formgrid">
+<input type="hidden" id="pId">
+<div class="field"><label>اسم المنتج</label><input id="pName"></div>
+<div class="field"><label>السعر</label><input id="pPrice" type="number" step="0.01"></div>
+<div class="field"><label>المخزون</label><input id="pStock" type="number" value="0"></div>
+<div class="field"><label>التصنيف</label><input id="pCategory" placeholder="مثال: ألعاب زوجية"></div>
+<div class="field full"><label>وصف المنتج</label><textarea id="pDesc"></textarea></div>
+<div class="field full"><label>صور المنتج — اختر عدة صور من الجوال أو الكمبيوتر</label><input id="pFiles" type="file" accept="image/*" multiple><textarea id="pImages" placeholder="أو ضع روابط الصور، كل رابط في سطر مستقل"></textarea><div id="previews" class="preview"></div></div>
+<div class="field"><label>الحالة</label><select id="pActive"><option value="true">مفعل</option><option value="false">مخفي</option></select></div>
+</div><br><div style="display:flex;gap:8px;justify-content:flex-start"><button class="btn gold" onclick="saveProduct()">حفظ المنتج</button><button class="btn" onclick="closeModal()">إلغاء</button></div>
+</div></div>
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {getFirestore,collection,doc,getDocs,getDoc,addDoc,setDoc,updateDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {getStorage,ref,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+
+const firebaseConfig={
+ apiKey:"AIzaSyBPdzepXoNsfZuwvheHrhA6LynGJBctk_E",
+ authDomain:"britton-life-store.firebaseapp.com",
+ projectId:"britton-life-store",
+ storageBucket:"britton-life-store.firebasestorage.app",
+ messagingSenderId:"258780754601",
+ appId:"1:258780754601:web:5c0d162547e64bd99d2fb8",
+ measurementId:"G-RXK7K2Z4YT"
+};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+let products=[],orders=[],currentUser=null;
+const $=id=>document.getElementById(id);
+function toast(t){const x=$("toast");x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2800)}
+function friendly(e){if(e?.code==='auth/operation-not-allowed')return 'فعّل تسجيل الدخول بالبريد وكلمة المرور من Firebase Authentication.';if(e?.code==='auth/invalid-credential')return 'البريد أو كلمة المرور غير صحيحة.';if(e?.code==='permission-denied')return 'Firebase رفض العملية. نحتاج ضبط Firestore Rules للحساب.';return e?.message||'حدث خطأ.'}
+function showLogin(){if($("loginBox"))return;const d=document.createElement('div');d.id='loginBox';d.className='modal';d.innerHTML=`<div class="modalbox" style="max-width:430px"><h2 style="color:#f1d56b">BRITTON LIFE</h2><p class="muted">دخول لوحة التحكم</p><div class="field"><label>البريد الإلكتروني</label><input id="adminEmail" type="email"></div><div class="field"><label>كلمة المرور</label><input id="adminPass" type="password"></div><button class="btn gold" style="width:100%" id="loginBtn">دخول</button><p id="loginMsg" class="muted"></p></div>`;document.body.appendChild(d);$("loginBtn").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("adminEmail").value.trim(),$("adminPass").value);toast('تم تسجيل الدخول ✓');d.remove()}catch(e){$("loginMsg").textContent=friendly(e)}}}
+window.logout=async()=>{await signOut(auth);location.reload()};
+onAuthStateChanged(auth,async u=>{currentUser=u;if(!u){showLogin();$("connection").textContent='بانتظار تسجيل دخول المدير.';return}if($("loginBox"))$("loginBox").remove();$("connection").textContent='متصل بـ Firebase ✓';await loadAll()});
+
+function showPage(page){document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));$(page).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));const t={dashboard:['لوحة التحكم','تحكم كامل بمتجرك من مكان واحد.'],products:['المنتجات','أضف وعدّل واحذف المنتجات والصور والوصف والمخزون.'],orders:['الطلبات','تابع الطلبات وحالاتها.'],settings:['إعدادات المتجر','الاسم والرقم والبريد والألوان ومعلومات المتجر.']};$("pageTitle").textContent=t[page][0];$("pageSub").textContent=t[page][1];if(page==='products')renderProducts();if(page==='orders')renderOrders()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+async function loadAll(){try{const ps=await getDocs(collection(db,'products'));products=ps.docs.map(d=>({id:d.id,...d.data()}));const os=await getDocs(collection(db,'orders'));orders=os.docs.map(d=>({id:d.id,...d.data()}));refreshStats();renderProducts();renderOrders();await loadSettings()}catch(e){$("connection").textContent='خطأ في الاتصال: '+friendly(e)}}
+function refreshStats(){$("sProducts").textContent=products.length;$("sActive").textContent=products.filter(x=>x.active!==false).length;$("sOrders").textContent=orders.length;$("sSales").textContent=orders.reduce((s,x)=>s+Number(x.total||0),0).toLocaleString('ar-SA')+' ر.س'}
+function imgOf(p){const a=Array.isArray(p.images)?p.images:(p.image_url?[p.image_url]:[]);return a[0]||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="%2324202d"/></svg>'}
+function renderProducts(){const q=($("search")?.value||'').toLowerCase();const list=products.filter(p=>(p.name||'').toLowerCase().includes(q));$("productRows").innerHTML=list.map(p=>`<div class="row"><img class="thumb" src="${esc(imgOf(p))}" onerror="this.style.visibility='hidden'"><div><b>${esc(p.name||'بدون اسم')}</b><div class="muted">${esc(p.category||'')}</div></div><div>${Number(p.price||0).toLocaleString('ar-SA')} ر.س</div><div>${p.stock??0}</div><div><span class="pill">${p.active===false?'مخفي':'مفعل'}</span></div><div class="actions"><button class="btn" onclick="editProduct('${p.id}')">تعديل</button><button class="btn danger" onclick="deleteProduct('${p.id}')">حذف</button></div></div>`).join('')||'<div class="notice">لا توجد منتجات.</div>'}
+function renderOrders(){$("orderRows").innerHTML=orders.map(o=>`<div class="row"><div>${esc(o.id||'')}</div><div><b>${esc(o.customer_name||o.name||'—')}</b><div class="muted">${esc(o.city||'')}</div></div><div>${esc(o.phone||'—')}</div><div>${Number(o.total||0).toLocaleString('ar-SA')} ر.س</div><div><select onchange="updateOrder('${o.id}',this.value)"><option ${o.status==='جديد'?'selected':''}>جديد</option><option ${o.status==='قيد التجهيز'?'selected':''}>قيد التجهيز</option><option ${o.status==='تم الشحن'?'selected':''}>تم الشحن</option><option ${o.status==='مكتمل'?'selected':''}>مكتمل</option><option ${o.status==='ملغي'?'selected':''}>ملغي</option></select></div><div class="muted">${dateText(o.createdAt||o.created_at)}</div></div>`).join('')||'<div class="notice">لا توجد طلبات.</div>'}
+function dateText(v){if(v?.seconds)return new Date(v.seconds*1000).toLocaleDateString('ar-SA');const n=Date.parse(v||'');return n?new Date(n).toLocaleDateString('ar-SA'):''}
+
+window.openProduct=(p=null)=>{$("modal").classList.remove('hidden');$("modalTitle").textContent=p?'تعديل المنتج':'إضافة منتج';$("pId").value=p?.id||'';$("pName").value=p?.name||'';$("pPrice").value=p?.price||'';$("pStock").value=p?.stock||0;$("pCategory").value=p?.category||'';$("pDesc").value=p?.description||'';$("pImages").value=(Array.isArray(p?.images)?p.images:(p?.image_url?[p.image_url]:[])).join('\n');$("pFiles").value='';$("pActive").value=String(p?.active!==false);previewImages()};
+window.editProduct=id=>openProduct(products.find(p=>p.id===id));window.closeModal=()=>$("modal").classList.add('hidden');
+$("pImages").addEventListener('input',previewImages);$("pFiles").addEventListener('change',previewFiles);
+function previewImages(){$("previews").innerHTML=$("pImages").value.split(/\n+/).filter(Boolean).map(u=>`<img src="${esc(u.trim())}">`).join('')}
+function previewFiles(){const files=[...$("pFiles").files];const urls=files.map(f=>URL.createObjectURL(f));$("previews").innerHTML=urls.map(u=>`<img src="${u}">`).join('')+($("pImages").value.trim()?$("pImages").value.split(/\n+/).filter(Boolean).map(u=>`<img src="${esc(u.trim())}">`).join(''):'')}
+async function uploadImages(){const out=$("pImages").value.split(/\n+/).map(x=>x.trim()).filter(Boolean);for(const file of [...$("pFiles").files]){const path='products/'+crypto.randomUUID()+'-'+file.name.replace(/[^\w.\-]/g,'_');const r=ref(storage,path);await uploadBytes(r,file);out.push(await getDownloadURL(r))}return out}
+window.saveProduct=async()=>{try{if(!currentUser)return toast('سجّل دخول المدير أولاً');const name=$("pName").value.trim();if(!name)return toast('اكتب اسم المنتج');toast('جاري حفظ المنتج ورفع الصور...');const images=await uploadImages();const data={name,price:Number($("pPrice").value||0),stock:Number($("pStock").value||0),category:$("pCategory").value.trim(),description:$("pDesc").value.trim(),images,image_url:images[0]||'',active:$("pActive").value==='true',updatedAt:new Date()};const id=$("pId").value;if(id)await updateDoc(doc(db,'products',id),data);else await addDoc(collection(db,'products'),{...data,createdAt:new Date()});toast('تم حفظ المنتج ✓');closeModal();await loadAll()}catch(e){toast(friendly(e))}};
+window.deleteProduct=async id=>{if(!confirm('حذف هذا المنتج نهائيًا؟'))return;try{await deleteDoc(doc(db,'products',id));toast('تم الحذف ✓');await loadAll()}catch(e){toast(friendly(e))}};
+window.updateOrder=async(id,status)=>{try{await updateDoc(doc(db,'orders',id),{status,updatedAt:new Date()});const o=orders.find(x=>x.id===id);if(o)o.status=status;toast('تم تحديث الطلب ✓')}catch(e){toast(friendly(e))}};
+async function loadSettings(){try{const s=await getDoc(doc(db,'settings','store'));if(!s.exists())return;const x=s.data();$("setName").value=x.name||'BRITTON LIFE';$("setPhone").value=x.phone||'';$("setEmail").value=x.email||'';$("setLogo").value=x.logo||'';$("setGold").value=x.gold||'#d7b63d';$("setPurple").value=x.purple||'#8d4de8';$("setDesc").value=x.description||x.desc||''}catch(e){}}
+window.saveSettings=async()=>{try{await setDoc(doc(db,'settings','store'),{name:$("setName").value.trim(),phone:$("setPhone").value.trim(),email:$("setEmail").value.trim(),logo:$("setLogo").value.trim(),gold:$("setGold").value.trim(),purple:$("setPurple").value.trim(),description:$("setDesc").value.trim(),updatedAt:new Date()},{merge:true});document.documentElement.style.setProperty('--gold',$("setGold").value);document.documentElement.style.setProperty('--purple',$("setPurple").value);toast('تم حفظ إعدادات المتجر ✓')}catch(e){toast(friendly(e))}};
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+</script>
+</body>
+</html>
