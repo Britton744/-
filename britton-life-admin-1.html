@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRITTON LIFE — لوحة التحكم</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#09080d;--panel:#121018;--panel2:#181420;--gold:#d7b63d;--gold2:#f1d56b;--purple:#8d4de8;--text:#f7f3ff;--muted:#a9a1b5;--danger:#ef5b70;--line:#292332}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#27113e 0,transparent 35%),var(--bg);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:rgba(12,10,17,.96);border-left:1px solid var(--line);padding:22px 16px;position:sticky;top:0;height:100vh}.brand{font-size:23px;font-weight:900;color:var(--gold);letter-spacing:2px;padding:8px 10px 25px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:0;margin-top:5px}.nav button{width:100%;background:transparent;border:0;color:#d8d1e3;text-align:right;padding:14px;border-radius:12px;margin:3px 0}.nav button:hover,.nav button.active{background:linear-gradient(90deg,rgba(141,77,232,.22),rgba(215,182,61,.10));color:#fff}.main{padding:26px;max-width:1450px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:22px}.title h1{margin:0;font-size:27px}.title p{margin:7px 0;color:var(--muted)}.btn{border:1px solid var(--line);background:var(--panel);color:#fff;padding:11px 16px;border-radius:11px}.btn.gold{background:linear-gradient(135deg,#b18b1f,var(--gold2));color:#16120a;border:0;font-weight:800}.btn.danger{color:#ff9aaa;border-color:#5a2631}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(145deg,rgba(24,20,32,.98),rgba(14,12,19,.98));border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 12px 35px rgba(0,0,0,.22)}.stat b{display:block;font-size:28px;color:var(--gold2);margin-top:10px}.muted{color:var(--muted);font-size:13px}.section{margin-top:20px}.section h2{font-size:18px}.table{overflow:auto}.row{display:grid;grid-template-columns:70px 1.6fr .8fr .7fr .8fr 130px;gap:10px;align-items:center;padding:12px;border-bottom:1px solid var(--line);min-width:720px}.head{color:var(--muted);font-size:12px}.thumb{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#24202d}.pill{padding:5px 9px;border-radius:20px;background:#24202d;color:#ddd;font-size:12px}.actions{display:flex;gap:6px}.hidden{display:none!important}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.field label{display:block;color:#c8c0d4;font-size:12px;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;background:#0e0c13;color:#fff;border:1px solid var(--line);border-radius:11px;padding:12px;outline:none}.field textarea{min-height:110px;resize:vertical}.full{grid-column:1/-1}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:18px;z-index:10}.modalbox{width:min(780px,100%);max-height:92vh;overflow:auto;background:#121018;border:1px solid #3a3046;border-radius:20px;padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.preview img{width:85px;height:70px;object-fit:cover;border-radius:9px;border:1px solid var(--line)}.notice{padding:13px;border-radius:12px;background:#1b1722;border:1px solid var(--line);color:#d7d0df;margin-bottom:14px}.search{width:100%;max-width:380px;background:#0e0c13;border:1px solid var(--line);color:#fff;border-radius:11px;padding:11px}.toast{position:fixed;bottom:20px;left:20px;background:#17131e;border:1px solid var(--gold);padding:13px 16px;border-radius:12px;display:none;z-index:20}
+@media(max-width:850px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-left:0;border-bottom:1px solid var(--line);padding:10px}.brand{padding:8px}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}.main{padding:16px}.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.top{align-items:flex-start}.top .btn{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">BRITTON LIFE<small>ADMIN CONTROL CENTER</small></div>
+  <div class="nav">
+    <button class="active" data-page="dashboard">⌂ الرئيسية</button>
+    <button data-page="products">▣ المنتجات</button>
+    <button data-page="orders">🛒 الطلبات</button>
+    <button data-page="settings">⚙ إعدادات المتجر</button>
+  </div>
+</aside>
+<main class="main">
+  <div class="top"><div class="title"><h1 id="pageTitle">لوحة التحكم</h1><p id="pageSub">تحكم كامل بمتجرك من مكان واحد.</p></div><button class="btn gold" onclick="openProduct()">＋ إضافة منتج</button></div>
+
+  <section id="dashboard">
+    <div class="grid">
+      <div class="card stat"><span class="muted">المنتجات</span><b id="sProducts">0</b></div>
+      <div class="card stat"><span class="muted">الطلبات</span><b id="sOrders">0</b></div>
+      <div class="card stat"><span class="muted">منتجات مفعلة</span><b id="sActive">0</b></div>
+      <div class="card stat"><span class="muted">إجمالي قيمة الطلبات</span><b id="sSales">0 ر.س</b></div>
+    </div>
+    <div class="section card"><h2>حالة الاتصال</h2><div id="connection" class="notice">لم يتم ضبط بيانات Supabase بعد.</div></div>
+  </section>
+
+  <section id="products" class="hidden">
+    <div class="card"><div class="top"><input id="search" class="search" placeholder="ابحث باسم المنتج..." oninput="renderProducts()"><button class="btn gold" onclick="openProduct()">＋ منتج جديد</button></div>
+    <div class="table"><div class="row head"><div>صورة</div><div>المنتج</div><div>السعر</div><div>المخزون</div><div>الحالة</div><div>إجراءات</div></div><div id="productRows"></div></div></div>
+  </section>
+
+  <section id="orders" class="hidden">
+    <div class="card"><h2>إدارة الطلبات</h2><div class="table"><div class="row head"><div>#</div><div>العميل</div><div>الجوال</div><div>الإجمالي</div><div>الحالة</div><div>التاريخ</div></div><div id="orderRows"></div></div></div>
+  </section>
+
+  <section id="settings" class="hidden">
+    <div class="card"><h2>إعدادات المتجر</h2><div class="notice">هذه الإعدادات تُحفظ في المتصفح في هذه النسخة. عند ربط جدول إعدادات Supabase يمكن جعلها مشتركة بين كل الأجهزة.</div>
+    <div class="formgrid">
+      <div class="field"><label>اسم المتجر</label><input id="setName" value="BRITTON LIFE"></div>
+      <div class="field"><label>رقم الجوال / واتساب</label><input id="setPhone" placeholder="9665xxxxxxxx"></div>
+      <div class="field"><label>البريد الإلكتروني</label><input id="setEmail" type="email"></div>
+      <div class="field"><label>رابط الشعار</label><input id="setLogo" placeholder="https://..."></div>
+      <div class="field"><label>اللون الرئيسي</label><input id="setGold" value="#d7b63d"></div>
+      <div class="field"><label>اللون الثانوي</label><input id="setPurple" value="#8d4de8"></div>
+      <div class="field full"><label>وصف المتجر</label><textarea id="setDesc" placeholder="اكتب وصف المتجر..."></textarea></div>
+    </div><br><button class="btn gold" onclick="saveSettings()">حفظ الإعدادات</button>
+    </div>
+  </section>
+</main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modalbox">
+<div class="modalhead"><h2 id="modalTitle">إضافة منتج</h2><button class="btn" onclick="closeModal()">✕</button></div>
+<div class="formgrid">
+<input type="hidden" id="pId">
+<div class="field"><label>اسم المنتج</label><input id="pName"></div>
+<div class="field"><label>السعر</label><input id="pPrice" type="number" step="0.01"></div>
+<div class="field"><label>المخزون</label><input id="pStock" type="number" value="0"></div>
+<div class="field"><label>التصنيف</label><input id="pCategory" placeholder="مثال: ألعاب زوجية"></div>
+<div class="field full"><label>وصف المنتج</label><textarea id="pDesc"></textarea></div>
+<div class="field full"><label>صور المنتج — ضع رابط كل صورة في سطر مستقل (عدة صور)</label><textarea id="pImages" placeholder="https://image1.jpg&#10;https://image2.jpg&#10;https://image3.jpg"></textarea><div id="previews" class="preview"></div></div>
+<div class="field"><label>الحالة</label><select id="pActive"><option value="true">مفعل</option><option value="false">مخفي</option></select></div>
+</div><br><div style="display:flex;gap:8px;justify-content:flex-start"><button class="btn gold" onclick="saveProduct()">حفظ المنتج</button><button class="btn" onclick="closeModal()">إلغاء</button></div>
+</div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ====== ضع بيانات مشروع Supabase هنا ====== */
+const SUPABASE_URL = "ضع_رابط_مشروعك_هنا";
+const SUPABASE_ANON_KEY = "ضع_مفتاح_anon_هنا";
+/* ========================================== */
+
+let db=null, products=[], orders=[];
+
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2500)}
+function showPage(page){
+ document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(page).classList.remove('hidden');
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));
+ const titles={dashboard:['لوحة التحكم','تحكم كامل بمتجرك من مكان واحد.'],products:['المنتجات','أضف وعدّل واحذف المنتجات والصور والوصف والمخزون.'],orders:['الطلبات','تابع الطلبات وحالاتها.'],settings:['إعدادات المتجر','الاسم والرقم والبريد والألوان ومعلومات المتجر.']};
+ document.getElementById('pageTitle').textContent=titles[page][0];document.getElementById('pageSub').textContent=titles[page][1];
+ if(page==='products')renderProducts(); if(page==='orders')renderOrders();
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+async function init(){
+ const configured=SUPABASE_URL.startsWith('http') && !SUPABASE_URL.includes('ضع_');
+ if(!configured){document.getElementById('connection').textContent='اللوحة جاهزة، لكن تحتاج وضع رابط Supabase وanon key داخل الكود قبل الاتصال بقاعدة البيانات.';return}
+ db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+ await loadAll();
+}
+async function loadAll(){
+ try{
+  let a=await db.from('products').select('*').order('created_at',{ascending:false}); if(a.error)throw a.error; products=a.data||[];
+  let b=await db.from('orders').select('*').order('created_at',{ascending:false}); orders=b.data||[];
+  document.getElementById('connection').textContent='متصل بقاعدة البيانات بنجاح ✓';
+  refreshStats();renderProducts();renderOrders();
+ }catch(e){document.getElementById('connection').textContent='تعذر الاتصال: '+e.message;toast('تحقق من رابط ومفتاح Supabase')}
+}
+function refreshStats(){
+ document.getElementById('sProducts').textContent=products.length;
+ document.getElementById('sActive').textContent=products.filter(x=>x.active!==false).length;
+ document.getElementById('sOrders').textContent=orders.length;
+ const total=orders.reduce((s,x)=>s+Number(x.total||0),0);document.getElementById('sSales').textContent=total.toLocaleString('ar-SA')+' ر.س';
+}
+function imgOf(p){return (p.image_url||'').split('\n')[0]||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="%2324202d"/></svg>'}
+function renderProducts(){
+ const q=(document.getElementById('search')?.value||'').toLowerCase();
+ const list=products.filter(p=>(p.name||'').toLowerCase().includes(q));
+ document.getElementById('productRows').innerHTML=list.map(p=>`<div class="row">
+ <img class="thumb" src="${esc(imgOf(p))}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2324202d%22/></svg>'">
+ <div><b>${esc(p.name||'بدون اسم')}</b><div class="muted">${esc(p.category||'')}</div></div>
+ <div>${Number(p.price||0).toLocaleString('ar-SA')} ر.س</div><div>${p.stock??0}</div><div><span class="pill">${p.active===false?'مخفي':'مفعل'}</span></div>
+ <div class="actions"><button class="btn" onclick="editProduct('${p.id}')">تعديل</button><button class="btn danger" onclick="deleteProduct('${p.id}')">حذف</button></div>
+ </div>`).join('')||'<div class="notice">لا توجد منتجات.</div>';
+}
+function renderOrders(){
+ document.getElementById('orderRows').innerHTML=orders.map(o=>`<div class="row">
+ <div>${esc(String(o.id||''))}</div><div><b>${esc(o.customer_name||'—')}</b><div class="muted">${esc(o.city||'')}</div></div><div>${esc(o.phone||'—')}</div><div>${Number(o.total||0).toLocaleString('ar-SA')} ر.س</div>
+ <div><select onchange="updateOrder('${o.id}',this.value)"><option ${o.status==='جديد'?'selected':''}>جديد</option><option ${o.status==='قيد التجهيز'?'selected':''}>قيد التجهيز</option><option ${o.status==='تم الشحن'?'selected':''}>تم الشحن</option><option ${o.status==='مكتمل'?'selected':''}>مكتمل</option><option ${o.status==='ملغي'?'selected':''}>ملغي</option></select></div>
+ <div class="muted">${o.created_at?new Date(o.created_at).toLocaleDateString('ar-SA'):''}</div></div>`).join('')||'<div class="notice">لا توجد طلبات.</div>';
+}
+function openProduct(p=null){
+ document.getElementById('modal').classList.remove('hidden');document.getElementById('modalTitle').textContent=p?'تعديل المنتج':'إضافة منتج';
+ document.getElementById('pId').value=p?.id||'';document.getElementById('pName').value=p?.name||'';document.getElementById('pPrice').value=p?.price||'';document.getElementById('pStock').value=p?.stock||0;document.getElementById('pCategory').value=p?.category||'';document.getElementById('pDesc').value=p?.description||'';document.getElementById('pImages').value=p?.image_url||'';document.getElementById('pActive').value=String(p?.active!==false);previewImages();
+}
+function editProduct(id){openProduct(products.find(p=>String(p.id)===String(id)))}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+document.getElementById('pImages').addEventListener('input',previewImages);
+function previewImages(){document.getElementById('previews').innerHTML=document.getElementById('pImages').value.split(/\n+/).filter(Boolean).map(u=>`<img src="${esc(u.trim())}">`).join('')}
+async function saveProduct(){
+ if(!db)return toast('اربط Supabase أولاً');
+ const payload={name:document.getElementById('pName').value.trim(),price:Number(document.getElementById('pPrice').value||0),stock:Number(document.getElementById('pStock').value||0),description:document.getElementById('pDesc').value, image_url:document.getElementById('pImages').value.trim(),active:document.getElementById('pActive').value==='true'};
+ const cat=document.getElementById('pCategory').value.trim(); if(cat)payload.category=cat;
+ const id=document.getElementById('pId').value;
+ try{let r=id?await db.from('products').update(payload).eq('id',id):await db.from('products').insert(payload);if(r.error)throw r.error;toast('تم حفظ المنتج ✓');closeModal();await loadAll()}catch(e){toast('خطأ: '+e.message)}
+}
+async function deleteProduct(id){if(!confirm('حذف هذا المنتج نهائياً؟'))return;if(!db)return toast('اربط Supabase أولاً');let r=await db.from('products').delete().eq('id',id);if(r.error)toast(r.error.message);else{toast('تم الحذف');await loadAll()}}
+async function updateOrder(id,status){if(!db)return;let r=await db.from('orders').update({status}).eq('id',id);if(r.error)toast(r.error.message);else{const o=orders.find(x=>String(x.id)===String(id));if(o)o.status=status;toast('تم تحديث حالة الطلب')}}
+function saveSettings(){const s={name:setName.value,phone:setPhone.value,email:setEmail.value,logo:setLogo.value,gold:setGold.value,purple:setPurple.value,desc:setDesc.value};localStorage.setItem('britton_admin_settings',JSON.stringify(s));document.documentElement.style.setProperty('--gold',s.gold||'#d7b63d');document.documentElement.style.setProperty('--purple',s.purple||'#8d4de8');toast('تم حفظ الإعدادات ✓')}
+function loadSettings(){try{const s=JSON.parse(localStorage.getItem('britton_admin_settings')||'{}');['name','phone','email','logo','gold','purple','desc'].forEach(k=>{if(s[k]!==undefined)document.getElementById('set'+k[0].toUpperCase()+k.slice(1)).value=s[k]})}catch{}}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+loadSettings();init();
+</script>
+</body>
+</html>
