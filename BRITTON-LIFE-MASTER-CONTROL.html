@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRITTON LIFE — MASTER CONTROL</title>
+<style>
+:root{--bg:#080609;--panel:#120b10;--panel2:#1b0d14;--wine:#64182d;--wine2:#9d304e;--gold:#d7b35a;--gold2:#f4dc8b;--text:#fff8f3;--muted:#b9a9b0;--line:#39202a;--danger:#ef647a;--ok:#6fd39a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#421323 0,transparent 32%),radial-gradient(circle at 10% 100%,#25101a 0,transparent 30%),var(--bg);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.side{background:rgba(10,6,9,.97);border-left:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:22px;font-weight:900;color:var(--gold2);letter-spacing:2px;padding:10px 10px 20px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:0;margin-top:6px}.nav button{width:100%;background:transparent;border:0;color:#dfd3d8;text-align:right;padding:12px 13px;border-radius:12px;margin:2px 0}.nav button:hover,.nav button.active{background:linear-gradient(90deg,rgba(157,48,78,.3),rgba(215,179,90,.12));color:#fff}.sideNote{margin-top:18px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#160b10;color:var(--muted);font-size:12px;line-height:1.7}
+.main{padding:22px;max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.title h1{margin:0;font-size:26px}.title p{margin:6px 0;color:var(--muted)}.btn{border:1px solid var(--line);background:var(--panel);color:#fff;padding:10px 14px;border-radius:11px}.btn.gold{background:linear-gradient(135deg,#b28a2c,var(--gold2));color:#211508;border:0;font-weight:900}.btn.wine{background:linear-gradient(135deg,#6f1932,#a33350);border:0;font-weight:800}.btn.danger{color:#ff9aaa;border-color:#652938}.btn.ok{color:#8ff0b6;border-color:#285c40}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.card{background:linear-gradient(145deg,rgba(28,13,20,.98),rgba(13,8,11,.98));border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 12px 35px rgba(0,0,0,.24)}.stat b{display:block;font-size:27px;color:var(--gold2);margin-top:9px}.muted{color:var(--muted);font-size:13px}.section{margin-top:16px}.section h2{font-size:18px}.hidden{display:none!important}.notice{padding:12px;border-radius:12px;background:#1b0d13;border:1px solid var(--line);color:#e6dce0;margin-bottom:12px}.pill{padding:5px 9px;border-radius:20px;background:#2a131b;color:#eadfe3;font-size:12px}.search{width:100%;max-width:380px;background:#0d080b;border:1px solid var(--line);color:#fff;border-radius:11px;padding:11px}
+.table{overflow:auto}.row{display:grid;grid-template-columns:62px 1.5fr .8fr .7fr .7fr 1fr 150px;gap:9px;align-items:center;padding:11px;border-bottom:1px solid var(--line);min-width:880px}.head{color:var(--muted);font-size:12px}.thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;background:#24151b}.actions{display:flex;gap:6px;flex-wrap:wrap}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;color:#d1c2c8;font-size:12px;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;background:#0d080b;color:#fff;border:1px solid var(--line);border-radius:11px;padding:11px;outline:none}.field textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:15px;z-index:50}.modalbox{width:min(900px,100%);max-height:94vh;overflow:auto;background:#140b10;border:1px solid #633043;border-radius:20px;padding:20px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.preview img{width:86px;height:70px;object-fit:cover;border-radius:9px;border:1px solid var(--line)}.toast{position:fixed;bottom:18px;left:18px;background:#1b0e14;border:1px solid var(--gold);padding:12px 15px;border-radius:12px;display:none;z-index:80;max-width:90vw}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick button{min-height:74px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#211019,#12090d);color:#fff;font-weight:800}.quick button span{display:block;font-size:23px;margin-bottom:6px}
+.bannerCard{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:#180b10;border-radius:14px;padding:12px;margin-top:9px}.bannerCard img{width:110px;height:60px;object-fit:cover;border-radius:9px;background:#24151b}.bannerInfo{flex:1}.toggle{display:flex;align-items:center;gap:8px}
+.colorRow{display:flex;gap:10px;align-items:center}.colorRow input[type=color]{width:48px;height:40px;padding:2px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto;border-left:0;border-bottom:1px solid var(--line);padding:9px}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}.main{padding:13px}.grid,.grid5{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.quick{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start}.top .btn{white-space:nowrap}}
+@media(max-width:430px){.grid,.grid5{grid-template-columns:1fr 1fr}.title h1{font-size:21px}.card{padding:13px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand">BRITTON LIFE<small>MASTER CONTROL CENTER</small></div>
+ <div class="nav">
+  <button class="active" data-page="dashboard">⌂ الرئيسية</button>
+  <button data-page="categories">▦ الأقسام</button>
+  <button data-page="products">▣ المنتجات</button>
+  <button data-page="orders">🛒 الطلبات</button>
+  <button data-page="banners">🖼️ البنرات</button>
+  <button data-page="notifications">🔔 الإشعارات</button>
+  <button data-page="marketing">🎁 التسويق</button>
+  <button data-page="pages">📄 صفحات المتجر</button>
+  <button data-page="settings">⚙️ كل الإعدادات</button>
+ </div>
+ <div class="sideNote">كل ما تضيفه هنا يُحفظ في Firebase. الصور ترفع إلى Storage، والمنتجات ترتبط بالقسم الذي تختاره.</div>
+ <button class="btn" style="width:100%;margin-top:12px" onclick="logout()">تسجيل الخروج</button>
+</aside>
+
+<main class="main">
+<div class="top"><div class="title"><h1 id="pageTitle">مركز التحكم</h1><p id="pageSub">تحكم فخم في كل تفاصيل BRITTON LIFE من الجوال.</p></div><button class="btn gold" onclick="openProduct()">＋ إضافة منتج</button></div>
+
+<section id="dashboard">
+ <div class="grid5">
+  <div class="card stat"><span class="muted">المنتجات</span><b id="sProducts">0</b></div>
+  <div class="card stat"><span class="muted">الأقسام</span><b id="sCategories">0</b></div>
+  <div class="card stat"><span class="muted">الطلبات</span><b id="sOrders">0</b></div>
+  <div class="card stat"><span class="muted">الإشعارات</span><b id="sNotices">0</b></div>
+  <div class="card stat"><span class="muted">قيمة الطلبات</span><b id="sSales">0 ر.س</b></div>
+ </div>
+ <div class="section card">
+  <h2>⚡ اختصارات سريعة</h2>
+  <div class="quick">
+   <button onclick="openCategory()"><span>▦</span>قسم جديد</button>
+   <button onclick="openProduct()"><span>＋</span>منتج جديد</button>
+   <button onclick="openBanner()"><span>🖼️</span>بنر جديد</button>
+   <button onclick="openNotification()"><span>🔔</span>إشعار جديد</button>
+  </div>
+ </div>
+ <div class="section card"><h2>🔌 حالة الاتصال</h2><div id="connection" class="notice">جاري الاتصال بـ Firebase...</div><button class="btn wine" onclick="testConnection()">اختبار الاتصال والكتابة</button></div>
+ <div class="section card"><h2>✨ آخر الطلبات</h2><div id="dashOrders" class="table"></div></div>
+</section>
+
+<section id="categories" class="hidden">
+ <div class="card"><div class="top"><div><h2>الأقسام</h2><div class="muted">أنشئ أقسام المتجر، وكل منتج تختاره هنا يظهر داخل قسمه فقط.</div></div><button class="btn gold" onclick="openCategory()">＋ قسم جديد</button></div><div id="categoryList"></div></div>
+</section>
+
+<section id="products" class="hidden">
+ <div class="card"><div class="top"><input id="search" class="search" placeholder="ابحث باسم المنتج..." oninput="renderProducts()"><div class="actions"><select id="productFilter" onchange="renderProducts()"><option value="">كل الأقسام</option></select><button class="btn gold" onclick="openProduct()">＋ منتج جديد</button></div></div>
+ <div class="table"><div class="row head"><div>صورة</div><div>المنتج</div><div>القسم</div><div>السعر</div><div>المخزون</div><div>الحالة</div><div>إجراءات</div></div><div id="productRows"></div></div></div>
+</section>
+
+<section id="orders" class="hidden">
+ <div class="card"><div class="top"><div><h2>الطلبات</h2><div class="muted">غيّر حالة الطلب من نفس المكان.</div></div><select id="orderFilter" onchange="renderOrders()"><option value="">كل الطلبات</option><option>جديد</option><option>قيد التجهيز</option><option>تم الشحن</option><option>مكتمل</option><option>ملغي</option></select></div><div class="table"><div class="row head"><div>#</div><div>العميل</div><div>الجوال</div><div>القسم</div><div>الإجمالي</div><div>الحالة</div><div>التاريخ</div></div><div id="orderRows"></div></div></div>
+</section>
+
+<section id="banners" class="hidden">
+ <div class="card"><div class="top"><div><h2>🖼️ البنرات والعروض</h2><div class="muted">صورة + عنوان + وصف + زر + رابط. فعّل أو أخفِ أي بنر بدون تعديل الكود.</div></div><button class="btn gold" onclick="openBanner()">＋ بنر جديد</button></div><div id="bannerList"></div></div>
+</section>
+
+<section id="notifications" class="hidden">
+ <div class="card"><div class="top"><div><h2>🔔 الإشعارات</h2><div class="muted">اكتب تنبيهًا أو عرضًا يظهر في واجهة المتجر عند ربط المتجر بمجموعة notifications.</div></div><button class="btn gold" onclick="openNotification()">＋ إشعار جديد</button></div><div id="notificationList"></div></div>
+</section>
+
+<section id="marketing" class="hidden">
+ <div class="card"><h2>🎁 التسويق والعروض</h2><div class="notice">هذه الصفحة تجهز لك التحكم في الخصومات والكوبونات والبيع الذكي.</div>
+ <div class="formgrid">
+  <div class="field"><label>كود الخصم</label><input id="mkCode" placeholder="BRITTON10"></div>
+  <div class="field"><label>نسبة الخصم %</label><input id="mkPercent" type="number" min="0" max="100" value="10"></div>
+  <div class="field"><label>الحد الأدنى للطلب</label><input id="mkMin" type="number" value="0"></div>
+  <div class="field"><label>حالة الكوبون</label><select id="mkActive"><option value="true">مفعل</option><option value="false">مخفي</option></select></div>
+  <div class="field full"><label>رسالة العرض</label><input id="mkMsg" placeholder="خصم خاص لعملاء BRITTON LIFE"></div>
+ </div><br><button class="btn gold" onclick="saveMarketing()">حفظ العرض</button></div>
+</section>
+
+<section id="pages" class="hidden">
+ <div class="card"><h2>📄 صفحات المتجر</h2><div class="notice">عدّل النصوص الأساسية من هنا. يمكن للواجهة الأمامية قراءة document من settings/pages.</div>
+ <div class="formgrid">
+  <div class="field"><label>عنوان من نحن</label><input id="pgAboutTitle"></div>
+  <div class="field"><label>عنوان التواصل</label><input id="pgContactTitle"></div>
+  <div class="field full"><label>نص من نحن</label><textarea id="pgAbout"></textarea></div>
+  <div class="field full"><label>سياسة الخصوصية</label><textarea id="pgPrivacy"></textarea></div>
+  <div class="field full"><label>الشحن والاسترجاع</label><textarea id="pgShipping"></textarea></div>
+ </div><br><button class="btn gold" onclick="savePages()">حفظ الصفحات</button></div>
+</section>
+
+<section id="settings" class="hidden">
+ <div class="card"><h2>⚙️ إعدادات المتجر بالكامل</h2>
+ <div class="formgrid">
+  <div class="field"><label>اسم المتجر</label><input id="setName" value="BRITTON LIFE"></div>
+  <div class="field"><label>الشعار النصي</label><input id="setTagline" placeholder="فخامة تليق بك"></div>
+  <div class="field"><label>واتساب / الجوال</label><input id="setPhone"></div>
+  <div class="field"><label>البريد</label><input id="setEmail" type="email"></div>
+  <div class="field"><label>رابط الشعار</label><input id="setLogo"></div>
+  <div class="field"><label>رابط الخلفية</label><input id="setBg"></div>
+  <div class="field"><label>اللون الأساسي</label><div class="colorRow"><input id="setGold" type="color" value="#d7b35a"><input id="setGoldText" value="#d7b35a"></div></div>
+  <div class="field"><label>لون فاخر إضافي</label><div class="colorRow"><input id="setWine" type="color" value="#64182d"><input id="setWineText" value="#64182d"></div></div>
+  <div class="field"><label>توصيل السعودية</label><select id="setShipping"><option value="true">مفعل</option><option value="false">مخفي</option></select></div>
+  <div class="field"><label>الدفع عند الاستلام</label><select id="setCod"><option value="true">مفعل</option><option value="false">مخفي</option></select></div>
+  <div class="field full"><label>وصف المتجر</label><textarea id="setDesc"></textarea></div>
+  <div class="field full"><label>رسالة الشريط العلوي</label><input id="setTopBar" placeholder="توصيل لجميع مناطق السعودية • الدفع عند الاستلام"></div>
+ </div><br><button class="btn gold" onclick="saveSettings()">حفظ كل الإعدادات</button></div>
+</section>
+</main></div>
+
+<div id="modal" class="modal hidden"><div class="modalbox"><div class="modalhead"><h2 id="modalTitle">إضافة</h2><button class="btn" onclick="closeModal()">✕</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {getFirestore,collection,doc,getDocs,getDoc,addDoc,setDoc,updateDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {getStorage,ref,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+
+const firebaseConfig={apiKey:"AIzaSyBPdzepXoNsfZuwvheHrhA6LynGJBctk_E",authDomain:"britton-life-store.firebaseapp.com",projectId:"britton-life-store",storageBucket:"britton-life-store.firebasestorage.app",messagingSenderId:"258780754601",appId:"1:258780754601:web:5c0d162547e64bd99d2fb8",measurementId:"G-RXK7K2Z4YT"};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+let currentUser=null,products=[],orders=[],categories=[],banners=[],notifications=[];
+const $=id=>document.getElementById(id);
+function toast(t){const x=$("toast");x.textContent=t;x.style.display="block";clearTimeout(window.__tt);window.__tt=setTimeout(()=>x.style.display="none",3200)}
+function friendly(e){if(e?.code==="auth/operation-not-allowed")return"فعّل تسجيل الدخول بالبريد وكلمة المرور من Firebase Authentication.";if(e?.code==="auth/invalid-credential")return"البريد أو كلمة المرور غير صحيحة.";if(e?.code==="permission-denied")return"Firebase رفض العملية: راجع Firestore Rules أو Storage Rules.";if(e?.code==="storage/unauthorized")return"رفع الصور مرفوض من Storage Rules.";return e?.message||"حدث خطأ غير معروف."}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function imgOf(p){const a=Array.isArray(p.images)?p.images:(p.image_url?[p.image_url]:[]);return a[0]||"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100%' height='100%' fill='%2324151b'/></svg>"}
+function dateText(v){if(v?.seconds)return new Date(v.seconds*1000).toLocaleDateString("ar-SA");const n=Date.parse(v||"");return n?new Date(n).toLocaleDateString("ar-SA"):"—"}
+
+function showLogin(){if($("loginBox"))return;const d=document.createElement("div");d.id="loginBox";d.className="modal";d.innerHTML=`<div class="modalbox" style="max-width:430px"><h2 style="color:#f4dc8b">BRITTON LIFE</h2><p class="muted">دخول مركز التحكم الكامل</p><div class="field"><label>البريد الإلكتروني</label><input id="adminEmail" type="email"></div><div class="field"><label>كلمة المرور</label><input id="adminPass" type="password"></div><button class="btn gold" style="width:100%;margin-top:10px" id="loginBtn">دخول</button><p id="loginMsg" class="muted"></p></div>`;document.body.appendChild(d);$("loginBtn").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("adminEmail").value.trim(),$("adminPass").value);d.remove()}catch(e){$("loginMsg").textContent=friendly(e)}}}
+window.logout=async()=>{await signOut(auth);location.reload()};
+onAuthStateChanged(auth,async u=>{currentUser=u;if(!u){showLogin();$("connection").textContent="بانتظار تسجيل دخول المدير.";return}if($("loginBox"))$("loginBox").remove();$("connection").textContent="متصل بـ Firebase ✓";await loadAll()});
+
+const pageTitles={dashboard:["مركز التحكم","كل شيء مهم أمامك في شاشة واحدة."],categories:["الأقسام","أنشئ الأقسام ورتّبها واربط المنتجات بها."],products:["المنتجات","إضافة وتعديل المنتجات والصور والوصف والمخزون."],orders:["الطلبات","متابعة الطلبات وتغيير حالتها."],banners:["البنرات","تحكم في صور العروض والبنرات الرئيسية."],notifications:["الإشعارات","إدارة التنبيهات والعروض التي تظهر للزوار."],marketing:["التسويق","كوبونات وعروض البيع."],pages:["صفحات المتجر","من نحن والخصوصية والشحن والتواصل."],settings:["كل الإعدادات","الهوية والألوان والخلفية وطرق الدفع والشحن."]};
+function showPage(page){document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));$(page).classList.remove("hidden");document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===page));$("pageTitle").textContent=pageTitles[page][0];$("pageSub").textContent=pageTitles[page][1];if(page==="products")renderProducts();if(page==="orders")renderOrders();if(page==="categories")renderCategories();if(page==="banners")renderBanners();if(page==="notifications")renderNotifications()}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+async function getCol(name){try{const s=await getDocs(collection(db,name));return s.docs.map(d=>({id:d.id,...d.data()}))}catch(e){console.warn(name,e);return[]}}
+async function loadAll(){try{[products,orders,categories,banners,notifications]=await Promise.all([getCol("products"),getCol("orders"),getCol("categories"),getCol("banners"),getCol("notifications")]);refreshStats();renderProducts();renderOrders();renderCategories();renderBanners();renderNotifications();renderDashOrders();fillCategoryFilter();await loadSettings();await loadMarketing();await loadPages()}catch(e){$("connection").textContent="خطأ في الاتصال: "+friendly(e)}}
+function refreshStats(){$("sProducts").textContent=products.length;$("sCategories").textContent=categories.length;$("sOrders").textContent=orders.length;$("sNotices").textContent=notifications.length;$("sSales").textContent=orders.reduce((s,x)=>s+Number(x.total||0),0).toLocaleString("ar-SA")+" ر.س"}
+function categoryName(id){const c=categories.find(x=>x.id===id||x.slug===id);return c?.name||id||"بدون قسم"}
+function fillCategoryFilter(){const f=$("productFilter");if(!f)return;f.innerHTML='<option value="">كل الأقسام</option>'+categories.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join("")}
+
+function renderCategories(){$("categoryList").innerHTML=categories.length?categories.map(c=>`<div class="bannerCard"><img src="${esc(c.image||imgOf({}))}" onerror="this.style.visibility='hidden'"><div class="bannerInfo"><b>${esc(c.name)}</b><div class="muted">${esc(c.slug||c.id)} • ${c.active===false?"مخفي":"مفعل"}</div><div class="muted">${products.filter(p=>p.categoryId===c.id||p.category===c.slug||p.category===c.name).length} منتجات مرتبطة</div></div><div class="actions"><button class="btn" onclick="openCategory(${JSON.stringify(c.id)})">تعديل</button><button class="btn danger" onclick="deleteCategory('${c.id}')">حذف</button></div></div>`).join(""):'<div class="notice">لا توجد أقسام بعد. ابدأ بإنشاء أول قسم.</div>'}
+
+function renderProducts(){const q=($("search")?.value||"").toLowerCase();const f=$("productFilter")?.value||"";const list=products.filter(p=>(p.name||"").toLowerCase().includes(q)&&(!f||p.categoryId===f||p.category===f));$("productRows").innerHTML=list.map(p=>`<div class="row"><img class="thumb" src="${esc(imgOf(p))}" onerror="this.style.visibility='hidden'"><div><b>${esc(p.name||"بدون اسم")}</b><div class="muted">${esc(p.description||"").slice(0,65)}</div></div><div>${esc(categoryName(p.categoryId||p.category))}</div><div>${Number(p.price||0).toLocaleString("ar-SA")} ر.س</div><div>${p.stock??0}</div><div><span class="pill">${p.active===false?"مخفي":"مفعل"}</span></div><div class="actions"><button class="btn" onclick="openProduct('${p.id}')">تعديل</button><button class="btn danger" onclick="deleteProduct('${p.id}')">حذف</button></div></div>`).join("")||'<div class="notice">لا توجد منتجات بهذا البحث أو القسم.</div>'}
+
+function renderOrders(){const f=$("orderFilter")?.value||"";const list=orders.filter(o=>!f||o.status===f);$("orderRows").innerHTML=list.map(o=>`<div class="row"><div>${esc(o.id||"")}</div><div><b>${esc(o.customer_name||o.name||"—")}</b><div class="muted">${esc(o.address||o.national_address||"")}</div></div><div>${esc(o.phone||"—")}</div><div>${esc(o.city||"—")}</div><div>${Number(o.total||0).toLocaleString("ar-SA")} ر.س</div><div><select onchange="updateOrder('${o.id}',this.value)"><option ${o.status==="جديد"?"selected":""}>جديد</option><option ${o.status==="قيد التجهيز"?"selected":""}>قيد التجهيز</option><option ${o.status==="تم الشحن"?"selected":""}>تم الشحن</option><option ${o.status==="مكتمل"?"selected":""}>مكتمل</option><option ${o.status==="ملغي"?"selected":""}>ملغي</option></select></div><div class="muted">${dateText(o.createdAt||o.created_at)}</div></div>`).join("")||'<div class="notice">لا توجد طلبات.</div>'}
+function renderDashOrders(){const list=[...orders].slice(-5).reverse();$("dashOrders").innerHTML=list.length?list.map(o=>`<div class="bannerCard"><div class="bannerInfo"><b>${esc(o.customer_name||o.name||"عميل")}</b><div class="muted">${esc(o.phone||"")} • ${Number(o.total||0).toLocaleString("ar-SA")} ر.س</div></div><span class="pill">${esc(o.status||"جديد")}</span></div>`).join(""):'<div class="notice">لا توجد طلبات حتى الآن.</div>'}
+
+window.openCategory=(id=null)=>{const c=id?categories.find(x=>x.id===id):null;$("modalTitle").textContent=c?"تعديل القسم":"إضافة قسم";$("modalBody").innerHTML=`<div class="formgrid"><input type="hidden" id="cId" value="${c?.id||""}"><div class="field"><label>اسم القسم</label><input id="cName" value="${esc(c?.name||"")}"></div><div class="field"><label>رابط مختصر</label><input id="cSlug" value="${esc(c?.slug||"")}"></div><div class="field full"><label>رابط صورة القسم</label><input id="cImage" value="${esc(c?.image||"")}" placeholder="https://..."></div><div class="field"><label>ترتيب القسم</label><input id="cOrder" type="number" value="${c?.order||0}"></div><div class="field"><label>الحالة</label><select id="cActive"><option value="true" ${c?.active!==false?"selected":""}>مفعل</option><option value="false" ${c?.active===false?"selected":""}>مخفي</option></select></div></div><br><button class="btn gold" onclick="saveCategory()">حفظ القسم</button>`;$("modal").classList.remove("hidden")};
+window.saveCategory=async()=>{try{const name=$("cName").value.trim();if(!name)return toast("اكتب اسم القسم");const slug=($("cSlug").value.trim()||name).toLowerCase().replace(/[^\w\u0600-\u06FF]+/g,"-");const data={name,slug,image:$("cImage").value.trim(),order:Number($("cOrder").value||0),active:$("cActive").value==="true",updatedAt:new Date()};const id=$("cId").value;if(id)await updateDoc(doc(db,"categories",id),data);else await addDoc(collection(db,"categories"),{...data,createdAt:new Date()});toast("تم حفظ القسم ✓");closeModal();await loadAll()}catch(e){toast(friendly(e))}};
+window.deleteCategory=async id=>{if(!confirm("حذف القسم؟ المنتجات لن تُحذف تلقائيًا."))return;try{await deleteDoc(doc(db,"categories",id));toast("تم حذف القسم");await loadAll()}catch(e){toast(friendly(e))}};
+
+window.openProduct=(id=null)=>{const p=id?products.find(x=>x.id===id):null;$("modalTitle").textContent=p?"تعديل المنتج":"إضافة منتج";$("modalBody").innerHTML=`<div class="formgrid"><input type="hidden" id="pId" value="${p?.id||""}"><div class="field"><label>اسم المنتج</label><input id="pName" value="${esc(p?.name||"")}"></div><div class="field"><label>السعر</label><input id="pPrice" type="number" step="0.01" value="${p?.price??""}"></div><div class="field"><label>المخزون</label><input id="pStock" type="number" value="${p?.stock??0}"></div><div class="field"><label>القسم — اختر قسمًا واحدًا</label><select id="pCategory">${categories.map(c=>`<option value="${esc(c.id)}" ${(p?.categoryId===c.id||p?.category===c.slug||p?.category===c.name)?"selected":""}>${esc(c.name)}</option>`).join("")}</select></div><div class="field full"><label>وصف المنتج</label><textarea id="pDesc">${esc(p?.description||"")}</textarea></div><div class="field full"><label>صور المنتج — حتى 5 صور</label><input id="pFiles" type="file" accept="image/*" multiple><div class="muted">اختر من الجوال حتى 5 صور. الصور القديمة تبقى إذا لم تستبدلها.</div><textarea id="pImages" placeholder="أو روابط صور، كل رابط في سطر">${esc((Array.isArray(p?.images)?p.images:(p?.image_url?[p.image_url]:[])).join("\n"))}</textarea><div id="previews" class="preview"></div></div><div class="field"><label>الحالة</label><select id="pActive"><option value="true" ${p?.active!==false?"selected":""}>مفعل</option><option value="false" ${p?.active===false?"selected":""}>مخفي</option></select></div></div><br><button class="btn gold" onclick="saveProduct()">حفظ المنتج</button>`;$("modal").classList.remove("hidden");previewImages()};
+
+function previewImages(){const a=$("pImages")?.value.split(/\n+/).filter(Boolean)||[];$("previews").innerHTML=a.map(u=>`<img src="${esc(u.trim())}">`).join("")}
+window.saveProduct=async()=>{try{if(!currentUser)return toast("سجّل دخول المدير أولًا");const name=$("pName").value.trim();if(!name)return toast("اكتب اسم المنتج");if(!categories.length)return toast("أنشئ قسمًا أولًا");const files=[...$("pFiles").files];if(files.length>5)return toast("الحد الأقصى 5 صور");toast("جاري حفظ المنتج ورفع الصور...");let images=$("pImages").value.split(/\n+/).map(x=>x.trim()).filter(Boolean);for(const file of files){const path="products/"+crypto.randomUUID()+"-"+file.name.replace(/[^\w.\-]/g,"_");const r=ref(storage,path);await uploadBytes(r,file);images.push(await getDownloadURL(r))}images=images.slice(0,5);const categoryId=$("pCategory").value;const cat=categories.find(x=>x.id===categoryId);const data={name,price:Number($("pPrice").value||0),stock:Number($("pStock").value||0),categoryId,category:cat?.slug||cat?.name||"",categoryName:cat?.name||"",description:$("pDesc").value.trim(),images,image_url:images[0]||"",active:$("pActive").value==="true",updatedAt:new Date()};const id=$("pId").value;if(id)await updateDoc(doc(db,"products",id),data);else await addDoc(collection(db,"products"),{...data,createdAt:new Date()});toast("تم حفظ المنتج ✓");closeModal();await loadAll()}catch(e){toast(friendly(e))}};
+window.deleteProduct=async id=>{if(!confirm("حذف المنتج نهائيًا؟"))return;try{await deleteDoc(doc(db,"products",id));toast("تم الحذف ✓");await loadAll()}catch(e){toast(friendly(e))}};
+window.updateOrder=async(id,status)=>{try{await updateDoc(doc(db,"orders",id),{status,updatedAt:new Date()});toast("تم تحديث الطلب ✓");await loadAll()}catch(e){toast(friendly(e))}};
+
+window.openBanner=(id=null)=>{const b=id?banners.find(x=>x.id===id):null;$("modalTitle").textContent=b?"تعديل البنر":"إضافة بنر";$("modalBody").innerHTML=`<div class="formgrid"><input type="hidden" id="bId" value="${b?.id||""}"><div class="field"><label>عنوان البنر</label><input id="bTitle" value="${esc(b?.title||"")}"></div><div class="field"><label>نص الزر</label><input id="bButton" value="${esc(b?.buttonText||"تسوق الآن")}"></div><div class="field full"><label>وصف العرض</label><textarea id="bDesc">${esc(b?.description||"")}</textarea></div><div class="field full"><label>رابط صورة البنر</label><input id="bImage" value="${esc(b?.image||"")}"></div><div class="field"><label>رابط الزر</label><input id="bLink" value="${esc(b?.link||"")}"></div><div class="field"><label>الحالة</label><select id="bActive"><option value="true" ${b?.active!==false?"selected":""}>مفعل</option><option value="false" ${b?.active===false?"selected":""}>مخفي</option></select></div></div><br><button class="btn gold" onclick="saveBanner()">حفظ البنر</button>`;$("modal").classList.remove("hidden")};
+window.saveBanner=async()=>{try{const data={title:$("bTitle").value.trim(),description:$("bDesc").value.trim(),buttonText:$("bButton").value.trim(),image:$("bImage").value.trim(),link:$("bLink").value.trim(),active:$("bActive").value==="true",updatedAt:new Date()};const id=$("bId").value;if(id)await updateDoc(doc(db,"banners",id),data);else await addDoc(collection(db,"banners"),{...data,createdAt:new Date()});toast("تم حفظ البنر ✓");closeModal();await loadAll()}catch(e){toast(friendly(e))}};
+function renderBanners(){$("bannerList").innerHTML=banners.length?banners.map(b=>`<div class="bannerCard"><img src="${esc(b.image||"")}" onerror="this.style.visibility='hidden'"><div class="bannerInfo"><b>${esc(b.title||"بنر بدون عنوان")}</b><div class="muted">${esc(b.description||"")}</div><span class="pill">${b.active===false?"مخفي":"مفعل"}</span></div><div class="actions"><button class="btn" onclick="openBanner('${b.id}')">تعديل</button><button class="btn danger" onclick="deleteBanner('${b.id}')">حذف</button></div></div>`).join(""):'<div class="notice">أضف أول بنر للواجهة الرئيسية.</div>'}
+window.deleteBanner=async id=>{if(!confirm("حذف البنر؟"))return;try{await deleteDoc(doc(db,"banners",id));toast("تم الحذف");await loadAll()}catch(e){toast(friendly(e))}};
+
+window.openNotification=(id=null)=>{const n=id?notifications.find(x=>x.id===id):null;$("modalTitle").textContent=n?"تعديل الإشعار":"إضافة إشعار";$("modalBody").innerHTML=`<div class="formgrid"><input type="hidden" id="nId" value="${n?.id||""}"><div class="field"><label>عنوان الإشعار</label><input id="nTitle" value="${esc(n?.title||"")}"></div><div class="field"><label>نوع الإشعار</label><select id="nType"><option ${n?.type==="offer"?"selected":""} value="offer">عرض</option><option ${n?.type==="info"?"selected":""} value="info">معلومة</option><option ${n?.type==="shipping"?"selected":""} value="shipping">شحن</option><option ${n?.type==="warning"?"selected":""} value="warning">تنبيه</option></select></div><div class="field full"><label>النص</label><textarea id="nText">${esc(n?.text||"")}</textarea></div><div class="field"><label>الحالة</label><select id="nActive"><option value="true" ${n?.active!==false?"selected":""}>مفعل</option><option value="false" ${n?.active===false?"selected":""}>مخفي</option></select></div></div><br><button class="btn gold" onclick="saveNotification()">حفظ الإشعار</button>`;$("modal").classList.remove("hidden")};
+window.saveNotification=async()=>{try{const data={title:$("nTitle").value.trim(),text:$("nText").value.trim(),type:$("nType").value,active:$("nActive").value==="true",updatedAt:new Date()};const id=$("nId").value;if(id)await updateDoc(doc(db,"notifications",id),data);else await addDoc(collection(db,"notifications"),{...data,createdAt:new Date()});toast("تم حفظ الإشعار ✓");closeModal();await loadAll()}catch(e){toast(friendly(e))}};
+function renderNotifications(){$("notificationList").innerHTML=notifications.length?notifications.map(n=>`<div class="bannerCard"><div class="bannerInfo"><b>${esc(n.title||"إشعار")}</b><div class="muted">${esc(n.text||"")}</div><span class="pill">${esc(n.type||"info")} • ${n.active===false?"مخفي":"مفعل"}</span></div><div class="actions"><button class="btn" onclick="openNotification('${n.id}')">تعديل</button><button class="btn danger" onclick="deleteNotification('${n.id}')">حذف</button></div></div>`).join(""):'<div class="notice">لا توجد إشعارات.</div>'}
+window.deleteNotification=async id=>{if(!confirm("حذف الإشعار؟"))return;try{await deleteDoc(doc(db,"notifications",id));toast("تم الحذف");await loadAll()}catch(e){toast(friendly(e))}};
+
+async function loadSettings(){try{const s=await getDoc(doc(db,"settings","store"));if(!s.exists())return;const x=s.data();$("setName").value=x.name||"BRITTON LIFE";$("setTagline").value=x.tagline||"";$("setPhone").value=x.phone||"";$("setEmail").value=x.email||"";$("setLogo").value=x.logo||"";$("setBg").value=x.background||x.bg||"";$("setGold").value=x.gold||"#d7b35a";$("setGoldText").value=x.gold||"#d7b35a";$("setWine").value=x.wine||"#64182d";$("setWineText").value=x.wine||"#64182d";$("setShipping").value=String(x.shipping!==false);$("setCod").value=String(x.cod!==false);$("setDesc").value=x.description||"";$("setTopBar").value=x.topBar||""}catch(e){}}
+window.saveSettings=async()=>{try{const data={name:$("setName").value.trim(),tagline:$("setTagline").value.trim(),phone:$("setPhone").value.trim(),email:$("setEmail").value.trim(),logo:$("setLogo").value.trim(),background:$("setBg").value.trim(),gold:$("setGoldText").value.trim(),wine:$("setWineText").value.trim(),shipping:$("setShipping").value==="true",cod:$("setCod").value==="true",description:$("setDesc").value.trim(),topBar:$("setTopBar").value.trim(),updatedAt:new Date()};await setDoc(doc(db,"settings","store"),data,{merge:true});document.documentElement.style.setProperty("--gold",data.gold);document.documentElement.style.setProperty("--wine",data.wine);toast("تم حفظ كل إعدادات المتجر ✓")}catch(e){toast(friendly(e))}};
+
+async function loadMarketing(){try{const s=await getDoc(doc(db,"settings","marketing"));if(!s.exists())return;const x=s.data();$("mkCode").value=x.code||"";$("mkPercent").value=x.percent||0;$("mkMin").value=x.minOrder||0;$("mkActive").value=String(x.active!==false);$("mkMsg").value=x.message||""}catch(e){}}
+window.saveMarketing=async()=>{try{await setDoc(doc(db,"settings","marketing"),{code:$("mkCode").value.trim(),percent:Number($("mkPercent").value||0),minOrder:Number($("mkMin").value||0),active:$("mkActive").value==="true",message:$("mkMsg").value.trim(),updatedAt:new Date()},{merge:true});toast("تم حفظ العرض ✓")}catch(e){toast(friendly(e))}};
+async function loadPages(){try{const s=await getDoc(doc(db,"settings","pages"));if(!s.exists())return;const x=s.data();$("pgAboutTitle").value=x.aboutTitle||"من نحن";$("pgContactTitle").value=x.contactTitle||"تواصل معنا";$("pgAbout").value=x.about||"";$("pgPrivacy").value=x.privacy||"";$("pgShipping").value=x.shipping||""}catch(e){}}
+window.savePages=async()=>{try{await setDoc(doc(db,"settings","pages"),{aboutTitle:$("pgAboutTitle").value.trim(),contactTitle:$("pgContactTitle").value.trim(),about:$("pgAbout").value.trim(),privacy:$("pgPrivacy").value.trim(),shipping:$("pgShipping").value.trim(),updatedAt:new Date()},{merge:true});toast("تم حفظ صفحات المتجر ✓")}catch(e){toast(friendly(e))}};
+
+window.testConnection=async()=>{try{toast("جاري اختبار Firestore...");const d=await addDoc(collection(db,"adminTests"),{by:currentUser?.uid||"",at:new Date(),ok:true});await deleteDoc(d);toast("Firestore قراءة + كتابة تعمل ✓")}catch(e){toast("فشل اختبار Firestore: "+friendly(e))}};
+window.closeModal=()=>{$("modal").classList.add("hidden")};
+document.addEventListener("input",e=>{if(e.target?.id==="pImages")previewImages()});
+</script>
+</body></html>
