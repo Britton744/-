@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة التحكم الفاخرة | Romantic Store Admin</title>
+  <style>
+    :root {
+      --primary-color: #d45d79;
+      --secondary-color: #ea9085;
+      --accent-color: #e9e4d4;
+      --dark-color: #37292e;
+      --bg-overlay: rgba(255, 255, 255, 0.88);
+      --card-bg: rgba(255, 255, 255, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #fff0f5);
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: var(--dark-color);
+      min-height: 100vh;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(212, 93, 121, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    header h1 {
+      font-size: 26px;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 25px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      border-bottom: 2px dashed var(--secondary-color);
+      padding-bottom: 8px;
+    }
+
+    /* عداد الزوار */
+    .counter-box {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(212, 93, 121, 0.3);
+    }
+
+    .counter-box span {
+      font-size: 45px;
+      font-weight: bold;
+      display: block;
+      margin-top: 5px;
+    }
+
+    /* الحقول والأزرار */
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(212, 93, 121, 0.3);
+      border-radius: 12px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.85);
+      transition: border 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(212, 93, 121, 0.25);
+    }
+
+    .color-pickers {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .color-picker-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .color-picker-item input[type="color"] {
+      height: 45px;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      border-radius: 8px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #888;
+      margin-top: 8px;
+    }
+
+    /* قائمة المنتجات */
+    .products-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(212, 93, 121, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-images {
+      display: flex;
+      height: 140px;
+      gap: 2px;
+      background: #eee;
+    }
+
+    .product-images img {
+      width: 33.33%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+      flex-grow: 1;
+    }
+
+    .product-info h3 {
+      color: var(--primary-color);
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--dark-color);
+      margin-bottom: 8px;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      padding: 0 15px 15px;
+    }
+
+    .btn-small {
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      flex: 1;
+      font-weight: bold;
+    }
+
+    .btn-edit { background: #ffb703; color: white; }
+    .btn-del { background: #e63946; color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>✨ لوحة التحكم الملكية الرومانسية</h1>
+      <span style="font-weight: bold; color: var(--primary-color);">إدارة المتجر الفاخر</span>
+    </header>
+
+    <div class="grid-layout">
+      <!-- العمود الأيمن: إحصائيات وتخصيص المظهر -->
+      <div>
+        <!-- عداد الزبائن -->
+        <div class="card">
+          <h2>📊 زوار المتجر</h2>
+          <div class="counter-box">
+            <div>عدد الزبائن الذين زاروا المتجر</div>
+            <span id="visitorCount">142</span>
+          </div>
+          <button class="btn" onclick="addVisitor()">+ محاكاة دخول زبون جديد</button>
+        </div>
+
+        <!-- تخصيص الألوان والخلفية -->
+        <div class="card">
+          <h2>🎨 تخصيص المظهر والرومانسية</h2>
+          <div class="color-pickers">
+            <div class="color-picker-item">
+              <label>اللون الأساسي</label>
+              <input type="color" id="primaryColorInput" value="#d45d79" onchange="updateColors()">
+            </div>
+            <div class="color-picker-item">
+              <label>اللون الثانوي</label>
+              <input type="color" id="secondaryColorInput" value="#ea9085" onchange="updateColors()">
+            </div>
+          </div>
+
+          <label>خلفية المتجر (رفع صورة):</label>
+          <input type="file" id="bgFileInput" accept="image/*" onchange="uploadBackground(event)">
+          <button class="btn btn-secondary" onclick="resetBackground()">استعادة الخلفية الافتراضية</button>
+        </div>
+      </div>
+
+      <!-- العمود الأيسر: إضافة وإدارة المنتجات -->
+      <div>
+        <div class="card">
+          <h2 id="formTitle">🌹 إضافة منتج جديد (3 صور)</h2>
+          <input type="hidden" id="editIndex" value="-1">
+          
+          <label>اسم المنتج:</label>
+          <input type="text" id="pName" placeholder="مثال: عطر الورد المخملي">
+
+          <label>السعر:</label>
+          <input type="text" id="pPrice" placeholder="مثال: 150 ر.س / $">
+
+          <label>وصف المنتج:</label>
+          <textarea id="pDesc" rows="3" placeholder="اكتب تفاصيل المنتج بأسلوب راقٍ..."></textarea>
+
+          <label>رفع 3 صور للمنتج:</label>
+          <input type="file" id="pImages" accept="image/*" multiple onchange="previewImages(event)">
+          <small style="color: #888; display: block; margin-top: 4px;">* يمكنك تحديد 3 صور دفعة واحدة من جهازك</small>
+
+          <button class="btn" id="saveProductBtn" onclick="saveProduct()">حفظ ونشر المنتج</button>
+        </div>
+
+        <div class="card">
+          <h2>🛍️ قائمة المنتجات الحالية</h2>
+          <div class="products-list" id="productsContainer">
+            <!-- المنتجات ستظهر هنا برمجياً -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. إدارة عداد الزوار
+    let visitors = localStorage.getItem('romantic_visitors') || 142;
+    document.getElementById('visitorCount').innerText = visitors;
+
+    function addVisitor() {
+      visitors++;
+      document.getElementById('visitorCount').innerText = visitors;
+      localStorage.setItem('romantic_visitors', visitors);
+    }
+
+    // 2. إدارة الألوان والخلفية
+    function updateColors() {
+      const pColor = document.getElementById('primaryColorInput').value;
+      const sColor = document.getElementById('secondaryColorInput').value;
+      document.documentElement.style.setProperty('--primary-color', pColor);
+      document.documentElement.style.setProperty('--secondary-color', sColor);
+    }
+
+    function uploadBackground(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          document.body.style.backgroundImage = `url('${event.target.result}')`;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function resetBackground() {
+      document.body.style.backgroundImage = 'none';
+      document.body.style.background = 'linear-gradient(135deg, #fce4ec, #f8bbd0, #fff0f5)';
+    }
+
+    // 3. إدارة المنتجات
+    let products = JSON.parse(localStorage.getItem('romantic_products')) || [
+      {
+        name: "عقد اللؤلؤ الوردي",
+        price: "240 ر.س",
+        desc: "قطعة رومانسية مصممة بعناية فائقة تضفي لمسة من الأناقة والجاذبية.",
+        images: [
+          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300",
+          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300",
+          "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300"
+        ]
+      }
+    ];
+
+    let currentImages = [];
+
+    function previewImages(e) {
+      const files = Array.from(e.target.files).slice(0, 3);
+      currentImages = [];
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          currentImages.push(event.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('productsContainer');
+      container.innerHTML = "";
+
+      products.forEach((prod, idx) => {
+        const imgs = prod.images.length ? prod.images : [
+          "https://via.placeholder.com/150",
+          "https://via.placeholder.com/150",
+          "https://via.placeholder.com/150"
+        ];
+
+        container.innerHTML += `
+          <div class="product-card">
+            <div class="product-images">
+              <img src="${imgs[0] || imgs[0]}">
+              <img src="${imgs[1] || imgs[0]}">
+              <img src="${imgs[2] || imgs[0]}">
+            </div>
+            <div class="product-info">
+              <h3>${prod.name}</h3>
+              <div class="product-price">${prod.price}</div>
+              <div class="product-desc">${prod.desc}</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-small btn-edit" onclick="editProduct(${idx})">تعديل</button>
+              <button class="btn-small btn-del" onclick="deleteProduct(${idx})">حذف</button>
+            </div>
+          </div>
+        `;
+      });
+
+      localStorage.setItem('romantic_products', JSON.stringify(products));
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('pName').value.trim();
+      const price = document.getElementById('pPrice').value.trim();
+      const desc = document.getElementById('pDesc').value.trim();
+      const editIndex = parseInt(document.getElementById('editIndex').value);
+
+      if (!name || !price) {
+        alert("يرجى ملء اسم المنتج والسعر على الأقل!");
+        return;
+      }
+
+      if (editIndex === -1) {
+        // إضافة جديد
+        products.push({
+          name: name,
+          price: price,
+          desc: desc,
+          images: currentImages.length ? currentImages : [
+            "https://via.placeholder.com/150",
+            "https://via.placeholder.com/150",
+            "https://via.placeholder.com/150"
+          ]
+        });
+      } else {
+        // تعديل منتج قائم
+        products[editIndex].name = name;
+        products[editIndex].price = price;
+        products[editIndex].desc = desc;
+        if (currentImages.length > 0) {
+          products[editIndex].images = currentImages;
+        }
+        document.getElementById('editIndex').value = "-1";
+        document.getElementById('formTitle').innerText = "🌹 إضافة منتج جديد (3 صور)";
+        document.getElementById('saveProductBtn').innerText = "حفظ ونشر المنتج";
+      }
+
+      // تفريغ الحقول
+      document.getElementById('pName').value = "";
+      document.getElementById('pPrice').value = "";
+      document.getElementById('pDesc').value = "";
+      document.getElementById('pImages').value = "";
+      currentImages = [];
+
+      renderProducts();
+    }
+
+    function editProduct(idx) {
+      const p = products[idx];
+      document.getElementById('pName').value = p.name;
+      document.getElementById('pPrice').value = p.price;
+      document.getElementById('pDesc').value = p.desc;
+      document.getElementById('editIndex').value = idx;
+      document.getElementById('formTitle').innerText = "✏️ تعديل المنتج: " + p.name;
+      document.getElementById('saveProductBtn').innerText = "تحديث المنتج";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function deleteProduct(idx) {
+      if (confirm("هل أنت متأكد من حذف هذا المنتج؟")) {
+        products.splice(idx, 1);
+        renderProducts();
+      }
+    }
+
+    // تشغيل العرض عند التحميل
+    renderProducts();
+  </script>
+</body>
+</html>
