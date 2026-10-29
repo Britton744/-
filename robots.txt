@@ -3,3 +3,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ten-sigma-61.vercel.app/sitemap.xml
+https://britton744.github.io/-/robots.txt
