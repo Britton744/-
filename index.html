@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- ==================== تحسينات محركات البحث وجوجل SEO ==================== -->
+  <title>متجر بريتون لايف | BRITTON LIFE - عالم السعادة الزوجية والمستلزمات الحميمية</title>
+  <meta name="description" content="متجر بريتون لايف BRITTON LIFE - متجرك الأول للألعاب الزوجية، كوتشينة العلاقات، نرد الأوضاع، وأجهزة ومستلزمات الرومانسية الفاخرة بخصوصية تامة وتغليف سري 100%.">
+  <meta name="keywords" content="بريتون لايف, متجر العاب زوجية, العاب زوجية, كوتشينة العلاقات, نرد الأوضاع, اجهزة اهتزاز فاخرة, لانجري مثير, زيوت مساج رومانسية, britton life">
+  <meta name="robots" content="index, follow">
+
+  <!-- كود إثبات ملكية محرك بحث جوجل (Google Search Console) -->
+  <meta name="google-site-verification" content="-_85mKpuCRsJy54bcy29viKaJZEzW9YOceCxsn5RIHg" />
+
+  <!-- الخطوط وأيقونات FontAwesome 6 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            ruby: {
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#4c0519',
+              950: '#23020b'
+            },
+            obsidian: {
+              950: '#070104',
+              900: '#0d0208',
+              850: '#14030c',
+              800: '#1c0512',
+              700: '#2a081b'
+            },
+            gold: {
+              light: '#fef08a',
+              DEFAULT: '#eab308',
+              amber: '#f59e0b',
+              glow: '#fbbf24'
+            }
+          },
+          fontFamily: {
+            tajawal: ['Tajawal', 'sans-serif'],
+            display: ['Cinzel', 'Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #0d0208;
+      color: #fce7f3;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 100% 40%, rgba(190, 18, 60, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 0% 80%, rgba(251, 191, 36, 0.08) 0%, transparent 45%);
+      background-attachment: fixed;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom: 76px;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', 'Playfair Display', serif;
+      background: linear-gradient(135deg, #fffbeb 0%, #fbbf24 45%, #d97706 80%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+    }
+
+    /* بطاقات المنتجات المربعة بنسبة 1:1 وزوايا 14px */
+    .luxury-card {
+      background: linear-gradient(155deg, rgba(30, 6, 18, 0.95) 0%, rgba(13, 2, 8, 0.98) 100%);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .luxury-card:hover {
+      border-color: rgba(251, 191, 36, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -6px rgba(225, 29, 72, 0.35);
+    }
+
+    /* دوائر الأقسام المتدرجة الملكية (المطابقة للصورة بدقة) */
+    .cat-avatar-circle {
+      width: 78px;
+      height: 78px;
+      border-radius: 9999px;
+      background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 25%, #be123c 75%, #881337 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(225, 29, 72, 0.35);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .cat-avatar-circle:active {
+      transform: scale(0.92);
+    }
+    .cat-avatar-circle i {
+      font-size: 26px;
+      color: #ffffff;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    /* تأثيرات الأزرار والتبويبات الفعالة */
+    .nav-tab.active {
+      color: #fbbf24;
+      border-bottom: 2px solid #fbbf24;
+      font-weight: 800;
+    }
+    .bottom-nav-btn.active {
+      color: #fbbf24;
+    }
+    .bottom-nav-btn.active i {
+      transform: scale(1.15);
+      color: #fbbf24;
+      filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.7));
+    }
+  </style>
+</head>
+<body class="selection:bg-ruby-600 selection:text-white">
+
+  <!-- ==================== 1. رأس الصفحة الفاخر (مطابق للصورة) ==================== -->
+  <header class="sticky top-0 z-40 bg-obsidian-950/95 backdrop-blur-md border-b border-ruby-900/40">
+    <div class="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      
+      <!-- الأزرار اليسارية: السلة، الواتساب، البحث -->
+      <div class="flex items-center gap-2.5">
+        
+        <button onclick="switchView('cart')" class="relative w-9 h-9 rounded-full bg-ruby-950/70 border border-ruby-600/40 flex items-center justify-center text-pink-200 active:scale-95 transition">
+          <i class="fa-solid fa-bag-shopping text-sm text-ruby-400"></i>
+          <span id="badgeCartCount" class="absolute -top-1 -right-1 bg-ruby-600 text-white font-black text-[9px] w-4 h-4 rounded-full flex items-center justify-center shadow-md">0</span>
+        </button>
+
+        <a id="topWhatsappLink" href="https://wa.me/966556575822" target="_blank" class="w-9 h-9 rounded-full bg-ruby-950/70 border border-emerald-500/40 flex items-center justify-center text-emerald-400 active:scale-95 transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+        </a>
+
+        <button onclick="toggleSearchBar()" class="w-9 h-9 rounded-full bg-ruby-950/70 border border-gold/40 flex items-center justify-center text-gold active:scale-95 transition">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+        </button>
+
+      </div>
+
+      <!-- المركز واليمين: لوجو التاج الملكي واسم المتجر (مطابق للصورة) -->
+      <div class="flex items-center gap-2 cursor-pointer" onclick="switchView('home')">
+        <div class="text-left">
+          <h1 class="brand-title text-base sm:text-lg font-black tracking-wider leading-none" id="brandHeaderName">BRITTON LIFE</h1>
+          <p class="text-[8px] sm:text-[9px] text-pink-300/80 tracking-widest text-center mt-0.5 font-bold">LUXURY · PRIVACY · CARE</p>
+        </div>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-600 via-gold to-yellow-300 flex items-center justify-center text-obsidian-950 shadow-lg shadow-gold/20">
+          <i class="fa-solid fa-crown text-lg"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- شريط البحث السريع المنسدل -->
+    <div id="quickSearchBar" class="hidden px-4 pb-2.5 max-w-4xl mx-auto transition-all">
+      <div class="relative">
+        <input type="text" id="liveSearchInput" oninput="handleSearch(this.value)" placeholder="ابحث عن ألعاب زوجية، كوتشينة، أجهزة، زيوت مساج..." 
+          class="w-full py-2 pr-10 pl-4 text-xs rounded-full bg-obsidian-900 border border-ruby-500/40 text-white placeholder-pink-300/40 focus:border-gold outline-none">
+        <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-2.5 text-gold text-xs"></i>
+      </div>
+    </div>
+
+    <!-- شريط التبويبات المتنقلة -->
+    <nav class="max-w-4xl mx-auto px-2 flex items-center justify-between overflow-x-auto no-scrollbar border-t border-ruby-900/30 text-xs">
+      <button onclick="switchView('home')" id="tab-home" class="nav-tab active py-2 px-3 text-pink-200/80 hover:text-white shrink-0 transition">الرئيسية</button>
+      <button onclick="switchView('categories')" id="tab-categories" class="nav-tab py-2 px-3 text-pink-200/80 hover:text-white shrink-0 transition">الأقسام</button>
+      <button onclick="switchView('products')" id="tab-products" class="nav-tab py-2 px-3 text-pink-200/80 hover:text-white shrink-0 transition">المنتجات</button>
+      <button onclick="switchView('privacy')" id="tab-privacy" class="nav-tab py-2 px-3 text-pink-200/80 hover:text-white shrink-0 transition">الخصوصية والتوصيل</button>
+      <button onclick="switchView('reviews')" id="tab-reviews" class="nav-tab py-2 px-3 text-pink-200/80 hover:text-white shrink-0 transition">آراء العملاء</button>
+    </nav>
+  </header>
+
+  <!-- ==================== محتويات الصفحات المستقلة ==================== -->
+  <main class="max-w-4xl mx-auto px-3 sm:px-4 py-4">
+
+    <!-- ==================== الصفحة 1: الرئيسية ==================== -->
+    <section id="view-home" class="space-y-6">
+
+      <!-- عنوان: تسوق حسب القسم (مطابق للصورة) -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-center gap-2.5 text-gold text-sm sm:text-base font-extrabold">
+          <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-gold"></span>
+          <i class="fa-solid fa-layer-group text-sm"></i>
+          <span>تسوّق حسب القسم</span>
+          <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-gold"></span>
+        </div>
+
+        <!-- دوائر الأقسام المتدرجة الملكية (مع الأيقونات والأسماء المتناسقة) -->
+        <div class="flex items-center gap-4 overflow-x-auto no-scrollbar py-2 px-1">
+          
+          <!-- 1. منتجات مميزة -->
+          <div onclick="selectCategoryTab('featured')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">منتجات مميزة</span>
+          </div>
+
+          <!-- 2. الألعاب الزوجية -->
+          <div onclick="selectCategoryTab('couples_games')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">الألعاب الزوجية</span>
+          </div>
+
+          <!-- 3. أجهزة الاهتزاز -->
+          <div onclick="selectCategoryTab('vibrators')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">أجهزة الاهتزاز</span>
+          </div>
+
+          <!-- 4. قسم المحاكاة الذكورية -->
+          <div onclick="selectCategoryTab('dildos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">قضبان صناعية</span>
+          </div>
+
+          <!-- 5. قسم المحاكاة الأنثوية -->
+          <div onclick="selectCategoryTab('sleeves')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">مهابل صناعية</span>
+          </div>
+
+          <!-- 6. اكسسوارات وملحقات -->
+          <div onclick="selectCategoryTab('accessories')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-mask"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">اكسسوارات</span>
+          </div>
+
+          <!-- 7. زيوت ومساج العناية -->
+          <div onclick="selectCategoryTab('massage_oils')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+            <div class="cat-avatar-circle">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white group-hover:text-gold transition">زيوت ومساج</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- عنوان: مجموعة بريتون لايف (مطابق للصورة) -->
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-center gap-2.5 text-gold text-sm sm:text-base font-extrabold">
+          <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-gold"></span>
+          <i class="fa-solid fa-crown text-sm"></i>
+          <span>مجموعة بريتون لايف</span>
+          <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-gold"></span>
+        </div>
+
+        <!-- شريط الترتيب وعدد المنتجات -->
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <div class="relative">
+            <select id="sortSelect" onchange="handleSort(this.value)" 
+              class="appearance-none bg-obsidian-900 border border-ruby-900/60 rounded-xl px-4 py-2 pr-8 text-pink-200 text-xs font-semibold focus:border-gold outline-none cursor-pointer">
+              <option value="featured">ترتيب مقترح</option>
+              <option value="price-asc">السعر: من الأقل للأعلى</option>
+              <option value="price-desc">السعر: من الأعلى للأقل</option>
+              <option value="rating">الأعلى تقييماً</option>
+            </select>
+            <i class="fa-solid fa-chevron-down absolute left-3 top-3 text-[10px] text-pink-400 pointer-events-none"></i>
+          </div>
+
+          <span class="text-xs text-pink-300/80 font-bold bg-ruby-950/60 border border-ruby-900/40 px-3 py-1.5 rounded-xl" id="homeProductCountBadge">10 منتج</span>
+        </div>
+
+        <!-- شبكة المنتجات المربعة (1:1) وبحواف 14px مع الصور الحقيقية -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4" id="homeProductsGrid">
+          <!-- تتولد البطاقات بالصور تلقائياً -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== الصفحة 2: الأقسام المستقلة ==================== -->
+    <section id="view-categories" class="hidden space-y-4">
+      <div class="luxury-card p-4 text-center">
+        <h2 class="text-lg font-black text-gold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-shapes"></i> تصنيفات المتجر الحصرية
+        </h2>
+        <p class="text-xs text-pink-300/70 mt-1">تصفح منتجاتنا الفاخرة مصنفة بعناية وسرية تامة</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="dedicatedCategoriesGrid">
+        <!-- كروت الأقسام المستقلة -->
+      </div>
+    </section>
+
+    <!-- ==================== الصفحة 3: كتالوج المنتجات ==================== -->
+    <section id="view-products" class="hidden space-y-4">
+      <div class="luxury-card p-4 space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-black text-white flex items-center gap-2">
+            <i class="fa-solid fa-boxes-stacked text-ruby-500"></i>
+            <span>جميع المنتجات والمستلزمات</span>
+          </h2>
+          <button onclick="resetAllProductFilters()" class="text-xs text-gold hover:underline">إعادة ضبط</button>
+        </div>
+
+        <!-- فلاتر الأقسام -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar text-xs pb-1">
+          <button onclick="filterCatalogCategory('all', this)" class="catalog-filter-btn active px-3 py-1.5 rounded-xl bg-ruby-600 text-white font-bold shrink-0">الكل</button>
+          <button onclick="filterCatalogCategory('couples_games', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">ألعاب زوجية</button>
+          <button onclick="filterCatalogCategory('vibrators', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">أجهزة اهتزاز</button>
+          <button onclick="filterCatalogCategory('dildos', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">قضبان صناعية</button>
+          <button onclick="filterCatalogCategory('sleeves', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">مهابل صناعية</button>
+          <button onclick="filterCatalogCategory('accessories', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">اكسسوارات</button>
+          <button onclick="filterCatalogCategory('massage_oils', this)" class="catalog-filter-btn px-3 py-1.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-pink-200 shrink-0">زيوت مساج</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4" id="allProductsGrid">
+        <!-- تظهر كافة المنتجات هنا -->
+      </div>
+    </section>
+
+    <!-- ==================== الصفحة 4: سلة الشراء وإتمام الطلب ==================== -->
+    <section id="view-cart" class="hidden space-y-4">
+      <div class="luxury-card p-4 flex items-center justify-between border-b border-ruby-900/40">
+        <div>
+          <h2 class="text-base font-black text-white flex items-center gap-2">
+            <i class="fa-solid fa-cart-shopping text-ruby-500"></i>
+            <span>سلة المشتريات الخاصة</span>
+          </h2>
+          <p class="text-[10px] text-pink-300/60 mt-0.5">تغليف كتم ومبهم 100% بدون أي عبارات تدل على المحتوى</p>
+        </div>
+        <span class="text-xs bg-ruby-950 border border-gold/40 text-gold px-2.5 py-1 rounded-xl font-bold" id="cartViewCountBadge">0 منتجات</span>
+      </div>
+
+      <div id="cartViewItemsList" class="space-y-3">
+        <!-- عناصر السلة -->
+      </div>
+
+      <div id="cartOrderFormContainer" class="luxury-card p-4 sm:p-6 space-y-4 hidden">
+        <div class="flex items-center justify-between border-b border-ruby-900/40 pb-3">
+          <span class="font-bold text-white text-sm">المجموع الإجمالي:</span>
+          <span class="text-lg font-black text-gold" id="cartViewTotal">0 ر.س</span>
+        </div>
+
+        <form onsubmit="submitOrderToWhatsapp(event)" class="space-y-3 text-xs">
+          <h3 class="font-bold text-gold flex items-center gap-2 text-xs sm:text-sm">
+            <i class="fa-solid fa-shield-halved"></i> بيانات التوصيل والتواصل السري
+          </h3>
+
+          <div>
+            <label class="block text-pink-200 mb-1 font-semibold">الاسم الكريم / الكنية</label>
+            <input type="text" id="orderCustName" required placeholder="مثال: فهد أو أم ريان" class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-pink-200 mb-1 font-semibold">رقم الواتساب للتأكيد</label>
+              <input type="tel" id="orderCustPhone" required placeholder="05XXXXXXXX" class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1 font-semibold">المدينة</label>
+              <input type="text" id="orderCustCity" required placeholder="الرياض، جدة، الدمام..." class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-pink-200 mb-1 font-semibold">الحي</label>
+              <input type="text" id="orderCustDistrict" placeholder="اسم الحي" class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1 font-semibold">العنوان الوطني / الشارع</label>
+              <input type="text" id="orderCustAddress" placeholder="رقم المبنى أو الشارع" class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-pink-200 mb-1 font-semibold">ملاحظات التوصيل (اختياري)</label>
+            <input type="text" id="orderCustNotes" placeholder="مثال: ترك الشحنة عند الباب أو الاتصال قبل الوصول" class="w-full p-2.5 rounded-xl bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 hover:brightness-110 text-white font-bold text-sm shadow-xl shadow-emerald-950 flex items-center justify-center gap-2 border border-emerald-400/40 active:scale-95 transition">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>تأكيد الطلب وإرساله عبر الواتساب فوراً</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== الصفحة 5: الخصوصية والتوصيل ==================== -->
+    <section id="view-privacy" class="hidden space-y-4">
+      <div class="luxury-card p-5 space-y-4">
+        <div class="text-center space-y-1">
+          <div class="w-12 h-12 rounded-full bg-ruby-950 border border-gold/40 text-gold flex items-center justify-center mx-auto text-xl">
+            <i class="fa-solid fa-user-secret"></i>
+          </div>
+          <h2 class="text-lg font-black text-white">سياسة الخصوصية والتغليف السري 100%</h2>
+          <p class="text-xs text-pink-300/70">خصوصيتكم هي رأس مالنا وضمانتنا الأولى</p>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-pink-100">
+          <div class="p-3.5 rounded-xl bg-obsidian-900 border border-ruby-900/50 flex gap-3">
+            <i class="fa-solid fa-box text-ruby-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-bold mb-0.5">كراتين مبهمة ومغلقة بإحكام</strong>
+              <span>يتم تغليف جميع المنتجات في صناديق كرتونية محايدة تماماً بدون أي صور أو علامات تدل على المحتوى.</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-obsidian-900 border border-ruby-900/50 flex gap-3">
+            <i class="fa-solid fa-truck-ramp-box text-ruby-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-bold mb-0.5">تسليم محترم وسريع</strong>
+              <span>المندوب لا يعلم إطلاقاً ما بداخل الطرد وتقتصر مهمته على تسليم الصندوق للعميل بكل احترافية وأمان.</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-obsidian-900 border border-ruby-900/50 flex gap-3">
+            <i class="fa-solid fa-lock text-ruby-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-bold mb-0.5">حذف تلقائي للبيانات</strong>
+              <span>تُمسح بيانات العناوين تلقائياً بعد اكتمال التوصيل لضمان أعلى مستويات الأمان والسرية الشخصية.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== الصفحة 6: آراء العملاء ==================== -->
+    <section id="view-reviews" class="hidden space-y-4">
+      <div class="luxury-card p-4 text-center">
+        <h2 class="text-lg font-black text-gold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-star"></i> تجارب وتقييمات العملاء
+        </h2>
+        <p class="text-xs text-pink-300/70 mt-1">+10,000 عميل وعميلة يثقون بجودة بريتون لايف</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="customerReviewsContainer">
+        <!-- تظهر التقييمات هنا -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== الزر العائم: اسأل مساعد المتجر (مطابق للصورة) ==================== -->
+  <button onclick="toggleRoroModal()" class="fixed bottom-20 left-4 z-40 flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-ruby-700 via-rose-600 to-ruby-700 text-white font-bold text-xs shadow-2xl shadow-ruby-600/50 border border-gold/40 active:scale-95 transition-all">
+    <i class="fa-solid fa-wand-magic-sparkles text-gold text-sm animate-pulse"></i>
+    <span>اسأل مساعد المتجر</span>
+  </button>
+
+  <!-- ==================== 2. شريط التنقل السفلي الفاخر (مطابق تماماً للصورة) ==================== -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-obsidian-950/95 backdrop-blur-lg border-t border-ruby-900/50 py-2 px-3 shadow-2xl">
+    <div class="max-w-md mx-auto flex items-center justify-around text-center">
+      
+      <button onclick="switchView('home')" id="btn-nav-home" class="bottom-nav-btn active flex flex-col items-center gap-1 text-pink-200/70 transition">
+        <i class="fa-solid fa-house text-base"></i>
+        <span class="text-[10px] font-bold">الرئيسية</span>
+      </button>
+
+      <button onclick="switchView('categories')" id="btn-nav-categories" class="bottom-nav-btn flex flex-col items-center gap-1 text-pink-200/70 transition">
+        <i class="fa-solid fa-table-cells-large text-base"></i>
+        <span class="text-[10px] font-bold">الأقسام</span>
+      </button>
+
+      <button onclick="switchView('cart')" id="btn-nav-cart" class="bottom-nav-btn relative flex flex-col items-center gap-1 text-pink-200/70 transition">
+        <div class="relative">
+          <i class="fa-solid fa-bag-shopping text-base"></i>
+          <span id="bottomNavCartCount" class="absolute -top-1.5 -right-2 bg-ruby-600 text-white font-black text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+        </div>
+        <span class="text-[10px] font-bold">السلة</span>
+      </button>
+
+      <button onclick="toggleRoroModal()" id="btn-nav-ai" class="bottom-nav-btn flex flex-col items-center gap-1 text-pink-200/70 transition">
+        <i class="fa-solid fa-wand-magic-sparkles text-base text-gold"></i>
+        <span class="text-[10px] font-bold">المساعد الذكي</span>
+      </button>
+
+      <a id="bottomWhatsappLink" href="https://wa.me/966556575822" target="_blank" class="bottom-nav-btn flex flex-col items-center gap-1 text-pink-200/70 hover:text-emerald-400 transition">
+        <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+        <span class="text-[10px] font-bold">واتساب</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- ==================== نافذة المستشارة الذكية "رورو" مع معاينة الصور ==================== -->
+  <div id="roroChatModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="w-full sm:max-w-md h-[88vh] sm:h-[620px] luxury-card bg-obsidian-950 flex flex-col overflow-hidden shadow-2xl border border-gold/40 rounded-2xl">
+      
+      <div class="p-3.5 bg-gradient-to-r from-ruby-950 via-obsidian-900 to-ruby-950 border-b border-ruby-900/40 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full border border-gold bg-ruby-900 flex items-center justify-center text-gold shadow-md">
+            <i class="fa-solid fa-heart text-sm animate-pulse"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-1.5">
+              <span>المستشارة رورو</span>
+              <span class="text-[9px] bg-gold text-obsidian-950 font-black px-1.5 py-0.2 rounded">ذكاء بريتون</span>
+            </h3>
+            <p class="text-[9px] text-pink-300/70">مساعدتكِ الخاصة للألعاب والخصوصية التامة 🔒</p>
+          </div>
+        </div>
+        <button onclick="toggleRoroModal()" class="text-pink-300 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="roroChatMessages" class="flex-1 p-3.5 overflow-y-auto space-y-3 no-scrollbar text-xs">
+        <div class="flex gap-2 items-start">
+          <div class="w-7 h-7 rounded-full bg-ruby-900 border border-gold/40 flex items-center justify-center text-gold text-xs shrink-0">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="p-3 rounded-2xl rounded-tr-none bg-ruby-950/80 border border-ruby-600/30 text-pink-100 max-w-[85%] leading-relaxed space-y-2">
+            <p>أهلاً بكِ في <strong>بريتون لايف</strong> 💕</p>
+            <p>أنا <strong>رورو</strong>، مستشارتكِ الخاصة لاقتراح أفضل المنتجات والألعاب الزوجية بكل ود وسرية تامة.</p>
+            <p class="text-gold font-bold text-[11px]">كيف أستطيع إسعادكما اليوم؟</p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <button onclick="sendQuickPrompt('اقترحي لي أفضل ألعاب زوجية لذكرى الزواج')" class="px-2 py-1 rounded-full bg-black/60 hover:bg-ruby-900 border border-ruby-600/40 text-[10px] text-pink-200">ألعاب رومانسية 🎁</button>
+              <button onclick="sendQuickPrompt('ما هو أفضل جهاز اهتزاز متطور؟')" class="px-2 py-1 rounded-full bg-black/60 hover:bg-ruby-900 border border-ruby-600/40 text-[10px] text-pink-200">أجهزة ذكية ✨</button>
+              <button onclick="sendQuickPrompt('كيف يكون التغليف والشحن السري؟')" class="px-2 py-1 rounded-full bg-black/60 hover:bg-ruby-900 border border-ruby-600/40 text-[10px] text-pink-200">التغليف السري 🔒</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-2.5 border-t border-ruby-900/40 bg-obsidian-950">
+        <form onsubmit="handleRoroSubmit(event)" class="flex gap-2">
+          <input type="text" id="roroInputText" placeholder="اسأل رورو عن أي منتج أو لعبة..." class="flex-1 py-2 px-3 text-xs rounded-full bg-obsidian-900 border border-ruby-900 text-white focus:border-gold outline-none">
+          <button type="submit" class="px-4 py-2 rounded-full bg-gradient-to-r from-ruby-600 to-rose-600 text-white text-xs font-bold hover:brightness-110">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== نافذة تأكيد نجاح الطلب ==================== -->
+  <div id="orderSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+    <div class="w-full max-w-sm luxury-card bg-obsidian-950 border border-gold/50 p-6 rounded-2xl text-center space-y-4 shadow-2xl">
+      <div class="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-400 flex items-center justify-center text-2xl mx-auto">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="text-base font-extrabold text-white">تم تأكيد طلبك بنجاح!</h3>
+      <div class="p-3 rounded-xl bg-ruby-950/60 border border-gold/30 text-xs text-pink-100 space-y-1">
+        <p>رقم طلبك المتسلسل: <span class="font-black text-gold text-sm" id="successOrderNumberBadge">#1001</span></p>
+        <p class="text-[11px] text-pink-300/80">تم فتح تطبيق الواتساب لإرسال بيانات الشحن وتأكيد التجهيز فورياً.</p>
+      </div>
+      <button onclick="closeSuccessModal()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-ruby-600 to-rose-600 text-white font-bold text-xs hover:brightness-110">
+        متابعة التصفح
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== نافذة لوحة التحكم الإدارية ==================== -->
+  <div id="adminPanelModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden">
+    <div class="w-full max-w-2xl luxury-card bg-obsidian-950 border border-gold/50 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+      
+      <div class="p-4 bg-gradient-to-r from-ruby-950 via-obsidian-900 to-ruby-950 border-b border-ruby-900/40 flex items-center justify-between">
+        <h3 class="font-bold text-white text-sm flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-gold"></i>
+          <span>لوحة إدارة متجر بريتون لايف</span>
+        </h3>
+        <button onclick="toggleAdminPanel()" class="text-pink-300 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4 space-y-5 text-xs no-scrollbar">
+        <div class="p-3.5 rounded-xl bg-ruby-950/30 border border-ruby-900/40 space-y-3">
+          <h4 class="font-bold text-gold">أرقام التواصل والبريد</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-pink-200 mb-1">رقم الواتساب (صيغة دولية)</label>
+              <input type="text" id="adminInputWhatsapp" class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1">البريد الإلكتروني للطلبات</label>
+              <input type="email" id="adminInputEmail" class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+            </div>
+          </div>
+          <button onclick="saveAdminSettings()" class="px-4 py-2 rounded-lg bg-gold text-obsidian-950 font-bold">حفظ التغييرات</button>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-ruby-950/30 border border-ruby-900/40 space-y-3">
+          <h4 class="font-bold text-gold">إضافة منتج جديد</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-pink-200 mb-1">اسم المنتج</label>
+              <input type="text" id="newAdminTitle" placeholder="مثال: نرد الأوضاع المضيء" class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1">السعر (ر.س)</label>
+              <input type="number" id="newAdminPrice" placeholder="120" class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1">القسم</label>
+              <select id="newAdminCategory" class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+                <option value="couples_games">الألعاب الزوجية</option>
+                <option value="vibrators">أجهزة الاهتزاز</option>
+                <option value="dildos">قضبان صناعية</option>
+                <option value="sleeves">مهابل صناعية</option>
+                <option value="accessories">اكسسوارات وملحقات</option>
+                <option value="massage_oils">زيوت ومساج</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-pink-200 mb-1">رابط الصورة (URL)</label>
+              <input type="url" id="newAdminImage" placeholder="https://..." class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-pink-200 mb-1">الوصف التفصيلي</label>
+              <textarea id="newAdminDesc" rows="2" placeholder="اكتب وصفاً جذاباً للمنتج..." class="w-full p-2 rounded bg-black/60 border border-ruby-900 text-white"></textarea>
+            </div>
+          </div>
+          <button onclick="adminAddProduct()" class="px-4 py-2 rounded-lg bg-ruby-600 text-white font-bold">إضافة المنتج للمتجر فوراً</button>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-white">المنتجات الحالية (<span id="adminTotalProdsBadge">0</span>)</h4>
+            <button onclick="restoreInitialProducts()" class="text-ruby-400 hover:underline text-[11px]">استعادة الافتراضيات</button>
+          </div>
+          <div id="adminProductsContainer" class="space-y-2"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- رابط لوحة الإدارة السفلي -->
+  <div class="text-center py-6 text-pink-300/30 text-[10px]">
+    <span>BRITTON LIFE • LUXURY PRIVACY CARE</span>
+    <button onclick="toggleAdminPanel()" class="ml-2 underline hover:text-gold">لوحة الإدارة</button>
+  </div>
+
+  <!-- ==================== كود الجافاسكريبت والمنطق الكامل ==================== -->
+  <script>
+    // المنتجات الكاملة مع الصور الحقيقية وتصنيفات الأقسام
+    const INITIAL_PRODUCTS = [
+      {
+        id: 'bp1',
+        title: 'قناع العين الحريري الفاخر مع ريشة المداعبة',
+        category: 'accessories',
+        price: 79,
+        oldPrice: 129,
+        rating: 4.8,
+        badge: 'اختيار مميز',
+        image: 'https://images.unsplash.com/photo-1543083477-4f785aeafaa9?auto=format&fit=crop&w=500&q=80',
+        desc: 'قناع حريري ملكي يحجب الضوء بالكامل لإشعال الحواس وزيادة الشغف والمفاجأة.'
+      },
+      {
+        id: 'bp2',
+        title: 'كوب المحاكاة الذكي بمؤثرات واقعية فائقة',
+        category: 'sleeves',
+        price: 229,
+        oldPrice: 289,
+        rating: 4.8,
+        badge: 'اختيار مميز',
+        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80',
+        desc: 'سيليكون طبي فائق النعومة بمحاكاة متطورة ونبضات متعددة لراحة وتجربة واقعية.'
+      },
+      {
+        id: 'bp3',
+        title: 'لانجري دانتيل مثير بتصميم ملكي جذاب',
+        category: 'accessories',
+        price: 129,
+        oldPrice: 199,
+        rating: 4.7,
+        badge: 'الأكثر طلباً',
+        image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=500&q=80',
+        desc: 'دانتيل فاخر ومريح يبرز الأنوثة ويمنح إطلالة ساحرة لليالٍ استثنائية.'
+      },
+      {
+        id: 'bp4',
+        title: 'جهاز المساج والتحفيز السحري متعدد السرعات',
+        category: 'vibrators',
+        price: 199,
+        oldPrice: 299,
+        rating: 4.9,
+        badge: 'اختيار مميز',
+        image: 'https://images.unsplash.com/photo-1519735777090-ec97162dc266?auto=format&fit=crop&w=500&q=80',
+        desc: 'رأس سيليكون طبي مرن ومحرك قوي فائق الهدوء لتدليك واسترخاء العضلات بفعالية.'
+      },
+      {
+        id: 'bp5',
+        title: 'أرنب الهزاز المطور ذو 4 محركات وتحكم لاسلكي',
+        category: 'vibrators',
+        price: 349,
+        oldPrice: 399,
+        rating: 4.9,
+        badge: 'الأعلى تقييماً',
+        image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80',
+        desc: 'تحكم لاسلكي ذكي، مقاوم للماء، وخامات طبية ناعمة توفر تجربة دافئة غير مسبوقة.'
+      },
+      {
+        id: 'bp6',
+        title: 'حلقة السيليكون الذكية المعززة للأداء',
+        category: 'accessories',
+        price: 249,
+        oldPrice: 399,
+        rating: 4.8,
+        badge: 'اختيار مميز',
+        image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=80',
+        desc: 'مرونة فائقة لتعزيز الصلابة والتحكم وإطالة مدة اللقاء الحميمي بأمان تام.'
+      },
+      {
+        id: 'bp7',
+        title: 'كوتشينة العلاقات الزوجية الفاخرة (تحديات وحوار)',
+        category: 'couples_games',
+        price: 135,
+        oldPrice: 180,
+        rating: 4.9,
+        badge: 'الأكثر مبيعاً',
+        image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80',
+        desc: 'كروت مصارحة وتحديات رومانسية مصممة لكسر الروتين وإشعال المشاعر الصادقة.'
+      },
+      {
+        id: 'bp8',
+        title: 'نرد الأوضاع الرومانسية الفسفوري المضيء',
+        category: 'couples_games',
+        price: 85,
+        oldPrice: 120,
+        rating: 4.7,
+        badge: 'مفضل للعروسين',
+        image: 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=500&q=80',
+        desc: 'نرد مضيء في الظلام يحتوي على أوضاع رومانسية ولمسات حانية لتجديد الأجواء.'
+      },
+      {
+        id: 'bp9',
+        title: 'قضيب السيليكون الطبي الفاخر مع قاعدة تثبيت',
+        category: 'dildos',
+        price: 260,
+        oldPrice: 320,
+        rating: 4.9,
+        badge: 'خامات طبية',
+        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80',
+        desc: 'ملمس ناعم وطبيعي بالكامل، آمن طبياً ومقاوم للماء مع قاعدة تثبيت قوية.'
+      },
+      {
+        id: 'bp10',
+        title: 'زيت التدليك والمساج الدافئ برائحة الفانيليا الفرنسية',
+        category: 'massage_oils',
+        price: 95,
+        oldPrice: 140,
+        rating: 4.9,
+        badge: 'طبيعي 100%',
+        image: 'https://images.unsplash.com/photo-1608248597359-2169623e5900?auto=format&fit=crop&w=500&q=80',
+        desc: 'تركيبة دافئة تمنح شعوراً عميقاً بالاسترخاء والتقارب مع ترطيب مخملي للبشرة.'
+      }
+    ];
+
+    const DEFAULT_CONFIG = {
+      whatsapp: '966556575822',
+      email: 'roooo77775@gmail.com',
+      orderCounter: 1001
+    };
+
+    let products = JSON.parse(localStorage.getItem('britton_p_list')) || INITIAL_PRODUCTS;
+    let config = JSON.parse(localStorage.getItem('britton_p_conf')) || DEFAULT_CONFIG;
+    let cart = JSON.parse(localStorage.getItem('britton_p_cart')) || [];
+    let currentCategoryFilter = 'all';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      syncConfigUI();
+      renderHomeProducts();
+      renderAllProducts();
+      renderDedicatedCategories();
+      renderReviews();
+      updateCartBadges();
+      renderCartView();
+    });
+
+    function syncConfigUI() {
+      const waLink = `https://wa.me/${config.whatsapp}`;
+      document.getElementById('topWhatsappLink').href = waLink;
+      document.getElementById('bottomWhatsappLink').href = waLink;
+      document.getElementById('adminInputWhatsapp').value = config.whatsapp;
+      document.getElementById('adminInputEmail').value = config.email;
+    }
+
+    function switchView(viewName) {
+      const views = ['home', 'categories', 'products', 'cart', 'privacy', 'reviews'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      const activeTab = document.getElementById(`tab-${viewName}`);
+      if (activeTab) activeTab.classList.add('active');
+
+      document.querySelectorAll('.bottom-nav-btn').forEach(b => b.classList.remove('active'));
+      const activeBottomBtn = document.getElementById(`btn-nav-${viewName}`);
+      if (activeBottomBtn) activeBottomBtn.classList.add('active');
+
+      if (viewName === 'cart') {
+        renderCartView();
+      }
+    }
+
+    function toggleSearchBar() {
+      const bar = document.getElementById('quickSearchBar');
+      bar.classList.toggle('hidden');
+      if (!bar.classList.contains('hidden')) {
+        document.getElementById('liveSearchInput').focus();
+      }
+    }
+
+    // ==================== رسم المنتجات بالصور الحقيقية بنسبة 1:1 وزوايا 14px ====================
+    function renderHomeProducts(sortedList = null) {
+      const grid = document.getElementById('homeProductsGrid');
+      const list = sortedList || products;
+
+      document.getElementById('homeProductCountBadge').innerText = `${list.length} منتج`;
+
+      grid.innerHTML = list.map(p => `
+        <div class="luxury-card p-2.5 sm:p-3 flex flex-col justify-between group relative">
+          <!-- شارة اختيار مميز مطابقة للصورة بدقة -->
+          <div class="absolute top-2 right-2 z-10">
+            <span class="bg-ruby-950/90 text-gold border border-gold/40 text-[9px] font-extrabold px-2 py-0.5 rounded-full shadow-md">
+              ${p.badge || 'اختيار مميز'}
+            </span>
+          </div>
+
+          <!-- الصورة الحقيقية للمنتج بنسبة مربعة 1:1 وزوايا 14px -->
+          <div class="relative aspect-square w-full rounded-[14px] overflow-hidden bg-obsidian-950 mb-2.5">
+            <img src="${p.image}" alt="${p.title}" onerror="this.src='https://placehold.co/400x400/18060f/fbbf24?text=Britton+Life'"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            
+            <button onclick="askRoroAbout('${escapeQuotes(p.title)}')" title="استفسر من رورو" 
+              class="absolute bottom-1.5 left-1.5 w-6 h-6 rounded-full bg-black/70 border border-gold/50 flex items-center justify-center text-gold text-[10px] hover:bg-gold hover:text-black transition">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+          </div>
+
+          <!-- عنوان المنتج والتقييم والسعر وزر الإضافة -->
+          <div class="space-y-1.5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-white text-xs line-clamp-2 group-hover:text-gold transition leading-snug">${p.title}</h3>
+              <div class="flex items-center justify-between text-[10px] text-pink-300/60 mt-1">
+                <span class="text-gold font-bold">(${p.rating}) ★★★★</span>
+                ${p.oldPrice ? `<span class="line-through text-pink-400/40">${p.oldPrice} ر.س</span>` : ''}
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-ruby-900/40 flex items-center justify-between gap-1">
+              <span class="text-xs sm:text-sm font-black text-ruby-400">${p.price} <span class="text-[9px] font-normal text-pink-200">ر.س</span></span>
+              <button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-gradient-to-r from-ruby-600 to-rose-600 hover:brightness-110 text-white font-bold text-[10px] shadow active:scale-95 transition flex items-center gap-1">
+                <i class="fa-solid fa-cart-plus text-[9px]"></i>
+                <span>أضف</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderAllProducts() {
+      const grid = document.getElementById('allProductsGrid');
+      const filtered = currentCategoryFilter === 'all' 
+        ? products 
+        : products.filter(p => p.category === currentCategoryFilter);
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="luxury-card p-2.5 sm:p-3 flex flex-col justify-between group relative">
+          <div class="relative aspect-square w-full rounded-[14px] overflow-hidden bg-obsidian-950 mb-2">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="space-y-1.5 flex-1 flex flex-col justify-between">
+            <h4 class="font-bold text-white text-xs line-clamp-2">${p.title}</h4>
+            <div class="pt-2 border-t border-ruby-900/40 flex items-center justify-between">
+              <span class="text-xs font-black text-ruby-400">${p.price} ر.س</span>
+              <button onclick="addToCart('${p.id}')" class="px-2 py-1 rounded-lg bg-ruby-600 text-white font-bold text-[10px]">أضف للسلة</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDedicatedCategories() {
+      const grid = document.getElementById('dedicatedCategoriesGrid');
+      const cats = [
+        { id: 'couples_games', title: 'الألعاب الزوجية والرومانسية', count: '12 لعبة', icon: 'fa-heart', img: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80' },
+        { id: 'vibrators', title: 'أجهزة الاهتزاز والمحاكاة الذكية', count: '8 أجهزة', icon: 'fa-wand-magic-sparkles', img: 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=400&q=80' },
+        { id: 'dildos', title: 'قسم القضبان الصناعية والسيليكون الطبي', count: '6 منتجات', icon: 'fa-gem', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80' },
+        { id: 'sleeves', title: 'قسم المهابل والأكواب الصناعية', count: '5 منتجات', icon: 'fa-fire', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80' },
+        { id: 'accessories', title: 'اكسسوارات وملحقات السعادة', count: '15 منتج', icon: 'fa-mask', img: 'https://images.unsplash.com/photo-1543083477-4f785aeafaa9?auto=format&fit=crop&w=400&q=80' },
+        { id: 'massage_oils', title: 'زيوت المساج والعناية الفاخرة', count: '7 أنواع', icon: 'fa-spa', img: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80' }
+      ];
+
+      grid.innerHTML = cats.map(c => `
+        <div onclick="selectCategoryTab('${c.id}')" class="luxury-card p-3 flex items-center gap-3.5 cursor-pointer hover:border-gold transition">
+          <div class="w-16 h-16 rounded-[12px] overflow-hidden relative shrink-0 border border-ruby-600/40">
+            <img src="${c.img}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-gold">
+              <i class="fa-solid ${c.icon}"></i>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-bold text-white text-xs sm:text-sm">${c.title}</h3>
+            <span class="text-[10px] text-pink-300/60 block mt-0.5">${c.count} متوفرة</span>
+          </div>
+          <i class="fa-solid fa-chevron-left text-xs text-ruby-400"></i>
+        </div>
+      `).join('');
+    }
+
+    function renderReviews() {
+      const container = document.getElementById('customerReviewsContainer');
+      const reviews = [
+        { name: 'عميل موثق (الرياض)', text: 'التغليف كتم ومبهم جداً بدون أي كتابة من الخارج، والمنتجات أصلية وبجودة ممتازة.', rating: 5 },
+        { name: 'أم عبد العزيز (جدة)', text: 'كوتشينة العلاقات رائعة جداً وغيرت الروتين، والتعامل راقي والتوصيل سريع.', rating: 5 },
+        { name: 'فهد (الدمام)', text: 'أشكركم على المصداقية والسرية التامة، أجهزة ممتازة وجودة تستحق.', rating: 5 },
+        { name: 'عميلة من مكة', text: 'المستشارة رورو ذ
