@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم BRITTON LIFE | بريتون لايف</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0a0712;
+      --card-bg: rgba(22, 16, 36, 0.95);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --purple-primary: #8b3cfc;
+      --purple-hover: #a855f7;
+      --gold-primary: #d4af37;
+      --gold-light: #f7e089;
+      --text-white: #f3f4f6;
+      --text-gray: #9ca3af;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top right, #1f0f35 0%, #0a0712 100%);
+      color: var(--text-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      direction: rtl;
+    }
+
+    /* Header */
+    header {
+      background: rgba(14, 10, 24, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-crown {
+      font-size: 26px;
+      color: var(--gold-primary);
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+    }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .brand-subtitle {
+      font-size: 10px;
+      color: var(--gold-light);
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+      outline: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #996515);
+      color: #000;
+      font-weight: 700;
+    }
+
+    .btn-gold:hover {
+      opacity: 0.95;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-purple {
+      background: linear-gradient(135deg, var(--purple-primary), #6b21a8);
+      color: #fff;
+    }
+
+    .btn-purple:hover {
+      background: var(--purple-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--card-border);
+      color: var(--text-white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--gold-primary);
+    }
+
+    /* Main Layout */
+    .dashboard-container {
+      display: flex;
+      min-height: calc(100vh - 66px);
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 240px;
+      background: rgba(14, 10, 24, 0.7);
+      border-left: 1px solid var(--card-border);
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      width: 100%;
+      text-align: right;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text-gray);
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+
+    .nav-btn i {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .nav-btn:hover {
+      background: rgba(139, 60, 252, 0.1);
+      color: var(--gold-light);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(90deg, rgba(139, 60, 252, 0.35), rgba(212, 175, 55, 0.15));
+      color: #fff;
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: inset 3px 0 0 var(--gold-primary);
+    }
+
+    /* Views / Pages Area */
+    .content-area {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Cards & Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stat-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin: 4px 0;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(139, 60, 252, 0.2);
+      color: var(--gold-primary);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Filters Bar */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-input, .select-input {
+      background: #0d091a;
+      border: 1px solid var(--card-border);
+      padding: 9px 14px;
+      border-radius: 8px;
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(139, 60, 252, 0.2);
+    }
+
+    .product-cover {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #150f22;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .gallery-preview {
+      display: flex;
+      gap: 6px;
+      padding: 8px 14px 0 14px;
+    }
+
+    .thumb-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid var(--card-border);
+    }
+
+    .product-info {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-category-tag {
+      font-size: 11px;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold-primary);
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* Categories List */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Orders Table */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 14px;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .status-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .status-completed { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .status-canceled { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    /* Modal Form */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #130d24;
+      border: 1px solid var(--gold-primary);
+      box-shadow: 0 0 30px rgba(139, 60, 252, 0.3);
+      width: 100%;
+      max-width: 550px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .form-control {
+      background: #0d091a;
+      border: 1px solid var(--card-border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .image-inputs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px dashed var(--card-border);
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container { flex-direction: column; }
+      .sidebar { width: 100%; border-left: none; border-bottom: 1px solid var(--card-border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-crown"><i class="fa-solid fa-crown"></i></div>
+      <div>
+        <div class="brand-title" id="topStoreName">BRITTON LIFE</div>
+        <span class="brand-subtitle">MORE THAN 5 STARS... IT'S A LIFESTYLE</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-gold" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> تصدير البيانات</button>
+      <button class="btn btn-outline" onclick="openStorePreview()"><i class="fa-solid fa-eye"></i> معاينة المتجر</button>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="nav-btn active" onclick="switchPage('overview-page')">
+        <i class="fa-solid fa-chart-pie"></i> الرئيسية
+      </button>
+      <button class="nav-btn" onclick="switchPage('products-page')">
+        <i class="fa-solid fa-box-open"></i> إدارة المنتجات
+      </button>
+      <button class="nav-btn" onclick="switchPage('categories-page')">
+        <i class="fa-solid fa-layer-group"></i> أقسام المتجر
+      </button>
+      <button class="nav-btn" onclick="switchPage('orders-page')">
+        <i class="fa-solid fa-cart-shopping"></i> الطلبات الواردة
+      </button>
+      <button class="nav-btn" onclick="switchPage('settings-page')">
+        <i class="fa-solid fa-sliders"></i> بيانات المتجر والتواصل
+      </button>
+    </aside>
+
+    <!-- Main Content Pages -->
+    <main class="content-area">
+
+      <!-- 1. الرئيسية / Overview -->
+      <section id="overview-page" class="page-section active">
+        <div class="page-header">
+          <div class="page-title"><i class="fa-solid fa-chart-line"></i> نظرة عامة على الأداء</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div>
+              <div class="stat-label">إجمالي المبيعات</div>
+              <div class="stat-val" id="statSales">124,850 ر.س</div>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+          </div>
+          <div class="stat-card">
+            <div>
+              <div class="stat-label">إجمالي الطلبات</div>
+              <div class="stat-val" id="statOrdersCount">0</div>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+          </div>
+          <div class="stat-card">
+            <div>
+              <div class="stat-label">المنتجات المسجلة</div>
+              <div class="stat-val" id="statProductsCount">0</div>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-gem"></i></div>
+          </div>
+          <div class="stat-card">
+            <div>
+              <div class="stat-label">الأقسام المفعلة</div>
+              <div class="stat-val" id="statCategoriesCount">0</div>
+            </div>
+            <div class="stat-icon"><i class="fa-solid fa-tags"></i></div>
+          </div>
+        </div>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 20px;">
+          <h3 style="color: var(--gold-light); margin-bottom: 16px; font-size: 16px;">مخطط المبيعات الأسبوعية</h3>
+          <canvas id="salesChart" height="90"></canvas>
+        </div>
+      </section>
+
+      <!-- 2. صفحة المنتجات -->
+      <section id="products-page" class="page-section">
+        <div class="page-header">
+          <div class="page-title"><i class="fa-solid fa-boxes-stacked"></i> المنتجات ونظام الصور الثلاث</div>
+          <button class="btn btn-gold" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> إضافة منتج جديد</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="text" id="productSearchInput" class="search-input" placeholder="ابحث باسم المنتج..." oninput="filterProducts()">
+          <select id="productCategoryFilter" class="select-input" onchange="filterProducts()">
+            <option value="ALL">جميع الأقسام</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="productsGridContainer"></div>
+      </section>
+
+      <!-- 3. صفحة الأقسام -->
+      <section id="categories-page" class="page-section">
+        <div class="page-header">
+          <div class="page-title"><i class="fa-solid fa-list-check"></i> إدارة أقسام المتجر</div>
+          <button class="btn btn-purple" onclick="openAddCategoryPrompt()"><i class="fa-solid fa-folder-plus"></i> إضافة قسم جديد</button>
+        </div>
+
+        <div class="categories-grid" id="categoriesGridContainer"></div>
+      </section>
+
+      <!-- 4. صفحة الطلبات -->
+      <section id="orders-page" class="page-section">
+        <div class="page-header">
+          <div class="page-title"><i class="fa-solid fa-receipt"></i> إدارة وفواتير الطلبات</div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>اسم العميل</th>
+                <th>الهاتف</th>
+                <th>المبلغ</th>
+                <th>الحالة</th>
+                <th>الإجراء</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. صفحة الإعدادات -->
+      <section id="settings-page" class="page-section">
+        <div class="page-header">
+          <div class="page-title"><i class="fa-solid fa-gear"></i> إعدادات وهوية المتجر</div>
+        </div>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 24px; max-width: 650px;">
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label>اسم المتجر الرئيسي:</label>
+            <input type="text" id="settingStoreName" class="form-control" value="BRITTON LIFE">
+          </div>
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label>رقم هاتف الواتساب لتلقي الطلبات (سعودي):</label>
+            <input type="text" id="settingPhone" class="form-control" value="+966556575822">
+          </div>
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label>البريد الإلكتروني للإشعارات:</label>
+            <input type="email" id="settingEmail" class="form-control" value="roooo77775@gmail.com">
+          </div>
+          <button class="btn btn-gold" onclick="saveStoreSettings()"><i class="fa-solid fa-floppy-disk"></i> حفظ الإعدادات</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- نافذة إضافة / تعديل منتج (Modal) تدعم 3 صور والقسم -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="color: var(--gold-light);" id="productModalTitle">إضافة منتج جديد</h3>
+        <button onclick="closeProductModal()" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modalProductId">
+
+        <div class="form-group">
+          <label>اسم المنتج:</label>
+          <input type="text" id="modalProdName" class="form-control" placeholder="أدخل اسم المنتج...">
+        </div>
+
+        <div class="form-group">
+          <label>قسم المنتج:</label>
+          <select id="modalProdCategory" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+          <label>السعر (ر.س):</label>
+          <input type="number" id="modalProdPrice" class="form-control" placeholder="0.00">
+        </div>
+
+        <div class="image-inputs-grid">
+          <div class="form-group">
+            <label><i class="fa-regular fa-image"></i> 1. رابط صورة العرض الأساسية (الغلاف):</label>
+            <input type="url" id="modalProdImgMain" class="form-control" placeholder="https://example.com/cover.jpg">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-regular fa-images"></i> 2. رابط الصورة الإضافية الأولى:</label>
+            <input type="url" id="modalProdImgSub1" class="form-control" placeholder="https://example.com/detail1.jpg">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-regular fa-images"></i> 3. رابط الصورة الإضافية الثانية:</label>
+            <input type="url" id="modalProdImgSub2" class="form-control" placeholder="https://example.com/detail2.jpg">
+          </div>
+        </div>
+
+        <button class="btn btn-gold" style="width: 100%; margin-top: 10px;" onclick="saveProductData()">
+          <i class="fa-solid fa-check"></i> حفظ المنتج في القسم
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State Data Storage
+    const DEFAULT_CATEGORIES = ["العاب زوجية", "زيوت ومساج", "عطورات فاخرة", "إكسسوارات وهدايا"];
+    const DEFAULT_PRODUCTS = [
+      {
+        id: "p1",
+        name: "طقم رومنسي فاخر",
+        category: "العاب زوجية",
+        price: 850,
+        imgMain: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&auto=format&fit=crop&q=60",
+        imgSub1: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500&auto=format&fit=crop&q=60",
+        imgSub2: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=60"
+      },
+      {
+        id: "p2",
+        name: "زيت مساج عطري خاص",
+        category: "زيوت ومساج",
+        price: 320,
+        imgMain: "https://images.unsplash.com/photo-1608248597359-2a9d9494dc50?w=500&auto=format&fit=crop&q=60",
+        imgSub1: "",
+        imgSub2: ""
+      }
+    ];
+
+    const DEFAULT_ORDERS = [
+      { id: "ORD-1001", customer: "محمد أحمد", phone: "0556575822", total: 1250, status: "completed" },
+      { id: "ORD-1002", customer: "سارة علي", phone: "0551122334", total: 980, status: "pending" },
+      { id: "ORD-1003", customer: "خالد عبدالله", phone: "0559988776", total: 1450, status: "canceled" }
+    ];
+
+    let categories = JSON.parse(localStorage.getItem('britton_categories')) || DEFAULT_CATEGORIES;
+    let products = JSON.parse(localStorage.getItem('britton_products')) || DEFAULT_PRODUCTS;
+    let orders = JSON.parse(localStorage.getItem('britton_orders')) || DEFAULT_ORDERS;
+
+    // Navigation Switcher
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const target = document.getElementById(pageId);
+      if (target) target.classList.add('active');
+
+      const clickedBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(pageId));
+      if (clickedBtn) clickedBtn.classList.add('active');
+    }
+
+    // Render Stats
+    function updateStats() {
+      document.getElementById('statProductsCount').innerText = products.length;
+      document.getElementById('statCategoriesCount').innerText = categories.length;
+      document.getElementById('statOrdersCount').innerText = orders.length;
+    }
+
+    // Populate Category Dropdowns
+    function refreshCategorySelects() {
+      const selectFilter = document.getElementById('productCategoryFilter');
+      const selectModal = document.getElementById('modalProdCategory');
+
+      selectFilter.innerHTML = '<option value="ALL">جميع الأقسام</option>';
+      selectModal.innerHTML = '';
+
+      categories.forEach(cat => {
+        selectFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+        selectModal.innerHTML += `<option value="${cat}">${cat}</option>`;
+      });
+    }
+
+    // Render Categories
+    function renderCategories() {
+      const container = document.getElementById('categoriesGridContainer');
+      container.innerHTML = '';
+      categories.forEach((cat, index) => {
+        const count = products.filter(p => p.category === cat).length;
+        container.innerHTML += `
+          <div class="category-card">
+            <div>
+              <h4 style="color:#fff; font-size:16px;"><i class="fa-solid fa-folder" style="color:var(--gold-primary); margin-left:8px;"></i>${cat}</h4>
+              <span style="font-size:12px; color:var(--text-gray);">${count} منتج في هذا القسم</span>
+            </div>
+            <button class="btn btn-outline" style="color:var(--danger);" onclick="deleteCategory(${index})"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        `;
+      });
+      refreshCategorySelects();
+    }
+
+    function openAddCategoryPrompt() {
+      const name = prompt("أدخل اسم القسم الجديد لمتجرك:");
+      if (name && name.trim()) {
+        categories.push(name.trim());
+        localStorage.setItem('britton_categories', JSON.stringify(categories));
+        renderCategories();
+        updateStats();
+      }
+    }
+
+    function deleteCategory(index) {
+      if (confirm(`هل أنت متأكد من حذف قسم "${categories[index]}"؟`)) {
+        categories.splice(index, 1);
+        localStorage.setItem('britton_categories', JSON.stringify(categories));
+        renderCategories();
+        updateStats();
+      }
+    }
+
+    // Render Products
+    function renderProducts(list = products) {
+      const container = document.getElementById('productsGridContainer');
+      container.innerHTML = '';
+
+      list.forEach(item => {
+        const defaultPlaceholder = "https://via.placeholder.com/400x300/150f22/d4af37?text=BRITTON+LIFE";
+        container.innerHTML += `
+          <div class="product-card">
+            <img src="${item.imgMain || defaultPlaceholder}" class="product-cover" alt="${item.name}" onerror="this.src='${defaultPlaceholder}'">
+            <div class="gallery-preview">
+              <img src="${item.imgMain || defaultPlaceholder}" class="thumb-img" title="صورة العرض الرئيسية">
+              ${item.imgSub1 ? `<img src="${item.imgSub1}" class="thumb-img" title="صورة تفصيلية 1">` : ''}
+              ${item.imgSub2 ? `<img src="${item.imgSub2}" class="thumb-img" title="صورة تفصيلية 2">` : ''}
+            </div>
+            <div class="product-info">
+              <span class="product-category-tag">${item.category || 'عام'}</span>
+              <div class="product-name">${item.name}</div>
+              <div class="product-price">${item.price} ر.س</div>
+              <div class="product-actions">
+                <button class="btn btn-outline" style="flex:1;" onclick="editProduct('${item.id}')"><i class="fa-solid fa-pen"></i> تعديل</button>
+                <button class="btn btn-outline" style="color:var(--danger);" onclick="deleteProduct('${item.id}')"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      updateStats();
+    }
+
+    function filterProducts() {
+      const query = document.getElementById('productSearchInput').value.toLowerCase();
+      const cat = document.getElementById('productCategoryFilter').value;
+
+      const filtered = products.filter(p => {
+        const matchesQuery = p.name.toLowerCase().includes(query);
+        const matchesCat = (cat === 'ALL') || (p.category === cat);
+        return matchesQuery && matchesCat;
+      });
+
+      renderProducts(filtered);
+    }
+
+    // Modal Operations for Products
+    function openProductModal(isEdit = false) {
+      document.getElementById('productModal').classList.add('active');
+      if (!isEdit) {
+        document.getElementById('productModalTitle').innerText = "إضافة منتج جديد";
+        document.getElementById('modalProductId').value = "";
+        document.getElementById('modalProdName').value = "";
+        document.getElementById('modalProdPrice').value = "";
+        document.getElementById('modalProdImgMain').value = "";
+        document.getElementById('modalProdImgSub1').value = "";
+        document.getElementById('modalProdImgSub2').value = "";
+      }
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('active');
+    }
+
+    function saveProductData() {
+      const id = document.getElementById('modalProductId').value;
+      const name = document.getElementById('modalProdName').value;
+      const category = document.getElementById('modalProdCategory').value;
+      const price = parseFloat(document.getElementById('modalProdPrice').value) || 0;
+      const imgMain = document.getElementById('modalProdImgMain').value;
+      const imgSub1 = document.getElementById('modalProdImgSub1').value;
+      const imgSub2 = document.getElementById('modalProdImgSub2').value;
+
+      if (!name) {
+        alert("يرجى كتابة اسم المنتج");
+        return;
+      }
+
+      if (id) {
+        const idx = products.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          products[idx] = { id, name, category, price, imgMain, imgSub1, imgSub2 };
+        }
+      } else {
+        const newProd = {
+          id: 'prod_' + Date.now(),
+          name, category, price, imgMain, imgSub1, imgSub2
+        };
+        products.unshift(newProd);
+      }
+
+      localStorage.setItem('britton_products', JSON.stringify(products));
+      closeProductModal();
+      renderProducts();
+      renderCategories();
+    }
+
+    function editProduct(id) {
+      const p = products.find(prod => prod.id === id);
+      if (!p) return;
+      document.getElementById('productModalTitle').innerText = "تعديل بيانات المنتج";
+      document.getElementById('modalProductId').value = p.id;
+      document.getElementById('modalProdName').value = p.name;
+      document.getElementById('modalProdCategory').value = p.category;
+      document.getElementById('modalProdPrice').value = p.price;
+      document.getElementById('modalProdImgMain').value = p.imgMain || "";
+      document.getElementById('modalProdImgSub1').value = p.imgSub1 || "";
+      document.getElementById('modalProdImgSub2').value = p.imgSub2 || "";
+      openProductModal(true);
+    }
+
+    function deleteProduct(id) {
+      if (confirm("هل تريد بالتأكيد حذف هذا المنتج؟")) {
+        products = products.filter(p => p.id !== id);
+        localStorage.setItem('britton_products', JSON.stringify(products));
+        renderProducts();
+        renderCategories();
+      }
+    }
+
+    // Orders Management
+    function renderOrders() {
+      const tbody = document.getElementById('ordersTableBody');
+      tbody.innerHTML = '';
+
+      orders.forEach(ord => {
+        let statusBadge = `<span class="status-badge status-pending">قيد الانتظار</span>`;
+        if (ord.status === 'completed') statusBadge = `<span class="status-badge status-completed">مكتمل</span>`;
+        if (ord.status === 'canceled') statusBadge = `<span class="status-badge status-canceled">ملغي</span>`;
+
+        tbody.innerHTML += `
+          <tr>
+            <td><strong>${ord.id}</strong></td>
+            <td>${ord.customer}</td>
+            <td>${ord.phone}</td>
+            <td>${ord.total} ر.س</td>
+            <td>${statusBadge}</td>
+            <td>
+              <button class="btn btn-outline" style="padding:4px 8px;" onclick="sendWhatsAppNotice('${ord.phone}', '${ord.id}')">
+                <i class="fa-brands fa-whatsapp" style="color:var(--success);"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+      updateStats();
+    }
+
+    function sendWhatsAppNotice(phone, orderId) {
+      const msg = encodeURIComponent(`مرحباً بك، معك متجر BRITTON LIFE بخصوص طلبك رقم ${orderId}`);
+      window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${msg}`, '_blank');
+    }
+
+    // Store Settings
+    function saveStoreSettings() {
+      const name = document.getElementById('settingStoreName').value;
+      document.getElementById('topStoreName').innerText = name;
+      alert("تم حفظ بيانات وإعدادات المتجر بنجاح");
+    }
+
+    // Export Data JSON
+    function exportData() {
+      const backup = { categories, products, orders };
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `britton_life_backup_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+    }
+
+    function openStorePreview() {
+      window.open('https://britton744.github.io/', '_blank');
+    }
+
+    // Initialize Chart & Data
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategories();
+      renderProducts();
+      renderOrders();
+
+      const ctx = document.getElementById('salesChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+          datasets: [{
+            label: 'المبيعات (ر.س)',
+            data: [1200, 1900, 3000, 5200, 4100, 6800, 8900],
+            borderColor: '#d4af37',
+            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { labels: { color: '#f3f4f6' } } },
+          scales: {
+            x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
