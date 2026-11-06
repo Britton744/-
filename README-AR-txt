@@ -1,0 +1,22 @@
+BRITTON LIFE — ملفات لوحة التحكم
+
+الملفات:
+- admin.html / admin.css / admin.js: لوحة المدير.
+- firebase.js: إعداد اتصال Firebase.
+- firestore.rules و storage.rules: قواعد الحماية.
+- index.html و style.css و main.js: احتفظ بنسخك الحالية الآن.
+
+خطوات التشغيل:
+1) في Firebase Console > Authentication > Get started > فعّل Email/Password.
+2) من Authentication > Users أنشئ مستخدم المدير ببريد وكلمة مرور تختارهما.
+3) انسخ firestore.rules إلى Firestore Database > Rules، واستبدل PUT_ADMIN_EMAIL_HERE ببريد المدير نفسه، ثم Publish.
+4) انسخ storage.rules إلى Storage > Rules، واستبدل PUT_ADMIN_EMAIL_HERE بالبريد نفسه، ثم Publish.
+5) ارفع admin.html و admin.css و admin.js و firebase.js إلى جذر نفس موقع المتجر.
+6) افتح https://YOUR-DOMAIN/admin.html وسجّل الدخول بالبريد وكلمة المرور اللذين أنشأتهما.
+
+مهم جداً:
+- هذه الحزمة تنشئ لوحة إدارة فعلية للمنتجات والأقسام والطلبات الموجودة في Firestore.
+- لا يزال يلزم تحديث main.js و index.html لقراءة المنتجات والأقسام من Firestore وحفظ الطلبات هناك. نسخة متجرك الحالية ما زالت تقرأ المصفوفات الثابتة في main.js؛ لذلك لا تعتبر الربط مع واجهة المتجر مكتملاً بمجرد رفع لوحة التحكم.
+- الفواتير في هذه النسخة تُطبع من سجل الطلب بعد حفظ الطلب في Firestore. إرسال البريد الإلكتروني يحتاج ربط خدمة بريد موثوقة أو Cloud Function.
+- لا تضع كلمة مرور المدير في أي ملف. لا تنشر قواعد تسمح لأي شخص بتعديل المنتجات.
+- Firebase web apiKey ليس كلمة مرور، لكن يجب حماية البيانات بقواعد Firestore وStorage.
