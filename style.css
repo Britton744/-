@@ -1,0 +1,56 @@
+body {
+    font-family: Tajawal, sans-serif;
+    background: #0d0208;
+    color: #fce7f3;
+    background-image: radial-gradient(circle at 50% 0%, #e11d4825, transparent 48%), radial-gradient(circle at 100% 45%, #8b5cf622, transparent 42%);
+    padding-bottom: 80px;
+}
+
+.brand {
+    font-family: Cinzel, serif;
+    background: linear-gradient(135deg, #fff7cc, #fbbf24, #d97706);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.card {
+    background: linear-gradient(155deg, #1e0617eb, #0d0208fa);
+    border: 1px solid #e11d483f;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px #0009;
+}
+
+.card:hover {
+    border-color: #fbbf2470;
+}
+
+.hidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.hidebar {
+    scrollbar-width: none;
+}
+
+.cat {
+    min-width: 94px;
+}
+
+.cat img {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: linear-gradient(#14030c, #14030c) padding-box, linear-gradient(135deg, #fbbf24, #be123c, #8b5cf6) border-box;
+    box-shadow: 0 5px 18px #e11d4840;
+}
+
+.product-img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.active {
+    color: #fbbf24 !important;
+}
