@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم BRITTON LIFE الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0d0208;
+            color: #fce7f3;
+            background-image: radial-gradient(circle at 50% 0%, #e11d4825, transparent 48%), radial-gradient(circle at 100% 45%, #8b5cf622, transparent 42%);
+            min-height: 100vh;
+        }
+        .brand {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #fff7cc, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .card {
+            background: linear-gradient(155deg, #1e0617eb, #0d0208fa);
+            border: 1px solid #e11d483f;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px #0009;
+        }
+        .tab-btn.active {
+            background-color: #be123c;
+            border-color: #fbbf24;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- الهيدر -->
+        <header class="card p-5 text-center mb-6">
+            <h1 class="brand text-3xl font-black mb-1">BRITTON LIFE ADMIN</h1>
+            <p class="text-xs text-pink-200/60">لوحة إدارة المتجر، المنتجات، الأقسام والإعدادات</p>
+        </header>
+
+        <!-- شاشة تسجيل الدخول -->
+        <div id="authSection" class="card p-6 max-w-md mx-auto">
+            <h2 class="text-lg font-bold text-amber-300 text-center mb-4"><i class="fas fa-lock ml-2"></i>تسجيل دخول الإدارة</h2>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs mb-1 text-pink-100/70">البريد الإلكتروني:</label>
+                    <input type="email" id="loginEmail" value="roooo77775@gmail.com" required class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none focus:border-amber-400">
+                </div>
+                <div>
+                    <label class="block text-xs mb-1 text-pink-100/70">كلمة السر:</label>
+                    <input type="password" id="loginPass" required placeholder="••••••••" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none focus:border-amber-400">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-rose-700 hover:bg-rose-600 font-bold text-sm text-white transition">دخول لوحة التحكم</button>
+            </form>
+        </div>
+
+        <!-- محتوى لوحة التحكم الرئيسي -->
+        <div id="adminMain" class="hidden space-y-6">
+            
+            <!-- شريط الإحصائيات والتنقل -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div class="card p-4 text-center">
+                    <span class="text-xs text-pink-200/60 block">إجمالي زوار المتجر</span>
+                    <strong id="visitorCount" class="text-xl text-amber-300 font-black">1,420</strong>
+                </div>
+                <div class="card p-4 text-center">
+                    <span class="text-xs text-pink-200/60 block">رقم الواتساب المسجل</span>
+                    <strong class="text-sm text-emerald-400 font-bold">556575822</strong>
+                </div>
+                <div class="card p-4 text-center col-span-2 sm:col-span-1">
+                    <button onclick="logout()" class="w-full h-full text-xs text-rose-400 hover:text-rose-300 font-bold"><i class="fas fa-sign-out-alt ml-1"></i>تسجيل الخروج</button>
+                </div>
+            </div>
+
+            <!-- تبويبات التحكم -->
+            <div class="flex gap-2 border-b border-rose-950 pb-2 overflow-x-auto">
+                <button class="tab-btn active px-4 py-2 rounded-xl border border-rose-900 text-xs font-bold" onclick="switchTab('addProdTab')"><i class="fas fa-box-open ml-1"></i>إضافة منتج</button>
+                <button class="tab-btn px-4 py-2 rounded-xl border border-rose-900 text-xs font-bold" onclick="switchTab('addCatTab')"><i class="fas fa-th-large ml-1"></i>إدارة الأقسام</button>
+                <button class="tab-btn px-4 py-2 rounded-xl border border-rose-900 text-xs font-bold" onclick="switchTab('settingsTab')"><i class="fas fa-user-shield ml-1"></i>حساب الإدارة والأمان</button>
+            </div>
+
+            <!-- تبويب 1: إضافة منتج -->
+            <div id="addProdTab" class="tab-content card p-6">
+                <h3 class="text-base font-bold text-amber-300 mb-4">إضافة منتج فاخر جديد للمتجر</h3>
+                <form onsubmit="handleAddProduct(event)" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs mb-1 text-pink-100/70">اسم المنتج:</label>
+                            <input type="text" id="pTitle" required placeholder="مثال: جهاز هزاز فاخر" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs mb-1 text-pink-100/70">اختر القسم:</label>
+                            <select id="pCategory" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                                <option value="featured">منتجات مميزة</option>
+                                <option value="couples">ألعاب زوجية</option>
+                                <option value="vibrators">أجهزة هزاز</option>
+                                <option value="dildos">قضبان صناعية</option>
+                                <option value="vaginal">مهبليات صناعية</option>
+                                <option value="cards">كوتشينة وتحديات</option>
+                                <option value="accessories">إكسسوارات وملحقات</option>
+                                <option value="massage">زيوت ومساج</option>
+                                <option value="romantic">مستلزمات رومانسية</option>
+                                <option value="offers">العروض</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-xs mb-1 text-pink-100/70">السعر (ر.س):</label>
+                            <input type="number" id="pPrice" required placeholder="149" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs mb-1 text-pink-100/70">السعر قبل الخصم:</label>
+                            <input type="number" id="pOldPrice" placeholder="199" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label class="block text-xs mb-1 text-pink-100/70">نسبة الخصم:</label>
+                            <input type="text" id="pDiscount" placeholder="خصم 25%" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">صورة العرض الرئيسية للمنتج:</label>
+                        <input type="file" id="pMainImg" accept="image/*" class="w-full p-2 rounded-xl bg-black border border-rose-900 text-xs text-pink-200/60">
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[10px] mb-1 text-pink-100/70">صورة إضافية 1:</label>
+                            <input type="file" accept="image/*" class="w-full p-2 rounded-xl bg-black border border-rose-900 text-[10px]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] mb-1 text-pink-100/70">صورة إضافية 2:</label>
+                            <input type="file" accept="image/*" class="w-full p-2 rounded-xl bg-black border border-rose-900 text-[10px]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] mb-1 text-pink-100/70">صورة إضافية 3:</label>
+                            <input type="file" accept="image/*" class="w-full p-2 rounded-xl bg-black border border-rose-900 text-[10px]">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">وصف المنتج:</label>
+                        <textarea id="pDesc" rows="3" placeholder="وصف فاخر للمنتج يوضح الميزات والمواصفات..." class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-sm text-white transition">حفظ ونشر المنتج في المتجر</button>
+                </form>
+            </div>
+
+            <!-- تبويب 2: إضافة قسم -->
+            <div id="addCatTab" class="tab-content hidden card p-6">
+                <h3 class="text-base font-bold text-amber-300 mb-4">إضافة قسم جديد للمتجر</h3>
+                <form onsubmit="handleAddCat(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">اسم القسم الجديد:</label>
+                        <input type="text" id="catName" required placeholder="مثال: مجموعات فاخرة" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">صورة القسم الدائرية:</label>
+                        <input type="file" id="catImg" accept="image/*" class="w-full p-2 rounded-xl bg-black border border-rose-900 text-xs text-pink-200/60">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-rose-700 hover:bg-rose-600 font-bold text-sm text-white transition">إضافة القسم</button>
+                </form>
+            </div>
+
+            <!-- تبويب 3: الإعدادات والأمان -->
+            <div id="settingsTab" class="tab-content hidden card p-6">
+                <h3 class="text-base font-bold text-amber-300 mb-4">تعديل حساب الإدارة والبريد</h3>
+                <form onsubmit="handleUpdateAccount(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">البريد الإلكتروني لإشعار الفواتير:</label>
+                        <input type="email" id="updateEmail" value="roooo77775@gmail.com" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs mb-1 text-pink-100/70">تغيير كلمة السر:</label>
+                        <input type="password" id="updatePass" placeholder="كلمة السر الجديدة" class="w-full p-3 rounded-xl bg-black border border-rose-900 text-white text-sm outline-none">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 font-bold text-sm text-white transition">حفظ التغييرات</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let adminAuth = { email: "roooo77775@gmail.com", pass: "123456" };
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value;
+            const pass = document.getElementById("loginPass").value;
+
+            if (email === adminAuth.email && pass === adminAuth.pass) {
+                document.getElementById("authSection").classList.add("hidden");
+                document.getElementById("adminMain").classList.remove("hidden");
+            } else {
+                alert("البريد الإلكتروني أو كلمة السر غير صحيحة!");
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+            
+            event.currentTarget.classList.add("active");
+            document.getElementById(tabId).classList.remove("hidden");
+        }
+
+        function handleAddProduct(e) {
+            e.preventDefault();
+            alert("تم حفظ المنتج ونشره بنجاح في متجر BRITTON LIFE!");
+            e.target.reset();
+        }
+
+        function handleAddCat(e) {
+            e.preventDefault();
+            alert("تم إضافة القسم الجديد بنجاح!");
+            e.target.reset();
+        }
+
+        function handleUpdateAccount(e) {
+            e.preventDefault();
+            const newEmail = document.getElementById("updateEmail").value;
+            const newPass = document.getElementById("updatePass").value;
+            if(newEmail) adminAuth.email = newEmail;
+            if(newPass) adminAuth.pass = newPass;
+            alert("تم تحديث معلومات حساب الإدارة بنجاح!");
+        }
+
+        function logout() {
+            document.getElementById("adminMain").classList.add("hidden");
+            document.getElementById("authSection").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
