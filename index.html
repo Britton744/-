@@ -1,0 +1,86 @@
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">  
+<title>BRITTON LIFE | متجر ألعاب زوجية ومستلزمات رومانسية فاخرة</title>  
+<meta name="description" content="BRITTON LIFE — متجر ألعاب زوجية ومستلزمات رومانسية فاخرة: ألعاب زوجية، أجهزة هزاز، منتجات مميزة، إكسسوارات، زيوت ومساج وتغليف سري.">  
+<meta name="keywords" content="BRITTON LIFE, بريتون لايف, ألعاب زوجية, أجهزة هزاز, مستلزمات رومانسية, منتجات مميزة, إكسسوارات, زيوت مساج">  
+<meta name="robots" content="index,follow,max-image-preview:large">  
+<meta name="google-site-verification" content="-_85mKpuCRsJy54bcy29viKaJZEzW9YOceCxsn5RIHg">  
+<link rel="canonical" href="https://ten-sigma-61.vercel.app/">  
+<meta property="og:type" content="website">  
+<meta property="og:title" content="BRITTON LIFE | متجر ألعاب زوجية ومستلزمات رومانسية">  
+<meta property="og:description" content="تسوق منتجات BRITTON LIFE الفاخرة مع خصوصية وتغليف سري.">  
+<meta property="og:url" content="https://ten-sigma-61.vercel.app/">  
+<meta property="og:site_name" content="BRITTON LIFE">  
+<meta name="theme-color" content="#0d0208">  
+<link rel="preconnect" href="https://fonts.googleapis.com">  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  
+<script src="https://cdn.tailwindcss.com"></script>  
+<link rel="stylesheet" href="style.css">  
+<script type="application/ld+json">  
+{  
+ "@context":"https://schema.org","@type":"WebSite","name":"BRITTON LIFE","alternateName":"بريتون لايف",  
+ "url":"https://ten-sigma-61.vercel.app/","potentialAction":{"@type":"SearchAction","target":"https://ten-sigma-61.vercel.app/?q={search_term_string}","query-input":"required name=search_term_string"}  
+}  
+</script>  
+<script type="application/ld+json" id="productSchema"></script>  
+</head>  
+<body>  
+<header class="sticky top-0 z-50 bg-black/90 backdrop-blur border-b border-rose-950/60">  
+<div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">  
+<div class="flex gap-2">  
+<button onclick="openCart()" class="w-10 h-10 rounded-full border border-rose-700/50">🛍️<b id="cartCount">0</b></button>  
+<a href="https://wa.me/966556575822" target="_blank" class="w-10 h-10 rounded-full border border-emerald-500/40 grid place-items-center text-emerald-400"><i class="fa-brands fa-whatsapp"></i></a>  
+</div>  
+<div class="text-center"><div class="brand text-xl font-black">BRITTON LIFE</div><div class="text-[9px] text-pink-200/60 tracking-widest">LUXURY · PRIVACY · CARE</div></div>  
+<button onclick="toggleSearch()" class="w-10 h-10 rounded-full border border-amber-400/40 text-amber-300"><i class="fa-solid fa-search"></i></button>  
+</div>  
+<div id="searchBox" class="hidden max-w-5xl mx-auto px-4 pb-3"><input id="search" oninput="render()" placeholder="ابحث: ألعاب زوجية، أجهزة هزاز، منتجات مميزة..." class="w-full p-3 rounded-xl bg-black border border-rose-800 text-white outline-none"></div>  
+<nav class="max-w-5xl mx-auto flex overflow-x-auto hidebar border-t border-rose-950/50">  
+<button class="nav p-3 text-xs active" onclick="go('home')">الرئيسية</button>  
+<button class="nav p-3 text-xs" onclick="go('categories')">الأقسام</button>  
+<button class="nav p-3 text-xs" onclick="go('products')">المنتجات</button>  
+<button class="nav p-3 text-xs" onclick="go('privacy')">الخصوصية والتوصيل</button>  
+</nav>  
+</header>  <main class="max-w-5xl mx-auto p-4">  
+<section id="home" class="space-y-6">  
+<div class="card p-5 text-center">  
+<div class="text-amber-300 text-xs mb-2">متجر بريتون لايف</div>  
+<h1 class="brand text-2xl sm:text-4xl font-black">BRITTON LIFE</h1>  
+<p class="text-pink-100/75 text-sm mt-2">ألعاب زوجية ومستلزمات رومانسية فاخرة بخصوصية وتغليف سري.</p>  
+<div class="mt-4 flex flex-wrap justify-center gap-2 text-[11px]">  
+<span class="px-3 py-1.5 rounded-full bg-rose-950 border border-rose-700">منتجات مختارة</span>  
+<span class="px-3 py-1.5 rounded-full bg-rose-950 border border-rose-700">تغليف سري</span>  
+<span class="px-3 py-1.5 rounded-full bg-rose-950 border border-rose-700">الدفع عند الاستلام</span>  
+</div>  
+</div>  
+<div>  
+<h2 class="text-center font-black text-amber-300 mb-3">تسوق حسب القسم</h2>  
+<div id="cats" class="flex gap-4 overflow-x-auto hidebar py-2"></div>  
+</div>  
+<div>  
+<div class="flex justify-between items-center mb-3"><h2 class="font-black text-amber-300">منتجات BRITTON LIFE</h2><span id="count" class="text-xs text-pink-200/60"></span></div>  
+<div id="grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>  
+</div>  
+</section>  <section id="categories" class="hidden space-y-4"><h2 class="text-xl font-black text-amber-300">كل أقسام المتجر</h2><div id="catGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div></section>  <section id="products" class="hidden space-y-4"><h2 class="text-xl font-black text-amber-300">كتالوج المنتجات</h2><div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div></section>  <section id="privacy" class="hidden card p-5 space-y-4">  
+<h2 class="text-xl font-black text-amber-300">الخصوصية والتوصيل</h2>  
+<p class="text-sm leading-7 text-pink-100/80">يتم تجهيز الطلب بتغليف محايد وغير لافت، مع المحافظة على خصوصية بيانات العميل أثناء التواصل والتوصيل.</p>  
+<div class="grid sm:grid-cols-3 gap-3 text-sm">  
+<div class="p-4 rounded-xl bg-black/40">🔒 <b>خصوصية</b><br><span class="text-pink-100/60">بيانات الطلب للاستخدام في تنفيذ الطلب.</span></div>  
+<div class="p-4 rounded-xl bg-black/40">📦 <b>تغليف سري</b><br><span class="text-pink-100/60">تغليف محايد للطلب.</span></div>  
+<div class="p-4 rounded-xl bg-black/40">🚚 <b>توصيل</b><br><span class="text-pink-100/60">التنسيق مع العميل قبل التسليم.</span></div>  
+</div>  
+</section>  
+</main>  <div id="cart" class="hidden fixed inset-0 z-[60] bg-black/90 p-4">  
+<div class="max-w-lg mx-auto mt-8 card p-5 max-h-[90vh] overflow-auto">  
+<div class="flex justify-between"><h2 class="font-black text-amber-300">سلة المشتريات</h2><button onclick="closeCart()">✕</button></div>  
+<div id="cartItems" class="space-y-2 my-4"></div>  
+<div class="border-t border-rose-900 pt-3 flex justify-between"><b>الإجمالي</b><b id="total" class="text-amber-300">0 ر.س</b></div>  
+<div class="grid gap-2 mt-4"><input id="name" required placeholder="الاسم" class="p-3 rounded-xl bg-black border border-rose-900"><input id="phone" required placeholder="رقم الواتساب" class="p-3 rounded-xl bg-black border border-rose-900"><input id="city" required placeholder="المدينة" class="p-3 rounded-xl bg-black border border-rose-900"><input id="address" placeholder="العنوان" class="p-3 rounded-xl bg-black border border-rose-900"><button onclick="sendOrder()" class="p-3 rounded-xl bg-emerald-600 font-bold">تأكيد الطلب عبر واتساب</button></div>  
+</div></div>  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-black/95 border-t border-rose-950 p-2"><div class="max-w-md mx-auto flex justify-around text-xs">  
+<button onclick="go('home')" class="p-2">🏠<br>الرئيسية</button><button onclick="go('categories')" class="p-2">▦<br>الأقسام</button><button onclick="openCart()" class="p-2">🛍️<br>السلة</button><a href="https://wa.me/966556575822" class="p-2 text-emerald-400">◉<br>واتساب</a>  
+</div></nav>  <script src="main.js"></script>  </body>  
+</html>
