@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function isAdmin(){return request.auth != null && request.auth.token.email == 'roooo77775@gmail.com';}
+  match /products/{id}{allow read: if true; allow write: if isAdmin();}
+  match /categories/{id}{allow read: if true; allow write: if isAdmin();}
+  match /settings/{id}{allow read: if true; allow write: if isAdmin();}
+  // طلبات العملاء: إنشاء الطلب متاح، القراءة والتعديل والحذف للمدير فقط.
+  match /orders/{id}{
+   allow create: if request.resource.data.keys().hasAll(['customer','items','total','status'])
+     && request.resource.data.customer is map
+     && request.resource.data.items is list
+     && request.resource.data.total is number;
+   allow read, update, delete: if isAdmin();
+  }
+  // المجموعات العربية القديمة للقراءة فقط حتى ترحيل بياناتها بأمان.
+  match /منتجات/{id}{allow read: if true; allow write: if isAdmin();}
+  match /الأقسام/{id}{allow read: if true; allow write: if isAdmin();}
+ }
+}
