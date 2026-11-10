@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRITTON LIFE | متجر العناية والمنتجات الرومانسية</title>
+<meta name="description" content="تسوق منتجات BRITTON LIFE المختارة للعناية والاسترخاء والمنتجات الرومانسية">
+<meta name="theme-color" content="#09030a">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09030a;--panel:#140815;--pink:#f02db8;--purple:#8b22ed;--gold:#f7ca78}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 55% 0%,#571044 0,transparent 38%),var(--bg);color:#fff0fb;font-family:Tajawal,Arial,sans-serif;padding-bottom:94px}
+a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{width:min(1200px,94%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080208ed;backdrop-filter:blur(15px);border-bottom:1px solid #56224e}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}.brand{font-family:Cinzel,serif;font-weight:700;color:var(--gold);font-size:clamp(20px,3vw,30px)}.tag{font-size:10px;color:#d8a8d1;letter-spacing:1.4px}
+.actions{display:flex;gap:8px}.iconbtn{background:#130817;border:1px solid #71336e;border-radius:14px;padding:9px 12px}.search{width:min(42vw,430px);background:#0c060e;border:1px solid #a34c9a;border-radius:28px;padding:12px 18px;color:white;outline:none}
+.nav{display:flex;gap:8px;overflow:auto;padding:0 0 10px}.nav button{background:transparent;border:0;padding:9px 13px;color:#e4c9e3;white-space:nowrap}.nav button.active{color:#ff4ed2}
+.hero{margin:20px 0 28px;border:1px solid #8b347d;border-radius:22px;overflow:hidden;min-height:380px;display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(100deg,#09030a 0%,#18091a 55%,#3c0c36 100%);box-shadow:0 0 32px #d020a01c}
+.hero-copy{padding:clamp(22px,5vw,55px);display:flex;flex-direction:column;justify-content:center}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.2;margin:12px 0;background:linear-gradient(90deg,#ffe8ad,#f34bd3);color:transparent;background-clip:text}.hero p{line-height:1.9;color:#e6cfe1}.cta{border:0;border-radius:24px;background:linear-gradient(100deg,#7915df,#d20ac6);padding:12px 20px;font-weight:800;border:1px solid var(--gold);background:#160815;align-self:flex-start}
+.hero-art{min-height:360px;background:linear-gradient(0deg,#0b030c99,#0b030c00),url('https://images.unsplash.com/photo-1518199266791-5375a83190b4?auto=format&fit=crop&w=1200&q=85') center/cover;position:relative}.hero-art:after{content:"BRITTON LIFE ♡";font-family:Cinzel,serif;position:absolute;bottom:22px;right:22px;color:#ffe4a3;font-size:clamp(18px,3vw,28px);text-shadow:0 2px 15px #000}
+.section{margin:28px 0}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.section h2{font-size:22px;margin:0;color:#f4c8f0}.muted{color:#bda2ba;font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 14px}.category{border:0;background:transparent;text-align:center;cursor:pointer;transition:.2s}.category:hover{transform:translateY(-3px)}.category img{width:clamp(76px,10vw,118px);height:clamp(76px,10vw,118px);object-fit:cover;display:block;margin:0 auto 10px;border-radius:50%;border:2px solid #e7bd63;padding:3px;background:linear-gradient(135deg,#f1c86b,#a63c78);box-shadow:0 5px 20px #d719a333}.category span{display:block;font-weight:800;font-size:14px;color:#f6e8c2}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.product{border:1px solid #8a3a7d;border-radius:18px;overflow:hidden;background:linear-gradient(155deg,#241022,#0c060e)}.product img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#190b19;border-bottom:1px solid #54204d}.pbody{padding:13px}.product h3{font-size:15px;margin:0 0 5px;color:#ffe8fa}.product p{font-size:12px;line-height:1.6;color:#c7a9c3;min-height:38px;margin:0 0 10px}.price{color:var(--gold);font-weight:900}.pfoot{display:flex;justify-content:space-between;align-items:center;gap:8px}.add{border:0;border-radius:24px;background:linear-gradient(100deg,#7915df,#d20ac6);padding:9px 12px;font-size:12px;border:1px solid #d950d0}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:20;padding:9px 10px;background:linear-gradient(180deg,#160817f5,#080208fc);border-top:1px solid #a74a94;backdrop-filter:blur(18px)}.bottom-nav-inner{width:min(760px,100%);margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid transparent;border-radius:14px;background:transparent;color:#d9bfd8;padding:7px 2px;font-size:11px}.bottom-nav button.active{color:#ffe2a0;background:linear-gradient(145deg,#3a1238,#180b1b);border-color:#92518a}
+@media(max-width:800px){.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-art{min-height:220px;order:-1}.search{width:42vw}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap top">
+  <div class="actions"><a class="iconbtn" href="admin.html" style="border-color:#D4AF37">⚙️ لوحة التحكم</a><a class="iconbtn" href="https://wa.me/966556575822" target="_blank">واتساب</a></div>
+  <div><div class="brand">BRITTON LIFE</div><div class="tag">WELLNESS · CONNECTION · BETTER TOGETHER</div></div>
+  <input class="search" id="search" placeholder="ابحث عن منتج أو قسم..." oninput="render()">
+ </div>
+</header>
+
+<main class="wrap">
+<section id="home">
+ <div class="hero" id="heroSection">
+  <div class="hero-copy"><div style="color:var(--gold);font-size:14px">اكتشف عالم العناية الحميمة ♡</div><h1>حياة أكثر توازناً.. مع BRITTON LIFE</h1><p>لحظات رومانسية، هدايا فاخرة، وعناية تليق بكم. كل منتجاتنا بخصوصية تامة وتغليف محايد.</p><button class="cta" onclick="document.getElementById('productsArea').scrollIntoView({behavior:'smooth'})">تسوق الآن ←</button></div>
+  <div class="hero-art" id="heroArt"></div>
+ </div>
+
+ <div class="section"><div class="sectionhead"><h2>تسوق حسب الفئة ♡</h2><span class="muted">اسحب لتغيير الترتيب من لوحة التحكم</span></div><div class="categories" id="categories"></div></div>
+
+ <div class="section" id="productsArea"><div class="sectionhead"><h2>منتجات مختارة لك ✦</h2><span class="muted" id="resultCount"></span></div><div class="products" id="productGrid"></div></div>
+</section>
+</main>
+
+<nav class="bottom-nav"><div class="bottom-nav-inner">
+<button class="active"><span>⌂</span><span>الرئيسية</span></button>
+<button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})"><span>✧</span><span>الأقسام</span></button>
+<button onclick="document.getElementById('productsArea').scrollIntoView({behavior:'smooth'})"><span>▦</span><span>المنتجات</span></button>
+<button><span>♧</span><span>السلة</span></button>
+<a href="https://wa.me/966556575822" target="_blank" style="display:flex;flex-direction:column;align-items:center;color:#d9bfd8;font-size:11px;text-decoration:none"><span>♡</span><span>تواصل</span></a>
+</div></nav>
+
+<script>
+const defaultHero = "https://images.unsplash.com/photo-1518199266791-5375a83190b4?auto=format&fit=crop&w=1200&q=85";
+const defaultCategories = [
+ {id:'romantic',name:'مستلزمات رومانسية',img:'https://images.unsplash.com/photo-1518199266791-5375a83190b4?auto=format&fit=crop&w=700&q=80'},
+ {id:'gifts',name:'هدايا ومستلزمات',img:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80'},
+ {id:'massage',name:'زيوت ومساج',img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80'},
+ {id:'couples',name:'ألعاب زوجية',img:'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=700&q=80'},
+ {id:'games',name:'ألعاب وتحديات',img:'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80'},
+ {id:'cards',name:'الكتب والبطاقات',img:'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80'},
+ {id:'accessories',name:'إكسسوارات وملحقات',img:'https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=700&q=80'},
+ {id:'vibrators',name:'أجهزة هزاز',img:'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80'},
+ {id:'dildos',name:'قضبان صناعية',img:'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80'},
+ {id:'vaginal',name:'مهبل صناعي',img:'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80'}
+];
+const defaultProducts = [
+ {id:1,name:'مجموعة هدايا رومانسية فاخرة',cat:'romantic',price:199,desc:'شموع، ورود، وتغليف ذهبي أنيق',img:'https://images.unsplash.com/photo-1518199266791-5375a83190b4?auto=format&fit=crop&w=800&q=80'},
+ {id:2,name:'زيت مساج رومانسي',cat:'massage',price:89,desc:'برائحة الفانيلا والورد للاسترخاء',img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80'},
+ {id:3,name:'بطاقات أسئلة للزوجين ♡',cat:'games',price:129,desc:'لعبة حوار لتعزيز القرب',img:'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80'},
+ {id:4,name:'طقم لانجري رومانسي',cat:'romantic',price:159,desc:'تصميم ناعم وراقي',img:'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80'},
+ {id:5,name:'شموع معطرة للمواعيد',cat:'romantic',price:99,desc:'أجواء دافئة ورومانسية',img:'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80'},
+ {id:6,name:'هدية ذكرى زواج',cat:'gifts',price:249,desc:'صندوق فاخر جاهز للإهداء',img:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80'},
+ {id:7,name:'جهاز مساج للاسترخاء',cat:'massage',price:179,desc:'عناية وهدوء',img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80'},
+ {id:8,name:'لعبة تحديات زوجية',cat:'couples',price:135,desc:'مرح وتواصل',img:'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80'}
+];
+function getHero(){return localStorage.getItem('britton_hero_v3')||defaultHero}
+function getCats(){return JSON.parse(localStorage.getItem('britton_cats_v3')||'null')||defaultCategories}
+function getProds(){return JSON.parse(localStorage.getItem('britton_products_v3')||'null')||defaultProducts}
+function render(){
+  document.getElementById('heroArt').style.backgroundImage = `linear-gradient(0deg,#0b030c99,#0b030c00),url('${getHero()}')`;
+  const cats=getCats(); const prods=getProds();
+  const q=(document.getElementById('search').value||'').toLowerCase();
+  document.getElementById('categories').innerHTML=cats.map(c=>`<button class="category" onclick="filterCat('${c.id}')"><img src="${c.img}" alt="${c.name}" loading="lazy"><span>${c.name}</span></button>`).join('');
+  let filtered=prods.filter(p=>`${p.name} ${p.desc}`.toLowerCase().includes(q));
+  document.getElementById('resultCount').textContent=filtered.length+' منتجات';
+  document.getElementById('productGrid').innerHTML=filtered.map(p=>`<article class="product"><img src="${p.img}" alt="${p.name}"><div class="pbody" style="padding:13px"><h3>${p.name}</h3><p>${p.desc}</p><div class="pfoot"><span class="price">${p.price} ر.س</span><button class="add" onclick="alert('أضيف للسلة: '+p.name)">أضف +</button></div></div></article>`).join('');
+}
+function filterCat(id){const p=getProds().filter(x=>x.cat===id); document.getElementById('productGrid').innerHTML=p.map(x=>`<article class="product"><img src="${x.img}"><div class="pbody" style="padding:13px"><h3>${x.name}</h3><p>${x.desc}</p><div class="pfoot"><span class="price">${x.price} ر.س</span><button class="add">أضف +</button></div></div></article>`).join(''); document.getElementById('productsArea').scrollIntoView({behavior:'smooth'})}
+render();
+</script>
+</body>
+</html>
