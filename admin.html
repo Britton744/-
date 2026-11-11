@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>لوحة الإدارة | متجر الملوك LUXE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #080718;
+            --bg-card: #100e2b;
+            --bg-input: #0b0922;
+            --border-purple: rgba(168, 85, 247, 0.25);
+            --pink-accent: #e11d48;
+            --purple-accent: #8b5cf6;
+            --gold: #dfb872;
+            --gold-glow: #ffd700;
+            --text-muted: #94a3b8;
+            --grad-btn: linear-gradient(135deg, #a855f7, #ec4899);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg-dark); color: #fff; min-height: 100vh; padding-bottom: 30px; }
+
+        /* شاشة الدخول */
+        #loginOverlay {
+            position: fixed; inset: 0; background: var(--bg-dark); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; padding: 20px;
+        }
+        .login-box {
+            background: var(--bg-card); border: 1px solid var(--border-purple); border-radius: 20px;
+            padding: 30px 20px; text-align: center; max-width: 360px; width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+        .login-box input {
+            width: 100%; padding: 12px; margin: 15px 0; background: var(--bg-input);
+            border: 1px solid var(--border-purple); border-radius: 10px; color: #fff; text-align: center; font-size: 16px;
+        }
+
+        /* الهيدر العلوي */
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: rgba(16, 14, 43, 0.85); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-purple); position: sticky; top: 0; z-index: 90;
+        }
+        .header-brand { display: flex; align-items: center; gap: 10px; }
+        .header-brand i { font-size: 24px; color: var(--gold-glow); }
+        .header-title h2 { font-size: 16px; font-weight: 800; }
+        .header-title span { font-size: 11px; color: #4ade80; display: flex; align-items: center; gap: 4px; }
+        .header-title span::before { content: ""; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; display: inline-block; }
+        
+        .header-icons { display: flex; gap: 12px; align-items: center; }
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-purple);
+            color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; cursor: pointer; text-decoration: none;
+        }
+
+        /* شريط التبويبات العلوي */
+        .tabs-bar {
+            display: flex; gap: 10px; padding: 15px; overflow-x: auto; scrollbar-width: none;
+        }
+        .tab-pill {
+            background: var(--bg-card); border: 1px solid var(--border-purple); color: #fff;
+            padding: 10px 20px; border-radius: 14px; font-size: 13px; font-weight: bold;
+            display: flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap;
+        }
+        .tab-pill.active {
+            background: var(--grad-btn); border-color: transparent; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+
+        /* حاوية النماذج والبطاقات */
+        .content-wrap { padding: 0 15px 20px; }
+        .form-section {
+            background: var(--bg-card); border: 1px solid var(--border-purple);
+            border-radius: 18px; padding: 18px; margin-bottom: 16px;
+        }
+        .section-header {
+            display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800;
+            color: #fff; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .section-header i { color: var(--purple-accent); font-size: 18px; }
+
+        .field-group { margin-bottom: 14px; text-align: right; }
+        .field-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+        .field-group label span.req { color: var(--pink-accent); }
+
+        .form-control {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border-purple);
+            border-radius: 10px; padding: 12px; color: #fff; font-size: 13px; outline: none;
+        }
+        .form-control:focus { border-color: var(--purple-accent); }
+
+        /* منطقة رفع الصور */
+        .upload-area {
+            background: var(--bg-input); border: 2px dashed var(--border-purple);
+            border-radius: 14px; padding: 25px; text-align: center; margin-bottom: 12px;
+            cursor: pointer; position: relative;
+        }
+        .upload-area i { font-size: 32px; color: var(--text-muted); margin-bottom: 8px; }
+        .upload-area p { font-size: 12px; color: var(--text-muted); }
+        .upload-preview { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; margin: 10px auto 0; display: none; border: 1px solid var(--border-purple); }
+
+        .btns-row { display: flex; gap: 10px; margin-top: 10px; }
+        .btn-upload {
+            flex: 1; background: var(--grad-btn); border: none; color: #fff; padding: 10px;
+            border-radius: 10px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; gap: 6px;
+        }
+        .btn-secondary {
+            flex: 1; background: rgba(255,255,255,0.06); border: 1px solid var(--border-purple);
+            color: #fff; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: bold; cursor: pointer;
+        }
+
+        /* قائمة المنتجات المحفوظة */
+        .prod-row {
+            background: var(--bg-input); border: 1px solid var(--border-purple);
+            border-radius: 12px; padding: 12px; margin-bottom: 10px; display: flex;
+            align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .prod-info { display: flex; align-items: center; gap: 12px; }
+        .prod-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; background: #000; }
+        .prod-texts h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+        .prod-texts span { font-size: 11px; color: var(--gold-glow); font-weight: 800; }
+        .btn-del {
+            background: rgba(225, 29, 72, 0.15); border: 1px solid var(--pink-accent);
+            color: #fda4af; width: 34px; height: 34px; border-radius: 8px; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+
+        .btn-main-save {
+            width: 100%; background: var(--grad-btn); border: none; color: #fff; padding: 15px;
+            border-radius: 14px; font-size: 15px; font-weight: 900; cursor: pointer; margin-top: 10px;
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- نافذة تسجيل الدخول برمز الحماية -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <i class="fa-solid fa-crown" style="font-size:38px; color:var(--gold-glow); margin-bottom:12px;"></i>
+            <h3 style="font-weight:900;">لوحة الإدارة | الملوك</h3>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">يرجى إدخال رمز الأمان للوصول</p>
+            <input type="password" id="passCode" placeholder="كلمة المرور">
+            <button class="btn-main-save" onclick="auth()" style="margin:0; padding:12px;">دخول اللوحة</button>
+            <p id="errCode" style="color:var(--pink-accent); font-size:12px; display:none; margin-top:10px;">الرمز السري غير صحيح!</p>
+        </div>
+    </div>
+
+    <!-- شريط الواجهة العلوية -->
+    <header class="admin-header">
+        <div class="header-brand">
+            <i class="fa-solid fa-crown"></i>
+            <div class="header-title">
+                <h2>لوحة الإدارة</h2>
+                <span>متصل - متجر الملوك LUXE</span>
+            </div>
+        </div>
+        <div class="header-icons">
+            <a href="index.html" class="icon-btn" title="المتجر"><i class="fa-solid fa-store"></i></a>
+            <div class="icon-btn" onclick="logout()" title="خروج"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+        </div>
+    </header>
+
+    <!-- شريط الأقسام (إضافة منتج / قائمة المنتجات) -->
+    <div class="tabs-bar">
+        <div class="tab-pill active" id="tabAdd" onclick="switchView('add')">
+            <i class="fa-solid fa-plus-circle"></i> إضافة منتج جديد
+        </div>
+        <div class="tab-pill" id="tabList" onclick="switchView('list')">
+            <i class="fa-solid fa-boxes-stacked"></i> كل المنتجات (<span id="totalCount">0</span>)
+        </div>
+    </div>
+
+    <!-- محتوى لوحة الإدارة -->
+    <div class="content-wrap">
+        
+        <!-- قسم إضافة منتج جديد -->
+        <div id="viewAdd">
+            <div class="form-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-cube"></i> المعلومات الأساسية
+                </div>
+
+                <div class="field-group">
+                    <label>اسم المنتج <span class="req">*</span></label>
+                    <input type="text" id="prodTitle" class="form-control" placeholder="مثال: قضيب هزاز اسود... تصميم فاخر">
+                </div>
+
+                <div class="field-group">
+                    <label>التصنيف</label>
+                    <select id="prodCategory" class="form-control">
+                        <option value="men">ألعاب للرجال</option>
+                        <option value="women">ألعاب وهزازات نسائية</option>
+                        <option value="couples">ألعاب للمتزوجين</option>
+                        <option value="anal">قسم خاص</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:10px;">
+                    <div class="field-group" style="flex:1;">
+                        <label>سعر البيع (ر.س) <span class="req">*</span></label>
+                        <input type="number" id="prodPrice" class="form-control" placeholder="1200">
+                    </div>
+                    <div class="field-group" style="flex:1;">
+                        <label>السعر قبل الخصم</label>
+                        <input type="number" id="prodOldPrice" class="form-control" placeholder="1300">
+                    </div>
+                </div>
+            </div>
+
+            <!-- رفع الصور -->
+            <div class="form-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-image"></i> الصورة الرئيسية
+                </div>
+
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>انقر لرفع صورة من جوالك أو الصق الرابط بالأسفل</p>
+                    <img id="previewImg" class="upload-preview" alt="معاينة">
+                    <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFile(event)">
+                </div>
+
+                <div class="field-group">
+                    <label>أو ضع رابط مباشر للصورة</label>
+                    <input type="text" id="prodImgUrl" class="form-control" placeholder="https://example.com/image.jpg" oninput="previewUrl(this.value)">
+                </div>
+
+                <button class="btn-main-save" onclick="saveNewProduct()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> حفظ ونشر المنتج في المتجر
+                </button>
+            </div>
+        </div>
+
+        <!-- قسم عرض وحذف المنتجات -->
+        <div id="viewList" style="display:none;">
+            <div class="form-section">
+                <div class="section-header">
+                    <i class="fa-solid fa-list-check"></i> إدارة وتعديل المنتجات المعروضة
+                </div>
+                <div id="productsItemsList"></div>
+                <button onclick="restoreFactory()" class="btn-secondary" style="width:100%; margin-top:15px; color:#fda4af; border-color:var(--pink-accent);">
+                    استعادة المنتجات الافتراضية
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const initialStoreItems = [
+            { id: 1, name: "مهبل صناعي هزاز فاخر 1000 نبضة", price: 650, oldPrice: 800, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, name: "جهاز استمناء شفط هيدروليك رويال X9", price: 1050, oldPrice: 1250, img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, name: "قضيب واقعي سيليكون طبي 23 سم رويال", price: 780, oldPrice: 950, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" },
+            { id: 4, name: "طقم ألعاب أزواج ملكي فاخر 12 قطعة", price: 990, oldPrice: 1300, img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80" }
+        ];
+
+        let catalog = JSON.parse(localStorage.getItem('luxe_catalog')) || initialStoreItems;
+        let selectedBase64 = "";
+
+        function auth() {
+            if (document.getElementById('passCode').value === 'king123') {
+                document.getElementById('loginOverlay').style.display = 'none';
+                updateCount();
+            } else {
+                document.getElementById('errCode').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('passCode').value = '';
+        }
+
+        function switchView(view) {
+            if (view === 'add') {
+                document.getElementById('viewAdd').style.display = 'block';
+                document.getElementById('viewList').style.display = 'none';
+                document.getElementById('tabAdd').classList.add('active');
+                document.getElementById('tabList').classList.remove('active');
+            } else {
+                document.getElementById('viewAdd').style.display = 'none';
+                document.getElementById('viewList').style.display = 'block';
+                document.getElementById('tabAdd').classList.remove('active');
+                document.getElementById('tabList').classList.add('active');
+                renderList();
+            }
+        }
+
+        function handleFile(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                selectedBase64 = evt.target.result;
+                const p = document.getElementById('previewImg');
+                p.src = selectedBase64;
+                p.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function previewUrl(url) {
+            const p = document.getElementById('previewImg');
+            if (url) {
+                p.src = url;
+                p.style.display = 'block';
+                selectedBase64 = url;
+            } else {
+                p.style.display = 'none';
+            }
+        }
+
+        function updateCount() {
+            document.getElementById('totalCount').innerText = catalog.length;
+        }
+
+        function renderList() {
+            const wrap = document.getElementById('productsItemsList');
+            updateCount();
+            if (!catalog.length) {
+                wrap.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px;">لا توجد منتجات مضافة.</p>';
+                return;
+            }
+            wrap.innerHTML = catalog.map((item, idx) => `
+                <div class="prod-row">
+                    <div class="prod-info">
+                        <img src="${item.img || 'https://via.placeholder.com/100'}" class="prod-thumb">
+                        <div class="prod-texts">
+                            <h4>${item.name}</h4>
+                            <span>${item.price} ر.س ${item.oldPrice ? '<del style="color:#64748b; font-size:10px; margin-right:4px;">' + item.oldPrice + ' ر.س</del>' : ''}</span>
+                        </div>
+                    </div>
+                    <button class="btn-del" onclick="deleteItem(${idx})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function saveNewProduct() {
+            const name = document.getElementById('prodTitle').value;
+            const price = document.getElementById('prodPrice').value;
+            const oldPrice = document.getElementById('prodOldPrice').value;
+            const img = selectedBase64 || document.getElementById('prodImgUrl').value || 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80';
+
+            if (!name || !price) {
+                alert('يرجى إدخال اسم المنتج وسعر البيع!');
+                return;
+            }
+
+            catalog.unshift({
+                id: Date.now(),
+                name: name,
+                price: Number(price),
+                oldPrice: oldPrice ? Number(oldPrice) : null,
+                img: img
+            });
+
+            localStorage.setItem('luxe_catalog', JSON.stringify(catalog));
+            alert('تم حفظ المنتج ونشره بالمتجر بنجاح!');
+
+            // تفريغ الحقول
+            document.getElementById('prodTitle').value = '';
+            document.getElementById('prodPrice').value = '';
+            document.getElementById('prodOldPrice').value = '';
+            document.getElementById('prodImgUrl').value = '';
+            document.getElementById('previewImg').style.display = 'none';
+            selectedBase64 = "";
+
+            switchView('list');
+        }
+
+        function deleteItem(idx) {
+            if (confirm('هل أنت متأكد من حذف هذا المنتج نهائياً؟')) {
+                catalog.splice(idx, 1);
+                localStorage.setItem('luxe_catalog', JSON.stringify(catalog));
+                renderList();
+            }
+        }
+
+        function restoreFactory() {
+            if (confirm('هل تريد استعادة جميع المنتجات الافتراضية؟')) {
+                localStorage.removeItem('luxe_catalog');
+                catalog = initialStoreItems;
+                renderList();
+                alert('تمت الاستعادة بنجاح');
+            }
+        }
+    </script>
+</body>
+</html>
