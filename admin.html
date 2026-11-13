@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إدارة BRITTON</title><link rel="stylesheet" href="style.css"></head>
+<body class="admin-body"><main class="admin-wrap">
+<div class="admin-top"><a class="logo" href="index.html">BRITTON <small>ADMIN PANEL</small></a><a href="index.html">عرض المتجر ↗</a></div>
+<section id="loginBox" class="admin-card"><h1>دخول الإدارة</h1><p class="muted">أنشئ كلمة مرور محلية عند أول استخدام.</p><form id="loginForm"><input id="adminPassword" type="password" placeholder="كلمة مرور الإدارة" required minlength="8"><button class="primary full">دخول</button></form><p class="hint">تنبيه: هذه نسخة تجريبية تحفظ البيانات على هذا المتصفح فقط، وليست نظام حماية مناسباً للنشر العام.</p></section>
+<section id="dashboard" class="hidden">
+<div class="admin-heading"><h1>لوحة تحكم بريتون</h1><button id="logoutBtn" class="secondary">تسجيل الخروج</button></div>
+<div class="stats"><div><small>عدد المنتجات</small><b id="productStat">0</b></div><div><small>عدد الطلبات المسجلة محلياً</small><b id="orderStat">0</b></div></div>
+<div class="admin-card"><h2>إضافة / تعديل منتج</h2><form id="productForm" class="product-form">
+<input type="hidden" id="productId"><label>اسم المنتج<input id="productName" required></label><label>القسم<input id="productCategory" required placeholder="إكسسوارات"></label><label>السعر (ر.س)<input id="productPrice" type="number" min="0" required></label><label>رابط الصورة<input id="productImage" type="url" placeholder="https://..."></label><label class="wide">الوصف<textarea id="productDescription" rows="3"></textarea></label><div class="wide form-actions"><button class="primary">حفظ المنتج</button><button type="button" id="resetForm" class="secondary">تفريغ الحقول</button></div>
+</form></div>
+<div class="admin-card"><div class="section-head"><h2>المنتجات الحالية</h2><button id="exportBtn" class="secondary">تصدير نسخة JSON</button></div><div id="adminProducts"></div></div>
+</section></main><script src="database.js"></script><script src="admin.js"></script></body></html>

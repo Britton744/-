@@ -1,0 +1,13 @@
+const $=id=>document.getElementById(id);let items=DB.getProducts();
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function showDashboard(){ $("loginBox").classList.add("hidden");$("dashboard").classList.remove("hidden");renderAdmin()}
+function renderAdmin(){$("productStat").textContent=items.length;$("orderStat").textContent=DB.getOrders().length;$("adminProducts").innerHTML=items.map(p=>`<div class="admin-product"><div><b>${esc(p.name)}</b><div class="muted">${esc(p.category)} — ${p.price} ر.س</div></div><div><button class="secondary" onclick="editProduct(${p.id})">تعديل</button><button class="secondary" onclick="deleteProduct(${p.id})">حذف</button></div></div>`).join("")||"لا توجد منتجات."}
+$("loginForm").onsubmit=e=>{e.preventDefault();const entered=$("adminPassword").value;let hash=localStorage.getItem("britton_admin_hash");if(!hash){if(!confirm("سيتم تعيين كلمة المرور هذه على هذا المتصفح. هل تريد المتابعة؟"))return;localStorage.setItem("britton_admin_hash",entered);showDashboard();return}if(entered===hash)showDashboard();else alert("كلمة المرور غير صحيحة")};
+$("logoutBtn").onclick=()=>{$("dashboard").classList.add("hidden");$("loginBox").classList.remove("hidden");$("adminPassword").value=""};
+$("productForm").onsubmit=e=>{e.preventDefault();const id=Number($("productId").value)||Date.now();const p={id,name:$("productName").value.trim(),category:$("productCategory").value.trim(),price:Number($("productPrice").value),image:$("productImage").value.trim(),description:$("productDescription").value.trim()};const i=items.findIndex(x=>x.id===id);if(i>=0)items[i]=p;else items.push(p);DB.saveProducts(items);resetForm();renderAdmin();alert("تم حفظ المنتج")};
+function editProduct(id){const p=items.find(x=>x.id===id);if(!p)return;$("productId").value=p.id;$("productName").value=p.name;$("productCategory").value=p.category;$("productPrice").value=p.price;$("productImage").value=p.image;$("productDescription").value=p.description;window.scrollTo({top:0,behavior:"smooth"})}
+function deleteProduct(id){if(!confirm("هل تريد حذف هذا المنتج؟"))return;items=items.filter(x=>x.id!==id);DB.saveProducts(items);renderAdmin()}
+function resetForm(){$("productForm").reset();$("productId").value=""}
+$("resetForm").onclick=resetForm;
+$("exportBtn").onclick=()=>{const blob=new Blob([JSON.stringify({products:items,orders:DB.getOrders()},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="britton-backup.json";a.click();URL.revokeObjectURL(a.href)};
+if(localStorage.getItem("britton_admin_hash")){$("adminPassword").placeholder="أدخل كلمة مرور الإدارة"}
